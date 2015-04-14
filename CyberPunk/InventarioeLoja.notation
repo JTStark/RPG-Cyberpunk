@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_8Q784OHhEeSI4fMYsraXXg" type="PapyrusUMLClassDiagram" name="Inventario" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_7yo9sOHpEeSI4fMYsraXXg" type="2002">
+    <children xmi:type="notation:DecorationNode" xmi:id="_7yo9suHpEeSI4fMYsraXXg" type="5005"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_7yo9s-HpEeSI4fMYsraXXg" type="7002">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_7yo9tOHpEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_7yo9teHpEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_7yo9tuHpEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7yo9t-HpEeSI4fMYsraXXg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_7yo9uOHpEeSI4fMYsraXXg" type="7003">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_7yo9ueHpEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_7yo9uuHpEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_7yo9u-HpEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7yo9vOHpEeSI4fMYsraXXg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_7yo9veHpEeSI4fMYsraXXg" type="7004">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_7yo9vuHpEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_7yo9v-HpEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_7yo9wOHpEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7yo9weHpEeSI4fMYsraXXg"/>
+    </children>
+    <element xmi:type="uml:Component" href="InventarioeLoja.uml#_7yoWoOHpEeSI4fMYsraXXg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7yo9seHpEeSI4fMYsraXXg" x="226" y="22" width="297" height="153"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_WXKlQOHqEeSI4fMYsraXXg" type="2004">
+    <children xmi:type="notation:DecorationNode" xmi:id="_WXLMUeHqEeSI4fMYsraXXg" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_WXLMUuHqEeSI4fMYsraXXg" type="7006">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_WXLMU-HqEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_WXLMVOHqEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_WXLMVeHqEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WXLMVuHqEeSI4fMYsraXXg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_WXLMV-HqEeSI4fMYsraXXg" type="7007">
+      <children xmi:type="notation:Shape" xmi:id="_QrlUwOHlEeSI4fMYsraXXg" type="3013">
+        <element xmi:type="uml:Operation" href="InventarioeLoja.uml#_QrhDUOHlEeSI4fMYsraXXg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_QrlUweHlEeSI4fMYsraXXg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_VFSf8OHlEeSI4fMYsraXXg" type="3013">
+        <element xmi:type="uml:Operation" href="InventarioeLoja.uml#_VFPcoOHlEeSI4fMYsraXXg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_VFSf8eHlEeSI4fMYsraXXg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_XkqscOHlEeSI4fMYsraXXg" type="3013">
+        <element xmi:type="uml:Operation" href="InventarioeLoja.uml#_Xko3QOHlEeSI4fMYsraXXg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_XkqsceHlEeSI4fMYsraXXg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_vv7WkOHlEeSI4fMYsraXXg" type="3013">
+        <element xmi:type="uml:Operation" href="InventarioeLoja.uml#_vv46UOHlEeSI4fMYsraXXg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_vv79oOHlEeSI4fMYsraXXg"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_WXLMWOHqEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_WXLMWeHqEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_WXLMWuHqEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WXLMW-HqEeSI4fMYsraXXg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_WXLMXOHqEeSI4fMYsraXXg" type="7008">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_WXLMXeHqEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_WXLMXuHqEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_WXLMX-HqEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WXLMYOHqEeSI4fMYsraXXg"/>
+    </children>
+    <element xmi:type="uml:Interface" href="InventarioeLoja.uml#_WXJ-MOHqEeSI4fMYsraXXg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WXLMUOHqEeSI4fMYsraXXg" x="504" y="202" width="227" height="166"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_Dw6mYOHrEeSI4fMYsraXXg" type="2008">
+    <children xmi:type="notation:DecorationNode" xmi:id="_Dw7NcOHrEeSI4fMYsraXXg" type="5029"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Dw7NceHrEeSI4fMYsraXXg" type="7017">
+      <children xmi:type="notation:Shape" xmi:id="_NpZucOHrEeSI4fMYsraXXg" type="3012">
+        <element xmi:type="uml:Property" href="InventarioeLoja.uml#_NpYgUOHrEeSI4fMYsraXXg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_NpZuceHrEeSI4fMYsraXXg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_ampA8OHrEeSI4fMYsraXXg" type="3012">
+        <element xmi:type="uml:Property" href="InventarioeLoja.uml#_amny0OHrEeSI4fMYsraXXg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ampA8eHrEeSI4fMYsraXXg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_gyA-EOHrEeSI4fMYsraXXg" type="3012">
+        <element xmi:type="uml:Property" href="InventarioeLoja.uml#_gx_v8OHrEeSI4fMYsraXXg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_gyA-EeHrEeSI4fMYsraXXg"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_Dw7NcuHrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Dw7Nc-HrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Dw7NdOHrEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Dw7NdeHrEeSI4fMYsraXXg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Dw7NduHrEeSI4fMYsraXXg" type="7018">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_Dw7Nd-HrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Dw7NeOHrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Dw7NeeHrEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Dw7NeuHrEeSI4fMYsraXXg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_Dw7Ne-HrEeSI4fMYsraXXg" type="7019">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_Dw7NfOHrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_Dw7NfeHrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_Dw7NfuHrEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Dw7Nf-HrEeSI4fMYsraXXg"/>
+    </children>
+    <element xmi:type="uml:Class" href="InventarioeLoja.uml#_Dw4xMOHrEeSI4fMYsraXXg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Dw6mYeHrEeSI4fMYsraXXg" x="413" y="463" width="228" height="148"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_18ySsOHrEeSI4fMYsraXXg" type="2008">
+    <children xmi:type="notation:DecorationNode" xmi:id="_18ySsuHrEeSI4fMYsraXXg" type="5029"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_18ySs-HrEeSI4fMYsraXXg" type="7017">
+      <children xmi:type="notation:Shape" xmi:id="_8L_m8OHrEeSI4fMYsraXXg" type="3012">
+        <element xmi:type="uml:Property" href="InventarioeLoja.uml#_8L-_4OHrEeSI4fMYsraXXg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_8L_m8eHrEeSI4fMYsraXXg"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_18yStOHrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_18ySteHrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_18yStuHrEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_18ySt-HrEeSI4fMYsraXXg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_18ySuOHrEeSI4fMYsraXXg" type="7018">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_18ySueHrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_18ySuuHrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_18ySu-HrEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_18ySvOHrEeSI4fMYsraXXg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_18ySveHrEeSI4fMYsraXXg" type="7019">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_18ySvuHrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_18ySv-HrEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_18ySwOHrEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_18ySweHrEeSI4fMYsraXXg"/>
+    </children>
+    <element xmi:type="uml:Class" href="InventarioeLoja.uml#_18xroOHrEeSI4fMYsraXXg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_18ySseHrEeSI4fMYsraXXg" x="22" y="471" width="137" height="149"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_YiOnQOHtEeSI4fMYsraXXg" type="2004">
+    <children xmi:type="notation:DecorationNode" xmi:id="_YiPOUOHtEeSI4fMYsraXXg" type="5011"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_YiPOUeHtEeSI4fMYsraXXg" type="7006">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_YiPOUuHtEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_YiPOU-HtEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_YiPOVOHtEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YiPOVeHtEeSI4fMYsraXXg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_YiPOVuHtEeSI4fMYsraXXg" type="7007">
+      <children xmi:type="notation:Shape" xmi:id="_jK8SYOHtEeSI4fMYsraXXg" type="3007">
+        <element xmi:type="uml:Operation" href="InventarioeLoja.uml#_jK6dMOHtEeSI4fMYsraXXg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_jK8SYeHtEeSI4fMYsraXXg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_okVY8OHtEeSI4fMYsraXXg" type="3007">
+        <element xmi:type="uml:Operation" href="InventarioeLoja.uml#_okUK0OHtEeSI4fMYsraXXg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_okWAAOHtEeSI4fMYsraXXg"/>
+      </children>
+      <styles xmi:type="notation:TitleStyle" xmi:id="_YiPOV-HtEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_YiPOWOHtEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_YiPOWeHtEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YiPOWuHtEeSI4fMYsraXXg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_YiP1YOHtEeSI4fMYsraXXg" type="7008">
+      <styles xmi:type="notation:TitleStyle" xmi:id="_YiP1YeHtEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_YiP1YuHtEeSI4fMYsraXXg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_YiP1Y-HtEeSI4fMYsraXXg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YiP1ZOHtEeSI4fMYsraXXg"/>
+    </children>
+    <element xmi:type="uml:Interface" href="InventarioeLoja.uml#_YiNZIOHtEeSI4fMYsraXXg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YiOnQeHtEeSI4fMYsraXXg" x="63" y="261" width="186" height="133"/>
+  </children>
+  <styles xmi:type="notation:StringValueStyle" xmi:id="_8Q784eHhEeSI4fMYsraXXg" name="diagram_compatibility_version" stringValue="1.0.0"/>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_8Q784uHhEeSI4fMYsraXXg"/>
+  <styles xmi:type="style:PapyrusViewStyle" xmi:id="_8Q784-HhEeSI4fMYsraXXg">
+    <owner xmi:type="uml:Model" href="InventarioeLoja.uml#_8JFocOHhEeSI4fMYsraXXg"/>
+  </styles>
+  <element xmi:type="uml:Model" href="InventarioeLoja.uml#_8JFocOHhEeSI4fMYsraXXg"/>
+  <edges xmi:type="notation:Connector" xmi:id="_vLK08OHrEeSI4fMYsraXXg" type="4008" source="_Dw6mYOHrEeSI4fMYsraXXg" target="_WXKlQOHqEeSI4fMYsraXXg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_vLK08-HrEeSI4fMYsraXXg" type="6026">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_vLK09OHrEeSI4fMYsraXXg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_vLLcAOHrEeSI4fMYsraXXg" type="6027">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_vLLcAeHrEeSI4fMYsraXXg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_vLK08eHrEeSI4fMYsraXXg"/>
+    <element xmi:type="uml:Dependency" href="InventarioeLoja.uml#_vLI_wOHrEeSI4fMYsraXXg"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vLK08uHrEeSI4fMYsraXXg" points="[8, -74, -14, 129]$[-23, -171, -45, 32]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vLRioOHrEeSI4fMYsraXXg" id="(0.19823788546255505,0.7951807228915663)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_seh9oOHtEeSI4fMYsraXXg" type="4008" source="_18ySsOHrEeSI4fMYsraXXg" target="_YiOnQOHtEeSI4fMYsraXXg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_seiksOHtEeSI4fMYsraXXg" type="6026">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_seikseHtEeSI4fMYsraXXg" y="40"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_seiksuHtEeSI4fMYsraXXg" type="6027">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_seiks-HtEeSI4fMYsraXXg" y="60"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_seh9oeHtEeSI4fMYsraXXg"/>
+    <element xmi:type="uml:Dependency" href="InventarioeLoja.uml#_sehWkOHtEeSI4fMYsraXXg"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_seh9ouHtEeSI4fMYsraXXg" points="[26, -74, -39, 108]$[64, -151, -1, 31]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_sendMOHtEeSI4fMYsraXXg" id="(0.4946236559139785,0.7669172932330827)"/>
+  </edges>
+</notation:Diagram>

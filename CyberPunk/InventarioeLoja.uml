@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_8JFocOHhEeSI4fMYsraXXg" name="model">
+  <packagedElement xmi:type="uml:Component" xmi:id="_7yoWoOHpEeSI4fMYsraXXg" name="Inventario"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_WXJ-MOHqEeSI4fMYsraXXg" name="IItem">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_QrhDUOHlEeSI4fMYsraXXg" name="getNome" visibility="public">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_f4ypUOHmEeSI4fMYsraXXg" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_VFPcoOHlEeSI4fMYsraXXg" name="getTipo">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_a4AQAOHmEeSI4fMYsraXXg" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Xko3QOHlEeSI4fMYsraXXg" name="getBonus">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ny1uwOHmEeSI4fMYsraXXg" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_vv46UOHlEeSI4fMYsraXXg" name="Item"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Dw4xMOHrEeSI4fMYsraXXg" name="Item">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_NpYgUOHrEeSI4fMYsraXXg" name="Nome" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_amny0OHrEeSI4fMYsraXXg" name="Tipo" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_gx_v8OHrEeSI4fMYsraXXg" name="Bonus" visibility="protected">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_vLI_wOHrEeSI4fMYsraXXg" client="_Dw4xMOHrEeSI4fMYsraXXg" supplier="_WXJ-MOHqEeSI4fMYsraXXg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_18xroOHrEeSI4fMYsraXXg" name="BancoDados">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_8L-_4OHrEeSI4fMYsraXXg" name="listaItens" visibility="private" type="_Dw4xMOHrEeSI4fMYsraXXg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_YiNZIOHtEeSI4fMYsraXXg" name="IBD">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_jK6dMOHtEeSI4fMYsraXXg" name="getItem"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_okUK0OHtEeSI4fMYsraXXg" name="putItem"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_sehWkOHtEeSI4fMYsraXXg" client="_18xroOHrEeSI4fMYsraXXg" supplier="_YiNZIOHtEeSI4fMYsraXXg"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_ygU3EOHkEeSI4fMYsraXXg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ygoZEOHkEeSI4fMYsraXXg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_sYse0YZLEeKyw49uR6nx3g"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>
