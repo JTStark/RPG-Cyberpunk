@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_5Q_fsOI-EeS8CPF4k4--cQ" name="Model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_5Q_fseI-EeS8CPF4k4--cQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9-SVQOI-EeS8CPF4k4--cQ" name="MainMenu">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_2l_ckOI_EeS8CPF4k4--cQ" name="escolha" visibility="private" type="_wk75EOI_EeS8CPF4k4--cQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5Bf1sOI_EeS8CPF4k4--cQ" value="6"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5Bf1seI_EeS8CPF4k4--cQ" value="6"/>
+    </ownedAttribute>
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_b5FVEOI_EeS8CPF4k4--cQ" client="_9-SVQOI-EeS8CPF4k4--cQ" supplier="_DyXzwOI_EeS8CPF4k4--cQ" contract="_DyXzwOI_EeS8CPF4k4--cQ"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_WH15wOJAEeS8CPF4k4--cQ" name="MainMenu"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ecpzIOJBEeS8CPF4k4--cQ" name="start"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_fQfD0OJBEeS8CPF4k4--cQ" name="quit"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_fzHPwOJBEeS8CPF4k4--cQ" name="load"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_DyXzwOI_EeS8CPF4k4--cQ" name="MenuGeneric">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_rtpaAOI_EeS8CPF4k4--cQ" name="start"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_-Y-QsOI_EeS8CPF4k4--cQ" name="quit"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wk75EOI_EeS8CPF4k4--cQ" name="Personagem"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_xPqREOI_EeS8CPF4k4--cQ" name="Mapa"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hNZccOJBEeS8CPF4k4--cQ" name="InGameMenu">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_l6YwAOJBEeS8CPF4k4--cQ" name="personagemAtual" visibility="private" type="_wk75EOI_EeS8CPF4k4--cQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_q8PgUOJBEeS8CPF4k4--cQ" name="posicaoAtual" visibility="private" type="_xPqREOI_EeS8CPF4k4--cQ"/>
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_yYkH8OJBEeS8CPF4k4--cQ" client="_hNZccOJBEeS8CPF4k4--cQ" supplier="_DyXzwOI_EeS8CPF4k4--cQ" contract="_DyXzwOI_EeS8CPF4k4--cQ"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_7Vrz8OJBEeS8CPF4k4--cQ" name="InGameMenu">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_RVIGwOJCEeS8CPF4k4--cQ" name="personagem" type="_wk75EOI_EeS8CPF4k4--cQ"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_X5yGkOJCEeS8CPF4k4--cQ" name="start"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_Yp9mUOJCEeS8CPF4k4--cQ" name="quit"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_ZbrXIOJCEeS8CPF4k4--cQ" name="save"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_atTXEOJCEeS8CPF4k4--cQ" name="inventory"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_8QA4wOJCEeS8CPF4k4--cQ" name="MainMenu"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="__zJBQOJCEeS8CPF4k4--cQ" name="MenuInGame"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_LhQOMOJDEeS8CPF4k4--cQ" name="MenuGeneric"/>
+  <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_U3b6cOJDEeS8CPF4k4--cQ" name="Realization0" client="__zJBQOJCEeS8CPF4k4--cQ" supplier="_LhQOMOJDEeS8CPF4k4--cQ" contract="_LhQOMOJDEeS8CPF4k4--cQ"/>
+  <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_VbitEOJDEeS8CPF4k4--cQ" name="Realization1" client="_8QA4wOJCEeS8CPF4k4--cQ" supplier="_LhQOMOJDEeS8CPF4k4--cQ" contract="_LhQOMOJDEeS8CPF4k4--cQ"/>
+</uml:Model>
