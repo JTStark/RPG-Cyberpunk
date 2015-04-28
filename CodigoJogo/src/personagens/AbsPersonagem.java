@@ -1,13 +1,15 @@
 package personagens;
+
 /**
- * Classe do James Rexus
+ * Classe abstrata para os personagens
  * 
  * @author Johnny Stark
  *
  */
+
 import java.util.Scanner;
 
-public class PersonagemRexus implements IPersonagens{
+public abstract class AbsPersonagem {
 	int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
 	int hp, maxHP, xp, level, armadura;
 	/*Inventario inventario;*/
@@ -79,5 +81,6 @@ public class PersonagemRexus implements IPersonagens{
 		}
 		
 	}
+
 
 }
