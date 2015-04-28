@@ -1,12 +1,13 @@
+package personagens;
 /**
- * Classe do Ozob
+ * Classe do Oleg Korolenko
  * 
  * @author Johnny Stark
  *
  */
 import java.util.Scanner;
 
-public class PersonagemOzob implements IPersonagens{
+public class PersonagemOleg implements IPersonagens{
 	int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
 	int hp, maxHP, xp, level, armadura;
 	/*Inventario inventario;*/

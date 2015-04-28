@@ -1,12 +1,13 @@
+package personagens;
 /**
- * Classe do Dr. Angus Silvana
+ * Classe do Steven T. Durden
  * 
  * @author Johnny Stark
  *
  */
 import java.util.Scanner;
 
-public class PersonagemSilvana implements IPersonagens{
+public class PersonagemDurden implements IPersonagens{
 	int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
 	int hp, maxHP, xp, level, armadura;
 	/*Inventario inventario;*/

@@ -1,3 +1,4 @@
+package personagens;
 /**
  * Interface para implementação dos personagens
  * 

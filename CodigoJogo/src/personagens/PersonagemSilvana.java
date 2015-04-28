@@ -1,12 +1,13 @@
+package personagens;
 /**
- * Classe do James Rexus
+ * Classe do Dr. Angus Silvana
  * 
  * @author Johnny Stark
  *
  */
 import java.util.Scanner;
 
-public class PersonagemRexus implements IPersonagens{
+public class PersonagemSilvana implements IPersonagens{
 	int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
 	int hp, maxHP, xp, level, armadura;
 	/*Inventario inventario;*/

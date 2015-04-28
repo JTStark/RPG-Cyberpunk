@@ -1,12 +1,13 @@
+package personagens;
 /**
- * Classe do Steven T. Durden
+ * Classe do Ozob
  * 
  * @author Johnny Stark
  *
  */
 import java.util.Scanner;
 
-public class PersonagemDurden implements IPersonagens{
+public class PersonagemOzob implements IPersonagens{
 	int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
 	int hp, maxHP, xp, level, armadura;
 	/*Inventario inventario;*/

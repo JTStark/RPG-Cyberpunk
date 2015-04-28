@@ -1,12 +1,13 @@
+package personagens;
 /**
- * Classe do Oleg Korolenko
+ * Classe do James Rexus
  * 
  * @author Johnny Stark
  *
  */
 import java.util.Scanner;
 
-public class PersonagemOleg implements IPersonagens{
+public class PersonagemRexus implements IPersonagens{
 	int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
 	int hp, maxHP, xp, level, armadura;
 	/*Inventario inventario;*/
