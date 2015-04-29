@@ -1,13 +1,13 @@
 package personagens;
 
+import java.util.Scanner;
+
 /**
  * Classe abstrata para os personagens
  * 
  * @author Johnny Stark
  *
  */
-
-import java.util.Scanner;
 
 public abstract class AbsPersonagem {
 	int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
