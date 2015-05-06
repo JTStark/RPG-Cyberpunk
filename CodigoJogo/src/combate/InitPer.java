@@ -1,13 +1,11 @@
-package Combate;
-
-import Combate.Personagem;
+package combate;
 
 public class InitPer {
 	String time;
-	Personagem esse;
+	PersonGenerico esse;
 	int iniciativa;
 
-	public InitPer (String team, Personagem actual, int init){
+	public InitPer (String team, PersonGenerico actual, int init){
 		this.time = team;
 		this.esse = actual;
 		this.iniciativa = init;

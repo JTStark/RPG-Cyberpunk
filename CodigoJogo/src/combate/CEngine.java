@@ -1,4 +1,4 @@
-package Combate;
+package combate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +8,7 @@ public class CEngine {
 
 	ArrayList<InitPer> lista = new ArrayList<InitPer> ();
 	
-	public CEngine (Personagem Herois[], Personagem Viloes[]) {
+	public CEngine (PersonGenerico Herois[], PersonGenerico Viloes[]) {
 		Random random = new Random();
 		int contP; //Contador de (vetor de) Personagens
 		int contL; //Contador do vetor da Lista
@@ -16,7 +16,7 @@ public class CEngine {
 		boolean flag; // Flag para parar o While abaixo
 		
 		for (contP = 0; Herois[contP] != null; contP++) {
-			init = (Herois[contP].AGI + Herois[contP].LCK) / 20 * random.nextInt(10);
+			init = (Herois[contP].agilidade + Herois[contP].sorte) / 20 * random.nextInt(10);
 			flag = true;
 			contL = 0;
 			
