@@ -10,8 +10,7 @@ import java.util.Scanner;
  */
 
 public abstract class AbsPersonagem {
-	int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
-	int hp, maxHP, xp, level, armadura;
+	protected int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte, hp, maxHP, xp, level, armadura;
 	/*Inventario inventario;*/
 	
 	/*método que define os valores iniciais dos atributos do personagem*/

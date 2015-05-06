@@ -15,35 +15,46 @@ public class CEngine {
 		int init; // Iniciativa
 		boolean flag; // Flag para parar o While abaixo
 		
-		for (contP = 0; Herois[contP] != null; contP++) {
-			init = (Herois[contP].agilidade + Herois[contP].sorte) / 20 * random.nextInt(10);
-			flag = true;
-			contL = 0;
-			
-			while (flag && contL < lista.size()) {
-				if (init > lista.get(contL).iniciativa) {
-					InitPer temp = new InitPer("Heroi", Herois[contP], init);
-					lista.add(contL, temp);
-					flag = false;
+		try {
+			for (contP = 0; Herois[contP] != null; contP++) {
+				init = (Herois[contP].agilidade + Herois[contP].sorte) / 20 * random.nextInt(10);
+				flag = true;
+				contL = 0;
+				
+				while (flag && contL < lista.size()) {
+					if (init > lista.get(contL).iniciativa) {
+						InitPer temp = new InitPer("Heroi", Herois[contP], init);
+						lista.add(contL, temp);
+						flag = false;
+					}
+					else contL++;
 				}
-				else contL++;
 			}
+		}
+		catch (NullPointerException e) {
+			System.out.println("erro: " + e);   
 		}
 		
-		for (contP = 0; Viloes[contP] != null; contP++) {
-			init = (Viloes[contP].AGI + Viloes[contP].LCK) / 20 * random.nextInt(10);
-			flag = true;
-			contL = 0;
-			
-			while (flag && contL < lista.size()) {
-				if (init > lista.get(contL).iniciativa) {
-					InitPer temp = new InitPer("Vilao", Viloes[contP], init);
-					lista.add(contL, temp);
-					flag = false;
+		try {
+			for (contP = 0; Viloes[contP] != null; contP++) {
+				init = (Viloes[contP].AGI + Viloes[contP].LCK) / 20 * random.nextInt(10);
+				flag = true;
+				contL = 0;
+				
+				while (flag && contL < lista.size()) {
+					if (init > lista.get(contL).iniciativa) {
+						InitPer temp = new InitPer("Vilao", Viloes[contP], init);
+						lista.add(contL, temp);
+						flag = false;
+					}
+					else contL++;
 				}
-				else contL++;
 			}
 		}
+		catch (NullPointerException e) {
+			System.out.println("erro: " + e);   
+		}
+		
 		System.out.println(Arrays.toString(lista.toArray()));
 		
 	}
