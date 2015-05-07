@@ -1,5 +1,14 @@
 package combate;
 
+/*
+ * Autores: Otávio Vansetti Miranda e Lucca Maia Bollani
+ * 
+ * Sistema de Combate para RPG Cyberpunk, DeltaNexus
+ * 
+ * Classe inicial/organizadora de jogadores
+ * 
+ */
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -37,7 +46,7 @@ public class CEngine {
 		
 		try {
 			for (contP = 0; Viloes[contP] != null; contP++) {
-				init = (Viloes[contP].AGI + Viloes[contP].LCK) / 20 * random.nextInt(10);
+				init = (Viloes[contP].agilidade + Viloes[contP].sorte) / 20 * random.nextInt(10);
 				flag = true;
 				contL = 0;
 				

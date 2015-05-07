@@ -1,5 +1,14 @@
 package combate;
 
+/*
+ * Autores: Otávio Vansetti Miranda e Lucca Maia Bollani
+ * 
+ * Sistema de Combate para RPG Cyberpunk, DeltaNexus
+ * 
+ * Classe de personagem genérico, para teste
+ * 
+ */
+
 import personagens.AbsPersonagem;
 
 public class PersonGenerico extends AbsPersonagem {

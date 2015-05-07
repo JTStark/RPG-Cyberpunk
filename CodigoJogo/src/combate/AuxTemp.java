@@ -1,5 +1,14 @@
 package combate;
 
+/*
+ * Autores: Otávio Vansetti Miranda e Lucca Maia Bollani
+ * 
+ * Sistema de Combate para RPG Cyberpunk, DeltaNexus
+ * 
+ * Classe de teste
+ * 
+ */
+
 public class AuxTemp {
 	
 	public static void main(String[] args){
@@ -15,7 +24,7 @@ public class AuxTemp {
 		vetorVil[1].agilidade = 1;
 		vetorVil[1].sorte = 1;
 		
-		CEngine arrayOrdenado = new CEngine(vetorHer, vetorVil);
+		CEngine arrayOrdenado = new CEngine(vetorHer, vetorVil);	
 	}
 	
 }
