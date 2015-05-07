@@ -8,23 +8,33 @@ package combate;
  * Classe de teste
  * 
  */
+import java.util.ArrayList;
 
 public class AuxTemp {
 	
 	public static void main(String[] args){
-		PersonGenerico[] vetorHer = new PersonGenerico[2];
-		vetorHer[0].agilidade = 99;
-		vetorHer[0].sorte = 99;
-		vetorHer[1].agilidade = 1;
-		vetorHer[1].sorte = 1;
+		PersonGenerico hFirst = new PersonGenerico();
+		PersonGenerico hSecond = new PersonGenerico();
+		PersonGenerico vFirst = new PersonGenerico();
+		PersonGenerico vSecond = new PersonGenerico();
 		
-		PersonGenerico[] vetorVil = new PersonGenerico[2];
-		vetorVil[0].agilidade = 50;
-		vetorVil[0].sorte = 50;
-		vetorVil[1].agilidade = 1;
-		vetorVil[1].sorte = 1;
+		ArrayList<PersonGenerico> vetorHer = new ArrayList<PersonGenerico> ();
+		hFirst.agilidade = 99;
+		hFirst.sorte = 99;
+		hSecond.agilidade = 1;
+		hSecond.sorte = 1;
+		vetorHer.add(0, hFirst);
+		vetorHer.add(1, hSecond);
 		
-		CEngine arrayOrdenado = new CEngine(vetorHer, vetorVil);	
+		ArrayList<PersonGenerico> vetorVil = new ArrayList<PersonGenerico> ();
+		vFirst.agilidade = 50;
+		vFirst.sorte = 50;
+		vSecond.agilidade = 1;
+		vSecond.sorte = 1;
+		vetorVil.add(0, hFirst);
+		vetorVil.add(1, hSecond);
+		
+		CEngine arrayOrdenado = new CEngine(vetorHer, vetorVil);
 	}
 	
 }
