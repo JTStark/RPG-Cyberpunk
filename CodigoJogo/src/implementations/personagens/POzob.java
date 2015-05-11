@@ -1,4 +1,4 @@
-package personagens;
+package implementations.personagens;
 
 /**
  * Classe do Ozob que herda a abstrata para os personagens

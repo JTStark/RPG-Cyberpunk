@@ -1,4 +1,4 @@
-package personagens;
+package implementations.personagens;
 
 /**
  * Classe do James Rexus que herda a abstrata para os personagens

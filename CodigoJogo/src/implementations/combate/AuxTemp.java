@@ -1,4 +1,4 @@
-package combate;
+package implementations.combate;
 
 /*
  * Autores: Otávio Vansetti Miranda e Lucca Maia Bollani

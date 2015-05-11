@@ -1,4 +1,4 @@
-package combate;
+package implementations.combate;
 
 /*
  * Autores: Otávio Vansetti Miranda e Lucca Maia Bollani
@@ -9,7 +9,7 @@ package combate;
  * 
  */
 
-import personagens.AbsPersonagem;
+import implementations.personagens.AbsPersonagem;
 
 public class PersonGenerico extends AbsPersonagem {
 
