@@ -10,7 +10,6 @@ package implementations.combate;
  */
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class CEngine {
@@ -30,13 +29,25 @@ public class CEngine {
 				flag = true;
 				contL = 0;
 				
-				while (flag && contL < lista.size()) {
+				if(lista.isEmpty()) {
+					InitPer temp = new InitPer("Heroi", Herois.get(contP), init);
+					lista.add(contL, temp);
+					flag = false;
+				}
+				
+				while (flag && contL < lista.size()) {					
 					if (init > lista.get(contL).iniciativa) {
 						InitPer temp = new InitPer("Heroi", Herois.get(contP), init);
 						lista.add(contL, temp);
 						flag = false;
 					}
 					else contL++;
+					
+					if(contL == lista.size()) {
+						InitPer temp = new InitPer("Heroi", Herois.get(contP), init);
+						lista.add(contL, temp);
+						flag = false;
+					}
 				}
 			}
 		}
@@ -57,6 +68,12 @@ public class CEngine {
 						flag = false;
 					}
 					else contL++;
+					
+					if(contL == lista.size()) {
+						InitPer temp = new InitPer("Vilao", Herois.get(contP), init);
+						lista.add(contL, temp);
+						flag = false;
+					}
 				}
 			}
 		}
@@ -64,7 +81,11 @@ public class CEngine {
 			System.out.println("erro: " + e);   
 		}
 		
-		System.out.println(Arrays.toString(lista.toArray()));
+		/*
+		for(int contPrint = 0; contPrint < lista.size(); contPrint++) {
+			System.out.println(lista.get(contPrint).iniciativa);
+		}
+		*/
 		
 	}
 }
