@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class CRodada {
 
-	public static void Jogada (ArrayList <InitPer> Herois, ArrayList <InitPer> Viloes) {
+	public static void Jogada (ArrayList <PersonGenerico> Herois, ArrayList <PersonGenerico> Viloes) {
 		int contP;
 		String chc;
 		Scanner scanner = new Scanner(System.in);
@@ -13,7 +13,7 @@ public class CRodada {
 		
 		
 		for (contP = 0; contP < Herois.size(); contP++) {
-			System.out.println(Herois.get(contP).esse.nome + " " + Herois.get(contP).iniciativa);
+			System.out.println(Herois.get(contP).nome + " " + Herois.get(contP).iniciativa);
 			System.out.println("CHOOSE YOUR ACTION:");
 			System.out.println("Reposition");
 			System.out.println("Attack");
@@ -23,13 +23,9 @@ public class CRodada {
 			chc = scanner.nextLine();
 			
 			if ((chc.equalsIgnoreCase("reposition")) || (chc.equalsIgnoreCase("r"))) {
-				if (contP != Herois.size())
-					System.out.print("Esquerda");
-				if ((Herois.size() > contP) && (contP > 0))
-					System.out.println(" ou ");
-				if (contP != 0)
-					System.out.println("Direita");
-				System.out.println("?");
+				
+				Reposition(Herois, contP);
+				
 			}
 			
 			if ((chc.equalsIgnoreCase("attack")) || (chc.equalsIgnoreCase("a"))) {
@@ -46,5 +42,16 @@ public class CRodada {
 		}
 		
 		scanner.close();
+	}
+	
+	public static void Reposition (ArrayList <PersonGenerico> Jogadores, int contP) {
+		if (contP != Jogadores.size())
+			System.out.print("Esquerda");
+		if ((Jogadores.size() > contP) && (contP > 0))
+			System.out.println(" ou ");
+		if (contP != 0)
+			System.out.println("Direita");
+		System.out.println("?");
+			
 	}
 }

@@ -15,37 +15,34 @@ import java.util.Random;
 public class CEngine {
 	
 	public static void CombatEngine (ArrayList<PersonGenerico> Herois, ArrayList<PersonGenerico> Viloes) {
-		ArrayList<InitPer> listaH = new ArrayList<InitPer> ();
-		ArrayList<InitPer> listaV = new ArrayList<InitPer> ();
+		ArrayList<PersonGenerico> listaH = new ArrayList<PersonGenerico> ();
+		ArrayList<PersonGenerico> listaV = new ArrayList<PersonGenerico> ();
 		Random random = new Random();
 		int contP; //Contador de (vetor de) Personagens
 		int contL; //Contador do vetor da Lista
-		int init; // Iniciativa
 		boolean flag; // Flag para parar o While abaixo
 		
 		try {
 			for (contP = 0; contP < Herois.size(); contP++) {
-				init = (Herois.get(contP).agilidade + Herois.get(contP).sorte) / 20 * random.nextInt(10);
+				Herois.get(contP).iniciativa = (Herois.get(contP).agilidade + Herois.get(contP).sorte) / 20 * random.nextInt(10);
 				flag = true;
 				contL = 0;
 				
 				if(listaH.isEmpty()) {
-					InitPer temp = new InitPer("Heroi", Herois.get(contP), init);
-					listaH.add(contL, temp);
+					
+					listaH.add(contL, Herois.get(contP));
 					flag = false;
 				}
 				
 				while (flag && contL < listaH.size()) {					
-					if (init > listaH.get(contL).iniciativa) {
-						InitPer temp = new InitPer("Heroi", Herois.get(contP), init);
-						listaH.add(contL, temp);
+					if (Herois.get(contP).iniciativa > listaH.get(contL).iniciativa) {
+						listaH.add(contL, Herois.get(contP));
 						flag = false;
 					}
 					else contL++;
 					
 					if(contL == listaH.size()) {
-						InitPer temp = new InitPer("Heroi", Herois.get(contP), init);
-						listaH.add(contL, temp);
+						listaH.add(contL, Herois.get(contP));
 						flag = false;
 					}
 				}
@@ -57,27 +54,25 @@ public class CEngine {
 		
 		try {
 			for (contP = 0; contP < Viloes.size(); contP++) {
-				init = (Viloes.get(contP).agilidade + Viloes.get(contP).sorte) / 20 * random.nextInt(10);
+				Viloes.get(contP).iniciativa = (Viloes.get(contP).agilidade + Viloes.get(contP).sorte) / 20 * random.nextInt(10);
 				flag = true;
 				contL = 0;
-
+				
 				if(listaV.isEmpty()) {
-					InitPer temp = new InitPer("Heroi", Herois.get(contP), init);
-					listaV.add(contL, temp);
+					
+					listaV.add(contL, Viloes.get(contP));
 					flag = false;
 				}
 				
-				while (flag && contL < listaV.size()) {
-					if (init > listaV.get(contL).iniciativa) {
-						InitPer temp = new InitPer("Vilao", Viloes.get(contP), init);
-						listaV.add(contL, temp);
+				while (flag && contL < Viloes.size()) {					
+					if (Herois.get(contP).iniciativa > listaV.get(contL).iniciativa) {
+						listaV.add(contL, Viloes.get(contP));
 						flag = false;
 					}
 					else contL++;
 					
 					if(contL == listaV.size()) {
-						InitPer temp = new InitPer("Vilao", Viloes.get(contP), init);
-						listaV.add(contL, temp);
+						listaV.add(contL, Viloes.get(contP));
 						flag = false;
 					}
 				}
