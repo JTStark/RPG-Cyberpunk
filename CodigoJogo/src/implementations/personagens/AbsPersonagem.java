@@ -11,7 +11,8 @@ import java.util.Scanner;
 
 public abstract class AbsPersonagem {
 	public int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
-	public int hp, maxHP, xp, level, armadura;
+	public int hp, maxHP, xp, level, armadura, tipo /*1 = melee, 2 = ranged, 3 = support*/;
+	public String nome;
 	/*Inventario inventario;*/
 	
 	/*método que define os valores iniciais dos atributos do personagem*/

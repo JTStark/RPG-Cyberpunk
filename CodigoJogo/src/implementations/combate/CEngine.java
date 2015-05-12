@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class CEngine {
-
-	ArrayList<InitPer> lista = new ArrayList<InitPer> ();
 	
-	public CEngine (ArrayList<PersonGenerico> Herois, ArrayList<PersonGenerico> Viloes) {
+	public static void CombatEngine (ArrayList<PersonGenerico> Herois, ArrayList<PersonGenerico> Viloes) {
+		ArrayList<InitPer> listaH = new ArrayList<InitPer> ();
+		ArrayList<InitPer> listaV = new ArrayList<InitPer> ();
 		Random random = new Random();
 		int contP; //Contador de (vetor de) Personagens
 		int contL; //Contador do vetor da Lista
@@ -29,23 +29,23 @@ public class CEngine {
 				flag = true;
 				contL = 0;
 				
-				if(lista.isEmpty()) {
+				if(listaH.isEmpty()) {
 					InitPer temp = new InitPer("Heroi", Herois.get(contP), init);
-					lista.add(contL, temp);
+					listaH.add(contL, temp);
 					flag = false;
 				}
 				
-				while (flag && contL < lista.size()) {					
-					if (init > lista.get(contL).iniciativa) {
+				while (flag && contL < listaH.size()) {					
+					if (init > listaH.get(contL).iniciativa) {
 						InitPer temp = new InitPer("Heroi", Herois.get(contP), init);
-						lista.add(contL, temp);
+						listaH.add(contL, temp);
 						flag = false;
 					}
 					else contL++;
 					
-					if(contL == lista.size()) {
+					if(contL == listaH.size()) {
 						InitPer temp = new InitPer("Heroi", Herois.get(contP), init);
-						lista.add(contL, temp);
+						listaH.add(contL, temp);
 						flag = false;
 					}
 				}
@@ -60,18 +60,24 @@ public class CEngine {
 				init = (Viloes.get(contP).agilidade + Viloes.get(contP).sorte) / 20 * random.nextInt(10);
 				flag = true;
 				contL = 0;
+
+				if(listaV.isEmpty()) {
+					InitPer temp = new InitPer("Heroi", Herois.get(contP), init);
+					listaV.add(contL, temp);
+					flag = false;
+				}
 				
-				while (flag && contL < lista.size()) {
-					if (init > lista.get(contL).iniciativa) {
+				while (flag && contL < listaV.size()) {
+					if (init > listaV.get(contL).iniciativa) {
 						InitPer temp = new InitPer("Vilao", Viloes.get(contP), init);
-						lista.add(contL, temp);
+						listaV.add(contL, temp);
 						flag = false;
 					}
 					else contL++;
 					
-					if(contL == lista.size()) {
-						InitPer temp = new InitPer("Vilao", Herois.get(contP), init);
-						lista.add(contL, temp);
+					if(contL == listaV.size()) {
+						InitPer temp = new InitPer("Vilao", Viloes.get(contP), init);
+						listaV.add(contL, temp);
 						flag = false;
 					}
 				}
@@ -87,6 +93,7 @@ public class CEngine {
 		}
 		*/
 		
+		CRodada.Jogada(listaH, listaV);
 	}
 }
 
