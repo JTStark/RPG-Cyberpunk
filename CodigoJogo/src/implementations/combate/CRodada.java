@@ -23,7 +23,13 @@ public class CRodada {
 			chc = scanner.nextLine();
 			
 			if ((chc.equalsIgnoreCase("reposition")) || (chc.equalsIgnoreCase("r"))) {
-				if (contP == 0)
+				if (contP != Herois.size())
+					System.out.print("Esquerda");
+				if ((Herois.size() > contP) && (contP > 0))
+					System.out.println(" ou ");
+				if (contP != 0)
+					System.out.println("Direita");
+				System.out.println("?");
 			}
 			
 			if ((chc.equalsIgnoreCase("attack")) || (chc.equalsIgnoreCase("a"))) {
@@ -38,5 +44,7 @@ public class CRodada {
 				
 			}
 		}
+		
+		scanner.close();
 	}
 }
