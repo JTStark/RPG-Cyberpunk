@@ -1,11 +1,12 @@
 package implementations.combate;
 
 import java.util.ArrayList;
+import implementations.personagens.AbsPersonagem;
 import java.util.Scanner;
 
 public class CRodada {
 
-	public static void Jogada (ArrayList <PersonGenerico> Herois, ArrayList <PersonGenerico> Viloes) {
+	public static void Jogada (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes) {
 		int contP;
 		String chc;
 		Scanner scanner = new Scanner(System.in);
@@ -44,7 +45,7 @@ public class CRodada {
 		scanner.close();
 	}
 	
-	public static void Reposition (ArrayList <PersonGenerico> Jogadores, int contP) {
+	public static void Reposition (ArrayList <AbsPersonagem> Jogadores, int contP) {
 		if (contP != Jogadores.size())
 			System.out.print("Esquerda");
 		if ((Jogadores.size() > contP) && (contP > 0))

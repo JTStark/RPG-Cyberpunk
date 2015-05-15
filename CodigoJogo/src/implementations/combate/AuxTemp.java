@@ -9,6 +9,7 @@ package implementations.combate;
  * 
  */
 import java.util.ArrayList;
+import implementations.personagens.AbsPersonagem;
 
 public class AuxTemp {
 	
@@ -18,7 +19,7 @@ public class AuxTemp {
 		PersonGenerico vFirst = new PersonGenerico();
 		PersonGenerico vSecond = new PersonGenerico();
 		
-		ArrayList<PersonGenerico> vetorHer = new ArrayList<PersonGenerico> ();
+		ArrayList<AbsPersonagem> vetorHer = new ArrayList<AbsPersonagem> ();
 		hFirst.agilidade = 99;
 		hFirst.sorte = 99;
 		hFirst.nome = "hFirst";
@@ -30,7 +31,7 @@ public class AuxTemp {
 		vetorHer.add(0, hFirst);
 		vetorHer.add(1, hSecond);
 		
-		ArrayList<PersonGenerico> vetorVil = new ArrayList<PersonGenerico> ();
+		ArrayList<AbsPersonagem> vetorVil = new ArrayList<AbsPersonagem> ();
 		vFirst.agilidade = 50;
 		vFirst.sorte = 50;
 		vFirst.nome = "vFirst";

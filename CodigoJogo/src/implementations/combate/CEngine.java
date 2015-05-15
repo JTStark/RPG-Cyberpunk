@@ -11,38 +11,38 @@ package implementations.combate;
 
 import java.util.ArrayList;
 import java.util.Random;
+import implementations.personagens.AbsPersonagem;
 
 public class CEngine {
 	
-	public static void CombatEngine (ArrayList<PersonGenerico> Herois, ArrayList<PersonGenerico> Viloes) {
-		ArrayList<PersonGenerico> listaH = new ArrayList<PersonGenerico> ();
-		ArrayList<PersonGenerico> listaV = new ArrayList<PersonGenerico> ();
+	public static void CombatEngine (ArrayList<AbsPersonagem> Herois, ArrayList<AbsPersonagem> Viloes) {
+		ArrayList<AbsPersonagem> listaH = new ArrayList<AbsPersonagem> ();
+		ArrayList<AbsPersonagem> listaV = new ArrayList<AbsPersonagem> ();
 		Random random = new Random();
-		int contP; //Contador de (vetor de) Personagens
 		int contL; //Contador do vetor da Lista
 		boolean flag; // Flag para parar o While abaixo
 		
 		try {
-			for (contP = 0; contP < Herois.size(); contP++) {
-				Herois.get(contP).iniciativa = (Herois.get(contP).agilidade + Herois.get(contP).sorte) / 20 * random.nextInt(10);
+			for (AbsPersonagem H: Herois) {
+				H.iniciativa = (H.agilidade + H.sorte) / 20 * random.nextInt(10);
 				flag = true;
 				contL = 0;
 				
 				if(listaH.isEmpty()) {
 					
-					listaH.add(contL, Herois.get(contP));
+					listaH.add(contL, H);
 					flag = false;
 				}
 				
 				while (flag && contL < listaH.size()) {					
-					if (Herois.get(contP).iniciativa > listaH.get(contL).iniciativa) {
-						listaH.add(contL, Herois.get(contP));
+					if (H.iniciativa > listaH.get(contL).iniciativa) {
+						listaH.add(contL, H);
 						flag = false;
 					}
 					else contL++;
 					
 					if(contL == listaH.size()) {
-						listaH.add(contL, Herois.get(contP));
+						listaH.add(contL, H);
 						flag = false;
 					}
 				}
@@ -53,26 +53,26 @@ public class CEngine {
 		}
 		
 		try {
-			for (contP = 0; contP < Viloes.size(); contP++) {
-				Viloes.get(contP).iniciativa = (Viloes.get(contP).agilidade + Viloes.get(contP).sorte) / 20 * random.nextInt(10);
+			for (AbsPersonagem V: Viloes) {
+				V.iniciativa = (V.agilidade + V.sorte) / 20 * random.nextInt(10);
 				flag = true;
 				contL = 0;
 				
 				if(listaV.isEmpty()) {
 					
-					listaV.add(contL, Viloes.get(contP));
+					listaV.add(contL, V);
 					flag = false;
 				}
 				
-				while (flag && contL < Viloes.size()) {					
-					if (Herois.get(contP).iniciativa > listaV.get(contL).iniciativa) {
-						listaV.add(contL, Viloes.get(contP));
+				while (flag && contL < listaV.size()) {					
+					if (V.iniciativa > listaV.get(contL).iniciativa) {
+						listaV.add(contL, V);
 						flag = false;
 					}
 					else contL++;
 					
 					if(contL == listaV.size()) {
-						listaV.add(contL, Viloes.get(contP));
+						listaV.add(contL, V);
 						flag = false;
 					}
 				}
