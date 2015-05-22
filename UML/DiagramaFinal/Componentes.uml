@@ -356,7 +356,7 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mtvJYuMOEeS4j4nGB4Zbog" value="6"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mtvJY-MOEeS4j4nGB4Zbog" value="6"/>
     </ownedAttribute>
-    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_mtvJZOMOEeS4j4nGB4Zbog" client="_mtvJYOMOEeS4j4nGB4Zbog _mtvJYOMOEeS4j4nGB4Zbog _mtvJYOMOEeS4j4nGB4Zbog" supplier="_mtvwcOMOEeS4j4nGB4Zbog" contract="_mtvwcOMOEeS4j4nGB4Zbog"/>
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_mtvJZOMOEeS4j4nGB4Zbog" client="_mtvJYOMOEeS4j4nGB4Zbog" supplier="_mtvwcOMOEeS4j4nGB4Zbog" contract="_mtvwcOMOEeS4j4nGB4Zbog"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_mtvJZeMOEeS4j4nGB4Zbog" name="MainMenu"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_mtvJZuMOEeS4j4nGB4Zbog" name="start"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_mtvJZ-MOEeS4j4nGB4Zbog" name="quit"/>
@@ -375,7 +375,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_mtwXguMOEeS4j4nGB4Zbog" name="posicaoAtual" visibility="private">
       <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/Menus/model.uml#_xPqREOI_EeS8CPF4k4--cQ"/>
     </ownedAttribute>
-    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_mtwXg-MOEeS4j4nGB4Zbog" client="_mtwXgOMOEeS4j4nGB4Zbog _mtwXgOMOEeS4j4nGB4Zbog _mtwXgOMOEeS4j4nGB4Zbog" supplier="_mtvwcOMOEeS4j4nGB4Zbog" contract="_mtvwcOMOEeS4j4nGB4Zbog"/>
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_mtwXg-MOEeS4j4nGB4Zbog" client="_mtwXgOMOEeS4j4nGB4Zbog" supplier="_mtvwcOMOEeS4j4nGB4Zbog" contract="_mtvwcOMOEeS4j4nGB4Zbog"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_mtwXhOMOEeS4j4nGB4Zbog" name="InGameMenu">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_mtwXheMOEeS4j4nGB4Zbog" name="personagem">
         <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/Menus/model.uml#_wk75EOI_EeS8CPF4k4--cQ"/>
@@ -475,547 +475,22 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_ZM2FVuMQEeS4j4nGB4Zbog" name="aparecimentoItens"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_ZM2FV-MQEeS4j4nGB4Zbog" name="aparecimentoPersonagens"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_TuHWUOMREeS4j4nGB4Zbog" name="CopyOf_iMapaCombate">
-    <nestedClassifier xmi:type="uml:Class" xmi:id="_TuHWUeMREeS4j4nGB4Zbog" name="MapaCombate">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWUuMREeS4j4nGB4Zbog" name="mapaC[][]">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWU-MREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWVOMREeS4j4nGB4Zbog" name="rodada">
-        <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuHWVeMREeS4j4nGB4Zbog" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuHWVuMREeS4j4nGB4Zbog" value="1"/>
-      </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWV-MREeS4j4nGB4Zbog" name="GerarMapa">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWWOMREeS4j4nGB4Zbog" name="arrayListJogadores">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWWeMREeS4j4nGB4Zbog" name="setPosicao">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWWuMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWW-MREeS4j4nGB4Zbog" name="mostrarAlcance">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWXOMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWXeMREeS4j4nGB4Zbog" name="posX">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWXuMREeS4j4nGB4Zbog" name="posY">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-      </ownedOperation>
-    </nestedClassifier>
-    <nestedClassifier xmi:type="uml:Class" xmi:id="_TuHWX-MREeS4j4nGB4Zbog" name="CopyOf_MapaCombate_1">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWYOMREeS4j4nGB4Zbog" name="mapaC[][]">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWYeMREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWYuMREeS4j4nGB4Zbog" name="rodada">
-        <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuHWY-MREeS4j4nGB4Zbog" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuHWZOMREeS4j4nGB4Zbog" value="1"/>
-      </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWZeMREeS4j4nGB4Zbog" name="GerarMapa">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWZuMREeS4j4nGB4Zbog" name="arrayListJogadores">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWZ-MREeS4j4nGB4Zbog" name="setPosicao">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWaOMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWaeMREeS4j4nGB4Zbog" name="mostrarAlcance">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWauMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWa-MREeS4j4nGB4Zbog" name="posX">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWbOMREeS4j4nGB4Zbog" name="posY">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-      </ownedOperation>
-    </nestedClassifier>
-    <nestedClassifier xmi:type="uml:Interface" xmi:id="_TuHWbeMREeS4j4nGB4Zbog" name="iMapaCombate">
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_TuHWbuMREeS4j4nGB4Zbog" name="MapaCombate">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWb-MREeS4j4nGB4Zbog" name="mapaC[][]">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWcOMREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWceMREeS4j4nGB4Zbog" name="rodada">
-          <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuHWcuMREeS4j4nGB4Zbog" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuHWc-MREeS4j4nGB4Zbog" value="1"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWdOMREeS4j4nGB4Zbog" name="GerarMapa">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWdeMREeS4j4nGB4Zbog" name="arrayListJogadores">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWduMREeS4j4nGB4Zbog" name="setPosicao">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWd-MREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWeOMREeS4j4nGB4Zbog" name="mostrarAlcance">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWeeMREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWeuMREeS4j4nGB4Zbog" name="posX">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWe-MREeS4j4nGB4Zbog" name="posY">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-        </ownedOperation>
-      </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_TuHWfOMREeS4j4nGB4Zbog" name="CopyOf_MapaCombate_1">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWfeMREeS4j4nGB4Zbog" name="mapaC[][]">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWfuMREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuHWf-MREeS4j4nGB4Zbog" name="rodada">
-          <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuHWgOMREeS4j4nGB4Zbog" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuHWgeMREeS4j4nGB4Zbog" value="1"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWguMREeS4j4nGB4Zbog" name="GerarMapa">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWg-MREeS4j4nGB4Zbog" name="arrayListJogadores">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWhOMREeS4j4nGB4Zbog" name="setPosicao">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWheMREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWhuMREeS4j4nGB4Zbog" name="mostrarAlcance">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWh-MREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWiOMREeS4j4nGB4Zbog" name="posX">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWieMREeS4j4nGB4Zbog" name="posY">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-        </ownedOperation>
-      </nestedClassifier>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWiuMREeS4j4nGB4Zbog" name="GerarMapa">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWi-MREeS4j4nGB4Zbog" name="arrayListJogadores">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWjOMREeS4j4nGB4Zbog" name="setPosicao">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWjeMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWjuMREeS4j4nGB4Zbog" name="mostrarAlcance">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWj-MREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWkOMREeS4j4nGB4Zbog" name="posX">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWkeMREeS4j4nGB4Zbog" name="posY">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-      </ownedOperation>
-    </nestedClassifier>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWkuMREeS4j4nGB4Zbog" name="GerarMapa">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWk-MREeS4j4nGB4Zbog" name="arrayListJogadores">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWlOMREeS4j4nGB4Zbog" name="setPosicao">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWleMREeS4j4nGB4Zbog" name="Personagem">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuHWluMREeS4j4nGB4Zbog" name="mostrarAlcance">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWl-MREeS4j4nGB4Zbog" name="Personagem">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWmOMREeS4j4nGB4Zbog" name="posX">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuHWmeMREeS4j4nGB4Zbog" name="posY">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-      </ownedParameter>
-    </ownedOperation>
-  </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_TuRuYOMREeS4j4nGB4Zbog" name="Usage1" client="_TuXOA-MREeS4j4nGB4Zbog" supplier="_TuWm8eMREeS4j4nGB4Zbog"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_TuRuYeMREeS4j4nGB4Zbog" name="RodadaComponent">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_TuRuYuMREeS4j4nGB4Zbog" name="Rodada" aggregation="composite"/>
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_TuRuY-MREeS4j4nGB4Zbog" name="MapaCombate" aggregation="composite"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_TuRuZOMREeS4j4nGB4Zbog" name="Rodada" aggregation="composite"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_TuRuZeMREeS4j4nGB4Zbog" name="Rodada" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_TuSVcOMREeS4j4nGB4Zbog" name="Realization0" client="_TuRuYuMREeS4j4nGB4Zbog" supplier="_TuWm4-MREeS4j4nGB4Zbog" contract="_TuWm4-MREeS4j4nGB4Zbog"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_TuSVceMREeS4j4nGB4Zbog" name="ICEngine">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuSVcuMREeS4j4nGB4Zbog" name="Ordena">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVc-MREeS4j4nGB4Zbog" name="arrayListaJogadores">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuSVcuMREeS4j4nGB4Zbog" name="CombatEngine">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVc-MREeS4j4nGB4Zbog" name="ArrayList&lt;AbsPersonagem> Herois">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_thipEPzkEeSGRcaK6pZcvw" name="ArrayList&lt;AbsPersonagem> Viloes">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
       </ownedParameter>
     </ownedOperation>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_TuSVdOMREeS4j4nGB4Zbog" name="iMapaCombate">
-    <nestedClassifier xmi:type="uml:Class" xmi:id="_TuSVdeMREeS4j4nGB4Zbog" name="MapaCombate">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuSVduMREeS4j4nGB4Zbog" name="mapaC[][]">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuSVd-MREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuSVeOMREeS4j4nGB4Zbog" name="rodada">
-        <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuSVeeMREeS4j4nGB4Zbog" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuSVeuMREeS4j4nGB4Zbog" value="1"/>
-      </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuSVe-MREeS4j4nGB4Zbog" name="GerarMapa">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVfOMREeS4j4nGB4Zbog" name="arrayListJogadores">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuSVfeMREeS4j4nGB4Zbog" name="setPosicao">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVfuMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuSVf-MREeS4j4nGB4Zbog" name="mostrarAlcance">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVgOMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVgeMREeS4j4nGB4Zbog" name="posX">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVguMREeS4j4nGB4Zbog" name="posY">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-      </ownedOperation>
-    </nestedClassifier>
-    <nestedClassifier xmi:type="uml:Class" xmi:id="_TuSVg-MREeS4j4nGB4Zbog" name="CopyOf_MapaCombate_1">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuSVhOMREeS4j4nGB4Zbog" name="mapaC[][]">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuSVheMREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuSVhuMREeS4j4nGB4Zbog" name="rodada">
-        <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuSVh-MREeS4j4nGB4Zbog" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuSViOMREeS4j4nGB4Zbog" value="1"/>
-      </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuSVieMREeS4j4nGB4Zbog" name="GerarMapa">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSViuMREeS4j4nGB4Zbog" name="arrayListJogadores">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuSVi-MREeS4j4nGB4Zbog" name="setPosicao">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVjOMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuSVjeMREeS4j4nGB4Zbog" name="mostrarAlcance">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVjuMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVj-MREeS4j4nGB4Zbog" name="posX">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVkOMREeS4j4nGB4Zbog" name="posY">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-      </ownedOperation>
-    </nestedClassifier>
-    <nestedClassifier xmi:type="uml:Interface" xmi:id="_TuSVkeMREeS4j4nGB4Zbog" name="iMapaCombate">
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_TuSVkuMREeS4j4nGB4Zbog" name="MapaCombate">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuSVk-MREeS4j4nGB4Zbog" name="mapaC[][]">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuSVlOMREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuSVleMREeS4j4nGB4Zbog" name="rodada">
-          <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuSVluMREeS4j4nGB4Zbog" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuSVl-MREeS4j4nGB4Zbog" value="1"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuSVmOMREeS4j4nGB4Zbog" name="GerarMapa">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVmeMREeS4j4nGB4Zbog" name="arrayListJogadores">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuSVmuMREeS4j4nGB4Zbog" name="setPosicao">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVm-MREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuSVnOMREeS4j4nGB4Zbog" name="mostrarAlcance">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVneMREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVnuMREeS4j4nGB4Zbog" name="posX">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuSVn-MREeS4j4nGB4Zbog" name="posY">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-        </ownedOperation>
-      </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_TuS8gOMREeS4j4nGB4Zbog" name="CopyOf_MapaCombate_1">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuS8geMREeS4j4nGB4Zbog" name="mapaC[][]">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuS8guMREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuS8g-MREeS4j4nGB4Zbog" name="rodada">
-          <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuS8hOMREeS4j4nGB4Zbog" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuS8heMREeS4j4nGB4Zbog" value="1"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuS8huMREeS4j4nGB4Zbog" name="GerarMapa">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8h-MREeS4j4nGB4Zbog" name="arrayListJogadores">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuS8iOMREeS4j4nGB4Zbog" name="setPosicao">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8ieMREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuS8iuMREeS4j4nGB4Zbog" name="mostrarAlcance">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8i-MREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8jOMREeS4j4nGB4Zbog" name="posX">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8jeMREeS4j4nGB4Zbog" name="posY">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-        </ownedOperation>
-      </nestedClassifier>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuS8juMREeS4j4nGB4Zbog" name="GerarMapa">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8j-MREeS4j4nGB4Zbog" name="arrayListJogadores">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuS8kOMREeS4j4nGB4Zbog" name="setPosicao">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8keMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuS8kuMREeS4j4nGB4Zbog" name="mostrarAlcance">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8k-MREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8lOMREeS4j4nGB4Zbog" name="posX">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8leMREeS4j4nGB4Zbog" name="posY">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-      </ownedOperation>
-    </nestedClassifier>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuS8luMREeS4j4nGB4Zbog" name="GerarMapa">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8l-MREeS4j4nGB4Zbog" name="arrayListJogadores">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuS8mOMREeS4j4nGB4Zbog" name="setPosicao">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8meMREeS4j4nGB4Zbog" name="Personagem">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuS8muMREeS4j4nGB4Zbog" name="mostrarAlcance">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8m-MREeS4j4nGB4Zbog" name="Personagem">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8nOMREeS4j4nGB4Zbog" name="posX">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuS8neMREeS4j4nGB4Zbog" name="posY">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-      </ownedParameter>
-    </ownedOperation>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_TuUKoOMREeS4j4nGB4Zbog" name="IMapaCombate">
-    <nestedClassifier xmi:type="uml:Class" xmi:id="_TuUKoeMREeS4j4nGB4Zbog" name="MapaCombate">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKouMREeS4j4nGB4Zbog" name="mapaC[][]">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKo-MREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKpOMREeS4j4nGB4Zbog" name="rodada">
-        <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuUKpeMREeS4j4nGB4Zbog" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuUKpuMREeS4j4nGB4Zbog" value="1"/>
-      </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUKp-MREeS4j4nGB4Zbog" name="GerarMapa">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKqOMREeS4j4nGB4Zbog" name="arrayListJogadores">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUKqeMREeS4j4nGB4Zbog" name="setPosicao">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKquMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUKq-MREeS4j4nGB4Zbog" name="mostrarAlcance">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKrOMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKreMREeS4j4nGB4Zbog" name="posX">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKruMREeS4j4nGB4Zbog" name="posY">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-      </ownedOperation>
-    </nestedClassifier>
-    <nestedClassifier xmi:type="uml:Class" xmi:id="_TuUKr-MREeS4j4nGB4Zbog" name="CopyOf_MapaCombate_1">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKsOMREeS4j4nGB4Zbog" name="mapaC[][]">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKseMREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKsuMREeS4j4nGB4Zbog" name="rodada">
-        <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuUKs-MREeS4j4nGB4Zbog" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuUKtOMREeS4j4nGB4Zbog" value="1"/>
-      </ownedAttribute>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUKteMREeS4j4nGB4Zbog" name="GerarMapa">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKtuMREeS4j4nGB4Zbog" name="arrayListJogadores">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUKt-MREeS4j4nGB4Zbog" name="setPosicao">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKuOMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUKueMREeS4j4nGB4Zbog" name="mostrarAlcance">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKuuMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKu-MREeS4j4nGB4Zbog" name="posX">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKvOMREeS4j4nGB4Zbog" name="posY">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-      </ownedOperation>
-    </nestedClassifier>
-    <nestedClassifier xmi:type="uml:Interface" xmi:id="_TuUKveMREeS4j4nGB4Zbog" name="CopyOf_MapaCombate_2">
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_TuUKvuMREeS4j4nGB4Zbog" name="MapaCombate">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKv-MREeS4j4nGB4Zbog" name="mapaC[][]">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKwOMREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKweMREeS4j4nGB4Zbog" name="rodada">
-          <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuUKwuMREeS4j4nGB4Zbog" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuUKw-MREeS4j4nGB4Zbog" value="1"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUKxOMREeS4j4nGB4Zbog" name="GerarMapa">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKxeMREeS4j4nGB4Zbog" name="arrayListJogadores">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUKxuMREeS4j4nGB4Zbog" name="setPosicao">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKx-MREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUKyOMREeS4j4nGB4Zbog" name="mostrarAlcance">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKyeMREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKyuMREeS4j4nGB4Zbog" name="posX">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUKy-MREeS4j4nGB4Zbog" name="posY">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-        </ownedOperation>
-      </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_TuUKzOMREeS4j4nGB4Zbog" name="CopyOf_MapaCombate_1">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKzeMREeS4j4nGB4Zbog" name="mapaC[][]">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKzuMREeS4j4nGB4Zbog" name="PosicaoJogadores[2][]"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_TuUKz-MREeS4j4nGB4Zbog" name="rodada">
-          <type xmi:type="uml:Class" href="file:/C:/Users/sleo1_000/Downloads/RPG-Cyberpunk-master/UML/umlCombate/model.uml#_ye_qQN-HEeShwrBjCI7WMw"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuUK0OMREeS4j4nGB4Zbog" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuUK0eMREeS4j4nGB4Zbog" value="1"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUK0uMREeS4j4nGB4Zbog" name="GerarMapa">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK0-MREeS4j4nGB4Zbog" name="arrayListJogadores">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUK1OMREeS4j4nGB4Zbog" name="setPosicao">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK1eMREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUK1uMREeS4j4nGB4Zbog" name="mostrarAlcance">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK1-MREeS4j4nGB4Zbog" name="Personagem">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK2OMREeS4j4nGB4Zbog" name="posX">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK2eMREeS4j4nGB4Zbog" name="posY">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-          </ownedParameter>
-        </ownedOperation>
-      </nestedClassifier>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUK2uMREeS4j4nGB4Zbog" name="GerarMapa">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK2-MREeS4j4nGB4Zbog" name="arrayListJogadores">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUK3OMREeS4j4nGB4Zbog" name="setPosicao">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK3eMREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-      </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUK3uMREeS4j4nGB4Zbog" name="mostrarAlcance">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK3-MREeS4j4nGB4Zbog" name="Personagem">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK4OMREeS4j4nGB4Zbog" name="posX">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK4eMREeS4j4nGB4Zbog" name="posY">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedParameter>
-      </ownedOperation>
-    </nestedClassifier>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUK4uMREeS4j4nGB4Zbog" name="GerarMapa">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK4-MREeS4j4nGB4Zbog" name="arrayListJogadores">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUK5OMREeS4j4nGB4Zbog" name="setPosicao">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK5eMREeS4j4nGB4Zbog" name="Personagem">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-    </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuUK5uMREeS4j4nGB4Zbog" name="mostrarAlcance">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK5-MREeS4j4nGB4Zbog" name="Personagem">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK6OMREeS4j4nGB4Zbog" name="posX">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuUK6eMREeS4j4nGB4Zbog" name="posY">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-      </ownedParameter>
-    </ownedOperation>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Usage" xmi:id="_TuV_0OMREeS4j4nGB4Zbog" name="Usage0" client="_TuRuY-MREeS4j4nGB4Zbog" supplier="_TuHWUOMREeS4j4nGB4Zbog"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_TuWm4OMREeS4j4nGB4Zbog" name="MapaCombateComponent">
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_TuWm4eMREeS4j4nGB4Zbog" name="MapaCombate" aggregation="composite"/>
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_TuWm4uMREeS4j4nGB4Zbog" name="MapaCombat" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_TuWm4-MREeS4j4nGB4Zbog" name="iRodada">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_TuWm5OMREeS4j4nGB4Zbog" name="Ataque">
@@ -1088,19 +563,8 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_TuXN8OMREeS4j4nGB4Zbog" name="Component0">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_TuXN8eMREeS4j4nGB4Zbog" name="MapaCombate" type="_TuWm4OMREeS4j4nGB4Zbog"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_TuXN8uMREeS4j4nGB4Zbog" name="Rodada" type="_TuRuYeMREeS4j4nGB4Zbog"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_TuXN8-MREeS4j4nGB4Zbog" name="CEngine" type="_TuXOAuMREeS4j4nGB4Zbog"/>
-    <ownedConnector xmi:type="uml:Connector" xmi:id="_TuXN9OMREeS4j4nGB4Zbog" name="Connector1">
-      <end xmi:type="uml:ConnectorEnd" xmi:id="_TuXN9eMREeS4j4nGB4Zbog" partWithPort="_TuXN8uMREeS4j4nGB4Zbog" role="_TuRuZOMREeS4j4nGB4Zbog">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuXN9uMREeS4j4nGB4Zbog" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuXN9-MREeS4j4nGB4Zbog" value="1"/>
-      </end>
-      <end xmi:type="uml:ConnectorEnd" xmi:id="_TuXN-OMREeS4j4nGB4Zbog" partWithPort="_TuXN8eMREeS4j4nGB4Zbog" role="_TuWm4uMREeS4j4nGB4Zbog">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuXN-eMREeS4j4nGB4Zbog" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TuXN-uMREeS4j4nGB4Zbog" value="1"/>
-      </end>
-    </ownedConnector>
     <ownedConnector xmi:type="uml:Connector" xmi:id="_TuXN--MREeS4j4nGB4Zbog" name="Connector2">
       <end xmi:type="uml:ConnectorEnd" xmi:id="_TuXN_OMREeS4j4nGB4Zbog" partWithPort="_TuXN8-MREeS4j4nGB4Zbog" role="_TuXOBOMREeS4j4nGB4Zbog">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_TuXN_eMREeS4j4nGB4Zbog" value="1"/>
@@ -1117,44 +581,27 @@
     <ownedAttribute xmi:type="uml:Port" xmi:id="_TuXOBOMREeS4j4nGB4Zbog" name="CEngine" aggregation="composite"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_TuX1AOMREeS4j4nGB4Zbog" name="IRodada">
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuX1AeMREeS4j4nGB4Zbog" name="Ataque">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuX1AuMREeS4j4nGB4Zbog" name="Jogador">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuX1A-MREeS4j4nGB4Zbog" name="mapa">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuX1AeMREeS4j4nGB4Zbog" name="UseItem">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_oAEIEPzlEeSGRcaK6pZcvw" name="ArrayList &lt;AbsPersonagem> Jogadores, int contP"/>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuX1BOMREeS4j4nGB4Zbog" name="Main" isStatic="true"/>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuX1BeMREeS4j4nGB4Zbog" name="Movimento">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuX1BuMREeS4j4nGB4Zbog" name="Jogador">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuX1B-MREeS4j4nGB4Zbog" name="mapa">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuX1BOMREeS4j4nGB4Zbog" name="Reposition">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_yYzdgPzlEeSGRcaK6pZcvw" name="ArrayList &lt;AbsPersonagem> Jogadores, int contP"/>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuX1COMREeS4j4nGB4Zbog" name="DistanciaDoAlvo">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuX1CeMREeS4j4nGB4Zbog" name="Alvo">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuX1CuMREeS4j4nGB4Zbog" name="mapa">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuX1BeMREeS4j4nGB4Zbog" name="Jogada">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_5K9GwPzlEeSGRcaK6pZcvw" name="ArrayList &lt;AbsPersonagem> Herois, ArrayList &lt;AbsPersonagem> Viloes"/>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuX1C-MREeS4j4nGB4Zbog" name="Turno">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuX1DOMREeS4j4nGB4Zbog" name="Jogador">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_TuX1DeMREeS4j4nGB4Zbog" name="mapa">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
-      </ownedParameter>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuX1COMREeS4j4nGB4Zbog" name="Attack">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_jhBJ4PzlEeSGRcaK6pZcvw" name="ArrayList &lt;AbsPersonagem> Jogadores, int contP"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_TuX1C-MREeS4j4nGB4Zbog" name="DoNothing">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_w94-sPzlEeSGRcaK6pZcvw" name="ArrayList &lt;AbsPersonagem> Jogadores, int contP"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_WQM0EPzlEeSGRcaK6pZcvw" name="Flee">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ztlfIPzlEeSGRcaK6pZcvw" name="ArrayList &lt;AbsPersonagem> Jogadores, int contP"/>
     </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_TuX1DuMREeS4j4nGB4Zbog" name="Realization1" client="_TuWm4eMREeS4j4nGB4Zbog" supplier="_TuSVdOMREeS4j4nGB4Zbog" contract="_TuSVdOMREeS4j4nGB4Zbog"/>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_Ciap4OMSEeS4j4nGB4Zbog" client="_TuSVceMREeS4j4nGB4Zbog" supplier="_TuXOAuMREeS4j4nGB4Zbog"/>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_DABy8OMSEeS4j4nGB4Zbog" client="_TuX1AOMREeS4j4nGB4Zbog" supplier="_TuRuYeMREeS4j4nGB4Zbog"/>
-  <packagedElement xmi:type="uml:Dependency" xmi:id="_Ene48OMSEeS4j4nGB4Zbog" client="_TuUKoOMREeS4j4nGB4Zbog" supplier="_TuWm4OMREeS4j4nGB4Zbog"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="__Loe0OMSEeS4j4nGB4Zbog" name="InterfaceGrafica">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_t6Qg0OMWEeS4j4nGB4Zbog" name="GamePanel"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_xtHHYOMWEeS4j4nGB4Zbog" name="addNotify"/>
@@ -1173,7 +620,6 @@
   <packagedElement xmi:type="uml:Dependency" xmi:id="_L1j-UOMUEeS4j4nGB4Zbog" client="_JDRSUOMTEeS4j4nGB4Zbog" supplier="_D0o00OMUEeS4j4nGB4Zbog"/>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_OZU7kOMUEeS4j4nGB4Zbog" client="_TuXOAuMREeS4j4nGB4Zbog" supplier="_TuXN8OMREeS4j4nGB4Zbog"/>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_OvMd4OMUEeS4j4nGB4Zbog" client="_TuRuYeMREeS4j4nGB4Zbog" supplier="_TuXN8OMREeS4j4nGB4Zbog"/>
-  <packagedElement xmi:type="uml:Dependency" xmi:id="_PFon8OMUEeS4j4nGB4Zbog" client="_TuWm4OMREeS4j4nGB4Zbog" supplier="_TuXN8OMREeS4j4nGB4Zbog"/>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_UUkyAOMUEeS4j4nGB4Zbog" client="_SvGbQOMPEeS4j4nGB4Zbog" supplier="_JDRSUOMTEeS4j4nGB4Zbog"/>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_VL4NcOMUEeS4j4nGB4Zbog" client="_mtvwcOMOEeS4j4nGB4Zbog" supplier="_JDRSUOMTEeS4j4nGB4Zbog"/>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_WSvH0OMUEeS4j4nGB4Zbog" client="_ZM2FUOMQEeS4j4nGB4Zbog" supplier="_SvGbQOMPEeS4j4nGB4Zbog"/>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_M2BEoP3BEeSfyp1pH6Ykcw" name="Model">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_M2BEof3BEeSfyp1pH6Ykcw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:InterfaceRealization" xmi:id="_biEpYP3BEeSfyp1pH6Ykcw" name="Realization0" client="_biEpcP3BEeSfyp1pH6Ykcw" supplier="_biEpgP3BEeSfyp1pH6Ykcw" contract="_biEpgP3BEeSfyp1pH6Ykcw"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_biEpYf3BEeSfyp1pH6Ykcw" name="IRodada">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpYv3BEeSfyp1pH6Ykcw" name="Ataque">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpY_3BEeSfyp1pH6Ykcw" name="Jogador">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpZP3BEeSfyp1pH6Ykcw" name="mapa">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpZf3BEeSfyp1pH6Ykcw" name="Main" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpZv3BEeSfyp1pH6Ykcw" name="Movimento">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpZ_3BEeSfyp1pH6Ykcw" name="Jogador">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpaP3BEeSfyp1pH6Ykcw" name="mapa">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpaf3BEeSfyp1pH6Ykcw" name="DistanciaDoAlvo">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpav3BEeSfyp1pH6Ykcw" name="Alvo">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpa_3BEeSfyp1pH6Ykcw" name="mapa">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpbP3BEeSfyp1pH6Ykcw" name="Turno">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpbf3BEeSfyp1pH6Ykcw" name="Jogador">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpbv3BEeSfyp1pH6Ykcw" name="mapa">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_biEpb_3BEeSfyp1pH6Ykcw" name="RodadaComponent">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_biEpcP3BEeSfyp1pH6Ykcw" name="Rodada" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_biEpcf3BEeSfyp1pH6Ykcw" name="Rodada" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_biEpc_3BEeSfyp1pH6Ykcw" name="IRodada">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpdP3BEeSfyp1pH6Ykcw" name="UseItem">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpdf3BEeSfyp1pH6Ykcw" name="ArrayList &lt;AbsPersonagem> Jogadores, int contP"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpdv3BEeSfyp1pH6Ykcw" name="Reposition">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpd_3BEeSfyp1pH6Ykcw" name="ArrayList &lt;AbsPersonagem> Jogadores, int contP"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpeP3BEeSfyp1pH6Ykcw" name="Jogada">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpef3BEeSfyp1pH6Ykcw" name="ArrayList &lt;AbsPersonagem> Herois, ArrayList &lt;AbsPersonagem> Viloes"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpev3BEeSfyp1pH6Ykcw" name="Attack">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpe_3BEeSfyp1pH6Ykcw" name="ArrayList &lt;AbsPersonagem> Jogadores, int contP"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpfP3BEeSfyp1pH6Ykcw" name="DoNothing">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpff3BEeSfyp1pH6Ykcw" name="ArrayList &lt;AbsPersonagem> Jogadores, int contP"/>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpfv3BEeSfyp1pH6Ykcw" name="Flee">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpf_3BEeSfyp1pH6Ykcw" name="ArrayList &lt;AbsPersonagem> Jogadores, int contP"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_biEpgP3BEeSfyp1pH6Ykcw" name="iRodada">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpgf3BEeSfyp1pH6Ykcw" name="Ataque">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpgv3BEeSfyp1pH6Ykcw" name="Jogador">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpg_3BEeSfyp1pH6Ykcw" name="mapa">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEphP3BEeSfyp1pH6Ykcw" name="Main" isStatic="true"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEphf3BEeSfyp1pH6Ykcw" name="Movimento">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEphv3BEeSfyp1pH6Ykcw" name="Jogador">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEph_3BEeSfyp1pH6Ykcw" name="mapa">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpiP3BEeSfyp1pH6Ykcw" name="DistanciaDoAlvo">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpif3BEeSfyp1pH6Ykcw" name="Alvo">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpiv3BEeSfyp1pH6Ykcw" name="mapa">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpi_3BEeSfyp1pH6Ykcw" name="Turno">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpjP3BEeSfyp1pH6Ykcw" name="Jogador">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpjf3BEeSfyp1pH6Ykcw" name="mapa">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_biEpjv3BEeSfyp1pH6Ykcw" name="ICEngine">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_biEpj_3BEeSfyp1pH6Ykcw" name="CombatEngine">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpkP3BEeSfyp1pH6Ykcw" name="ArrayList&lt;AbsPersonagem> Herois">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_biEpkf3BEeSfyp1pH6Ykcw" name="ArrayList&lt;AbsPersonagem> Viloes">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_biEpkv3BEeSfyp1pH6Ykcw" name="CEngineComponent">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_biEpk_3BEeSfyp1pH6Ykcw" name="Rodada" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_biEplP3BEeSfyp1pH6Ykcw" name="CEngine" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_biEplf3BEeSfyp1pH6Ykcw" name="Component0">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_biEplv3BEeSfyp1pH6Ykcw" name="Rodada" type="_biEpb_3BEeSfyp1pH6Ykcw"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_biEpl_3BEeSfyp1pH6Ykcw" name="CEngine" type="_biEpkv3BEeSfyp1pH6Ykcw"/>
+    <ownedConnector xmi:type="uml:Connector" xmi:id="_biEpmP3BEeSfyp1pH6Ykcw" name="Connector2">
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_biEpmf3BEeSfyp1pH6Ykcw" partWithPort="_biEpl_3BEeSfyp1pH6Ykcw" role="_biEplP3BEeSfyp1pH6Ykcw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_biEpmv3BEeSfyp1pH6Ykcw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_biEpm_3BEeSfyp1pH6Ykcw" value="1"/>
+      </end>
+      <end xmi:type="uml:ConnectorEnd" xmi:id="_biEpnP3BEeSfyp1pH6Ykcw" partWithPort="_biEplv3BEeSfyp1pH6Ykcw" role="_biEpcf3BEeSfyp1pH6Ykcw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_biEpnf3BEeSfyp1pH6Ykcw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_biEpnv3BEeSfyp1pH6Ykcw" value="1"/>
+      </end>
+    </ownedConnector>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_e8AZoP3BEeSfyp1pH6Ykcw" name="Usage0" client="_biEpk_3BEeSfyp1pH6Ykcw" supplier="_biEpYf3BEeSfyp1pH6Ykcw"/>
+</uml:Model>
