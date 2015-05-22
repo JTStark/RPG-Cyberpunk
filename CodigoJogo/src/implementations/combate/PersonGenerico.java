@@ -1,7 +1,7 @@
 package implementations.combate;
 
-/*
- * Autores: Otávio Vansetti Miranda e Lucca Maia Bollani
+/**
+ * @author - Otávio Vansetti Miranda e Lucca Maia Bollani
  * 
  * Sistema de Combate para RPG Cyberpunk, DeltaNexus
  * 

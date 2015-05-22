@@ -50,9 +50,11 @@ public abstract class AbsPersonagem {
 	
 	/*método que upa o personagem*/
 	public void LevelUp (){
-		this.level++;
 		String atributo;
 		
+		this.xp -= this.level*10;
+		this.level++;
+				
 		/*De novo, provisório*/
 		for(int i = 15; i > 0; i--){
 			atributo = new Scanner(System.in).nextLine();
