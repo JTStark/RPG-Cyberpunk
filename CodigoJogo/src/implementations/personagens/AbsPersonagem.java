@@ -1,6 +1,7 @@
 package implementations.personagens;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * Classe abstrata para os personagens
@@ -12,7 +13,7 @@ import java.util.Scanner;
 public abstract class AbsPersonagem {
 	public int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
 	public int hp, maxHP, xp, level, armadura, iniciativa, tipo /*1 = melee, 2 = ranged, 3 = support*/;
-	public String nome;
+	public String nome, nSkill1, nSkill2, nSkill3;
 	/*Inventario inventario;*/
 	
 	/*método que define os valores iniciais dos atributos do personagem*/
@@ -20,18 +21,15 @@ public abstract class AbsPersonagem {
 		
 	}
 	
-	public void Skill1 () {
-		String nome;
+	public void Skill1 (ArrayList <AbsPersonagem> Viloes) {
 		
 	}
 	
-	public void Skill2 () {
-		String nome;
+	public void Skill2 (ArrayList <AbsPersonagem> Viloes) {
 		
 	}
 	
-	public void Skill3 () {
-		String nome;
+	public void Skill3 (ArrayList <AbsPersonagem> Viloes) {
 		
 	}
 

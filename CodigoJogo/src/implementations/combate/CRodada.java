@@ -12,6 +12,7 @@ package implementations.combate;
 import java.util.ArrayList;
 import implementations.personagens.AbsPersonagem;
 import java.util.Scanner;
+import java.util.Random;
 
 public class CRodada {
 
@@ -158,9 +159,11 @@ public class CRodada {
 	
 	public static void attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes) {
 		Scanner scanner = new Scanner(System.in);
+		Random random = new Random(); // gerador de numeros randomicos
 		String chc;
 		int trgt;
 		double weaponDam;
+		boolean choiceFlag1, choiceFlag2;
 		
 		if (Heroi.tipo == 1)
 			weaponDam = /*dano arma*/10*(Heroi.forca/50)*(0.98+(Heroi.level/75))*0.2;
@@ -169,16 +172,36 @@ public class CRodada {
 		
 		System.out.println("Select your attack: ");
 		System.out.println("Basic Attack (B)");
-		System.out.println("Hability (1): " + Heroi.Skill1.nome);
-		System.out.println("Hability (2)" + Heroi.Skill2.nome);
-		System.out.println("Hability (3): " + Heroi.Skill3.nome);
+		System.out.println("Hability (1): " + Heroi.nSkill1);
+		System.out.println("Hability (2)" + Heroi.nSkill2);
+		System.out.println("Hability (3): " + Heroi.nSkill3);
 		
 		chc = scanner.nextLine();
 		
-		if ((chc.equalsIgnoreCase("B"))) {
-			System.out.println("Select your target (1-6)");
-			trgt = scanner.nextInt();
-			Viloes.get(trgt-1).HP -= 
+		choiceFlag1 = true;
+		while (choiceFlag1) {
+			if ((chc.equalsIgnoreCase("B"))) {
+				System.out.println("Select your target (1-6)");
+				trgt = scanner.nextInt();
+				choiceFlag2 = true;
+				while (choiceFlag2) {
+					if (trgt >= 1 && trgt <= 6) {
+						Viloes.get(trgt-1).hp -= weaponDam * random.nextInt(5);
+						choiceFlag2 = false;
+					}
+					else
+						System.out.println("Invalid Target! Try Again");
+				}
+				choiceFlag1 = false;
+			}
+			else if ((chc.equalsIgnoreCase("1")))
+				Heroi.Skill1(Viloes);
+			else if ((chc.equalsIgnoreCase("2")))
+				Heroi.Skill2(Viloes);
+			else if ((chc.equalsIgnoreCase("3")))
+				Heroi.Skill3(Viloes);
+			else
+				System.out.println("Invalid Attack! Try again");
 		}
 	}
 	
