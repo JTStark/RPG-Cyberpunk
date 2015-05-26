@@ -72,10 +72,10 @@ public class CRodada {
 						//Se os herois tiverem mais iniciativa que os viloes, eles podem fugir
 						if (HInit >= VInit) {
 							endFlag = false;
-							System.out.println("Voces conseguem fugir!");
+							System.out.println("You managed to flee!");
 						}
 						else
-							System.out.println("Impossivel fugir!");
+							System.out.println("Can't escape!");
 						
 						flag = false;
 					}
@@ -98,31 +98,31 @@ public class CRodada {
 		
 		// verifica para quais direcoes o jogador pode se mover
 		if (contP < Jogadores.size())
-			System.out.print("Esquerda");
+			System.out.print("Left");
 		if ((Jogadores.size() > contP) && (contP > 0))
-			System.out.print(" ou ");
+			System.out.print(" or ");
 		if (contP > 0)
-			System.out.print("Direita");
+			System.out.print("Right");
 		System.out.println("?");
 		
 		// capta a escolha de direcoes
 		choice = scanner.nextLine();
 		
 		// Se o jogador escolher esquerda, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
-		if (((choice.equalsIgnoreCase("esquerda")) || (choice.equalsIgnoreCase("e"))) && contP < Jogadores.size()) {
+		if (((choice.equalsIgnoreCase("left")) || (choice.equalsIgnoreCase("L"))) && contP < Jogadores.size()) {
 			dist = (Jogadores.get(contP).agilidade / 25) + 1;
 			if (dist >= Jogadores.size() - 1 - contP)
 				dist = Jogadores.size() - 1 - contP;
 				
-			System.out.println("Voce pode se mover " + dist + " para a esquerda");
-			System.out.println("Quanto quer se mover?");
+			System.out.println("You can move " + dist + " to the left");
+			System.out.println("How far do you want to move?");
 			
 			
 			// capta a escolha de distancia de movimento 
 			while (mov > dist) {
 				mov = scanner.nextInt();
 				if (mov > dist) // imprime e tenta denovo se a entrada for invalida 
-					System.out.println("Voce escolheu uma distancia invalida");
+					System.out.println("You inserted an invalid distance. Try again");
 			}
 			
 			// reposiciona o jogador para a posicao escolhida
@@ -132,19 +132,19 @@ public class CRodada {
 		}
 		
 		// Se o jogador escolher direita, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
-		if (((choice.equalsIgnoreCase("direita")) || (choice.equalsIgnoreCase("d"))) && contP > 0) {
+		if (((choice.equalsIgnoreCase("right")) || (choice.equalsIgnoreCase("r"))) && contP > 0) {
 			dist = (Jogadores.get(contP).agilidade / 25) + 1;
 			if (contP - dist < 0)
 				dist = dist + (contP - dist);
 				
-			System.out.println("Voce pode se mover " + dist + " para a direita");
-			System.out.println("Quanto quer se mover?");
+			System.out.println("You can move " + dist + " to the right");
+			System.out.println("How far do you want to move?");
 			
 			// capta a escolha de distancia de movimento 
 			while (mov > dist) {
 				mov = scanner.nextInt();
 				if (mov > dist) // imprime e tenta denovo se a entrada for invalida 
-					System.out.println("Voce escolheu uma distancia invalida");
+					System.out.println("You inserted an invalid distance. Try again");
 			}
 			
 			// reposiciona o jogador para a posicao escolhida
@@ -154,6 +154,32 @@ public class CRodada {
 		}
 			
 		scanner.close();
+	}
+	
+	public static void attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes) {
+		Scanner scanner = new Scanner(System.in);
+		String chc;
+		int trgt;
+		double weaponDam;
+		
+		if (Heroi.tipo == 1)
+			weaponDam = /*dano arma*/10*(Heroi.forca/50)*(0.98+(Heroi.level/75))*0.2;
+		else
+			weaponDam = /*dano arma*/10*(Heroi.percepcao/50)*(0.98+(Heroi.level/75))*0.2;		
+		
+		System.out.println("Select your attack: ");
+		System.out.println("Basic Attack (B)");
+		System.out.println("Hability (1): " + Heroi.Skill1.nome);
+		System.out.println("Hability (2)" + Heroi.Skill2.nome);
+		System.out.println("Hability (3): " + Heroi.Skill3.nome);
+		
+		chc = scanner.nextLine();
+		
+		if ((chc.equalsIgnoreCase("B"))) {
+			System.out.println("Select your target (1-6)");
+			trgt = scanner.nextInt();
+			Viloes.get(trgt-1).HP -= 
+		}
 	}
 	
 	public static void endBattle (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes) {
@@ -171,10 +197,7 @@ public class CRodada {
 			}
 			
 			for (AbsPersonagem H: Herois) {
-				H.xp += EXP;
-				if (H.xp >= H.level*10) {
-					H.LevelUp();
-				}
+				H.CountXP(EXP);
 			}
 		}
 		

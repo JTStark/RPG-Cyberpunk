@@ -20,6 +20,21 @@ public abstract class AbsPersonagem {
 		
 	}
 	
+	public void Skill1 () {
+		String nome;
+		
+	}
+	
+	public void Skill2 () {
+		String nome;
+		
+	}
+	
+	public void Skill3 () {
+		String nome;
+		
+	}
+
 	/*método que renderiza o personagem*/
 	public void Render (){
 		
@@ -41,11 +56,8 @@ public abstract class AbsPersonagem {
 		this.xp += modXP;
 		
 		/*daqui pra baixo também é provisório*/
-		if (this.xp >= 1000){
-			this.xp = this.xp % 1000;
-			
+		if (this.xp >= this.level*10)		
 			this.LevelUp();
-		}
 	}
 	
 	/*método que upa o personagem*/
