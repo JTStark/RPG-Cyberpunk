@@ -22,7 +22,7 @@ public class AuxTemp {
 		
 		ArrayList<AbsPersonagem> vetorHer = new ArrayList<AbsPersonagem> ();
 		hFirst.agilidade = 99;
-		hFirst.sorte = 99;
+		hFirst.sorte = 98;
 		hFirst.nome = "hFirst";
 		hFirst.tipo = 1;
 		hSecond.agilidade = 1;

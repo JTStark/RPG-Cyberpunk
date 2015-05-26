@@ -203,6 +203,7 @@ public class CRodada {
 			else
 				System.out.println("Invalid Attack! Try again");
 		}
+		scanner.close();
 	}
 	
 	public static void endBattle (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes) {
