@@ -157,7 +157,7 @@ public class CRodada {
 		scanner.close();
 	}
 	
-	public static void attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes) {
+	public static void attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes, int posHeroi) {
 		Scanner scanner = new Scanner(System.in);
 		Random random = new Random(); // gerador de numeros randomicos
 		String chc;
@@ -181,18 +181,21 @@ public class CRodada {
 		choiceFlag1 = true;
 		while (choiceFlag1) {
 			if ((chc.equalsIgnoreCase("B"))) {
-				System.out.println("Select your target (1-6)");
-				trgt = scanner.nextInt();
-				choiceFlag2 = true;
-				while (choiceFlag2) {
-					if (trgt >= 1 && trgt <= 6) {
-						Viloes.get(trgt-1).hp -= weaponDam * random.nextInt(5);
-						choiceFlag2 = false;
+				if(Heroi.tipo==1 || posHeroi<=2) {
+					choiceFlag2 = true;
+					while (choiceFlag2) {
+						System.out.println("Select your target (1-6)");
+						trgt = scanner.nextInt();
+						if(Heroi.tipo==1 || trgt<=2)
+						if (trgt >= 1 && trgt <= 6) {
+							Viloes.get(trgt-1).hp -= weaponDam * random.nextInt(5);
+							choiceFlag2 = false;
+						}
+						else
+							System.out.println("Invalid Target! Try Again");
 					}
-					else
-						System.out.println("Invalid Target! Try Again");
+					choiceFlag1 = false;
 				}
-				choiceFlag1 = false;
 			}
 			else if ((chc.equalsIgnoreCase("1")))
 				Heroi.Skill1(Viloes);
