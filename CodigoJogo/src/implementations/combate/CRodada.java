@@ -188,7 +188,7 @@ public class CRodada {
 						trgt = scanner.nextInt();
 						if(Heroi.tipo==1 || trgt<=2)
 						if (trgt >= 1 && trgt <= 6) {
-							Viloes.get(trgt-1).hp -= weaponDam * random.nextInt(5);
+							Viloes.get(trgt-1).hp -= (weaponDam * random.nextInt(5)) * (1 - Viloes.get(trgt-1).armadura);
 							choiceFlag2 = false;
 						}
 						else
