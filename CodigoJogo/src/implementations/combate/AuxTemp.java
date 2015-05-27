@@ -14,21 +14,33 @@ import implementations.personagens.AbsPersonagem;
 
 public class AuxTemp {
 	
+	public int auxiliarIniciativa=0;
+	
 	public static void main(String[] args){
 		PersonGenerico hFirst = new PersonGenerico();
 		PersonGenerico hSecond = new PersonGenerico();
+		//PersonGenerico hThird = new PersonGenerico();
+		//PersonGenerico hFourth = new PersonGenerico();
+		//PersonGenerico hFifth = new PersonGenerico();
+		//PersonGenerico hSixth = new PersonGenerico();
+		
 		PersonGenerico vFirst = new PersonGenerico();
 		PersonGenerico vSecond = new PersonGenerico();
+		//PersonGenerico vThird = new PersonGenerico();
+		//PersonGenerico vFourth = new PersonGenerico();
+		//PersonGenerico vFifth = new PersonGenerico();
+		//PersonGenerico vSixth = new PersonGenerico();
+		
 		
 		ArrayList<AbsPersonagem> vetorHer = new ArrayList<AbsPersonagem> ();
-		hFirst.agilidade = 99;
-		hFirst.sorte = 98;
+		hFirst.agilidade = 50;
+		hFirst.sorte = 50;
 		hFirst.nome = "hFirst";
 		hFirst.tipo = 1;
-		hSecond.agilidade = 1;
-		hSecond.sorte = 1;
+		hSecond.agilidade = 50;
+		hSecond.sorte = 50;
 		hSecond.nome = "hSecond";
-		hSecond.tipo = 2;
+		hSecond.tipo = 1;
 		vetorHer.add(0, hFirst);
 		vetorHer.add(1, hSecond);
 		

@@ -86,11 +86,11 @@ public class CEngine {
 			System.out.println("erro: " + e);   
 		}
 		
-		/*
-		for(int contPrint = 0; contPrint < lista.size(); contPrint++) {
-			System.out.println(lista.get(contPrint).iniciativa);
+		//
+		for(int contPrint = 0; contPrint < listaH.size(); contPrint++) {
+			System.out.println(listaH.get(contPrint).iniciativa);
 		}
-		*/
+		//
 		
 		// roda Jogada de CRodada
 		CRodada.Jogada(listaH, listaV);
