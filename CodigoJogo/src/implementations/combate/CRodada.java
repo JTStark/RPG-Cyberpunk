@@ -31,6 +31,11 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 			for (contP = 0; contP < Herois.size() && endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false; contP++) {
 	
 				if (!Herois.get(contP).stun) { //pula a jogada de um jogador se desorientado
+					
+					/*if (lista.get(contP).vilao)
+						AI();
+					else*/
+					
 					// imprime as escolhas
 					System.out.println(Herois.get(contP).nome + " " + Herois.get(contP).iniciativa);
 					flag = true;			
@@ -53,7 +58,9 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 						}
 						
 						else if ((chc.equalsIgnoreCase("attack")) || (chc.equalsIgnoreCase("a"))) {
-		
+							
+							attack(Herois.get(contP), Viloes, contP);
+							
 							flag = false;
 						}
 			
@@ -213,11 +220,11 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 				}
 			}
 			else if ((chc.equalsIgnoreCase("1")))
-				Heroi.Skill1(Viloes);
+				Heroi.Skill1(Viloes, weaponDam);
 			else if ((chc.equalsIgnoreCase("2")))
-				Heroi.Skill2(Viloes);
+				Heroi.Skill2(Viloes, weaponDam);
 			else if ((chc.equalsIgnoreCase("3")))
-				Heroi.Skill3(Viloes);
+				Heroi.Skill3(Viloes, weaponDam);
 			else
 				System.out.println("Invalid Attack! Try again");
 		}
@@ -278,5 +285,57 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 				e.printStackTrace();
 			}
 		}
-	}	
+	}
+	
+	public static void AI (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes, ArrayList <AbsPersonagem> lista, int contP, int contI) {
+		int atk, trgt;
+		double weaponDam;
+		boolean flag = true;
+		Random random = new Random(); // gerador de numeros randomicos
+		AbsPersonagem temp = new PersonGenerico();
+		
+		System.out.println(lista.get(contI).nome + " " + lista.get(contI).iniciativa);
+			
+		// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
+		if ((lista.get(contI).tipo != 1) && (contP < 2)) {
+			
+			if (Viloes.size() > contP) {
+				temp = Viloes.get(contP);
+				Viloes.remove(contP);
+				Viloes.add(contP+1, temp);
+				flag = false;
+			}				
+		}
+		
+		if ((lista.get(contI).tipo == 1) && (contP > 1)) {
+			
+			temp = Viloes.get(contP);
+			Viloes.remove(contP);
+			Viloes.add(contP-1, temp);
+			flag = false;
+		}
+		
+		else if (flag) {
+			atk = random.nextInt(100);
+			
+			if (Viloes.get(contP).tipo == 1)
+				weaponDam = /*dano arma*/10*(Viloes.get(contP).forca/50)*(0.98+(Viloes.get(contP).level/75))*0.2;
+			else
+				weaponDam = /*dano arma*/10*(Viloes.get(contP).percepcao/50)*(0.98+(Viloes.get(contP).level/75))*0.2;
+			
+			if (atk <= 50) {
+				trgt = random.nextInt(6);
+				Herois.get(trgt-1).hp -= (weaponDam * random.nextInt(5)) * (1 - Herois.get(trgt-1).armadura);
+			}
+			
+			/*else if ((atk > 50) && (atk <= 75))
+				Viloes.get(contP).Skill1(Herois, trgt, weaponDam);
+			else if ((atk > 75) && (atk <= 90))
+				Viloes.get(contP).Skill2(Herois, trgt, weaponDam);
+			else if ((atk > 90) && (atk <= 100))
+				Viloes.get(contP).Skill3(Herois, trgt, weaponDam);*/
+				
+		}
+		
+	}
 }

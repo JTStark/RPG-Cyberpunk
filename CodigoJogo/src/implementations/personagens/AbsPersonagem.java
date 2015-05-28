@@ -14,7 +14,7 @@ public abstract class AbsPersonagem {
 	public int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
 	public double esquiva, critico;
 	public int hp, maxHP, xp, level, armadura, iniciativa, tipo /*1 = melee, 2 = ranged, 3 = support*/;
-	public boolean bleed = false, poison = false, stun = false;
+	public boolean bleed = false, poison = false, stun = false/*, vilao = false*/;
 	public String nome, nSkill1, nSkill2, nSkill3;
 	/*Inventario inventario;*/
 	
@@ -23,15 +23,15 @@ public abstract class AbsPersonagem {
 		
 	}
 	
-	public void Skill1 (ArrayList <AbsPersonagem> Viloes) {
+	public void Skill1 (ArrayList <AbsPersonagem> Viloes, double dam) { // nos viloes tem que adicionar tambem o alvo ja escolhido
 		
 	}
 	
-	public void Skill2 (ArrayList <AbsPersonagem> Viloes) {
+	public void Skill2 (ArrayList <AbsPersonagem> Viloes, double dam) {
 		
 	}
 	
-	public void Skill3 (ArrayList <AbsPersonagem> Viloes) {
+	public void Skill3 (ArrayList <AbsPersonagem> Viloes, double dam) {
 		
 	}
 
