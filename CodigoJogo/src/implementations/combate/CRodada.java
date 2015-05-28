@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import implementations.personagens.AbsPersonagem;
 import java.util.Scanner;
 import java.util.Random;
+import java.lang.reflect.Field;
 
 public class CRodada {
+static int numRodada=0; //variavel global para que BUFFS possam acompanhar a passagem de rodadas
 
 	public static void Jogada (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes) { //recebe ArrayList de herois e viloes ordenados
 		int contP; // contador para vetor de personagens
@@ -28,63 +30,76 @@ public class CRodada {
 			// uma rodada para cada personagem, enquanto houverem herois ou viloes e ninguem quiser fugir
 			for (contP = 0; contP < Herois.size() && endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false; contP++) {
 	
-				// imprime as escolhas
-				System.out.println(Herois.get(contP).nome + " " + Herois.get(contP).iniciativa);
-				flag = true;			
-				while (flag) {
-					System.out.println("CHOOSE YOUR ACTION:");
-					System.out.println("Reposition");
-					System.out.println("Attack");
-					System.out.println("use Item");
-					System.out.println("do Nothing");
-					System.out.println("Flee");
-					
-					// recebe a escolha do jogador
-					chc = scanner.nextLine();
-					
-					// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
-					if ((chc.equalsIgnoreCase("reposition")) || (chc.equalsIgnoreCase("r"))) {
+				if (!Herois.get(contP).stun) { //pula a jogada de um jogador se desorientado
+					// imprime as escolhas
+					System.out.println(Herois.get(contP).nome + " " + Herois.get(contP).iniciativa);
+					flag = true;			
+					while (flag) {
+						System.out.println("CHOOSE YOUR ACTION:");
+						System.out.println("Reposition");
+						System.out.println("Attack");
+						System.out.println("use Item");
+						System.out.println("do Nothing");
+						System.out.println("Flee");
 						
-						Reposition(Herois, contP);
-						flag = false;
-					}
-					
-					else if ((chc.equalsIgnoreCase("attack")) || (chc.equalsIgnoreCase("a"))) {
-	
-						flag = false;
-					}
-		
-					else if ((chc.equalsIgnoreCase("use item")) || (chc.equalsIgnoreCase("i")) || (chc.equalsIgnoreCase("item"))) {
-	
-						flag = false;
-					}
-					
-					else if ((chc.equalsIgnoreCase("do nothing")) || (chc.equalsIgnoreCase("n")) || chc.equalsIgnoreCase("nothing")) {
-						flag = false; // soh sai
-					}
-		
-					else if ((chc.equalsIgnoreCase("flee")) || (chc.equalsIgnoreCase("f"))) {
-						// Somatorio das iniciativas de cada time
-						for (AbsPersonagem h: Herois)
-							HInit += h.iniciativa;
-						for (AbsPersonagem v: Herois)
-							VInit += v.iniciativa;
+						// recebe a escolha do jogador
+						chc = scanner.nextLine();
 						
-						//Se os herois tiverem mais iniciativa que os viloes, eles podem fugir
-						if (HInit >= VInit) {
-							endFlag = false;
-							System.out.println("You managed to flee!");
+						// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
+						if ((chc.equalsIgnoreCase("reposition")) || (chc.equalsIgnoreCase("r"))) {
+							
+							Reposition(Herois, contP);
+							flag = false;
 						}
-						else
-							System.out.println("Can't escape!");
 						
-						flag = false;
+						else if ((chc.equalsIgnoreCase("attack")) || (chc.equalsIgnoreCase("a"))) {
+		
+							flag = false;
+						}
+			
+						else if ((chc.equalsIgnoreCase("use item")) || (chc.equalsIgnoreCase("i")) || (chc.equalsIgnoreCase("item"))) {
+		
+							flag = false;
+						}
+						
+						else if ((chc.equalsIgnoreCase("do nothing")) || (chc.equalsIgnoreCase("n")) || chc.equalsIgnoreCase("nothing")) {
+							flag = false; // soh sai
+						}
+			
+						else if ((chc.equalsIgnoreCase("flee")) || (chc.equalsIgnoreCase("f"))) {
+							// Somatorio das iniciativas de cada time
+							for (AbsPersonagem h: Herois)
+								HInit += h.iniciativa;
+							for (AbsPersonagem v: Herois)
+								VInit += v.iniciativa;
+							
+							//Se os herois tiverem mais iniciativa que os viloes, eles podem fugir
+							if (HInit >= VInit) {
+								endFlag = false;
+								System.out.println("You managed to flee!");
+							}
+							else
+								System.out.println("Can't escape!");
+							
+							flag = false;
+						}
+					
+						// se o texto inserido for invalido, deixa tentar denovo
+						else System.out.println("Wrong Text: try again");
 					}
-				
-					// se o texto inserido for invalido, deixa tentar denovo
-					else System.out.println("Wrong Text: try again");
 				}
+				
+				// subtrai danos por sangramento ou veneno
+				if (Herois.get(contP).bleed) {
+					Herois.get(contP).hp -= Herois.get(contP).hp * 0.1;
+				}
+				if (Herois.get(contP).poison) {
+					Herois.get(contP).hp -= Herois.get(contP).maxHP * 0.1;
+				}
+				
 			}
+			numRodada++;
+			
 		}
 		endBattle(Herois, Viloes);
 		
@@ -229,4 +244,39 @@ public class CRodada {
 		}
 		
 	}
+	
+	public static void BUFF (AbsPersonagem alvo, String atributo, int stat, int time) {
+		Class<AbsPersonagem> classe = AbsPersonagem.class;
+		Field att = null;
+		
+		try {
+			
+			att = classe.getDeclaredField(atributo); // Pega o atributo certo da classe
+			
+		} catch (NoSuchFieldException | SecurityException e) {
+			e.printStackTrace();
+		}
+		
+		if (!atributo.equalsIgnoreCase("bleed") && !atributo.equalsIgnoreCase("poison") && !atributo.equalsIgnoreCase("stun")) {
+			try {
+				
+				att.set(alvo, (att.getInt(alvo) + stat)); // Aumenta o atributo
+				
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		while(numRodada < numRodada+time); // Passa o numero de turnos necessário
+		
+		if (!atributo.equalsIgnoreCase("bleed") && !atributo.equalsIgnoreCase("poison") && !atributo.equalsIgnoreCase("stun")) {
+			try {
+				
+				att.set(alvo, (att.getInt(alvo) - stat)); // Diminui o atributo
+				
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}
+	}	
 }
