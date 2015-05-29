@@ -18,8 +18,8 @@ import java.lang.reflect.Field;
 public class CRodada {
 static int numRodada=0; //variavel global para que BUFFS possam acompanhar a passagem de rodadas
 
-	public static void Jogada (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes) { //recebe ArrayList de herois e viloes ordenados
-		int contP; // contador para vetor de personagens
+	public static void Jogada (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista) { //recebe ArrayList de herois e viloes ordenados
+		int contP, contI; // contador para vetor de Personagens e Iniciativa
 		int HInit = 0, VInit = 0; // ints para usar em flee
 		boolean flag, endFlag = true; // flag para parar o loop de escolha e o combate
 		String chc; // string de que guarda a escolha
@@ -28,13 +28,13 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 		// roda enquanto houverem herois ou viloes e ninguem quiser fugir
 		while (endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false) {
 			// uma rodada para cada personagem, enquanto houverem herois ou viloes e ninguem quiser fugir
-			for (contP = 0; contP < Herois.size() && endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false; contP++) {
+			for (contP = 0; contP < Lista.size() && endFlag == true && Lista.isEmpty() == false && Viloes.isEmpty() == false; contI++) {
 	
-				if (!Herois.get(contP).stun) { //pula a jogada de um jogador se desorientado
+				if (!Lista.get(contP).stun) { //pula a jogada de um jogador se desorientado
 					
-					/*if (lista.get(contP).vilao)
-						AI();
-					else*/
+					if (Lista.get(contP).vilao)
+						AI(Herois, Viloes, Lista, contP, contI);
+					else
 					
 					// imprime as escolhas
 					System.out.println(Herois.get(contP).nome + " " + Herois.get(contP).iniciativa);
@@ -287,17 +287,17 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 		}
 	}
 	
-	public static void AI (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes, ArrayList <AbsPersonagem> lista, int contP, int contI) {
+	public static void AI (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista, int contP, int contI) {
 		int atk, trgt;
 		double weaponDam;
 		boolean flag = true;
 		Random random = new Random(); // gerador de numeros randomicos
 		AbsPersonagem temp = new PersonGenerico();
 		
-		System.out.println(lista.get(contI).nome + " " + lista.get(contI).iniciativa);
+		System.out.println(Lista.get(contI).nome + " " + Lista.get(contI).iniciativa);
 			
 		// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
-		if ((lista.get(contI).tipo != 1) && (contP < 2)) {
+		if ((Lista.get(contI).tipo != 1) && (contP < 2)) {
 			
 			if (Viloes.size() > contP) {
 				temp = Viloes.get(contP);
@@ -307,7 +307,7 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 			}				
 		}
 		
-		if ((lista.get(contI).tipo == 1) && (contP > 1)) {
+		if ((Lista.get(contI).tipo == 1) && (contP > 1)) {
 			
 			temp = Viloes.get(contP);
 			Viloes.remove(contP);

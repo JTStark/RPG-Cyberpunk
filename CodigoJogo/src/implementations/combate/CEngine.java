@@ -18,6 +18,7 @@ public class CEngine {
 	public static void CombatEngine (ArrayList<AbsPersonagem> Herois, ArrayList<AbsPersonagem> Viloes) { // recebe um ArrayList com herois e outro com viloes
 		ArrayList<AbsPersonagem> listaH = new ArrayList<AbsPersonagem> (); // lista que vai conter os herois ordenados
 		ArrayList<AbsPersonagem> listaV = new ArrayList<AbsPersonagem> (); // lista que vai conter os viloes ordenados
+		ArrayList<AbsPersonagem> listaI = new ArrayList<AbsPersonagem> (); // lista que vai conter a ordem de jogada
 		Random random = new Random(); // gerador de numeros randomicos
 		int contL; // Contador do vetor da Lista
 		boolean flag; // Flag para parar o While abaixo
@@ -28,24 +29,26 @@ public class CEngine {
 				flag = true;
 				contL = 0;
 				
+				listaH.add(H.tipo, H);
+				
 				// se a lista esta vazia, adiciona na primeira posicao
-				if(listaH.isEmpty()) {
+				if(listaI.isEmpty()) {
 					
-					listaH.add(contL, H);
+					listaI.add(contL, H);
 					flag = false;
 				}
 				 
-				while (flag && contL < listaH.size()) {	// roda ate o fim da lista ou uma modificacao			
+				while (flag && contL < listaI.size()) {	// roda ate o fim da lista ou uma modificacao			
 					// se a iniciativa do personagem atual for maior que alguma ja na lista, insere em sua posicao
-					if (H.iniciativa > listaH.get(contL).iniciativa) {
-						listaH.add(contL, H);
+					if (H.iniciativa > listaI.get(contL).iniciativa) {
+						listaI.add(contL, H);
 						flag = false; // e sai do loop
 					}
 					else contL++; // ou passa pro proximo
 					
 					// se chegar ao fim da lista, adiciona ao fim
-					if(contL == listaH.size()) {
-						listaH.add(contL, H);
+					if(contL == listaI.size()) {
+						listaI.add(contL, H);
 						flag = false;
 					}
 				}
@@ -62,21 +65,23 @@ public class CEngine {
 				flag = true;
 				contL = 0;
 				
-				if(listaV.isEmpty()) {
+				listaV.add(V.tipo, V);
+				
+				if(listaI.isEmpty()) {
 					
-					listaV.add(contL, V);
+					listaI.add(contL, V);
 					flag = false;
 				}
 				
-				while (flag && contL < listaV.size()) {					
-					if (V.iniciativa > listaV.get(contL).iniciativa) {
-						listaV.add(contL, V);
+				while (flag && contL < listaI.size()) {					
+					if (V.iniciativa > listaI.get(contL).iniciativa) {
+						listaI.add(contL, V);
 						flag = false;
 					}
 					else contL++;
 					
-					if(contL == listaV.size()) {
-						listaV.add(contL, V);
+					if(contL == listaI.size()) {
+						listaI.add(contL, V);
 						flag = false;
 					}
 				}
@@ -87,13 +92,13 @@ public class CEngine {
 		}
 		
 		//
-		for(int contPrint = 0; contPrint < listaH.size(); contPrint++) {
-			System.out.println(listaH.get(contPrint).iniciativa);
+		for(int contPrint = 0; contPrint < listaI.size(); contPrint++) {
+			System.out.println(listaI.get(contPrint).iniciativa);
 		}
 		//
 		
 		// roda Jogada de CRodada
-		CRodada.Jogada(listaH, listaV);
+		CRodada.Jogada(listaH, listaV, listaI);
 	}
 }
 
