@@ -113,6 +113,26 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 					Lista.get(contI).hp -= Lista.get(contI).maxHP * 0.1;
 				}
 				
+				// Remove duracao de 1 round dos buffs
+				if (Lista.get(contI).buffforcarounds > 0) Lista.get(contI).buffforcarounds--;
+				if (Lista.get(contI).buffpercepcaorounds > 0) Lista.get(contI).buffpercepcaorounds--;
+				if (Lista.get(contI).buffcarismarounds > 0) Lista.get(contI).buffcarismarounds--;
+				if (Lista.get(contI).buffinteligenciarounds > 0) Lista.get(contI).buffinteligenciarounds--;
+				if (Lista.get(contI).buffagilidaderounds > 0) Lista.get(contI).buffagilidaderounds--;
+				if (Lista.get(contI).buffsorterounds > 0) Lista.get(contI).buffsorterounds--;
+				
+				// Remove os buff cujos rounds acabaram
+				if (Lista.get(contI).buffforcarounds == 0) Lista.get(contI).buffforcavalor=1;
+				if (Lista.get(contI).buffpercepcaorounds == 0) Lista.get(contI).buffpercepcaovalor=1;
+				if (Lista.get(contI).buffcarismarounds == 0) Lista.get(contI).buffcarismavalor=1;
+				if (Lista.get(contI).buffinteligenciarounds == 0) Lista.get(contI).buffinteligenciavalor=1;
+				if (Lista.get(contI).buffagilidaderounds == 0) Lista.get(contI).buffagilidadevalor=1;
+				if (Lista.get(contI).buffsorterounds == 0) Lista.get(contI).buffsortevalor=1;
+				
+			/* Se os buffs vao ser porcentagens, precisamos soh multiplicar um atributo por seu buff toda vez q ele for usado, e deixar NAO BUFF = 1
+			 * Mas entao precisaremos dar tipecast (int) em alguns lugares.... 
+			 */
+				
 			}
 			numRodada++;
 			
@@ -142,7 +162,7 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 		
 		// Se o jogador escolher esquerda, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
 		if (((choice.equalsIgnoreCase("left")) || (choice.equalsIgnoreCase("L"))) && contP < Jogadores.size()) {
-			dist = (Jogadores.get(contP).agilidade / 25) + 1;
+			dist = (int)(Jogadores.get(contP).agilidade * Jogadores.get(contP).buffagilidadevalor / 25) + 1;
 			if (dist >= Jogadores.size() - 1 - contP)
 				dist = Jogadores.size() - 1 - contP;
 				
@@ -165,7 +185,7 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 		
 		// Se o jogador escolher direita, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
 		if (((choice.equalsIgnoreCase("right")) || (choice.equalsIgnoreCase("r"))) && contP > 0) {
-			dist = (Jogadores.get(contP).agilidade / 25) + 1;
+			dist = (int)(Jogadores.get(contP).agilidade * Jogadores.get(contP).buffagilidadevalor / 25) + 1;
 			if (contP - dist < 0)
 				dist = dist + (contP - dist);
 				
@@ -197,9 +217,9 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 		boolean choiceFlag1, choiceFlag2;
 		
 		if (Heroi.tipo == 1)
-			weaponDam = /*dano arma*/10*(Heroi.forca/50)*(0.98+(Heroi.level/75))*0.2;
+			weaponDam = /*dano arma*/10*(Heroi.forca/50)*(Heroi.buffforcavalor)*(0.98+(Heroi.level/75))*0.2;
 		else
-			weaponDam = /*dano arma*/10*(Heroi.percepcao/50)*(0.98+(Heroi.level/75))*0.2;		
+			weaponDam = /*dano arma*/10*(Heroi.percepcao/50)*(Heroi.buffpercepcaovalor)*(0.98+(Heroi.level/75))*0.2;		
 		
 		System.out.println("Select your attack: ");
 		System.out.println("Basic Attack (B)");
@@ -228,6 +248,7 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 					choiceFlag1 = false;
 				}
 			}
+			
 			else if ((chc.equalsIgnoreCase("1")))
 				Heroi.Skill1(Viloes, weaponDam);
 			else if ((chc.equalsIgnoreCase("2")))
@@ -261,6 +282,8 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 		
 	}
 	
+	// O buff correto devera incrementar apenas .Buff___Rounds
+	@Deprecated
 	public static void BUFF (AbsPersonagem alvo, String atributo, int stat, int time) {
 		Class<AbsPersonagem> classe = AbsPersonagem.class;
 		Field att = null;
@@ -328,9 +351,9 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 			atk = random.nextInt(100);
 			
 			if (Viloes.get(contP).tipo == 1)
-				weaponDam = /*dano arma*/10*(Viloes.get(contP).forca/50)*(0.98+(Viloes.get(contP).level/75))*0.2;
+				weaponDam = /*dano arma*/10*(Viloes.get(contP).forca/50)*(Viloes.get(contP).buffforcavalor)*(0.98+(Viloes.get(contP).level/75))*0.2;
 			else
-				weaponDam = /*dano arma*/10*(Viloes.get(contP).percepcao/50)*(0.98+(Viloes.get(contP).level/75))*0.2;
+				weaponDam = /*dano arma*/10*(Viloes.get(contP).percepcao/50)*(Viloes.get(contP).buffpercepcaovalor)*(0.98+(Viloes.get(contP).level/75))*0.2;
 			
 			if (atk <= 50) {
 				trgt = random.nextInt(6);
