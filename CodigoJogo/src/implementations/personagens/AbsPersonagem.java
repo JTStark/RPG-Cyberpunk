@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public abstract class AbsPersonagem {
 	public int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
 	public double esquiva, critico;
-	public int hp, maxHP, xp, level, armadura, iniciativa, tipo /*1 = melee, 2 = ranged, 3 = support*/;
+	public int hp, maxHP, xp, level, armadura, iniciativa, tipo /*1 = melee, 3 = ranged, 5 = support*/;
 	public boolean bleed = false, poison = false, stun = false, vilao = false;
 	public String nome, nSkill1, nSkill2, nSkill3;
 	/*Inventario inventario;*/

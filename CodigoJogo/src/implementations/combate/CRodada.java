@@ -28,80 +28,89 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 		// roda enquanto houverem herois ou viloes e ninguem quiser fugir
 		while (endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false) {
 			// uma rodada para cada personagem, enquanto houverem herois ou viloes e ninguem quiser fugir
-			for (contP = 0; contP < Lista.size() && endFlag == true && Lista.isEmpty() == false && Viloes.isEmpty() == false; contI++) {
+			for (contI = 0; contI < Lista.size() && endFlag == true && Lista.isEmpty() == false && Viloes.isEmpty() == false; contI++) {
+				
+				System.out.println(Lista.get(contI).nome + " " + Lista.get(contI).iniciativa);
 	
-				if (!Lista.get(contP).stun) { //pula a jogada de um jogador se desorientado
+				if (!Lista.get(contI).stun) { //pula a jogada de um jogador se desorientado
 					
-					if (Lista.get(contP).vilao)
+					// If para os Viloes (AI)
+					if (Lista.get(contI).vilao) {
+						for (contP = 0; Viloes.get(contP) != Lista.get(contI); contP++); // Acha a posicao contP do vilao da jogada atual na sua lista de posicao 	
 						AI(Herois, Viloes, Lista, contP, contI);
-					else
-					
-					// imprime as escolhas
-					System.out.println(Herois.get(contP).nome + " " + Herois.get(contP).iniciativa);
-					flag = true;			
-					while (flag) {
-						System.out.println("CHOOSE YOUR ACTION:");
-						System.out.println("Reposition");
-						System.out.println("Attack");
-						System.out.println("use Item");
-						System.out.println("do Nothing");
-						System.out.println("Flee");
+					}	else {
 						
-						// recebe a escolha do jogador
-						chc = scanner.nextLine();
+						// Tudo nesse else eh para Herois (players) only
+						for (contP = 0; Herois.get(contP) != Lista.get(contI); contP++); // Acha a posicao contP do heroi da jogada atual na sua lista de posicao 
 						
-						// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
-						if ((chc.equalsIgnoreCase("reposition")) || (chc.equalsIgnoreCase("r"))) {
+						// imprime as escolhas
+						flag = true;			
+						while (flag) {
+							System.out.println("CHOOSE YOUR ACTION:");
+							System.out.println("Reposition");
+							System.out.println("Attack");
+							System.out.println("use Item");
+							System.out.println("do Nothing");
+							System.out.println("Flee");
 							
-							Reposition(Herois, contP);
-							flag = false;
-						}
-						
-						else if ((chc.equalsIgnoreCase("attack")) || (chc.equalsIgnoreCase("a"))) {
+							// recebe a escolha do jogador
+							chc = scanner.nextLine();
 							
-							attack(Herois.get(contP), Viloes, contP);
-							
-							flag = false;
-						}
-			
-						else if ((chc.equalsIgnoreCase("use item")) || (chc.equalsIgnoreCase("i")) || (chc.equalsIgnoreCase("item"))) {
-		
-							flag = false;
-						}
-						
-						else if ((chc.equalsIgnoreCase("do nothing")) || (chc.equalsIgnoreCase("n")) || chc.equalsIgnoreCase("nothing")) {
-							flag = false; // soh sai
-						}
-			
-						else if ((chc.equalsIgnoreCase("flee")) || (chc.equalsIgnoreCase("f"))) {
-							// Somatorio das iniciativas de cada time
-							for (AbsPersonagem h: Herois)
-								HInit += h.iniciativa;
-							for (AbsPersonagem v: Herois)
-								VInit += v.iniciativa;
-							
-							//Se os herois tiverem mais iniciativa que os viloes, eles podem fugir
-							if (HInit >= VInit) {
-								endFlag = false;
-								System.out.println("You managed to flee!");
+							// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
+							if ((chc.equalsIgnoreCase("reposition")) || (chc.equalsIgnoreCase("r"))) {
+								
+								Reposition(Herois, contP);
+								flag = false;
 							}
-							else
-								System.out.println("Can't escape!");
 							
-							flag = false;
+							else if ((chc.equalsIgnoreCase("attack")) || (chc.equalsIgnoreCase("a"))) {
+								
+								attack(Herois.get(contP), Viloes, contP);
+								
+								flag = false;
+							}
+				
+							else if ((chc.equalsIgnoreCase("use item")) || (chc.equalsIgnoreCase("i")) || (chc.equalsIgnoreCase("item"))) {
+			
+								flag = false;
+							}
+							
+							else if ((chc.equalsIgnoreCase("do nothing")) || (chc.equalsIgnoreCase("n")) || chc.equalsIgnoreCase("nothing")) {
+								flag = false; // soh sai
+							}
+				
+							else if ((chc.equalsIgnoreCase("flee")) || (chc.equalsIgnoreCase("f"))) {
+								// Somatorio das iniciativas de cada time
+								for (AbsPersonagem h: Herois)
+									HInit += h.iniciativa;
+								for (AbsPersonagem v: Herois)
+									VInit += v.iniciativa;
+								
+								//Se os herois tiverem mais iniciativa que os viloes, eles podem fugir
+								if (HInit >= VInit) {
+									endFlag = false;
+									System.out.println("You managed to flee!");
+								}
+								else
+									System.out.println("Can't escape!");
+								
+								flag = false;
+							}
+						
+							// se o texto inserido for invalido, deixa tentar denovo
+							else System.out.println("Wrong Text: try again");
 						}
-					
-						// se o texto inserido for invalido, deixa tentar denovo
-						else System.out.println("Wrong Text: try again");
 					}
+					
+
 				}
 				
 				// subtrai danos por sangramento ou veneno
-				if (Herois.get(contP).bleed) {
-					Herois.get(contP).hp -= Herois.get(contP).hp * 0.1;
+				if (Lista.get(contI).bleed) {
+					Lista.get(contI).hp -= Lista.get(contI).hp * 0.1;
 				}
-				if (Herois.get(contP).poison) {
-					Herois.get(contP).hp -= Herois.get(contP).maxHP * 0.1;
+				if (Lista.get(contI).poison) {
+					Lista.get(contI).hp -= Lista.get(contI).maxHP * 0.1;
 				}
 				
 			}
