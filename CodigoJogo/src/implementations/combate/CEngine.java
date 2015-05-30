@@ -23,46 +23,31 @@ public class CEngine {
 		int contL; // Contador do vetor da Lista
 		boolean flag; // Flag para parar o While abaixo
 		
-		System.out.println("1");
-		
 		try {
 			for (AbsPersonagem H: Herois) { // percorre o AL de herois
-				H.iniciativa = (H.agilidade + H.sorte) / 20 * random.nextInt(10); // calcula a iniciativa de cada um
+				H.iniciativa = (H.agilidade + H.sorte) / 20 * (random.nextInt(9)+1); // calcula a iniciativa de cada um
 				flag = true;
 				contL = 0;
 				
-				System.out.println("2");
-				
 				listaH.add(H.tipo - 1, H);
-				
-				System.out.println("3");
 				
 				// se a lista esta vazia, adiciona na primeira posicao
 				if(listaI.isEmpty()) {
 					
-					System.out.println("4");
-					
 					listaI.add(contL, H);
 					flag = false;
 				}
-				
-				System.out.println("5");
 				 
 				while (flag && contL < listaI.size()) {	// roda ate o fim da lista ou uma modificacao	
-					System.out.println("6");
 					// se a iniciativa do personagem atual for maior que alguma ja na lista, insere em sua posicao
 					if (H.iniciativa > listaI.get(contL).iniciativa) {
-						System.out.println("7");
 						listaI.add(contL, H);
 						flag = false; // e sai do loop
 					}
 					else contL++; // ou passa pro proximo
 					
-					System.out.println("8");
-					
 					// se chegar ao fim da lista, adiciona ao fim
 					if(contL == listaI.size()) {
-						System.out.println("9");
 						listaI.add(contL, H);
 						flag = false;
 					}
@@ -70,15 +55,13 @@ public class CEngine {
 			}
 		}
 		catch (Exception e) {
-			System.out.println("erro: " + e);   
+			System.out.println("erro: " + e);
 		}
-		
-		System.out.println("10");
 		
 		// faz o mesmo para os viloes
 		try {
 			for (AbsPersonagem V: Viloes) {
-				V.iniciativa = (V.agilidade + V.sorte) / 20 * random.nextInt(10);
+				V.iniciativa = (V.agilidade + V.sorte) / 20 * (random.nextInt(9)+1);
 				flag = true;
 				contL = 0;
 				
@@ -108,15 +91,26 @@ public class CEngine {
 			System.out.println("erro: " + e);   
 		}
 		
-		//
 		for(int contPrint = 0; contPrint < listaI.size(); contPrint++) {
 			System.out.print(listaI.get(contPrint).nome + " ");
 			System.out.println(listaI.get(contPrint).iniciativa);
 		}
-		//
+		System.out.println("");
+		for(int contPrint = 0; contPrint < listaH.size(); contPrint++) {
+			System.out.print(listaH.get(contPrint).nome + " ");
+			System.out.println(listaH.get(contPrint).iniciativa);
+		}
+		System.out.println("");
+		for(int contPrint = 0; contPrint < listaV.size(); contPrint++) {
+			System.out.print(listaV.get(contPrint).nome + " ");
+			System.out.println(listaV.get(contPrint).iniciativa);
+		}
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
 		
 		// roda Jogada de CRodada
-		//CRodada.Jogada(listaH, listaV, listaI);
+		CRodada.Jogada(listaH, listaV, listaI);
 	}
 }
 

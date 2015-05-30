@@ -10,20 +10,22 @@ package implementations.combate;
  */
 
 import java.util.ArrayList;
+
 import implementations.personagens.AbsPersonagem;
+
 import java.util.Scanner;
 import java.util.Random;
 import java.lang.reflect.Field;
 
 public class CRodada {
 static int numRodada=0; //variavel global para que BUFFS possam acompanhar a passagem de rodadas
+static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 
 	public static void Jogada (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista) { //recebe ArrayList de herois e viloes ordenados
 		int contP, contI; // contador para vetor de Personagens e Iniciativa
 		int HInit = 0, VInit = 0; // ints para usar em flee
 		boolean flag, endFlag = true; // flag para parar o loop de escolha e o combate
 		String chc; // string de que guarda a escolha
-		Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 		
 		// roda enquanto houverem herois ou viloes e ninguem quiser fugir
 		while (endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false) {
@@ -36,9 +38,9 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 					
 					// If para os Viloes (AI)
 					if (Lista.get(contI).vilao) {
-						for (contP = 0; Viloes.get(contP) != Lista.get(contI); contP++); // Acha a posicao contP do vilao da jogada atual na sua lista de posicao 	
-						AI(Herois, Viloes, Lista, contP, contI);
-					}	else {
+						for (contP = 0; !(Viloes.get(contP).equals(Lista.get(contI))) && (contP < Viloes.size()); contP++); // Acha a posicao contP do vilao da jogada atual na sua lista de posicao 	
+						//AI(Herois, Viloes, Lista, contP, contI);
+					} else {
 						
 						// Tudo nesse else eh para Herois (players) only
 						for (contP = 0; Herois.get(contP) != Lista.get(contI); contP++); // Acha a posicao contP do heroi da jogada atual na sua lista de posicao 
@@ -54,6 +56,8 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 							System.out.println("Flee");
 							
 							// recebe a escolha do jogador
+							if (contI != 0)
+								scanner.nextLine();
 							chc = scanner.nextLine();
 							
 							// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
@@ -145,7 +149,6 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 	public static void Reposition (ArrayList <AbsPersonagem> Jogadores, int contP) { // recebe o vetor de jogadores apropriado e a posicao do jogador atual
 		String choice; // string para guardar escolha
 		int mov = 0, dist; // int para guardar escolha de movimento e para guardar distancia ponderada
-		Scanner scanner = new Scanner(System.in);
 		AbsPersonagem temp = new PersonGenerico();
 		
 		// verifica para quais direcoes o jogador pode se mover
@@ -171,7 +174,7 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 			
 			
 			// capta a escolha de distancia de movimento 
-			while (mov > dist) {
+			while (mov > dist || mov <= 0) {
 				mov = scanner.nextInt();
 				if (mov > dist) // imprime e tenta denovo se a entrada for invalida 
 					System.out.println("You inserted an invalid distance. Try again");
@@ -180,7 +183,7 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 			// reposiciona o jogador para a posicao escolhida
 			temp = Jogadores.get(contP);
 			Jogadores.remove(contP);
-			Jogadores.add(contP+dist, temp);
+			Jogadores.add(contP+mov, temp);
 		}
 		
 		// Se o jogador escolher direita, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
@@ -193,7 +196,7 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 			System.out.println("How far do you want to move?");
 			
 			// capta a escolha de distancia de movimento 
-			while (mov > dist) {
+			while (mov > dist || mov <= 0) {
 				mov = scanner.nextInt();
 				if (mov > dist) // imprime e tenta denovo se a entrada for invalida 
 					System.out.println("You inserted an invalid distance. Try again");
@@ -202,14 +205,18 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 			// reposiciona o jogador para a posicao escolhida
 			temp = Jogadores.get(contP);
 			Jogadores.remove(contP);
-			Jogadores.add(contP-dist, temp);
+			Jogadores.add(contP-mov, temp);
 		}
 			
-		scanner.close();
+		System.out.println("");
+		for(int contPrint = 0; contPrint < Jogadores.size(); contPrint++) {
+			System.out.print(Jogadores.get(contPrint).nome + " ");
+			System.out.println(Jogadores.get(contPrint).iniciativa);
+		}
+		System.out.println("");
 	}
 	
 	public static void attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes, int posHeroi) {
-		Scanner scanner = new Scanner(System.in);
 		Random random = new Random(); // gerador de numeros randomicos
 		String chc;
 		int trgt;
@@ -239,7 +246,7 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 						trgt = scanner.nextInt();
 						if(Heroi.tipo==1 || trgt<=2)
 						if (trgt >= 1 && trgt <= 6) {
-							Viloes.get(trgt-1).hp -= (weaponDam * random.nextInt(5)) * (1 - Viloes.get(trgt-1).armadura);
+							Viloes.get(trgt-1).hp -= (weaponDam * (random.nextInt(4)+1)) * (1 - Viloes.get(trgt-1).armadura);
 							choiceFlag2 = false;
 						}
 						else
@@ -258,7 +265,6 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 			else
 				System.out.println("Invalid Attack! Try again");
 		}
-		scanner.close();
 	}
 	
 	public static void endBattle (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes) {
@@ -348,7 +354,7 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 		}
 		
 		else if (flag) {
-			atk = random.nextInt(100);
+			atk = random.nextInt(99) + 1;
 			
 			if (Viloes.get(contP).tipo == 1)
 				weaponDam = /*dano arma*/10*(Viloes.get(contP).forca/50)*(Viloes.get(contP).buffforcavalor)*(0.98+(Viloes.get(contP).level/75))*0.2;
@@ -356,8 +362,8 @@ static int numRodada=0; //variavel global para que BUFFS possam acompanhar a pas
 				weaponDam = /*dano arma*/10*(Viloes.get(contP).percepcao/50)*(Viloes.get(contP).buffpercepcaovalor)*(0.98+(Viloes.get(contP).level/75))*0.2;
 			
 			if (atk <= 50) {
-				trgt = random.nextInt(6);
-				Herois.get(trgt-1).hp -= (weaponDam * random.nextInt(5)) * (1 - Herois.get(trgt-1).armadura);
+				trgt = random.nextInt(5) + 1;
+				Herois.get(trgt-1).hp -= (weaponDam * (random.nextInt(4)+1)) * (1 - Herois.get(trgt-1).armadura);
 			}
 			
 			/*else if ((atk > 50) && (atk <= 75))
