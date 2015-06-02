@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
-public class Item {
+public class Item implements InterfaceItem {
 	private String name;
 	private String type;
 	private int bonus;
