@@ -31,7 +31,6 @@ public class AuxTemp {
 		PersonGenerico vFifth = new PersonGenerico();
 		PersonGenerico vSixth = new PersonGenerico();
 		
-		
 		ArrayList<AbsPersonagem> vetorHer = new ArrayList<AbsPersonagem> ();
 		hFirst.agilidade = 100;
 		hFirst.sorte = 100;

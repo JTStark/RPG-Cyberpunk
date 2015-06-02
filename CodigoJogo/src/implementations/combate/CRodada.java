@@ -219,14 +219,14 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 	public static void attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes, int posHeroi) {
 		Random random = new Random(); // gerador de numeros randomicos
 		String chc;
-		int trgt;
+		int trgt, dano;
 		double weaponDam;
 		boolean choiceFlag1, choiceFlag2;
 		
 		if (Heroi.tipo == 1)
-			weaponDam = /*dano arma*/10*(Heroi.forca/50)*(Heroi.buffforcavalor)*(0.98+(Heroi.level/75))*0.2;
-		else
-			weaponDam = /*dano arma*/10*(Heroi.percepcao/50)*(Heroi.buffpercepcaovalor)*(0.98+(Heroi.level/75))*0.2;		
+			weaponDam = /*dano arma*/10*(1 + (Heroi.forca*Heroi.buffforcavalor)/50)+(0.8+(Heroi.level/25))*0.5; //com melhor arma 100 dano, 100 força/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
+		else																									//com pior arma 4 dano, 15 força/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
+			weaponDam = /*dano arma*/10*(1 + (Heroi.percepcao*Heroi.buffpercepcaovalor)/50)+(0.8+(Heroi.level/25))*0.5;
 		
 		System.out.println("Select your attack: ");
 		System.out.println("Basic Attack (B)");
@@ -246,7 +246,11 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 						trgt = scanner.nextInt();
 						if(Heroi.tipo==1 || trgt<=2)
 						if (trgt >= 1 && trgt <= 6) {
-							Viloes.get(trgt-1).hp -= (weaponDam * (random.nextInt(4)+1)) * (1 - Viloes.get(trgt-1).armadura);
+							// dano vai de 1/3*esperado a 2*esperado. Maximo de redução eh (dano/5 - 80)
+							dano = ((int)weaponDam * ((1/3) * (random.nextInt(5)+1))) * (1 - Viloes.get(trgt-1).armadura) - ((Viloes.get(trgt-1).resistencia/5)*(1 + (Viloes.get(trgt-1).level/15)));
+							if (dano <=0)
+								dano = 1;
+							Viloes.get(trgt-1).hp -= dano;
 							choiceFlag2 = false;
 						}
 						else
@@ -326,7 +330,7 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 	}
 	
 	public static void AI (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista, int contP, int contI) {
-		int atk, trgt;
+		int atk, trgt, dano;
 		double weaponDam;
 		boolean flag = true;
 		Random random = new Random(); // gerador de numeros randomicos
@@ -357,13 +361,16 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 			atk = random.nextInt(99) + 1;
 			
 			if (Viloes.get(contP).tipo == 1)
-				weaponDam = /*dano arma*/10*(Viloes.get(contP).forca/50)*(Viloes.get(contP).buffforcavalor)*(0.98+(Viloes.get(contP).level/75))*0.2;
+				weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).forca*Viloes.get(contP).buffforcavalor)/50)+(0.8+(Viloes.get(contP).level/25))*0.5;
 			else
-				weaponDam = /*dano arma*/10*(Viloes.get(contP).percepcao/50)*(Viloes.get(contP).buffpercepcaovalor)*(0.98+(Viloes.get(contP).level/75))*0.2;
+				weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).percepcao*Viloes.get(contP).buffpercepcaovalor)/50)+(0.8+(Viloes.get(contP).level/25))*0.5;
 			
 			if (atk <= 50) {
 				trgt = random.nextInt(5) + 1;
-				Herois.get(trgt-1).hp -= (weaponDam * (random.nextInt(4)+1)) * (1 - Herois.get(trgt-1).armadura);
+				dano = ((int)weaponDam * ((1/3) * (random.nextInt(5)+1))) * (1 - Herois.get(trgt-1).armadura) - ((Herois.get(trgt-1).resistencia/5)*(1 + (Herois.get(trgt-1).level/15)));
+				if (dano <=0)
+					dano = 1;
+				Herois.get(trgt-1).hp -= dano;
 			}
 			
 			/*else if ((atk > 50) && (atk <= 75))
