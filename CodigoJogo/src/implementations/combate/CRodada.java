@@ -19,8 +19,9 @@ import java.util.Random;
 import java.lang.reflect.Field;
 
 public class CRodada {
-static int numRodada=0; //variavel global para que BUFFS possam acompanhar a passagem de rodadas
-static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
+
+	static int numRodada=0; //variavel global para que o antigo, deprecated BUFFS possa acompanhar a passagem de rodadas
+	static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 
 	public static void Jogada (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista) { //recebe ArrayList de herois e viloes ordenados
 		int contP, contI; // contador para vetor de Personagens e Iniciativa
@@ -37,11 +38,11 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 		// roda enquanto houverem herois ou viloes e ninguem quiser fugir
 		while (endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false) {
 			// uma rodada para cada personagem, enquanto houverem herois ou viloes e ninguem quiser fugir
-			for (contI = 0; contI < Lista.size() && endFlag == true && Lista.isEmpty() == false && Viloes.isEmpty() == false; contI++) {
+			for (contI = 0; contI < Lista.size() && endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false; contI++) {
 				
 				System.out.println(Lista.get(contI).nome + " " + Lista.get(contI).iniciativa);
 	
-				if (!Lista.get(contI).stun) { //pula a jogada de um jogador se desorientado
+				if (!Lista.get(contI).stun && Lista.get(contI).hp > 0) { //pula a jogada de um jogador se desorientado
 					
 					// If para os Viloes (AI)
 					if (Lista.get(contI).vilao) {
@@ -110,44 +111,44 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 										flag = false;
 										break;
 									case "STR":
-										Lista.get(contI).buffforcarounds += 3;
-										Lista.get(contI).buffforcavalor = 1 + bonus_item*0.01;
+										Lista.get(contI).buffForcaRounds += 3;
+										Lista.get(contI).buffForcaValor = 1 + bonus_item*0.01;
 										inventario.remover_item(nome_item);
 										flag = false;
 										break;
 									case "PER":
-										Lista.get(contI).buffpercepcaorounds += 3;
-										Lista.get(contI).buffpercepcaovalor = 1 + bonus_item*0.01;
+										Lista.get(contI).buffPercepcaoRounds += 3;
+										Lista.get(contI).buffPercepcaoValor = 1 + bonus_item*0.01;
 										inventario.remover_item(nome_item);
 										flag = false;
 										break;
 									case "END":
-										Lista.get(contI).buffresistenciarounds += 3;
-										Lista.get(contI).buffresistenciavalor = 1 + bonus_item*0.01;
+										Lista.get(contI).buffResistenciaRounds += 3;
+										Lista.get(contI).buffResistenciaValor = 1 + bonus_item*0.01;
 										inventario.remover_item(nome_item);
 										flag = false;
 										break;
 									case "CHA":
-										Lista.get(contI).buffcarismarounds += 3;
-										Lista.get(contI).buffcarismavalor = 1 + bonus_item*0.01;
+										Lista.get(contI).buffCarismaRounds += 3;
+										Lista.get(contI).buffCarismaValor = 1 + bonus_item*0.01;
 										inventario.remover_item(nome_item);
 										flag = false;
 										break;
 									case "INT":
-										Lista.get(contI).buffinteligenciarounds += 3;
-										Lista.get(contI).buffinteligenciavalor = 1 + bonus_item*0.01;
+										Lista.get(contI).buffInteligenciaRounds += 3;
+										Lista.get(contI).buffInteligenciaValor = 1 + bonus_item*0.01;
 										inventario.remover_item(nome_item);
 										flag = false;
 										break;
 									case "AGI":
-										Lista.get(contI).buffagilidaderounds += 3;
-										Lista.get(contI).buffagilidadevalor = 1 + bonus_item*0.01;
+										Lista.get(contI).buffAgilidadeRounds += 3;
+										Lista.get(contI).buffAgilidadeValor = 1 + bonus_item*0.01;
 										inventario.remover_item(nome_item);
 										flag = false;
 										break;
 									case "LCK":
-										Lista.get(contI).buffsorterounds += 3;
-										Lista.get(contI).buffsortevalor = 1 + bonus_item*0.01;
+										Lista.get(contI).buffSorteRounds += 3;
+										Lista.get(contI).buffSorteValor = 1 + bonus_item*0.01;
 										inventario.remover_item(nome_item);
 										flag = false;
 										break;
@@ -196,20 +197,28 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 				}
 				
 				// Remove duracao de 1 round dos buffs
-				if (Lista.get(contI).buffforcarounds > 0) Lista.get(contI).buffforcarounds--;
-				if (Lista.get(contI).buffpercepcaorounds > 0) Lista.get(contI).buffpercepcaorounds--;
-				if (Lista.get(contI).buffcarismarounds > 0) Lista.get(contI).buffcarismarounds--;
-				if (Lista.get(contI).buffinteligenciarounds > 0) Lista.get(contI).buffinteligenciarounds--;
-				if (Lista.get(contI).buffagilidaderounds > 0) Lista.get(contI).buffagilidaderounds--;
-				if (Lista.get(contI).buffsorterounds > 0) Lista.get(contI).buffsorterounds--;
+				if (Lista.get(contI).buffForcaRounds > 0) Lista.get(contI).buffForcaRounds--;
+				if (Lista.get(contI).buffPercepcaoRounds > 0) Lista.get(contI).buffPercepcaoRounds--;
+				if (Lista.get(contI).buffResistenciaRounds > 0) Lista.get(contI).buffResistenciaRounds--;
+				if (Lista.get(contI).buffCarismaRounds > 0) Lista.get(contI).buffCarismaRounds--;
+				if (Lista.get(contI).buffInteligenciaRounds > 0) Lista.get(contI).buffInteligenciaRounds--;
+				if (Lista.get(contI).buffAgilidadeRounds > 0) Lista.get(contI).buffAgilidadeRounds--;
+				if (Lista.get(contI).buffSorteRounds > 0) Lista.get(contI).buffSorteRounds--;
+				if (Lista.get(contI).buffArmaduraRounds > 0) Lista.get(contI).buffArmaduraRounds--;
+				if (Lista.get(contI).buffEsquivaRounds > 0) Lista.get(contI).buffEsquivaRounds--;
+				if (Lista.get(contI).buffCriticoRounds > 0) Lista.get(contI).buffCriticoRounds--;
 				
 				// Remove os buff cujos rounds acabaram
-				if (Lista.get(contI).buffforcarounds == 0) Lista.get(contI).buffforcavalor=1;
-				if (Lista.get(contI).buffpercepcaorounds == 0) Lista.get(contI).buffpercepcaovalor=1;
-				if (Lista.get(contI).buffcarismarounds == 0) Lista.get(contI).buffcarismavalor=1;
-				if (Lista.get(contI).buffinteligenciarounds == 0) Lista.get(contI).buffinteligenciavalor=1;
-				if (Lista.get(contI).buffagilidaderounds == 0) Lista.get(contI).buffagilidadevalor=1;
-				if (Lista.get(contI).buffsorterounds == 0) Lista.get(contI).buffsortevalor=1;
+				if (Lista.get(contI).buffForcaRounds == 0) Lista.get(contI).buffForcaValor=1;
+				if (Lista.get(contI).buffPercepcaoRounds == 0) Lista.get(contI).buffPercepcaoValor=1;
+				if (Lista.get(contI).buffResistenciaRounds == 0) Lista.get(contI).buffResistenciaValor=1;
+				if (Lista.get(contI).buffCarismaRounds == 0) Lista.get(contI).buffCarismaValor=1;
+				if (Lista.get(contI).buffInteligenciaRounds == 0) Lista.get(contI).buffInteligenciaValor=1;
+				if (Lista.get(contI).buffAgilidadeRounds == 0) Lista.get(contI).buffAgilidadeValor=1;
+				if (Lista.get(contI).buffSorteRounds == 0) Lista.get(contI).buffSorteValor=1;
+				if (Lista.get(contI).buffArmaduraRounds == 0) Lista.get(contI).buffArmaduraValor=1;
+				if (Lista.get(contI).buffEsquivaRounds == 0) Lista.get(contI).buffArmaduraValor=1;
+				if (Lista.get(contI).buffArmaduraRounds == 0) Lista.get(contI).buffArmaduraValor=1;
 				
 			/* Se os buffs vao ser porcentagens, precisamos soh multiplicar um atributo por seu buff toda vez q ele for usado, e deixar NAO BUFF = 1
 			 * Mas entao precisaremos dar tipecast (int) em alguns lugares.... 
@@ -243,7 +252,7 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 		
 		// Se o jogador escolher esquerda, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
 		if (((choice.equalsIgnoreCase("esquerda")) || (choice.equalsIgnoreCase("E"))) && contP < Jogadores.size()) {
-			dist = (int)(Jogadores.get(contP).agilidade * Jogadores.get(contP).buffagilidadevalor / 25) + 1;
+			dist = (int)(Jogadores.get(contP).agilidade * Jogadores.get(contP).buffAgilidadeValor / 25) + 1;
 			if (dist >= Jogadores.size() - 1 - contP)
 				dist = Jogadores.size() - 1 - contP;
 				
@@ -266,7 +275,7 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 		
 		// Se o jogador escolher direita, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
 		if (((choice.equalsIgnoreCase("direita")) || (choice.equalsIgnoreCase("d"))) && contP > 0) {
-			dist = (int)(Jogadores.get(contP).agilidade * Jogadores.get(contP).buffagilidadevalor / 25) + 1;
+			dist = (int)(Jogadores.get(contP).agilidade * Jogadores.get(contP).buffAgilidadeValor / 25) + 1;
 			if (contP - dist < 0)
 				dist = dist + (contP - dist);
 				
@@ -297,19 +306,19 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 	public static void attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes, int posHeroi) {
 		Random random = new Random(); // gerador de numeros randomicos
 		String chc;
-		int trgt, dano;
-		double weaponDam;
+		int trgt = 1, dano, resistencia;
+		double weaponDam, armadura, fator;
 		boolean choiceFlag1, choiceFlag2;
 		
 		if (Heroi.tipo == 1)
-			weaponDam = /*dano arma*/10*(1 + (Heroi.forca*Heroi.buffforcavalor)/50)+(0.8+(Heroi.level/25))*0.5; //com melhor arma 100 dano, 100 força/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
+			weaponDam = /*dano arma*/30*(1 + (Heroi.forca*Heroi.buffForcaValor)/50)+(0.96+(Heroi.level/25))*0.5; //com melhor arma 100 dano, 100 força/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
 		else																									//com pior arma 4 dano, 15 força/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
-			weaponDam = /*dano arma*/10*(1 + (Heroi.percepcao*Heroi.buffpercepcaovalor)/50)+(0.8+(Heroi.level/25))*0.5;
+			weaponDam = /*dano arma*/30*(1 + (Heroi.percepcao*Heroi.buffPercepcaoValor)/50)+(0.96+(Heroi.level/25))*0.5;
 		
 		System.out.println("Selecione seu ataque: ");
 		System.out.println("ataque Basico (B)");
 		System.out.println("Habilidade (1): " + Heroi.nSkill1);
-		System.out.println("Habilidade (2)" + Heroi.nSkill2);
+		System.out.println("Habilidade (2): " + Heroi.nSkill2);
 		System.out.println("Habilidade (3): " + Heroi.nSkill3);
 		
 		chc = scanner.nextLine();
@@ -322,41 +331,62 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 					while (choiceFlag2) {
 						System.out.println("Selecione seu alvo (1-6)");
 						trgt = scanner.nextInt();
-						if(Heroi.tipo==1 || trgt<=2)
-						if (trgt >= 1 && trgt <= 6) {
-							// dano vai de 1/3*esperado a 2*esperado. Maximo de redução eh (dano/5 - 80)
-							dano = ((int)weaponDam * ((1/3) * (random.nextInt(5)+1))) * (1 - Viloes.get(trgt-1).armadura) - ((Viloes.get(trgt-1).resistencia/5)*(1 + (Viloes.get(trgt-1).level/15)));
-							if (dano <=0)
-								dano = 1;
-							if ((int)Heroi.critico*random.nextInt(99)+1 >= 100) {
-								dano *= 2;
-								Viloes.get(trgt-1).hp -= dano;
-								System.out.println("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + dano + "de dano!");
-							}
-							else if ((int)Viloes.get(trgt-1).esquiva*random.nextInt(99)+1 < 100) {
-								Viloes.get(trgt-1).hp -= dano;
-								System.out.println(Viloes.get(trgt-1).nome + " atingido! " + dano + "de dano!");
+						if((Heroi.tipo == 1 && trgt <=2) || Heroi.tipo != 1) {							
+							if (trgt >= 1 && trgt <= 6) {
+								
+								// dano vai de 1/3*esperado a 2*esperado. Maximo de redução eh (dano/2,5 - 80), com 60 armadura, lvl 50 e 100 de resistencia 31,125
+								armadura = (1 - (Viloes.get(trgt-1).armadura*Viloes.get(trgt-1).buffArmaduraValor));
+								if (armadura < 0) armadura = 0;
+								
+								resistencia = (int)(((Viloes.get(trgt-1).resistencia*Viloes.get(trgt-1).buffResistenciaValor)/5)*(0.96 + (Viloes.get(trgt-1).level/15)));
+								System.out.println(weaponDam + " " + armadura + " " + resistencia);
+								fator = random.nextInt(6)+1;
+								System.out.println(fator);
+								dano = ((int)((weaponDam * (fator/3)) * armadura)) - resistencia;
+								System.out.println(dano);
+								if (dano <= 0) dano = 1;
+								System.out.println(dano);
+								
+								if ((int)(Heroi.critico * Heroi.buffCriticoValor)+random.nextInt(99)+1 >= 100) {
+									dano *= 2;
+									Viloes.get(trgt-1).hp -= dano;
+									System.out.println("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + dano + " de dano!");
+								}
+								else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(99)+1 < 100) {
+									Viloes.get(trgt-1).hp -= dano;
+									System.out.println(Viloes.get(trgt-1).nome + " atingido! " + dano + " de dano!");
+								}
+								else
+									System.out.println(Viloes.get(trgt-1).nome + " desviou!");
+								choiceFlag2 = false;
+								choiceFlag1 = false;
 							}
 							else
-								System.out.println(Viloes.get(trgt-1).nome + " desviou!");
+								System.out.println("Alvo invalido! Tente novamente");
+						}
+						else {
+							System.out.println("Alvo muito distante para combate a curta distancia! Aproxime-se ou escolha um alvo mais proximo.");
 							choiceFlag2 = false;
 						}
-						else
-							System.out.println("Alvo invalido! Tente novamente");
 					}
-					choiceFlag1 = false;
 				}
 			}
 			
 			else if ((chc.equalsIgnoreCase("1")))
-				Heroi.Skill1(Viloes, weaponDam);
+				trgt = Heroi.Skill1(Viloes, weaponDam);
 			else if ((chc.equalsIgnoreCase("2")))
-				Heroi.Skill2(Viloes, weaponDam);
+				trgt = Heroi.Skill2(Viloes, weaponDam);
 			else if ((chc.equalsIgnoreCase("3")))
-				Heroi.Skill3(Viloes, weaponDam);
+				trgt = Heroi.Skill3(Viloes, weaponDam);
 			else
 				System.out.println("Ataque invalido: Tente denovo");
 		}
+		
+		if (Viloes.get(trgt-1).hp <= 0) {
+			System.out.println(Viloes.get(trgt-1).nome + " foi morto!");
+			Viloes.remove(trgt-1);
+		}
+		
 	}
 	
 	public static void endBattle (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes) {
@@ -423,8 +453,8 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 	}
 	
 	public static void AI (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista, int contP, int contI) {
-		int atk, trgt, dano;
-		double weaponDam;
+		int atk, trgt = 1, dano, resistencia;
+		double weaponDam, armadura;
 		boolean flag = true;
 		Random random = new Random(); // gerador de numeros randomicos
 		AbsPersonagem temp = new PersonGenerico();
@@ -454,22 +484,33 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 			atk = random.nextInt(99) + 1;
 			
 			if (Viloes.get(contP).tipo == 1)
-				weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).forca*Viloes.get(contP).buffforcavalor)/50)+(0.8+(Viloes.get(contP).level/25))*0.5;
+				weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).forca*Viloes.get(contP).buffForcaValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
 			else
-				weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).percepcao*Viloes.get(contP).buffpercepcaovalor)/50)+(0.8+(Viloes.get(contP).level/25))*0.5;
+				weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).percepcao*Viloes.get(contP).buffPercepcaoValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
 			
 			if (atk <= 50) {
-				trgt = random.nextInt(5) + 1;
-				dano = ((int)weaponDam * ((1/3) * (random.nextInt(5)+1))) * (1 - Herois.get(trgt-1).armadura) - ((Herois.get(trgt-1).resistencia/5)*(1 + (Herois.get(trgt-1).level/15)));
-				if (dano <=0)
-					dano = 1;if ((int)Viloes.get(contP).critico*random.nextInt(99)+1 >= 100) {
+				
+				// esse bloco aumenta a chance de um bot acertar a primeira posicao em 2x
+				trgt = random.nextInt(11) + 1;
+				trgt -= 6;
+				if (trgt - 6 < 0) trgt = 1;
+				
+				armadura = (1 - (Herois.get(trgt-1).armadura*Herois.get(trgt-1).buffArmaduraValor));
+				if (armadura < 0) armadura = 0;
+				
+				resistencia = (int)(((Herois.get(trgt-1).resistencia*Herois.get(trgt-1).buffResistenciaValor)/5)*(0.96 + (Herois.get(trgt-1).level/15)));
+				
+				dano = (int)((weaponDam * ((1/3) * (random.nextInt(5)+1))) * armadura) - resistencia;
+				if (dano <=0) dano = 1;
+				
+				if ((int)(Viloes.get(contP).critico*Viloes.get(contP).buffCriticoValor)+random.nextInt(99)+1 >= 100) {
 						dano *= 2;
 						Herois.get(trgt-1).hp -= dano;
-						System.out.println("Inimigo atingiu " + Herois.get(trgt-1).nome + "com um golpe critico!" + dano + "de dano!");
+						System.out.println("Inimigo atingiu " + Herois.get(trgt-1).nome + "com um golpe critico! " + dano + " de dano!");
 					}
-					else if ((int)Herois.get(trgt-1).esquiva*random.nextInt(99)+1 < 100) {
+					else if ((int)(Herois.get(trgt-1).esquiva*Herois.get(trgt-1).buffEsquivaValor)+random.nextInt(99)+1 < 100) {
 						Herois.get(trgt-1).hp -= dano;
-						System.out.println(Herois.get(trgt-1).nome + " atingido! " + dano + "de dano!");
+						System.out.println(Herois.get(trgt-1).nome + " atingido! " + dano + " de dano!");
 					}
 					else
 						System.out.println(Herois.get(trgt-1).nome + " desviou do ataque!");
@@ -482,6 +523,11 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 			else if ((atk > 90) && (atk <= 100))
 				Viloes.get(contP).Skill3(Herois, trgt, weaponDam);*/
 				
+		}
+		
+		if (Herois.get(trgt-1).hp <= 0) {
+			System.out.println(Herois.get(trgt-1).nome + " foi nocauteado!");
+			Herois.remove(trgt-1);
 		}
 		
 	}

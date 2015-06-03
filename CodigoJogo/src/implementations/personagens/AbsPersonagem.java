@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 public abstract class AbsPersonagem {
 	public int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
-	public int buffforcarounds, buffpercepcaorounds, buffcarismarounds, buffresistenciarounds, buffinteligenciarounds, buffagilidaderounds, buffsorterounds;
-	public double buffforcavalor=1, buffpercepcaovalor=1, buffcarismavalor=1, buffresistenciavalor=1, buffinteligenciavalor=1, buffagilidadevalor=1, buffsortevalor=1;
+	public int buffForcaRounds, buffPercepcaoRounds, buffResistenciaRounds, buffCarismaRounds, buffInteligenciaRounds, buffAgilidadeRounds, buffSorteRounds, buffArmaduraRounds, buffEsquivaRounds, buffCriticoRounds;
+	public double buffForcaValor=1, buffPercepcaoValor=1, buffCarismaValor=1, buffResistenciaValor=1, buffInteligenciaValor=1, buffAgilidadeValor=1, buffSorteValor=1, buffArmaduraValor=1, buffEsquivaValor=1, buffCriticoValor;
 	public double esquiva, critico;
 	public int hp, maxHP, xp, level, armadura, iniciativa, tipo /*1 = melee, 3 = ranged, 5 = support*/;
 	public boolean bleed = false, poison = false, stun = false, vilao = false;
@@ -25,16 +25,19 @@ public abstract class AbsPersonagem {
 		
 	}
 	
-	public void Skill1 (ArrayList <AbsPersonagem> Viloes, double dam) { // nos viloes tem que adicionar tambem o alvo ja escolhido
-		
+	public int Skill1 (ArrayList <AbsPersonagem> Viloes, double dam) { // nos viloes tem que adicionar tambem o alvo ja escolhido
+		int trgt = 1;
+		return trgt;
 	}
 	
-	public void Skill2 (ArrayList <AbsPersonagem> Viloes, double dam) {
-		
+	public int Skill2 (ArrayList <AbsPersonagem> Viloes, double dam) {
+		int trgt = 1;
+		return trgt;
 	}
 	
-	public void Skill3 (ArrayList <AbsPersonagem> Viloes, double dam) {
-		
+	public int Skill3 (ArrayList <AbsPersonagem> Viloes, double dam) {
+		int trgt = 1;
+		return trgt;
 	}
 
 	/*método que renderiza o personagem*/

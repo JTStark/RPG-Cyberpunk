@@ -23,5 +23,8 @@ public class PersonGenerico extends AbsPersonagem {
 		this.sorte = 15;
 		this.esquiva = (this.agilidade)/2.5 + (this.sorte)/5;
 		this.critico = (this.agilidade)/5 + (this.sorte)/2.5;
+		this.maxHP = 100;
+		this.hp = 100;
+		this.armadura = 0;
 	}
 }
