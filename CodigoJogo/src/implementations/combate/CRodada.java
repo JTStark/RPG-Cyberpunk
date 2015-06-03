@@ -12,6 +12,7 @@ package implementations.combate;
 import java.util.ArrayList;
 
 import implementations.personagens.AbsPersonagem;
+import implementations.inventario.*;
 
 import java.util.Scanner;
 import java.util.Random;
@@ -26,6 +27,12 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 		int HInit = 0, VInit = 0; // ints para usar em flee
 		boolean flag, endFlag = true; // flag para parar o loop de escolha e o combate
 		String chc; // string de que guarda a escolha
+		Inventario inventario = new Inventario();
+		String nome_item;
+		String tipo_item;
+		int bonus_item;
+		Item usable;
+		int itemselecionado;
 		
 		// roda enquanto houverem herois ou viloes e ninguem quiser fugir
 		while (endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false) {
@@ -75,8 +82,79 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 							}
 				
 							else if ((chc.equalsIgnoreCase("use item")) || (chc.equalsIgnoreCase("i")) || (chc.equalsIgnoreCase("item"))) {
-			
-								flag = false;
+								//Colocar essas paradas dentro de um metodo
+								System.out.println("Escolha o item da mochila, ou escreva cancela para sair");
+								inventario.getMochila();
+								nome_item = "";
+								tipo_item = ""; //so foi declarado valor para essas variaveis pq o java eh uma putinha reclamona
+								bonus_item = 1;
+								itemselecionado = 0;
+								while(itemselecionado==0){
+									chc = scanner.nextLine();
+									usable = new Item(chc);
+									if(usable.nomeEncontrado){
+										usable.nomeEncontrado = false; // sera q dara erro de depois q encontrar uma vez, sempre encontrar mesmo q nao exista ?
+										itemselecionado = 1;
+										nome_item = usable.getName();
+										tipo_item = usable.getType();
+										bonus_item = usable.getBonus();
+									}
+									else if(chc.equalsIgnoreCase("cancela")) itemselecionado = 2;
+									else System.out.println("Este item nao existe, escolha outro ou digite 'cancela' ");
+								}
+								if(itemselecionado == 1){
+									switch (tipo_item) {
+									case "HP":
+										Lista.get(contI).hp += (int)(Lista.get(contI).hp * (bonus_item*0.01));
+										inventario.remover_item(nome_item);
+										flag = false;
+										break;
+									case "STR":
+										Lista.get(contI).buffforcarounds += 3;
+										Lista.get(contI).buffforcavalor = 1 + bonus_item*0.01;
+										inventario.remover_item(nome_item);
+										flag = false;
+										break;
+									case "PER":
+										Lista.get(contI).buffpercepcaorounds += 3;
+										Lista.get(contI).buffpercepcaovalor = 1 + bonus_item*0.01;
+										inventario.remover_item(nome_item);
+										flag = false;
+										break;
+									case "END":
+										Lista.get(contI).buffresistenciarounds += 3;
+										Lista.get(contI).buffresistenciavalor = 1 + bonus_item*0.01;
+										inventario.remover_item(nome_item);
+										flag = false;
+										break;
+									case "CHA":
+										Lista.get(contI).buffcarismarounds += 3;
+										Lista.get(contI).buffcarismavalor = 1 + bonus_item*0.01;
+										inventario.remover_item(nome_item);
+										flag = false;
+										break;
+									case "INT":
+										Lista.get(contI).buffinteligenciarounds += 3;
+										Lista.get(contI).buffinteligenciavalor = 1 + bonus_item*0.01;
+										inventario.remover_item(nome_item);
+										flag = false;
+										break;
+									case "AGI":
+										Lista.get(contI).buffagilidaderounds += 3;
+										Lista.get(contI).buffagilidadevalor = 1 + bonus_item*0.01;
+										inventario.remover_item(nome_item);
+										flag = false;
+										break;
+									case "LCK":
+										Lista.get(contI).buffsorterounds += 3;
+										Lista.get(contI).buffsortevalor = 1 + bonus_item*0.01;
+										inventario.remover_item(nome_item);
+										flag = false;
+										break;
+									default:
+										System.out.println("Este item nao pode ser usado");	
+									}
+								}								
 							}
 							
 							else if ((chc.equalsIgnoreCase("do nothing")) || (chc.equalsIgnoreCase("n")) || chc.equalsIgnoreCase("nothing")) {
@@ -285,6 +363,11 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 				H.CountXP(EXP);
 			}
 		}
+		
+	}
+	
+	@Deprecated
+	public static void useItem () {
 		
 	}
 	

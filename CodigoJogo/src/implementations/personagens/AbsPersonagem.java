@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 public abstract class AbsPersonagem {
 	public int forca, percepcao, resistencia, carisma, inteligencia, agilidade, sorte;
-	public int buffforcarounds, buffpercepcaorounds, buffcarismarounds, buffinteligenciarounds, buffagilidaderounds, buffsorterounds;
-	public double buffforcavalor=1, buffpercepcaovalor=1, buffcarismavalor=1, buffinteligenciavalor=1, buffagilidadevalor=1, buffsortevalor=1;
+	public int buffforcarounds, buffpercepcaorounds, buffcarismarounds, buffresistenciarounds, buffinteligenciarounds, buffagilidaderounds, buffsorterounds;
+	public double buffforcavalor=1, buffpercepcaovalor=1, buffcarismavalor=1, buffresistenciavalor=1, buffinteligenciavalor=1, buffagilidadevalor=1, buffsortevalor=1;
 	public double esquiva, critico;
 	public int hp, maxHP, xp, level, armadura, iniciativa, tipo /*1 = melee, 3 = ranged, 5 = support*/;
 	public boolean bleed = false, poison = false, stun = false, vilao = false;
