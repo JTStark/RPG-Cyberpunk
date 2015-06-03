@@ -68,9 +68,13 @@ public abstract class AbsPersonagem {
 		
 		this.xp -= this.level*10;
 		this.level++;
+		
+		// vida vai de 100 a 500 (min)/3433(max)
+		this.maxHP += this.resistencia*2/3;
+		this.hp += this.resistencia*2/3;
 				
-		/*De novo, provisório*/
-		for(int i = 15; i > 0; i--){
+		// 105 pontos de atributo no nivel 1 (15 em cada) + 5 atributos por nivel (49 niveis) = 350 no total ao nivel 50
+		for(int i = 5; i > 0; i--){
 			atributo = new Scanner(System.in).nextLine();
 			
 			if (atributo.equalsIgnoreCase("forca"))
@@ -82,10 +86,8 @@ public abstract class AbsPersonagem {
 			else if (atributo.equalsIgnoreCase("resistencia"))
 				this.resistencia++;
 			
-			else if (atributo.equalsIgnoreCase("carisma")){
-				System.out.println("Carisma eh um atributo inalteravel, ou voce eh gato ou vc nao eh");
-				i++;
-			}
+			else if (atributo.equalsIgnoreCase("carisma"))
+				this.carisma++;
 			
 			else if (atributo.equalsIgnoreCase("inteligencia"))
 				this.inteligencia++;
@@ -95,6 +97,11 @@ public abstract class AbsPersonagem {
 			
 			else if (atributo.equalsIgnoreCase("sorte"))
 				this.sorte++;
+			
+			else {
+				System.out.println("Entrada Invalida");
+				i++;
+			}
 		}
 		
 	}

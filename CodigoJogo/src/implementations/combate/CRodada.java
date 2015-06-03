@@ -55,12 +55,12 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 						// imprime as escolhas
 						flag = true;			
 						while (flag) {
-							System.out.println("CHOOSE YOUR ACTION:");
-							System.out.println("Reposition");
-							System.out.println("Attack");
-							System.out.println("use Item");
-							System.out.println("do Nothing");
-							System.out.println("Flee");
+							System.out.println("SELECIONE SUA ACAO:");
+							System.out.println("Reposicionar");
+							System.out.println("Atacar");
+							System.out.println("usar Item");
+							System.out.println("fazer Nada");
+							System.out.println("Fugir");
 							
 							// recebe a escolha do jogador
 							if (contI != 0)
@@ -68,20 +68,20 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 							chc = scanner.nextLine();
 							
 							// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
-							if ((chc.equalsIgnoreCase("reposition")) || (chc.equalsIgnoreCase("r"))) {
+							if ((chc.equalsIgnoreCase("reposicionar")) || (chc.equalsIgnoreCase("r"))) {
 								
 								Reposition(Herois, contP);
 								flag = false;
 							}
 							
-							else if ((chc.equalsIgnoreCase("attack")) || (chc.equalsIgnoreCase("a"))) {
+							else if ((chc.equalsIgnoreCase("atacar")) || (chc.equalsIgnoreCase("a"))) {
 								
 								attack(Herois.get(contP), Viloes, contP);
 								
 								flag = false;
 							}
 				
-							else if ((chc.equalsIgnoreCase("use item")) || (chc.equalsIgnoreCase("i")) || (chc.equalsIgnoreCase("item"))) {
+							else if ((chc.equalsIgnoreCase("usar item")) || (chc.equalsIgnoreCase("i")) || (chc.equalsIgnoreCase("item"))) {
 								//Colocar essas paradas dentro de um metodo
 								System.out.println("Escolha o item da mochila, ou escreva cancela para sair");
 								inventario.getMochila();
@@ -157,11 +157,11 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 								}								
 							}
 							
-							else if ((chc.equalsIgnoreCase("do nothing")) || (chc.equalsIgnoreCase("n")) || chc.equalsIgnoreCase("nothing")) {
+							else if ((chc.equalsIgnoreCase("fazer nada")) || (chc.equalsIgnoreCase("n")) || chc.equalsIgnoreCase("nothing")) {
 								flag = false; // soh sai
 							}
 				
-							else if ((chc.equalsIgnoreCase("flee")) || (chc.equalsIgnoreCase("f"))) {
+							else if ((chc.equalsIgnoreCase("fugir")) || (chc.equalsIgnoreCase("f"))) {
 								// Somatorio das iniciativas de cada time
 								for (AbsPersonagem h: Herois)
 									HInit += h.iniciativa;
@@ -171,16 +171,16 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 								//Se os herois tiverem mais iniciativa que os viloes, eles podem fugir
 								if (HInit >= VInit) {
 									endFlag = false;
-									System.out.println("You managed to flee!");
+									System.out.println("Voce conseguiu fugir!");
 								}
 								else
-									System.out.println("Can't escape!");
+									System.out.println("Impossivel escapar!");
 								
 								flag = false;
 							}
 						
 							// se o texto inserido for invalido, deixa tentar denovo
-							else System.out.println("Wrong Text: try again");
+							else System.out.println("Texto errado: tente denovo");
 						}
 					}
 					
@@ -231,31 +231,31 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 		
 		// verifica para quais direcoes o jogador pode se mover
 		if (contP < Jogadores.size())
-			System.out.print("Left");
+			System.out.print("Esquerda");
 		if ((Jogadores.size() > contP) && (contP > 0))
-			System.out.print(" or ");
+			System.out.print(" ou ");
 		if (contP > 0)
-			System.out.print("Right");
+			System.out.print("Direita");
 		System.out.println("?");
 		
 		// capta a escolha de direcoes
 		choice = scanner.nextLine();
 		
 		// Se o jogador escolher esquerda, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
-		if (((choice.equalsIgnoreCase("left")) || (choice.equalsIgnoreCase("L"))) && contP < Jogadores.size()) {
+		if (((choice.equalsIgnoreCase("esquerda")) || (choice.equalsIgnoreCase("E"))) && contP < Jogadores.size()) {
 			dist = (int)(Jogadores.get(contP).agilidade * Jogadores.get(contP).buffagilidadevalor / 25) + 1;
 			if (dist >= Jogadores.size() - 1 - contP)
 				dist = Jogadores.size() - 1 - contP;
 				
-			System.out.println("You can move " + dist + " to the left");
-			System.out.println("How far do you want to move?");
+			System.out.println("Voce pode se mover " + dist + " posicoes para a  esquerda");
+			System.out.println("Quao longe quer se mover?");
 			
 			
 			// capta a escolha de distancia de movimento 
 			while (mov > dist || mov <= 0) {
 				mov = scanner.nextInt();
 				if (mov > dist) // imprime e tenta denovo se a entrada for invalida 
-					System.out.println("You inserted an invalid distance. Try again");
+					System.out.println("Voce inseriu uma distancia invalida. Tente denovo");
 			}
 			
 			// reposiciona o jogador para a posicao escolhida
@@ -265,19 +265,19 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 		}
 		
 		// Se o jogador escolher direita, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
-		if (((choice.equalsIgnoreCase("right")) || (choice.equalsIgnoreCase("r"))) && contP > 0) {
+		if (((choice.equalsIgnoreCase("direita")) || (choice.equalsIgnoreCase("d"))) && contP > 0) {
 			dist = (int)(Jogadores.get(contP).agilidade * Jogadores.get(contP).buffagilidadevalor / 25) + 1;
 			if (contP - dist < 0)
 				dist = dist + (contP - dist);
 				
-			System.out.println("You can move " + dist + " to the right");
-			System.out.println("How far do you want to move?");
+			System.out.println("Voce pode se mover " + dist + " posicoes para a  esquerda");
+			System.out.println("Quao longe quer se mover?");
 			
 			// capta a escolha de distancia de movimento 
 			while (mov > dist || mov <= 0) {
 				mov = scanner.nextInt();
 				if (mov > dist) // imprime e tenta denovo se a entrada for invalida 
-					System.out.println("You inserted an invalid distance. Try again");
+					System.out.println("Voce inseriu uma distancia invalida. Tente denovo");
 			}
 			
 			// reposiciona o jogador para a posicao escolhida
@@ -297,20 +297,20 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 	public static void attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes, int posHeroi) {
 		Random random = new Random(); // gerador de numeros randomicos
 		String chc;
-		int trgt;
+		int trgt, dano;
 		double weaponDam;
 		boolean choiceFlag1, choiceFlag2;
 		
 		if (Heroi.tipo == 1)
-			weaponDam = /*dano arma*/10*(Heroi.forca/50)*(Heroi.buffforcavalor)*(0.98+(Heroi.level/75))*0.2;
-		else
-			weaponDam = /*dano arma*/10*(Heroi.percepcao/50)*(Heroi.buffpercepcaovalor)*(0.98+(Heroi.level/75))*0.2;		
+			weaponDam = /*dano arma*/10*(1 + (Heroi.forca*Heroi.buffforcavalor)/50)+(0.8+(Heroi.level/25))*0.5; //com melhor arma 100 dano, 100 força/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
+		else																									//com pior arma 4 dano, 15 força/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
+			weaponDam = /*dano arma*/10*(1 + (Heroi.percepcao*Heroi.buffpercepcaovalor)/50)+(0.8+(Heroi.level/25))*0.5;
 		
-		System.out.println("Select your attack: ");
-		System.out.println("Basic Attack (B)");
-		System.out.println("Hability (1): " + Heroi.nSkill1);
-		System.out.println("Hability (2)" + Heroi.nSkill2);
-		System.out.println("Hability (3): " + Heroi.nSkill3);
+		System.out.println("Selecione seu ataque: ");
+		System.out.println("ataque Basico (B)");
+		System.out.println("Habilidade (1): " + Heroi.nSkill1);
+		System.out.println("Habilidade (2)" + Heroi.nSkill2);
+		System.out.println("Habilidade (3): " + Heroi.nSkill3);
 		
 		chc = scanner.nextLine();
 		
@@ -320,15 +320,29 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 				if(Heroi.tipo==1 || posHeroi<=2) {
 					choiceFlag2 = true;
 					while (choiceFlag2) {
-						System.out.println("Select your target (1-6)");
+						System.out.println("Selecione seu alvo (1-6)");
 						trgt = scanner.nextInt();
 						if(Heroi.tipo==1 || trgt<=2)
 						if (trgt >= 1 && trgt <= 6) {
-							Viloes.get(trgt-1).hp -= (weaponDam * (random.nextInt(4)+1)) * (1 - Viloes.get(trgt-1).armadura);
+							// dano vai de 1/3*esperado a 2*esperado. Maximo de redução eh (dano/5 - 80)
+							dano = ((int)weaponDam * ((1/3) * (random.nextInt(5)+1))) * (1 - Viloes.get(trgt-1).armadura) - ((Viloes.get(trgt-1).resistencia/5)*(1 + (Viloes.get(trgt-1).level/15)));
+							if (dano <=0)
+								dano = 1;
+							if ((int)Heroi.critico*random.nextInt(99)+1 >= 100) {
+								dano *= 2;
+								Viloes.get(trgt-1).hp -= dano;
+								System.out.println("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + dano + "de dano!");
+							}
+							else if ((int)Viloes.get(trgt-1).esquiva*random.nextInt(99)+1 < 100) {
+								Viloes.get(trgt-1).hp -= dano;
+								System.out.println(Viloes.get(trgt-1).nome + " atingido! " + dano + "de dano!");
+							}
+							else
+								System.out.println(Viloes.get(trgt-1).nome + " desviou!");
 							choiceFlag2 = false;
 						}
 						else
-							System.out.println("Invalid Target! Try Again");
+							System.out.println("Alvo invalido! Tente novamente");
 					}
 					choiceFlag1 = false;
 				}
@@ -341,7 +355,7 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 			else if ((chc.equalsIgnoreCase("3")))
 				Heroi.Skill3(Viloes, weaponDam);
 			else
-				System.out.println("Invalid Attack! Try again");
+				System.out.println("Ataque invalido: Tente denovo");
 		}
 	}
 	
@@ -409,7 +423,7 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 	}
 	
 	public static void AI (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista, int contP, int contI) {
-		int atk, trgt;
+		int atk, trgt, dano;
 		double weaponDam;
 		boolean flag = true;
 		Random random = new Random(); // gerador de numeros randomicos
@@ -440,13 +454,25 @@ static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 			atk = random.nextInt(99) + 1;
 			
 			if (Viloes.get(contP).tipo == 1)
-				weaponDam = /*dano arma*/10*(Viloes.get(contP).forca/50)*(Viloes.get(contP).buffforcavalor)*(0.98+(Viloes.get(contP).level/75))*0.2;
+				weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).forca*Viloes.get(contP).buffforcavalor)/50)+(0.8+(Viloes.get(contP).level/25))*0.5;
 			else
-				weaponDam = /*dano arma*/10*(Viloes.get(contP).percepcao/50)*(Viloes.get(contP).buffpercepcaovalor)*(0.98+(Viloes.get(contP).level/75))*0.2;
+				weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).percepcao*Viloes.get(contP).buffpercepcaovalor)/50)+(0.8+(Viloes.get(contP).level/25))*0.5;
 			
 			if (atk <= 50) {
 				trgt = random.nextInt(5) + 1;
-				Herois.get(trgt-1).hp -= (weaponDam * (random.nextInt(4)+1)) * (1 - Herois.get(trgt-1).armadura);
+				dano = ((int)weaponDam * ((1/3) * (random.nextInt(5)+1))) * (1 - Herois.get(trgt-1).armadura) - ((Herois.get(trgt-1).resistencia/5)*(1 + (Herois.get(trgt-1).level/15)));
+				if (dano <=0)
+					dano = 1;if ((int)Viloes.get(contP).critico*random.nextInt(99)+1 >= 100) {
+						dano *= 2;
+						Herois.get(trgt-1).hp -= dano;
+						System.out.println("Inimigo atingiu " + Herois.get(trgt-1).nome + "com um golpe critico!" + dano + "de dano!");
+					}
+					else if ((int)Herois.get(trgt-1).esquiva*random.nextInt(99)+1 < 100) {
+						Herois.get(trgt-1).hp -= dano;
+						System.out.println(Herois.get(trgt-1).nome + " atingido! " + dano + "de dano!");
+					}
+					else
+						System.out.println(Herois.get(trgt-1).nome + " desviou do ataque!");
 			}
 			
 			/*else if ((atk > 50) && (atk <= 75))
