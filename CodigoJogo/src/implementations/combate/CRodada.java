@@ -36,7 +36,7 @@ public class CRodada {
 		int itemselecionado;
 		
 		// roda enquanto houverem herois ou viloes e ninguem quiser fugir
-		while (endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false) {
+		while (endFlag && Herois.isEmpty() == false && Viloes.isEmpty() == false) {
 			// uma rodada para cada personagem, enquanto houverem herois ou viloes e ninguem quiser fugir
 			for (contI = 0; contI < Lista.size() && endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false; contI++) {
 				
@@ -64,7 +64,8 @@ public class CRodada {
 							System.out.println("Fugir");
 							
 							// recebe a escolha do jogador
-							chc = scanner.next();
+							if(scanner.hasNextInt()) scanner.nextInt();
+							chc = scanner.nextLine();
 							
 							// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
 							if ((chc.equalsIgnoreCase("reposicionar")) || (chc.equalsIgnoreCase("r"))) {
@@ -221,14 +222,18 @@ public class CRodada {
 			/* Se os buffs vao ser porcentagens, precisamos soh multiplicar um atributo por seu buff toda vez q ele for usado, e deixar NAO BUFF = 1
 			 * Mas entao precisaremos dar tipecast (int) em alguns lugares.... 
 			 */
-				
+				System.out.println("hu3");
 			}
 			numRodada++;
+			System.out.println("hu3hu3");
 			
 		}
+		System.out.println("hu3hu3hu3");
 		endBattle(Herois, Viloes);
+		System.out.println("hu3hu3hu3hu3");
 		
 		scanner.close();
+		System.out.println("hu3hu3hu3hu3hu3hu3hu3");
 	}
 	
 	public static void Reposition (ArrayList <AbsPersonagem> Jogadores, int contP) { // recebe o vetor de jogadores apropriado e a posicao do jogador atual
@@ -319,10 +324,9 @@ public class CRodada {
 		System.out.println("Habilidade (2): " + Heroi.nSkill2);
 		System.out.println("Habilidade (3): " + Heroi.nSkill3);
 		
-		chc = scanner.nextLine();
-		
 		choiceFlag1 = true;
 		while (choiceFlag1) {
+			chc = scanner.nextLine();
 			if ((chc.equalsIgnoreCase("B"))) {
 				if(Heroi.tipo==1 || posHeroi<=2) {
 					choiceFlag2 = true;
@@ -389,22 +393,28 @@ public class CRodada {
 	
 	public static void endBattle (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes) {
 		int EXP = 0;
-		
+		System.out.println("1");
 		if (Herois.isEmpty()) {
 			//n sei o que fazer pra rodar um gameover
 			System.out.println("GAME OVER, MWAHAHAHAHA");
 		}
 		
 		else {
+			System.out.println("2");
 			for (AbsPersonagem V: Viloes) {
 				if (V.hp <= 0)
 					EXP += V.level;
 			}
+			System.out.println("3");
 			
 			for (AbsPersonagem H: Herois) {
+				System.out.println("eita");
 				H.CountXP(EXP);
+				System.out.println("ops");
 			}
+			System.out.println("4");
 		}
+		System.out.println("5");
 		
 	}
 	

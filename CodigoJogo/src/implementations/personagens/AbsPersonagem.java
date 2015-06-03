@@ -19,12 +19,7 @@ public abstract class AbsPersonagem {
 	public boolean bleed = false, poison = false, stun = false, vilao = false;
 	public String nome, nSkill1, nSkill2, nSkill3;
 	/*Inventario inventario;*/
-	
-	/*método que define os valores iniciais dos atributos do personagem*/
-	public void SetAtributos (){
 		
-	}
-	
 	public int Skill1 (ArrayList <AbsPersonagem> Viloes, double dam) { // nos viloes tem que adicionar tambem o alvo ja escolhido
 		int trgt = 1;
 		return trgt;
@@ -60,9 +55,14 @@ public abstract class AbsPersonagem {
 	public void CountXP (int modXP){
 		this.xp += modXP;
 		
+		System.out.println("oi");
+		
 		/*daqui pra baixo também é provisório*/
-		if (this.xp >= this.level*10)		
+		while (this.xp >= this.level*10) {	
+			System.out.println("wtf");
 			this.LevelUp();
+		}
+		System.out.println("oii");
 	}
 	
 	/*método que upa o personagem*/

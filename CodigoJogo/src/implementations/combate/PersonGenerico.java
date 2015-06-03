@@ -13,7 +13,7 @@ import implementations.personagens.AbsPersonagem;
 
 public class PersonGenerico extends AbsPersonagem {
 
-	public void SetAtributos (){
+	public PersonGenerico () {
 		this.forca = 15;
 		this.percepcao = 15;
 		this.resistencia = 15;
@@ -26,5 +26,6 @@ public class PersonGenerico extends AbsPersonagem {
 		this.maxHP = 100;
 		this.hp = 100;
 		this.armadura = 0;
+		this.xp = 0;
 	}
 }
