@@ -25,7 +25,7 @@ public class CEngine {
 		
 		try {
 			for (AbsPersonagem H: Herois) { // percorre o AL de herois
-				H.iniciativa = (H.agilidade + H.sorte) / 20 * (random.nextInt(9)+1); // calcula a iniciativa de cada um
+				H.iniciativa = ((H.agilidade + H.sorte) / 20) * (random.nextInt(10)+1); // calcula a iniciativa de cada um
 				flag = true;
 				contL = 0;
 				
@@ -61,7 +61,7 @@ public class CEngine {
 		// faz o mesmo para os viloes
 		try {
 			for (AbsPersonagem V: Viloes) {
-				V.iniciativa = (V.agilidade + V.sorte) / 20 * (random.nextInt(9)+1);
+				V.iniciativa = ((V.agilidade + V.sorte) / 20) * (random.nextInt(10)+1);
 				flag = true;
 				contL = 0;
 				
@@ -105,9 +105,9 @@ public class CEngine {
 			System.out.print(listaV.get(contPrint).nome + " ");
 			System.out.println(listaV.get(contPrint).iniciativa);
 		}
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
+		System.out.println();
+		System.out.println();
+		System.out.println();
 		
 		// roda Jogada de CRodada
 		CRodada.Jogada(listaH, listaV, listaI);

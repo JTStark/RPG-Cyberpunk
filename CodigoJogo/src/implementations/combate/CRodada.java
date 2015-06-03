@@ -64,9 +64,7 @@ public class CRodada {
 							System.out.println("Fugir");
 							
 							// recebe a escolha do jogador
-							if (contI != 0)
-								scanner.nextLine();
-							chc = scanner.nextLine();
+							chc = scanner.next();
 							
 							// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
 							if ((chc.equalsIgnoreCase("reposicionar")) || (chc.equalsIgnoreCase("r"))) {

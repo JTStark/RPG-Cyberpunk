@@ -43,7 +43,7 @@ public class AuxTemp {
 		hSecond.nome = "hSecond";
 		hSecond.tipo = 1;
 		hThird.SetAtributos();
-		hThird.agilidade = 80;
+		hThird.agilidade = 60;
 		hThird.sorte = 80;
 		hThird.nome = "hThird";
 		hThird.tipo = 3;
