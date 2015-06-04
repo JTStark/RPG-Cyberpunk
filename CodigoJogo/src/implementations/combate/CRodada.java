@@ -22,18 +22,14 @@ public class CRodada {
 
 	static int numRodada=0; //variavel global para que o antigo, deprecated BUFFS possa acompanhar a passagem de rodadas
 	static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
+	Inventario inventario = new Inventario();
 
 	public static void Jogada (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista) { //recebe ArrayList de herois e viloes ordenados
 		int contP, contI; // contador para vetor de Personagens e Iniciativa
 		int HInit = 0, VInit = 0; // ints para usar em flee
 		boolean flag, endFlag = true; // flag para parar o loop de escolha e o combate
 		String chc; // string de que guarda a escolha
-		Inventario inventario = new Inventario();
-		String nome_item;
-		String tipo_item;
-		int bonus_item;
-		Item usable;
-		int itemselecionado;
+		
 		
 		// roda enquanto houverem herois ou viloes e ninguem quiser fugir
 		while (endFlag && Herois.isEmpty() == false && Viloes.isEmpty() == false) {
@@ -82,79 +78,7 @@ public class CRodada {
 							}
 				
 							else if ((chc.equalsIgnoreCase("usar item")) || (chc.equalsIgnoreCase("i")) || (chc.equalsIgnoreCase("item"))) {
-								//Colocar essas paradas dentro de um metodo
-								System.out.println("Escolha o item da mochila, ou escreva cancela para sair");
-								inventario.getMochila();
-								nome_item = "";
-								tipo_item = ""; //so foi declarado valor para essas variaveis pq o java eh uma putinha reclamona
-								bonus_item = 1;
-								itemselecionado = 0;
-								while(itemselecionado==0){
-									chc = scanner.nextLine();
-									usable = new Item(chc);
-									if(usable.nomeEncontrado){
-										usable.nomeEncontrado = false; // sera q dara erro de depois q encontrar uma vez, sempre encontrar mesmo q nao exista ?
-										itemselecionado = 1;
-										nome_item = usable.getName();
-										tipo_item = usable.getType();
-										bonus_item = usable.getBonus();
-									}
-									else if(chc.equalsIgnoreCase("cancela")) itemselecionado = 2;
-									else System.out.println("Este item nao existe, escolha outro ou digite 'cancela' ");
-								}
-								if(itemselecionado == 1){
-									switch (tipo_item) {
-									case "HP":
-										Lista.get(contI).hp += (int)(Lista.get(contI).hp * (bonus_item*0.01));
-										inventario.remover_item(nome_item);
-										flag = false;
-										break;
-									case "STR":
-										Lista.get(contI).buffForcaRounds += 3;
-										Lista.get(contI).buffForcaValor = 1 + bonus_item*0.01;
-										inventario.remover_item(nome_item);
-										flag = false;
-										break;
-									case "PER":
-										Lista.get(contI).buffPercepcaoRounds += 3;
-										Lista.get(contI).buffPercepcaoValor = 1 + bonus_item*0.01;
-										inventario.remover_item(nome_item);
-										flag = false;
-										break;
-									case "END":
-										Lista.get(contI).buffResistenciaRounds += 3;
-										Lista.get(contI).buffResistenciaValor = 1 + bonus_item*0.01;
-										inventario.remover_item(nome_item);
-										flag = false;
-										break;
-									case "CHA":
-										Lista.get(contI).buffCarismaRounds += 3;
-										Lista.get(contI).buffCarismaValor = 1 + bonus_item*0.01;
-										inventario.remover_item(nome_item);
-										flag = false;
-										break;
-									case "INT":
-										Lista.get(contI).buffInteligenciaRounds += 3;
-										Lista.get(contI).buffInteligenciaValor = 1 + bonus_item*0.01;
-										inventario.remover_item(nome_item);
-										flag = false;
-										break;
-									case "AGI":
-										Lista.get(contI).buffAgilidadeRounds += 3;
-										Lista.get(contI).buffAgilidadeValor = 1 + bonus_item*0.01;
-										inventario.remover_item(nome_item);
-										flag = false;
-										break;
-									case "LCK":
-										Lista.get(contI).buffSorteRounds += 3;
-										Lista.get(contI).buffSorteValor = 1 + bonus_item*0.01;
-										inventario.remover_item(nome_item);
-										flag = false;
-										break;
-									default:
-										System.out.println("Este item nao pode ser usado");	
-									}
-								}								
+								useItem(contI, Lista);
 							}
 							
 							else if ((chc.equalsIgnoreCase("fazer nada")) || (chc.equalsIgnoreCase("n")) || chc.equalsIgnoreCase("nothing")) {
@@ -418,9 +342,86 @@ public class CRodada {
 		
 	}
 	
-	@Deprecated
-	public static void useItem () {
+	
+	public static boolean useItem (int contI, ArrayList <AbsPersonagem> Lista) {
+		//Colocar essas paradas dentro de um metodo
+		Inventario inventario = new Inventario();
+		String nome_item;
+		String tipo_item;
+		int bonus_item;
+		Item usable;
+		int itemselecionado;
+		String chc;
 		
+		
+		System.out.println("Escolha o item da mochila, ou escreva cancela para sair");
+		inventario.getMochila();
+		nome_item = "";
+		tipo_item = ""; //so foi declarado valor para essas variaveis pq o java eh uma putinha reclamona
+		bonus_item = 1;
+		itemselecionado = 0;
+		while(itemselecionado==0){
+			chc = scanner.nextLine();
+			usable = new Item(chc);
+			if(usable.nomeEncontrado){
+				usable.nomeEncontrado = false; // sera q dara erro de depois q encontrar uma vez, sempre encontrar mesmo q nao exista ?
+				itemselecionado = 1;
+				nome_item = usable.getName();
+				tipo_item = usable.getType();
+				bonus_item = usable.getBonus();
+			}
+			else if(chc.equalsIgnoreCase("cancela")) {
+				itemselecionado = 2;
+				System.out.println("Operacao cancelada");
+			}
+			else System.out.println("Este item nao existe, escolha outro ou digite 'cancela' ");
+		}
+		if(itemselecionado == 1){
+			switch (tipo_item) {
+			case "HP":
+				Lista.get(contI).hp += (int)(Lista.get(contI).hp * (bonus_item*0.01));
+				inventario.remover_item(nome_item);
+				return false;
+			case "STR":
+				Lista.get(contI).buffForcaRounds += 3;
+				Lista.get(contI).buffForcaValor = 1 + bonus_item*0.01;
+				inventario.remover_item(nome_item);
+				return false;
+			case "PER":
+				Lista.get(contI).buffPercepcaoRounds += 3;
+				Lista.get(contI).buffPercepcaoValor = 1 + bonus_item*0.01;
+				inventario.remover_item(nome_item);
+				return false;
+			case "END":
+				Lista.get(contI).buffResistenciaRounds += 3;
+				Lista.get(contI).buffResistenciaValor = 1 + bonus_item*0.01;
+				inventario.remover_item(nome_item);
+				return false;
+			case "CHA":
+				Lista.get(contI).buffCarismaRounds += 3;
+				Lista.get(contI).buffCarismaValor = 1 + bonus_item*0.01;
+				inventario.remover_item(nome_item);
+				return false;
+			case "INT":
+				Lista.get(contI).buffInteligenciaRounds += 3;
+				Lista.get(contI).buffInteligenciaValor = 1 + bonus_item*0.01;
+				inventario.remover_item(nome_item);
+				return false;
+			case "AGI":
+				Lista.get(contI).buffAgilidadeRounds += 3;
+				Lista.get(contI).buffAgilidadeValor = 1 + bonus_item*0.01;
+				inventario.remover_item(nome_item);
+				return false;
+			case "LCK":
+				Lista.get(contI).buffSorteRounds += 3;
+				Lista.get(contI).buffSorteValor = 1 + bonus_item*0.01;
+				inventario.remover_item(nome_item);
+				return false;
+			default:
+				System.out.println("Este item nao pode ser usado");
+			}
+		}
+	return true;
 	}
 	
 	// O buff correto devera incrementar apenas .Buff___Rounds
