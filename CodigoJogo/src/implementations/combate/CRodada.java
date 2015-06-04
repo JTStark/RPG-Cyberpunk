@@ -44,7 +44,7 @@ public class CRodada {
 					// If para os Viloes (AI)
 					if (Lista.get(contI).vilao) {
 						for (contP = 0; !(Viloes.get(contP).equals(Lista.get(contI))) && (contP < Viloes.size()); contP++); // Acha a posicao contP do vilao da jogada atual na sua lista de posicao 	
-						//AI(Herois, Viloes, Lista, contP, contI);
+						AI(Herois, Viloes, Lista, contP, contI);
 					} else {
 						
 						// Tudo nesse else eh para Herois (players) only
@@ -287,6 +287,7 @@ public class CRodada {
 								else
 									System.out.println(Viloes.get(trgt-1).nome + " desviou!");
 								choiceFlag2 = false;
+								choiceFlag1 = false;
 							}
 							else
 								System.out.println("Alvo invalido! Tente novamente");
@@ -470,7 +471,7 @@ public class CRodada {
 	}
 	
 	public static void AI (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista, int contP, int contI) {
-		int atk, trgt = 1, dano, resistencia;
+		int atk, trgt = 1, dano, resistencia, fator;
 		double weaponDam, armadura;
 		boolean flag = true;
 		Random random = new Random(); // gerador de numeros randomicos
@@ -510,18 +511,22 @@ public class CRodada {
 				trgt -= 6;
 				if (trgt - 6 < 0) trgt = 1;
 				
+				// dano vai de 1/3*esperado a 2*esperado. Maximo de redução eh (dano/2,5 - 80), com 60 armadura, lvl 50 e 100 de resistencia
 				armadura = (1 - (Herois.get(trgt-1).armadura*Herois.get(trgt-1).buffArmaduraValor));
-				if (armadura < 0) armadura = 0;
+				if (armadura < 0.1) armadura = 0.1; // evita armadura acima de 90% por buffs
 				
+				// Resistencia(com buffs)/5 * fator de nivel
 				resistencia = (int)(((Herois.get(trgt-1).resistencia*Herois.get(trgt-1).buffResistenciaValor)/5)*(0.96 + (Herois.get(trgt-1).level/15)));
 				
-				dano = (int)((weaponDam * ((1/3) * (random.nextInt(6)+1))) * armadura) - resistencia;
-				if (dano <=0) dano = 1;
+				fator = random.nextInt(6)+1; //o fator é dividido por 3, assim 1 = 1/3 dano, 2 = 2/3 dano, 3 = dano, 4 = 4/3 dano, 5 = 5/3 dano e 6 = 2 dano. A media é o dano esperado da arma
+
+				dano = ((int)((weaponDam * (fator/3)) * armadura)) - resistencia; // Dano final
+				if (dano <= 0) dano = 1; // Dano minimo é 1
 				
 				if ((int)(Viloes.get(contP).critico*Viloes.get(contP).buffCriticoValor)+random.nextInt(100)+1 >= 100) {
 						dano *= 2;
 						Herois.get(trgt-1).hp -= dano;
-						System.out.println("Inimigo atingiu " + Herois.get(trgt-1).nome + "com um golpe critico! " + dano + " de dano!");
+						System.out.println("Inimigo atingiu " + Herois.get(trgt-1).nome + " com um golpe critico! " + dano + " de dano!");
 					}
 					else if ((int)(Herois.get(trgt-1).esquiva*Herois.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) {
 						Herois.get(trgt-1).hp -= dano;
@@ -531,12 +536,15 @@ public class CRodada {
 						System.out.println(Herois.get(trgt-1).nome + " desviou do ataque!");
 			}
 			
-			/*else if ((atk > 50) && (atk <= 75))
-				Viloes.get(contP).Skill1(Herois, weaponDam, trgt);
+			else if ((atk > 50) && (atk <= 75))
+				//Viloes.get(contP).Skill1(Herois, weaponDam, trgt);
+				System.out.println("SKILL 1 YAY");
 			else if ((atk > 75) && (atk <= 90))
-				Viloes.get(contP).Skill2(Herois, weaponDam, trgt);
+				//Viloes.get(contP).Skill2(Herois, weaponDam, trgt);
+				System.out.println("SKILL 2 UHUL");
 			else if ((atk > 90) && (atk <= 100))
-				Viloes.get(contP).Skill3(Herois, weaponDam, trgt);*/
+				//Viloes.get(contP).Skill3(Herois, weaponDam, trgt);
+				System.out.println("SKILL 3 YUPI");
 				
 		}
 		
