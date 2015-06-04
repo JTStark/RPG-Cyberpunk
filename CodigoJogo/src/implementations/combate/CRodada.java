@@ -141,7 +141,7 @@ public class CRodada {
 				if (Lista.get(contI).buffSorteRounds == 0) Lista.get(contI).buffSorteValor=1;
 				if (Lista.get(contI).buffArmaduraRounds == 0) Lista.get(contI).buffArmaduraValor=1;
 				if (Lista.get(contI).buffEsquivaRounds == 0) Lista.get(contI).buffArmaduraValor=1;
-				if (Lista.get(contI).buffArmaduraRounds == 0) Lista.get(contI).buffArmaduraValor=1;
+				if (Lista.get(contI).buffCriticoRounds == 0) Lista.get(contI).buffCriticoValor=1;
 				
 			/* Se os buffs vao ser porcentagens, precisamos soh multiplicar um atributo por seu buff toda vez q ele for usado, e deixar NAO BUFF = 1
 			 * Mas entao precisaremos dar tipecast (int) em alguns lugares.... 
@@ -228,12 +228,13 @@ public class CRodada {
 	}
 	
 	public static boolean attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes, int posHeroi) {
-		Random random = new Random(); // gerador de numeros randomicos
-		String chc;
-		int trgt = 1, dano, resistencia;
-		double weaponDam, armadura, fator;
-		boolean choiceFlag1, choiceFlag2, noAtk = false;
+		Random random = new Random(); // Gerador de numeros randomicos
+		String chc; // String guarda escolha do jogador
+		int trgt = 1, dano, resistencia; // Guardam respectivamente: alvo do jogador, dano final, resistencia final
+		double weaponDam, armadura, fator; // Guardam respectivamente: dano da arma ponderado, armadura ponderada, fator randomico ponderado
+		boolean choiceFlag1, choiceFlag2, noAtk = false; // Flags para parar os loops de escolha de ação. noAtk permite voltar ao menu de "Jogada" sem perder a vez
 		
+		//Melee usa força, ranged usa percepção. dano = (dano arma * (1+(força/50)+(fator de nivel)) /2 ). Fator nivel é 1 no nivel 1 e sobe pra 2 no nivel 50
 		if (Heroi.tipo == 1) weaponDam = /*dano arma*/30*(1 + (Heroi.forca*Heroi.buffForcaValor)/50)+(0.96+(Heroi.level/25))*0.5; //com melhor arma 100 dano, 100 força/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
 		else weaponDam = /*dano arma*/30*(1 + (Heroi.percepcao*Heroi.buffPercepcaoValor)/50)+(0.96+(Heroi.level/25))*0.5; //com pior arma 4 dano, 15 força/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
 		
@@ -250,7 +251,7 @@ public class CRodada {
 			
 			if ((chc.equalsIgnoreCase("B"))) {
 
-				if((Heroi.tipo==1 && posHeroi < 2) || Heroi.tipo!=1) {
+				if((Heroi.tipo==1 && posHeroi < 2) || Heroi.tipo!=1) { // Se heroi for melee, fora da frente (1ª e 2ª posições), nao pode usar ataque basico
 					
 					choiceFlag2 = true;
 					
@@ -259,24 +260,27 @@ public class CRodada {
 						System.out.println("Selecione seu alvo (1-6)");
 						trgt = scanner.nextInt();
 						
-						if((Heroi.tipo == 1 && trgt <=2) || Heroi.tipo != 1) {							
+						if((Heroi.tipo == 1 && trgt <=2) || Heroi.tipo != 1) { // Se heroi for melee, nao pode acertar alvos fora da frente (1ª e 2ª posições)
 							if (trgt >= 1 && trgt <= 6) {
 								
 								// dano vai de 1/3*esperado a 2*esperado. Maximo de redução eh (dano/2,5 - 80), com 60 armadura, lvl 50 e 100 de resistencia
 								armadura = (1 - (Viloes.get(trgt-1).armadura*Viloes.get(trgt-1).buffArmaduraValor));
-								if (armadura < 0) armadura = 0;
+								if (armadura < 0.1) armadura = 0.1; // evita armadura acima de 90% por buffs
 								
+								// Resistencia(com buffs)/5 * fator de nivel
 								resistencia = (int)(((Viloes.get(trgt-1).resistencia*Viloes.get(trgt-1).buffResistenciaValor)/5)*(0.96 + (Viloes.get(trgt-1).level/15)));
-								fator = random.nextInt(6)+1;
-								dano = ((int)((weaponDam * (fator/3)) * armadura)) - resistencia;
-								if (dano <= 0) dano = 1;
 								
-								if ((int)(Heroi.critico * Heroi.buffCriticoValor)+random.nextInt(99)+1 >= 100) {
+								fator = random.nextInt(6)+1; //o fator é dividido por 3, assim 1 = 1/3 dano, 2 = 2/3 dano, 3 = dano, 4 = 4/3 dano, 5 = 5/3 dano e 6 = 2 dano. A media é o dano esperado da arma
+
+								dano = ((int)((weaponDam * (fator/3)) * armadura)) - resistencia; // Dano final
+								if (dano <= 0) dano = 1; // Dano minimo é 1
+								
+								if ((int)(Heroi.critico * Heroi.buffCriticoValor)+random.nextInt(100)+1 >= 100) { // Soma a chance de critico com random 1-100. Se passar de 100 crita
 									dano *= 2;
 									Viloes.get(trgt-1).hp -= dano;
 									System.out.println("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + dano + " de dano!");
 								}
-								else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(99)+1 < 100) {
+								else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) { // Igual ao critico
 									Viloes.get(trgt-1).hp -= dano;
 									System.out.println(Viloes.get(trgt-1).nome + " atingido! " + dano + " de dano!");
 								}
@@ -301,6 +305,7 @@ public class CRodada {
 					
 			}
 			
+			// Usa as skills
 			else if ((chc.equalsIgnoreCase("1")))
 				noAtk = Heroi.Skill1(Viloes, weaponDam, trgt);
 			else if ((chc.equalsIgnoreCase("2")))
@@ -313,27 +318,31 @@ public class CRodada {
 				System.out.println("Ataque invalido: Tente denovo");
 		}
 		
+		// Se morrer, tira do vetor de posição (e por tabela do view/GUI
 		if (Viloes.get(trgt-1).hp <= 0) {
 			System.out.println(Viloes.get(trgt-1).nome + " foi morto!");
 			Viloes.remove(trgt-1);
 		}
 		
+		// Retorna essa flag positiva caso o ataque tenha sido cancelado, permitindo outra ação no turno
 		return noAtk;
 	}
 	
-	public static void endBattle (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes) {
+	public static void endBattle (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Lista) {
 		int EXP = 0;
-		if (Herois.isEmpty()) {
+		if (Herois.isEmpty()) { // Se todo mundo morreu, fudeu
 			//n sei o que fazer pra rodar um gameover
 			System.out.println("GAME OVER, MWAHAHAHAHA");
 		}
 		
 		else {
-			for (AbsPersonagem V: Viloes) {
-				if (V.hp <= 0)
-					EXP += V.level;
+			// Roda o vetor de jogada. Adiciona XP equivalente ao nivel de cada vilao morto à pilha de XP
+			for (AbsPersonagem P: Lista) {
+				if ((P.vilao) && (P.hp <= 0))
+					EXP += P.level;
 			}
 			
+			// Todo mundo vivo ganha XP
 			for (AbsPersonagem H: Herois) {
 				H.CountXP(EXP);
 				System.out.println(H.nome + " ganhou " + EXP + " pontos de experiencia!");
@@ -341,7 +350,6 @@ public class CRodada {
 		}
 		
 	}
-	
 	
 	public static boolean useItem (int contI, ArrayList <AbsPersonagem> Lista) {
 		//Colocar essas paradas dentro de um metodo
@@ -490,17 +498,15 @@ public class CRodada {
 		}
 		
 		else if (flag) {
-			atk = random.nextInt(99) + 1;
+			atk = random.nextInt(100) + 1;
 			
-			if (Viloes.get(contP).tipo == 1)
-				weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).forca*Viloes.get(contP).buffForcaValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
-			else
-				weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).percepcao*Viloes.get(contP).buffPercepcaoValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
+			if (Viloes.get(contP).tipo == 1) weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).forca*Viloes.get(contP).buffForcaValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
+			else weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).percepcao*Viloes.get(contP).buffPercepcaoValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
 			
 			if (atk <= 50) {
 				
 				// esse bloco aumenta a chance de um bot acertar a primeira posicao em 2x
-				trgt = random.nextInt(11) + 1;
+				trgt = random.nextInt(12) + 1;
 				trgt -= 6;
 				if (trgt - 6 < 0) trgt = 1;
 				
@@ -509,15 +515,15 @@ public class CRodada {
 				
 				resistencia = (int)(((Herois.get(trgt-1).resistencia*Herois.get(trgt-1).buffResistenciaValor)/5)*(0.96 + (Herois.get(trgt-1).level/15)));
 				
-				dano = (int)((weaponDam * ((1/3) * (random.nextInt(5)+1))) * armadura) - resistencia;
+				dano = (int)((weaponDam * ((1/3) * (random.nextInt(6)+1))) * armadura) - resistencia;
 				if (dano <=0) dano = 1;
 				
-				if ((int)(Viloes.get(contP).critico*Viloes.get(contP).buffCriticoValor)+random.nextInt(99)+1 >= 100) {
+				if ((int)(Viloes.get(contP).critico*Viloes.get(contP).buffCriticoValor)+random.nextInt(100)+1 >= 100) {
 						dano *= 2;
 						Herois.get(trgt-1).hp -= dano;
 						System.out.println("Inimigo atingiu " + Herois.get(trgt-1).nome + "com um golpe critico! " + dano + " de dano!");
 					}
-					else if ((int)(Herois.get(trgt-1).esquiva*Herois.get(trgt-1).buffEsquivaValor)+random.nextInt(99)+1 < 100) {
+					else if ((int)(Herois.get(trgt-1).esquiva*Herois.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) {
 						Herois.get(trgt-1).hp -= dano;
 						System.out.println(Herois.get(trgt-1).nome + " atingido! " + dano + " de dano!");
 					}
