@@ -36,26 +36,32 @@ public class AuxTemp {
 		hFirst.sorte = 100;
 		hFirst.nome = "hFirst";
 		hFirst.tipo = 1;
+		
 		hSecond.agilidade = 90;
 		hSecond.sorte = 90;
 		hSecond.nome = "hSecond";
 		hSecond.tipo = 1;
-		hThird.agilidade = 60;
+		
+		hThird.agilidade = 80;
 		hThird.sorte = 80;
 		hThird.nome = "hThird";
 		hThird.tipo = 3;
+		
 		hFourth.agilidade = 70;
 		hFourth.sorte = 70;
 		hFourth.nome = "hFourth";
 		hFourth.tipo = 3;
+		
 		hFifth.agilidade = 5;
 		hFifth.sorte = 5;
 		hFifth.nome = "hFifth";
 		hFifth.tipo = 5;
+		
 		hSixth.agilidade = 0;
 		hSixth.sorte = 0;
 		hSixth.nome = "hSixth";
 		hSixth.tipo = 5;
+		
 		vetorHer.add(0, hFirst);
 		vetorHer.add(1, hSecond);
 		vetorHer.add(2, hThird);

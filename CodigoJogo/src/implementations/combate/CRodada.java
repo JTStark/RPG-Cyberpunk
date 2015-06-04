@@ -40,6 +40,7 @@ public class CRodada {
 			// uma rodada para cada personagem, enquanto houverem herois ou viloes e ninguem quiser fugir
 			for (contI = 0; contI < Lista.size() && endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false; contI++) {
 				
+				System.out.println();
 				System.out.println(Lista.get(contI).nome + " " + Lista.get(contI).iniciativa);
 	
 				if (!Lista.get(contI).stun && Lista.get(contI).hp > 0) { //pula a jogada de um jogador se desorientado
@@ -76,9 +77,8 @@ public class CRodada {
 							
 							else if ((chc.equalsIgnoreCase("atacar")) || (chc.equalsIgnoreCase("a"))) {
 								
-								attack(Herois.get(contP), Viloes, contP);
+								flag = attack(Herois.get(contP), Viloes, contP);
 								
-								flag = false;
 							}
 				
 							else if ((chc.equalsIgnoreCase("usar item")) || (chc.equalsIgnoreCase("i")) || (chc.equalsIgnoreCase("item"))) {
@@ -222,18 +222,15 @@ public class CRodada {
 			/* Se os buffs vao ser porcentagens, precisamos soh multiplicar um atributo por seu buff toda vez q ele for usado, e deixar NAO BUFF = 1
 			 * Mas entao precisaremos dar tipecast (int) em alguns lugares.... 
 			 */
-				System.out.println("hu3");
 			}
 			numRodada++;
-			System.out.println("hu3hu3");
 			
 		}
-		System.out.println("hu3hu3hu3");
 		endBattle(Herois, Viloes);
-		System.out.println("hu3hu3hu3hu3");
+		
+		System.out.println("Fim de Combate");
 		
 		scanner.close();
-		System.out.println("hu3hu3hu3hu3hu3hu3hu3");
 	}
 	
 	public static void Reposition (ArrayList <AbsPersonagem> Jogadores, int contP) { // recebe o vetor de jogadores apropriado e a posicao do jogador atual
@@ -306,48 +303,49 @@ public class CRodada {
 		System.out.println("");
 	}
 	
-	public static void attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes, int posHeroi) {
+	public static boolean attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes, int posHeroi) {
 		Random random = new Random(); // gerador de numeros randomicos
 		String chc;
 		int trgt = 1, dano, resistencia;
 		double weaponDam, armadura, fator;
-		boolean choiceFlag1, choiceFlag2;
+		boolean choiceFlag1, choiceFlag2, noAtk = false;
 		
-		if (Heroi.tipo == 1)
-			weaponDam = /*dano arma*/30*(1 + (Heroi.forca*Heroi.buffForcaValor)/50)+(0.96+(Heroi.level/25))*0.5; //com melhor arma 100 dano, 100 força/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
-		else																									//com pior arma 4 dano, 15 força/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
-			weaponDam = /*dano arma*/30*(1 + (Heroi.percepcao*Heroi.buffPercepcaoValor)/50)+(0.96+(Heroi.level/25))*0.5;
-		
-		System.out.println("Selecione seu ataque: ");
-		System.out.println("ataque Basico (B)");
-		System.out.println("Habilidade (1): " + Heroi.nSkill1);
-		System.out.println("Habilidade (2): " + Heroi.nSkill2);
-		System.out.println("Habilidade (3): " + Heroi.nSkill3);
+		if (Heroi.tipo == 1) weaponDam = /*dano arma*/30*(1 + (Heroi.forca*Heroi.buffForcaValor)/50)+(0.96+(Heroi.level/25))*0.5; //com melhor arma 100 dano, 100 força/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
+		else weaponDam = /*dano arma*/30*(1 + (Heroi.percepcao*Heroi.buffPercepcaoValor)/50)+(0.96+(Heroi.level/25))*0.5; //com pior arma 4 dano, 15 força/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
 		
 		choiceFlag1 = true;
 		while (choiceFlag1) {
+			System.out.println("Selecione seu ataque: ");
+			System.out.println("ataque Basico (B)");
+			System.out.println("Habilidade (1): " + Heroi.nSkill1);
+			System.out.println("Habilidade (2): " + Heroi.nSkill2);
+			System.out.println("Habilidade (3): " + Heroi.nSkill3);
+			System.out.println("Cancelar (C)");
+			
 			chc = scanner.nextLine();
+			
 			if ((chc.equalsIgnoreCase("B"))) {
-				if(Heroi.tipo==1 || posHeroi<=2) {
+
+				if((Heroi.tipo==1 && posHeroi < 2) || Heroi.tipo!=1) {
+					
 					choiceFlag2 = true;
+					
 					while (choiceFlag2) {
+						
 						System.out.println("Selecione seu alvo (1-6)");
 						trgt = scanner.nextInt();
+						
 						if((Heroi.tipo == 1 && trgt <=2) || Heroi.tipo != 1) {							
 							if (trgt >= 1 && trgt <= 6) {
 								
-								// dano vai de 1/3*esperado a 2*esperado. Maximo de redução eh (dano/2,5 - 80), com 60 armadura, lvl 50 e 100 de resistencia 31,125
+								// dano vai de 1/3*esperado a 2*esperado. Maximo de redução eh (dano/2,5 - 80), com 60 armadura, lvl 50 e 100 de resistencia
 								armadura = (1 - (Viloes.get(trgt-1).armadura*Viloes.get(trgt-1).buffArmaduraValor));
 								if (armadura < 0) armadura = 0;
 								
 								resistencia = (int)(((Viloes.get(trgt-1).resistencia*Viloes.get(trgt-1).buffResistenciaValor)/5)*(0.96 + (Viloes.get(trgt-1).level/15)));
-								System.out.println(weaponDam + " " + armadura + " " + resistencia);
 								fator = random.nextInt(6)+1;
-								System.out.println(fator);
 								dano = ((int)((weaponDam * (fator/3)) * armadura)) - resistencia;
-								System.out.println(dano);
 								if (dano <= 0) dano = 1;
-								System.out.println(dano);
 								
 								if ((int)(Heroi.critico * Heroi.buffCriticoValor)+random.nextInt(99)+1 >= 100) {
 									dano *= 2;
@@ -361,25 +359,32 @@ public class CRodada {
 								else
 									System.out.println(Viloes.get(trgt-1).nome + " desviou!");
 								choiceFlag2 = false;
-								choiceFlag1 = false;
 							}
 							else
 								System.out.println("Alvo invalido! Tente novamente");
 						}
 						else {
-							System.out.println("Alvo muito distante para combate a curta distancia! Aproxime-se ou escolha um alvo mais proximo.");
+							System.out.println("Alvo muito distante para combate a curta distancia! Escolha um alvo mais proximo.");
 							choiceFlag2 = false;
 						}
 					}
+			
 				}
+				else {
+					System.out.println("Alvo muito distante para combate a curta distancia! Aproxime-se antes de atacar ou escolha outra habilidade.");
+					choiceFlag2 = false;
+				}				
+					
 			}
 			
 			else if ((chc.equalsIgnoreCase("1")))
-				trgt = Heroi.Skill1(Viloes, weaponDam);
+				noAtk = Heroi.Skill1(Viloes, weaponDam, trgt);
 			else if ((chc.equalsIgnoreCase("2")))
-				trgt = Heroi.Skill2(Viloes, weaponDam);
+				noAtk = Heroi.Skill2(Viloes, weaponDam, trgt);
 			else if ((chc.equalsIgnoreCase("3")))
-				trgt = Heroi.Skill3(Viloes, weaponDam);
+				noAtk = Heroi.Skill3(Viloes, weaponDam, trgt);
+			else if ((chc.equalsIgnoreCase("c")))
+				noAtk = true;
 			else
 				System.out.println("Ataque invalido: Tente denovo");
 		}
@@ -389,32 +394,27 @@ public class CRodada {
 			Viloes.remove(trgt-1);
 		}
 		
+		return noAtk;
 	}
 	
 	public static void endBattle (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes) {
 		int EXP = 0;
-		System.out.println("1");
 		if (Herois.isEmpty()) {
 			//n sei o que fazer pra rodar um gameover
 			System.out.println("GAME OVER, MWAHAHAHAHA");
 		}
 		
 		else {
-			System.out.println("2");
 			for (AbsPersonagem V: Viloes) {
 				if (V.hp <= 0)
 					EXP += V.level;
 			}
-			System.out.println("3");
 			
 			for (AbsPersonagem H: Herois) {
-				System.out.println("eita");
 				H.CountXP(EXP);
-				System.out.println("ops");
+				System.out.println(H.nome + " ganhou " + EXP + " pontos de experiencia!");
 			}
-			System.out.println("4");
 		}
-		System.out.println("5");
 		
 	}
 	
@@ -525,11 +525,11 @@ public class CRodada {
 			}
 			
 			/*else if ((atk > 50) && (atk <= 75))
-				Viloes.get(contP).Skill1(Herois, trgt, weaponDam);
+				Viloes.get(contP).Skill1(Herois, weaponDam, trgt);
 			else if ((atk > 75) && (atk <= 90))
-				Viloes.get(contP).Skill2(Herois, trgt, weaponDam);
+				Viloes.get(contP).Skill2(Herois, weaponDam, trgt);
 			else if ((atk > 90) && (atk <= 100))
-				Viloes.get(contP).Skill3(Herois, trgt, weaponDam);*/
+				Viloes.get(contP).Skill3(Herois, weaponDam, trgt);*/
 				
 		}
 		
