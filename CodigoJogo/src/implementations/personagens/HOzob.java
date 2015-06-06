@@ -7,6 +7,6 @@ package implementations.personagens;
  *
  */
 
-public class POzob extends AbsPersonagem {
+public class HOzob extends AbsPersonagem {
 
 }

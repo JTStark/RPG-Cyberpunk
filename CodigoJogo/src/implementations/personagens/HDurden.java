@@ -7,6 +7,10 @@ package implementations.personagens;
  *
  */
 
-public class PDurden extends AbsPersonagem {
-
+public class HDurden extends AbsPersonagem {
+	
+	public HDurden (){
+		
+	}
+	
 }

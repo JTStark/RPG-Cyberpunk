@@ -7,6 +7,6 @@ package implementations.personagens;
  *
  */
 
-public class PSilvana extends AbsPersonagem {
+public class HSilvana extends AbsPersonagem {
 
 }

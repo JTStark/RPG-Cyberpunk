@@ -18,8 +18,8 @@ public abstract class AbsPersonagem {
 	public int hp = 100, maxHP = 100, xp = 0, level = 1, armadura = 0, iniciativa, tipo /*1 = melee, 3 = ranged, 5 = support*/;
 	public boolean bleed = false, poison = false, stun = false, vilao = false;
 	public String nome, nSkill1, nSkill2, nSkill3;
-	/*Inventario inventario;*/
-		
+	
+	
 	public boolean Skill1 (ArrayList <AbsPersonagem> Viloes, double dam, int trgt) {
 		boolean noAtk = false;
 		return noAtk;
@@ -55,7 +55,6 @@ public abstract class AbsPersonagem {
 	public void CountXP (int modXP){
 		this.xp += modXP;
 		
-		/*daqui pra baixo também é provisório*/
 		while (this.xp >= this.level*10) {	
 			this.LevelUp();
 		}

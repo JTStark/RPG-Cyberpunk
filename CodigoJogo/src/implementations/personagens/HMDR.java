@@ -7,6 +7,6 @@ package implementations.personagens;
  *
  */
 
-public class PMDR extends AbsPersonagem {
+public class HMDR extends AbsPersonagem {
 
 }

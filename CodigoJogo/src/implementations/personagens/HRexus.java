@@ -7,6 +7,6 @@ package implementations.personagens;
  *
  */
 
-public class PRexus extends AbsPersonagem {
+public class HRexus extends AbsPersonagem {
 
 }
