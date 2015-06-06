@@ -1,4 +1,6 @@
-package implementations.personagens;
+package implementations.personagens.herois;
+
+import implementations.personagens.AbsPersonagem;
 
 /**
  * Classe do Steven T. Durden que herda a abstrata para os personagens

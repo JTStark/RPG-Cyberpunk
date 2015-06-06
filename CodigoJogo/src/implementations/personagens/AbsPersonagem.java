@@ -154,8 +154,5 @@ public abstract class AbsPersonagem {
 				i++;
 			}
 		}
-		
 	}
-
-
 }
