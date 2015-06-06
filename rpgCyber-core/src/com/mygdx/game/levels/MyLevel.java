@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.levels;
 
 import java.io.IOException;
 
@@ -21,6 +21,8 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.mygdx.game.animate.Animator;
+import com.mygdx.game.savestate.SaveState;
 
 
 /**                               Developed By:
@@ -51,7 +53,7 @@ public class MyLevel extends VisualGameWorld {
 		camera.update();
 		WorldSettings.setAmbientColor(Color.WHITE);
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
-		ani = new Animator("link.png");
+		ani = new Animator("os.png");
 		map = new TmxMapLoader().load("novod.tmx");
 		renderer = new OrthogonalTiledMapRenderer(map, 1f/32f);
 		magician = new Magician_Test(this);

@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.savestate;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,6 +15,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import com.mygdx.game.levels.MyLevel;
 
 import snake.visuals.enhanced.VisualGameWorld;
 

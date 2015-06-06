@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.menus;
 
 
 	import box2dLight.Light;
@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.mygdx.game.levels.MyHUD;
+import com.mygdx.game.levels.MyLevel;
 
 import snake.engine.creators.ScreenCreator;
 import snake.engine.models.HUD;

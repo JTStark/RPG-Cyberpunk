@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.menus;
 
 import snake.engine.creators.WorldSettings;
 import snake.visuals.enhanced.VisualGameWorld;
