@@ -1,6 +1,6 @@
 // Global audio player class.
 
-package com.mygdx.game;
+package com.mygdx.game.sound;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
