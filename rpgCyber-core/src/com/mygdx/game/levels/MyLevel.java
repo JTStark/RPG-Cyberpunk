@@ -43,7 +43,7 @@ public class MyLevel extends VisualGameWorld {
 	private TiledMapRenderer renderer;
 	private TiledMapTileLayer colision;
 	private OrthographicCamera camera;
-	private float dx,dy,v;
+	private float dx,dy,v,tempx,tempy;
 	public MyLevel (String LevelData/* Add other parameters of choice*/) {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
@@ -53,7 +53,7 @@ public class MyLevel extends VisualGameWorld {
 		camera.update();
 		WorldSettings.setAmbientColor(Color.WHITE);
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
-		ani = new Animator("os.png");
+		ani = new Animator("link.png");
 		map = new TmxMapLoader().load("novod.tmx");
 		renderer = new OrthogonalTiledMapRenderer(map, 1f/32f);
 		magician = new Magician_Test(this);
@@ -154,26 +154,50 @@ public class MyLevel extends VisualGameWorld {
 		dy=0;
 
 		// move player
-		/*if(!(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&Gdx.input.isKeyPressed(Input.Keys.LEFT) ||
-				Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&Gdx.input.isKeyPressed(Input.Keys.UP)||
-				Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&Gdx.input.isKeyPressed(Input.Keys.DOWN)||
-				Gdx.input.isKeyPressed(Input.Keys.UP)&&Gdx.input.isKeyPressed(Input.Keys.LEFT)||
-				Gdx.input.isKeyPressed(Input.Keys.UP)&&Gdx.input.isKeyPressed(Input.Keys.DOWN) ||
-				Gdx.input.isKeyPressed(Input.Keys.DOWN)&&Gdx.input.isKeyPressed(Input.Keys.LEFT))){*/
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!(colision.getCell((int)camera.position.x + 1, (int) camera.position.y-1).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+			if(colision.getCell((int)(camera.position.x), (int) camera.position.y).getTile().getProperties().get("blocked") != null){
+				dx = 0;
+			}
+			if(colision.getCell((int)(camera.position.x), (int) (camera.position.y-0.5)).getTile().getProperties().get("blocked") != null){
+				dx=0;
+			}
+			if(colision.getCell((int)(camera.position.x), (int) (camera.position.y-1.5)).getTile().getProperties().get("blocked") != null){
+				dx=0;
+			}else
+				
 			dx=1;
 		}else
-		if(!Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&Gdx.input.isKeyPressed(Input.Keys.UP)&&!(colision.getCell((int)camera.position.x, (int) camera.position.y).getTile().getProperties().get("blocked") != null)){
-			dy=1;
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+			if(colision.getCell((int)camera.position.x -1/2, (int) (camera.position.y-1.0/2)).getTile().getProperties().get("blocked") != null){
+				dy = 0;
+			}
+			if(colision.getCell((int)camera.position.x + 1, (int) (camera.position.y-1.0/2)).getTile().getProperties().get("blocked") != null){
+				dy=0;
+			}
+			if(colision.getCell((int)camera.position.x, (int) (camera.position.y-1.0/2)).getTile().getProperties().get("blocked") != null){
+				dy=0;
+			}else
+				dy =1;			
 		}else
-		if(!Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!Gdx.input.isKeyPressed(Input.Keys.UP)&&Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!(colision.getCell((int)camera.position.x, (int) camera.position.y-1).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
 			dx=-1;
 		}else
-		if(!Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!Gdx.input.isKeyPressed(Input.Keys.UP)&&!Gdx.input.isKeyPressed(Input.Keys.LEFT)&&Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell((int)camera.position.x, (int) camera.position.y-1).getTile().getProperties().get("blocked") != null)){
-			dy=-1;
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+			if(colision.getCell((int)camera.position.x -1/2, (int) camera.position.y-1+1/2).getTile().getProperties().get("blocked") != null){
+				dy = 0;
+			}
+			if(colision.getCell((int)camera.position.x + 1, (int) camera.position.y-1+1/2).getTile().getProperties().get("blocked") != null){
+				dy=0;
+			}
+			if(colision.getCell((int)camera.position.x, (int) camera.position.y-1+1/2).getTile().getProperties().get("blocked") != null){
+				dy=0;
+			}else
+				dy =-1;
 		}
-		
+		tempx = ani.getX();
+		tempy = ani.getY();
 		ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
+		//move(dx,dy,ani.getX(),ani.getY());
 		camera.position.x+=ani.getX();
 		camera.position.y+=ani.getY();
 		camera.update();
@@ -231,7 +255,72 @@ public class MyLevel extends VisualGameWorld {
 		// TODO Auto-generated method stub
 		
 	}
+	private void move(float dx,float dy,float x,float y){
+		
+		//move up
+		if(dy == 1){
+			if(colision.getCell((int)camera.position.x -1/2, (int) camera.position.y+1/2).getTile().getProperties().get("blocked") != null){
+				x = tempx;
+				y = tempy;
+			}
+			if(colision.getCell((int)camera.position.x + 1/2, (int) camera.position.y+1/2).getTile().getProperties().get("blocked") != null){
+				x = tempx;
+				y = tempy;
+			}
+			if(colision.getCell((int)camera.position.x, (int) camera.position.y+1/2).getTile().getProperties().get("blocked") != null){
+				x = tempx;
+				y = tempy;
+			}
+		}
+		
+		//move down
+		if(dy == -1){
+			
+				if(colision.getCell((int)camera.position.x, (int) camera.position.y -1-1/2).getTile().getProperties().get("blocked") != null){
+					x = tempx;
+					y = tempy;
+				}
+			
 
+			
+				if(colision.getCell((int)camera.position.x + 1/2, (int) camera.position.y -1-1/2).getTile().getProperties().get("blocked") != null){
+					x = tempx;
+					y = tempy;
+				}
+			
+		}//move left
+		if(dx == 1){
+			
+				if(colision.getCell((int)camera.position.x-1/2, (int) camera.position.y -1-1/2).getTile().getProperties().get("blocked") != null){
+					x = tempx;
+					y = tempy;
+				}
+			
+
+			
+				if(colision.getCell((int)camera.position.x-1/2, (int) camera.position.y-1).getTile().getProperties().get("blocked") != null){
+					x = tempx;
+					y = tempy;
+				
+			}
+		}//move right
+		if(dx == -1){
+			
+				if(colision.getCell((int)camera.position.x+1, (int) camera.position.y -1/2).getTile().getProperties().get("blocked") != null){
+					x = tempx;
+					y = tempy;
+				}
+			
+
+			
+				if(colision.getCell((int)camera.position.x+1, (int) camera.position.y-1).getTile().getProperties().get("blocked") != null){
+					x = tempx;
+					y = tempy;
+				}
+			
+		}
+		ani.setXY(x, y);
+	}
 
 	@Override
 	public void resume() {

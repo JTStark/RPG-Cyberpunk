@@ -172,7 +172,7 @@ public class Animator{
     	play.addStateTime( Gdx.graphics.getDeltaTime());           // #15
         play.setTextureRegion( play.getAnimation().getKeyFrame(play.getStateTime(), true));  // #16
         play.getSpriteBatch().begin(); 
-        play.getSpriteBatch().draw(play.getTextureRegion(), x+Gdx.app.getGraphics().getWidth()/2 -Gdx.app.getGraphics().getWidth()/50, y+Gdx.app.getGraphics().getHeight()/2-Gdx.app.getGraphics().getHeight()/8, width, height);// #17
+        play.getSpriteBatch().draw(play.getTextureRegion(), x+Gdx.app.getGraphics().getWidth()/2 -Gdx.app.getGraphics().getWidth()/20, y+Gdx.app.getGraphics().getHeight()/2-Gdx.app.getGraphics().getHeight()/10, width, height);// #17
         play.getSpriteBatch().end();
         return play;
     }
