@@ -10,5 +10,6 @@ import implementations.personagens.AbsPersonagem;
  */
 
 public class HRexus extends AbsPersonagem {
+	public int forca = 15, percepcao = 15, resistencia = 15, carisma = 55, inteligencia = 15, agilidade = 15, sorte = 45;
 
 }

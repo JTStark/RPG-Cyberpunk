@@ -10,6 +10,7 @@ import implementations.personagens.AbsPersonagem;
  */
 
 public class HDurden extends AbsPersonagem {
+	public int forca = 35, percepcao = 25, resistencia = 45, carisma = 15, inteligencia = 15, agilidade = 15, sorte = 25;
 	
 	public HDurden (){
 		

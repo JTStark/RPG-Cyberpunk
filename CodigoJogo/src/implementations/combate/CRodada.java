@@ -39,7 +39,7 @@ public class CRodada {
 				System.out.println();
 				System.out.println(Lista.get(contI).nome + " " + Lista.get(contI).iniciativa);
 	
-				if (!Lista.get(contI).stun && Lista.get(contI).hp > 0) { //pula a jogada de um jogador se desorientado
+				if ((Lista.get(contI).buffStunRounds == 0) && Lista.get(contI).hp > 0) { //pula a jogada de um jogador se desorientado
 					
 					// If para os Viloes (AI)
 					if (Lista.get(contI).vilao) {
@@ -112,11 +112,13 @@ public class CRodada {
 				}
 				
 				// subtrai danos por sangramento ou veneno
-				if (Lista.get(contI).bleed) {
+				if (Lista.get(contI).buffBleedRounds > 0) {
 					Lista.get(contI).hp -= Lista.get(contI).hp * 0.1;
+					Lista.get(contI).buffBleedRounds--;
 				}
-				if (Lista.get(contI).poison) {
+				if (Lista.get(contI).buffPoisonRounds > 0) {
 					Lista.get(contI).hp -= Lista.get(contI).maxHP * 0.1;
+					Lista.get(contI).buffPoisonRounds--;
 				}
 				
 				// Remove duracao de 1 round dos buffs
@@ -130,6 +132,7 @@ public class CRodada {
 				if (Lista.get(contI).buffArmaduraRounds > 0) Lista.get(contI).buffArmaduraRounds--;
 				if (Lista.get(contI).buffEsquivaRounds > 0) Lista.get(contI).buffEsquivaRounds--;
 				if (Lista.get(contI).buffCriticoRounds > 0) Lista.get(contI).buffCriticoRounds--;
+				if (Lista.get(contI).buffStunRounds > 0) Lista.get(contI).buffStunRounds--;
 				
 				// Remove os buff cujos rounds acabaram
 				if (Lista.get(contI).buffForcaRounds == 0) Lista.get(contI).buffForcaValor=1;

@@ -10,5 +10,6 @@ import implementations.personagens.AbsPersonagem;
  */
 
 public class HOleg extends AbsPersonagem {
+	public int forca = 25, percepcao = 45, resistencia = 15, carisma = 15, inteligencia = 15, agilidade = 35, sorte = 25;
 
 }

@@ -12,11 +12,11 @@ import java.util.ArrayList;
 
 public abstract class AbsPersonagem {
 	public int forca = 15, percepcao = 15, resistencia = 15, carisma = 15, inteligencia = 15, agilidade = 15, sorte = 15;
-	public int buffForcaRounds, buffPercepcaoRounds, buffResistenciaRounds, buffCarismaRounds, buffInteligenciaRounds, buffAgilidadeRounds, buffSorteRounds, buffArmaduraRounds, buffEsquivaRounds, buffCriticoRounds;
+	public int buffForcaRounds, buffPercepcaoRounds, buffResistenciaRounds, buffCarismaRounds, buffInteligenciaRounds, buffAgilidadeRounds, buffSorteRounds, buffArmaduraRounds, buffEsquivaRounds, buffCriticoRounds, buffBleedRounds, buffPoisonRounds, buffStunRounds;
 	public double buffForcaValor=1, buffPercepcaoValor=1, buffCarismaValor=1, buffResistenciaValor=1, buffInteligenciaValor=1, buffAgilidadeValor=1, buffSorteValor=1, buffArmaduraValor=1, buffEsquivaValor=1, buffCriticoValor;
 	public double esquiva = 0, critico = 0;
 	public int hp = 100, maxHP = 100, xp = 0, level = 1, armadura = 0, iniciativa, tipo /*1 = melee, 3 = ranged, 5 = support*/;
-	public boolean bleed = false, poison = false, stun = false, vilao = false;
+	public boolean vilao = false;
 	public String nome, nSkill1, nSkill2, nSkill3;
 	
 	
