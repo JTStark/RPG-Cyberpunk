@@ -29,7 +29,11 @@ public class CEngine {
 				flag = true;
 				contL = 0;
 				
-				listaH.add(H.tipo - 1, H);
+				if (listaH.get(H.tipo-1) != null) H.pos = H.tipo;
+				else H.pos = H.tipo - 1;
+
+				listaH.add(H.pos, H);
+				
 				
 				// se a lista esta vazia, adiciona na primeira posicao
 				if(listaI.isEmpty()) {
@@ -65,7 +69,10 @@ public class CEngine {
 				flag = true;
 				contL = 0;
 				
-				listaV.add(V.tipo - 1, V);
+				if (listaV.get(V.tipo-1) != null) V.pos = V.tipo;
+				else V.pos = V.tipo - 1;
+
+				listaH.add(V.pos, V);
 				
 				if(listaI.isEmpty()) {
 					

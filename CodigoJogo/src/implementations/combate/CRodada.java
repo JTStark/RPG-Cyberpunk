@@ -198,6 +198,10 @@ public class CRodada {
 			temp = Jogadores.get(contP);
 			Jogadores.remove(contP);
 			Jogadores.add(contP+mov, temp);
+			
+			for (int cont = 0; cont < Jogadores.size(); cont++){
+				Jogadores.get(cont).pos = cont;
+			}
 		}
 		
 		// Se o jogador escolher direita, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
@@ -220,6 +224,10 @@ public class CRodada {
 			temp = Jogadores.get(contP);
 			Jogadores.remove(contP);
 			Jogadores.add(contP-mov, temp);
+			
+			for (int cont = 0; cont < Jogadores.size(); cont++){
+				Jogadores.get(cont).pos = cont;
+			}
 		}
 			
 		System.out.println("");
@@ -489,6 +497,11 @@ public class CRodada {
 				temp = Viloes.get(contP);
 				Viloes.remove(contP);
 				Viloes.add(contP+1, temp);
+				
+				for (int cont = 0; cont < Viloes.size(); cont++){
+					Viloes.get(cont).pos = cont;
+				}
+				
 				flag = false;
 			}				
 		}
@@ -498,6 +511,11 @@ public class CRodada {
 			temp = Viloes.get(contP);
 			Viloes.remove(contP);
 			Viloes.add(contP-1, temp);
+			
+			for (int cont = 0; cont < Viloes.size(); cont++){
+				Viloes.get(cont).pos = cont;
+			}
+			
 			flag = false;
 		}
 		
