@@ -5,16 +5,16 @@ import com.badlogic.gdx.Input;
 
 public class Animator{
 
-    private static final int        FRAME_COLS = 10;         
-    private static final int        FRAME_ROWS = 8;         
+    protected static final int        FRAME_COLS = 10;         
+    protected static final int        FRAME_ROWS = 8;         
     private Animax walkRight, walkLeft,walkUp,walkDown;   
     private Animax stopRight, stopLeft,stopUp,stopDown;
     private boolean flagup = false, flagdown = false,flagright = false,flagleft = false;
     private int i;
-    private float x,y, width,height;
+    protected float x,y, width,height;
     public  Animator(String file) {
     	x = 1;
-    	y = 2;
+    	y = 1;
     	width = Gdx.app.getGraphics().getWidth()/13;
     	height = Gdx.app.getGraphics().getHeight()/8;
     	walkRight = new Animax();
@@ -172,7 +172,7 @@ public class Animator{
     	play.addStateTime( Gdx.graphics.getDeltaTime());           // #15
         play.setTextureRegion( play.getAnimation().getKeyFrame(play.getStateTime(), true));  // #16
         play.getSpriteBatch().begin(); 
-        play.getSpriteBatch().draw(play.getTextureRegion(), x+Gdx.app.getGraphics().getWidth()/2 -Gdx.app.getGraphics().getWidth()/20, y+Gdx.app.getGraphics().getHeight()/2-Gdx.app.getGraphics().getHeight()/10, width, height);// #17
+        play.getSpriteBatch().draw(play.getTextureRegion(), x+Gdx.app.getGraphics().getWidth()/2, y+Gdx.app.getGraphics().getHeight()/2, width, height);// #17
         play.getSpriteBatch().end();
         return play;
     }
