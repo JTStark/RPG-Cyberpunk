@@ -123,9 +123,9 @@
    eJztmGkKwjAUhGOL+1JXFFyP1qN5lB7NEcyPlKYmNfQ9YQY+BHWSN13oUGMoiqL+U7kxVWZM6QO/l5r9VvhvNcCnj0y5v77OEIzAGEzAtOccXfevrzMDc7AAS7ByZ/Ge97YMMX7f/rE5CrAGG7AFO3eOp4/AHF/9vv1jc+zBAZzBEZwC10l1XXXdP/Uc0vd57rlG7He5cn+T7LEJPQba/FrmYA5dczCHrjmYw+3NTZ0opndL+K2kn8faertU76+v8+7NN3AHDxPf223vvoBrB3+qHL/29uLjS937++7tUr0/1TrSfivp3s3erncO5tA1B3PomoM55Hs3e3vzOnzf3t5XQ/183+7m4Pt2Hfd53nLOY3u3hJ+iKEq7Xi76sYY=
   </data>
  </layer>
- <layer name="Colisoes" width="50" height="50" opacity="0">
+ <layer name="Colisoes" width="50" height="50" opacity="0.01">
   <data encoding="base64" compression="zlib">
-   eJztlksOwzAIRNNrdNnv/W/YbRRBgJjAxB0kVvaQeY6NvSwMBuOf4h5IRP26zs2Rez469Sg+zuCQ/uXe2HaO5cPSW2MZHBVJDpnjo9Sp2lffQY5ZzvnVObQ9cuQeq9ZrNSNrgKZH8UEOLB/k6O83Wf2qu//zHtTreN4+0TkRfQWH91sjenLIHC/BR2RfvQ/qec77fWRyzHAPbmtG1gBNj+KDHFg+yNHfb7L6VXf/5z2o1/G8nUbeR5beGsvgqEhyyBxPpU7VvnoMcsxyzq/O4U1EPYPBmDt+bg44Jg==
+   eJztls0SwyAIhNPX6LG/7/+GvXYyEkAobOwyw0mX7GcU3TYGg/FPcXUkov67zsWQRz469Sg+fsEx+pdHY/s5mg9Nr41lcFQkGkdEl8nxEupU7at3kGOVc352DmmPzNxj1XqppmcN0PQoPsiB5YMc/f0mq19193/eg3Idy9vHO8ejr+CwfiuiX41jpJvheAx8ePbVc1LPc97vI5NjhXtwX9OzBmh6FB/kwPJBjv5+k9Wvuvs/70G5juXtFHkfaXptLIOjItE4IrpMjrtQp2pf3YIcq5zzs3NYE1HPYDDWjg8E4Dhx
   </data>
  </layer>
  <layer name="Baus" width="50" height="50">
@@ -136,4 +136,9 @@
  <imagelayer name="YT1300" x="-12" y="-37">
   <image source="Imagens fundo/Editados/YT1300.png"/>
  </imagelayer>
+ <layer name="Baus2" width="50" height="50" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAIA7Dh3zQmlnDQKmgCAAAAAAAAAADAZ3MdKFkn2AAC
+  </data>
+ </layer>
 </map>

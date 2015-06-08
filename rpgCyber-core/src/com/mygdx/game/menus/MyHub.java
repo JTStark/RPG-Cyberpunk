@@ -66,19 +66,22 @@ import snake.hud.SnakeHUD;
 				}
 			}
 			if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
-				if(i == 0)
+				if(i <= 0)
 					i = 2;
-				else
+				else{
 					i--;
+					i--;
+				}
 			}
 			if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-				if(i == 2)
+				if(i >= 2)
 					i = 0;
-				else
+				else{
 					i++;
+					i++;
+				}
 			}
 			instructions[0] = "Start";
-			instructions[1] = "Options";
 			instructions[2] = "Exit";
 		}
 		
@@ -100,24 +103,24 @@ import snake.hud.SnakeHUD;
 				layout.setText(font, instructions[0]);
 				font.draw(batch, layout, w / 2 - layout.width / 2 -50, h / 2 - layout.height / 2 + 50);
 			}
-			if(i==1){
-				font.setColor(Color.RED);
-				layout.setText(font, instructions[1]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
-				font.setColor(Color.WHITE);
-			}else{
-				layout.setText(font, instructions[1]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
-			}
 			if(i==2){
 				font.setColor(Color.RED);
 				layout.setText(font, instructions[2]);
+				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
+				font.setColor(Color.WHITE);
+			}else{
+				layout.setText(font, instructions[2]);
+				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
+			}
+			/*if(i==2){
+				font.setColor(Color.RED);
+				layout.setText(font, instructions[2]);
 				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
 				font.setColor(Color.WHITE);
 			}else{
 				layout.setText(font, instructions[2]);
 				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
-			}
+			}*/
 		}
 
 		@Override

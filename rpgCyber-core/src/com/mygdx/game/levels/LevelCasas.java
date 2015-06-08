@@ -124,12 +124,6 @@ public class LevelCasas extends VisualGameWorld {
 				v=v/5;
 			}
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
-			WorldSettings.setAmbientColor(new Color (0.1f, 0.1f, 0.1f, 1f));
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.X)) {
-			WorldSettings.setAmbientColor(Color.WHITE);
-		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
 			try {
 				SaveState save = new SaveState(this);
@@ -146,39 +140,6 @@ public class LevelCasas extends VisualGameWorld {
 				e.printStackTrace();
 			}
 		}
-		//Camera Movement
-		if (Gdx.input.isKeyPressed(Input.Keys.A))
-			getStage().getCameraMan().moveCamera(-20f * delta, 0);
-			
-		if (Gdx.input.isKeyPressed(Input.Keys.D))
-			getStage().getCameraMan().moveCamera(20f * delta, 0);
-			
-		if (Gdx.input.isKeyPressed(Input.Keys.S))
-			getStage().getCameraMan().moveCamera( 0, -20f * delta);
-			
-		if (Gdx.input.isKeyPressed(Input.Keys.W))
-			getStage().getCameraMan().moveCamera(0, 20f * delta);
-			
-		//Camera Zoom
-		if (Gdx.input.isKeyPressed(Input.Keys.O))
-			getStage().getCameraMan().zoomCamera(-.5f * delta);
-			
-		if (Gdx.input.isKeyPressed(Input.Keys.P))
-			getStage().getCameraMan().zoomCamera(.5f * delta);
-		
-		
-		//Virtual Camera Movement
-		if (Gdx.input.isKeyPressed(Input.Keys.L))
-			getStage().getCameraMan().moveVCamera(.01f, 0);
-		
-		if (Gdx.input.isKeyPressed(Input.Keys.J))
-			getStage().getCameraMan().moveVCamera(-.01f, 0);
-			
-		if (Gdx.input.isKeyPressed(Input.Keys.I))
-			getStage().getCameraMan().moveVCamera(0, .01f);
-		
-		if (Gdx.input.isKeyPressed(Input.Keys.K))
-			getStage().getCameraMan().moveVCamera(0, -.01f);
 		
 		dx=0;
 		dy=0;
@@ -237,12 +198,6 @@ public class LevelCasas extends VisualGameWorld {
 
 		camera.update();
 		
-		//Virtual Camera Zoom
-		if (Gdx.input.isKeyPressed(Input.Keys.U))
-			getStage().getCameraMan().zoomVCamera(.01f);
-			
-		if (Gdx.input.isKeyPressed(Input.Keys.Y))
-			getStage().getCameraMan().zoomVCamera(-.01f);
 		
 	}
 	@Override
