@@ -246,8 +246,8 @@ public class CRodada {
 		boolean choiceFlag1, choiceFlag2, noAtk = false; // Flags para parar os loops de escolha de ação. noAtk permite voltar ao menu de "Jogada" sem perder a vez
 		
 		//Melee usa força, ranged usa percepção. dano = (dano arma * (1+(força/50)+(fator de nivel)) /2 ). Fator nivel é 1 no nivel 1 e sobe pra 2 no nivel 50
-		if (Heroi.tipo == 1) weaponDam = /*dano arma*/30*(1 + (Heroi.forca*Heroi.buffForcaValor)/50)+(0.96+(Heroi.level/25))*0.5; //com melhor arma 100 dano, 100 força/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
-		else weaponDam = /*dano arma*/30*(1 + (Heroi.percepcao*Heroi.buffPercepcaoValor)/50)+(0.96+(Heroi.level/25))*0.5; //com pior arma 4 dano, 15 força/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
+		if (Heroi.tipo == 1) weaponDam = Heroi.danoArma*(1 + (Heroi.forca*Heroi.buffForcaValor)/50)+(0.96+(Heroi.level/25))*0.5; //com melhor arma 100 dano, 100 força/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
+		else weaponDam = Heroi.danoArma*(1 + (Heroi.percepcao*Heroi.buffPercepcaoValor)/50)+(0.96+(Heroi.level/25))*0.5; //com pior arma 4 dano, 15 força/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
 		
 		choiceFlag1 = true;
 		while (choiceFlag1) {
@@ -522,8 +522,8 @@ public class CRodada {
 		else if (flag) {
 			atk = random.nextInt(100) + 1;
 			
-			if (Viloes.get(contP).tipo == 1) weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).forca*Viloes.get(contP).buffForcaValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
-			else weaponDam = /*dano arma*/10*(1 + (Viloes.get(contP).percepcao*Viloes.get(contP).buffPercepcaoValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
+			if (Viloes.get(contP).tipo == 1) weaponDam = Viloes.get(contP).danoArma*(1 + (Viloes.get(contP).forca*Viloes.get(contP).buffForcaValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
+			else weaponDam = Viloes.get(contP).danoArma *(1 + (Viloes.get(contP).percepcao*Viloes.get(contP).buffPercepcaoValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
 			
 			if (atk <= 50) {
 				
