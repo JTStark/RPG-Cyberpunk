@@ -61,11 +61,11 @@ public class MyLevel extends VisualGameWorld {
 		WorldSettings.setAmbientColor(Color.WHITE);
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
 		ani = new Animator("link.png");
-		map = new TmxMapLoader().load("novod.tmx");
+		map = new TmxMapLoader().load("Mapas/MapaExterno.tmx");
 		renderer = new OrthogonalTiledMapRenderer(map, 1f/32f);
 		magician = new Magician_Test(this);
 
-        colision =  (TiledMapTileLayer)map.getLayers().get(0);
+        colision =  (TiledMapTileLayer)map.getLayers().get(2);
 	}
 	
 	
@@ -194,12 +194,12 @@ public class MyLevel extends VisualGameWorld {
 		camera.position.x+=ani.getX();
 		camera.position.y+=ani.getY();
 		camera.update();
-		if(camera.position.x<1){ 	camera.position.x=1; } else if(camera.position.x>lim -2){
-			camera.position.x=(float) (lim-2);
+		if(camera.position.x<1){ 	camera.position.x=1; } else if(camera.position.x>lim -1){
+			camera.position.x=(float) (lim-1);
 		}
 
-		if(camera.position.y<2){ 	camera.position.y=2; }else if(camera.position.y>lim-2){
-		camera.position.y=(float)( lim-2);
+		if(camera.position.y<1){ 	camera.position.y=1; }else if(camera.position.y>lim-1){
+		camera.position.y=(float)( lim-1);
 		}
 
 		camera.update();

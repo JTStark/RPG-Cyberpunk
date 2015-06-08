@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Chao1" tilewidth="32" tileheight="32">
+  <image source="Chao1.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="2" name="ChaoBorda" tilewidth="32" tileheight="32">
+  <image source="ChaoBorda.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="3" name="ChaoQuina" tilewidth="32" tileheight="32">
+  <image source="ChaoQuina.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="&quot;blocked&quot;"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="4" name="ChaoCorredor" tilewidth="32" tileheight="32">
+  <image source="ChaoCorredor.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="5" name="Top_Predio" tilewidth="32" tileheight="32">
+  <properties>
+   <property name="blocked" value="blocked"/>
+  </properties>
+  <image source="Top_Predio.png" width="160" height="128"/>
+ </tileset>
+ <tileset firstgid="25" name="JanelaApagada" tilewidth="32" tileheight="32">
+  <image source="JanelaApagada.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="blocked"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="26" name="ParedeInvisivel" tilewidth="32" tileheight="32">
+  <image source="ParedeInvisivel.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="blocked"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="27" name="Porta" tilewidth="32" tileheight="32">
+  <image source="Porta.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="28" name="Inn" tilewidth="32" tileheight="32">
+  <image source="Inn.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="29" name="SombraPlaca" tilewidth="32" tileheight="32">
+  <image source="SombraPlaca.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="30" name="ShopSign" tilewidth="32" tileheight="32">
+  <image source="ShopSign.png" width="96" height="32"/>
+ </tileset>
+ <tileset firstgid="33" name="Bau" tilewidth="32" tileheight="32">
+  <image source="Bau.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="chest" value="chest"/>
+   </properties>
+  </tile>
+ </tileset>
+ <imagelayer name="Fundo" x="-4" y="-6" visible="0">
+  <image source="Imagens fundo/Editados/fundo3.png"/>
+ </imagelayer>
+ <layer name="Camada de Tiles 2" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt2EsKwCAMRdHswH5G7n+jTaGFjuOTaL0HMtTwmoBQMwAAAGA9xWvz2r0Or3PS/uTQIEefe6LI0eeeqOz+AIC1tb5Do7xj5NCcVyGH5rwKOTTnAQDIdL9j1cb4f1Ub+pfnjrcycij6f+fR8j2iVPvwp3ko9jNKtQ+zzeMChlANiQ==
+  </data>
+ </layer>
+ <layer name="Camada de Tiles 1" width="50" height="50">
+  <properties>
+   <property name="door" value="door"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmAtuwjAQRF2iln6B0lat6A9uxtE4CkdjkELlRF7bGy+2SXelJ1Bg1h45dkYxRktL6z/VikGNertPY8x+YsyWAr9vU/U+Hyl6uw/+u7/CJ8VEQO/zkaJ39bkGN2AKbsFdrw9F7DxC+tD4sT7uwQN4BE9g1p0Lue4+Dxw9NT7XxxwswDNYgpfuPHYU/Tlv3D6Cemp8ro9X8AY+wTv4MHnvq9D4sT5K7FPJfd4Q98jpWhOYR0m93ce1xq57oUY91bPfhxrPvj5ET/Wi9JwKzYPS5NBzasw+Su8PKR+Xoi993kidV+35/ZebXZmIk7tz6+0+Y3meS+X2c+f+WB/H3PwDfsHa8HP7KXd/ge8Beikfqbl93uqkc3/u3H7u3B/r49L3ea7cTaG5ne6ZO1eset9rzVep6zGkSqyHpL6WeaiP8ueN1HnVnt+a2wvrXX30fbs/d8fq9X1714e+b69jnzeeNefm9tx6u08sNeq1tLTGXQdO1d7+
+  </data>
+ </layer>
+ <layer name="Camada de Tiles 3" width="50" height="50">
+  <properties>
+   <property name="door" value="door"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt2DEOgCAMBVDO4f0P6qqNcZBiBd9LSGCA0oThh9YAIM92MWasH/dV9JFRf6U+vvCu4hwAYFa9+ao6nx3vcbcevT/LSn305Ga5GwDgrDp3+28fc85T2f/tcf6W6voA/MMOKbEIBw==
+  </data>
+ </layer>
+ <imagelayer name="YT1300" x="-56" y="-89">
+  <image source="Imagens fundo/Editados/YT1300.png"/>
+ </imagelayer>
+</map>
