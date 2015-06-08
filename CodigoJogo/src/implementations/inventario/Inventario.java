@@ -4,7 +4,7 @@ import java.util.Enumeration;
 import java.util.Vector;
 
 
-public class Inventario {
+public class Inventario implements InterfaceInventario{
 	
 	public static Inventario instancia = null;
 	private Vector<String> mochila = new Vector<String>(40);
@@ -47,7 +47,13 @@ public class Inventario {
 			System.out.println("O item " + nome_item + " não existe");
 		}
 	}
-	
+	public boolean verificar_item (String nome_item){
+		Item item = new Item(nome_item);
+		if(mochila.contains(item.getName()))
+			return true;
+		else
+			return false;
+	}
 	/* Imprime os equipamentos na mochila */
 	public void getMochila(){
 		for (Enumeration<String> e = mochila.elements(); e.hasMoreElements();){
