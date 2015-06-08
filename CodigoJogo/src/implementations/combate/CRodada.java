@@ -267,7 +267,7 @@ public class CRodada {
 							if (trgt >= 1 && trgt <= 6) {
 								
 								// dano vai de 1/3*esperado a 2*esperado. Maximo de redução eh (dano/2,5 - 80), com 60 armadura, lvl 50 e 100 de resistencia
-								armadura = (1 - (Viloes.get(trgt-1).armadura*Viloes.get(trgt-1).buffArmaduraValor));
+								armadura = (1 - ((Viloes.get(trgt-1).armadura*Viloes.get(trgt-1).buffArmaduraValor)/100));
 								if (armadura < 0.1) armadura = 0.1; // evita armadura acima de 90% por buffs
 								
 								// Resistencia(com buffs)/5 * fator de nivel

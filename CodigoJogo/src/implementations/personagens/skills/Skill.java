@@ -6,6 +6,6 @@ import java.util.ArrayList;
 
 public interface Skill {
 	
-	public boolean execute(ArrayList <AbsPersonagem> Viloes, double dam, int trgt);
+	public boolean execute(ArrayList <AbsPersonagem> Viloes, double dam, int trgt, AbsPersonagem heroiAtacante);
 	
 }
