@@ -26,7 +26,6 @@ public class CRodada {
 
 	public static void Jogada (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista) { //recebe ArrayList de herois e viloes ordenados
 		int contP, contI; // contador para vetor de Personagens e Iniciativa
-		int HInit = 0, VInit = 0; // ints para usar em flee
 		boolean flag, endFlag = true; // flag para parar o loop de escolha e o combate
 		String chc; // string de que guarda a escolha
 		
@@ -86,20 +85,7 @@ public class CRodada {
 							}
 				
 							else if ((chc.equalsIgnoreCase("fugir")) || (chc.equalsIgnoreCase("f"))) {
-								// Somatorio das iniciativas de cada time
-								for (AbsPersonagem h: Herois)
-									HInit += h.iniciativa;
-								for (AbsPersonagem v: Herois)
-									VInit += v.iniciativa;
-								
-								//Se os herois tiverem mais iniciativa que os viloes, eles podem fugir
-								if (HInit >= VInit) {
-									endFlag = false;
-									System.out.println("Voce conseguiu fugir!");
-								}
-								else
-									System.out.println("Impossivel escapar!");
-								
+								endFlag = false;
 								flag = false;
 							}
 						
@@ -160,82 +146,23 @@ public class CRodada {
 		scanner.close();
 	}
 	
-	public static void Reposition (ArrayList <AbsPersonagem> Jogadores, int contP) { // recebe o vetor de jogadores apropriado e a posicao do jogador atual
-		String choice; // string para guardar escolha
-		int mov = 0, dist; // int para guardar escolha de movimento e para guardar distancia ponderada
-		AbsPersonagem temp = new PersonGenerico();
+	public static int GetRepDist (AbsPersonagem Jogador) {
+		//Retorna a distancia que um jogador pode se mecher ao se reposicionar
+		return ((int)(Jogador.agilidade * Jogador.buffAgilidadeValor / 25) + 1);
+	}
+	
+	public static void Reposition (ArrayList <AbsPersonagem> Jogadores, int contP, int mov) { // recebe o vetor de jogadores apropriado e a posicao do jogador atual
+		AbsPersonagem temp = new PersonGenerico();		
 		
-		// verifica para quais direcoes o jogador pode se mover
-		if (contP < Jogadores.size())
-			System.out.print("Esquerda");
-		if ((Jogadores.size() > contP) && (contP > 0))
-			System.out.print(" ou ");
-		if (contP > 0)
-			System.out.print("Direita");
-		System.out.println("?");
+		// reposiciona o jogador para a posicao escolhida
+		temp = Jogadores.get(contP);
+		Jogadores.remove(contP);
+		Jogadores.add(mov, temp);
 		
-		// capta a escolha de direcoes
-		choice = scanner.nextLine();
-		
-		// Se o jogador escolher esquerda, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
-		if (((choice.equalsIgnoreCase("esquerda")) || (choice.equalsIgnoreCase("E"))) && contP < Jogadores.size()) {
-			dist = (int)(Jogadores.get(contP).agilidade * Jogadores.get(contP).buffAgilidadeValor / 25) + 1;
-			if (dist >= Jogadores.size() - 1 - contP)
-				dist = Jogadores.size() - 1 - contP;
-				
-			System.out.println("Voce pode se mover " + dist + " posicoes para a  esquerda");
-			System.out.println("Quao longe quer se mover?");
-			
-			
-			// capta a escolha de distancia de movimento 
-			while (mov > dist || mov <= 0) {
-				mov = scanner.nextInt();
-				if (mov > dist) // imprime e tenta denovo se a entrada for invalida 
-					System.out.println("Voce inseriu uma distancia invalida. Tente denovo");
-			}
-			
-			// reposiciona o jogador para a posicao escolhida
-			temp = Jogadores.get(contP);
-			Jogadores.remove(contP);
-			Jogadores.add(contP+mov, temp);
-			
-			for (int cont = 0; cont < Jogadores.size(); cont++){
-				Jogadores.get(cont).pos = cont;
-			}
+		//Reatribui as variaveis de posição aos objetos afetados pela troca
+		for (int cont = 0; cont < Jogadores.size(); cont++){
+			Jogadores.get(cont).pos = cont;
 		}
-		
-		// Se o jogador escolher direita, verifica quanto pode se mecher para a esquerda e pergunta ao jogador
-		if (((choice.equalsIgnoreCase("direita")) || (choice.equalsIgnoreCase("d"))) && contP > 0) {
-			dist = (int)(Jogadores.get(contP).agilidade * Jogadores.get(contP).buffAgilidadeValor / 25) + 1;
-			if (contP - dist < 0)
-				dist = dist + (contP - dist);
-				
-			System.out.println("Voce pode se mover " + dist + " posicoes para a  esquerda");
-			System.out.println("Quao longe quer se mover?");
-			
-			// capta a escolha de distancia de movimento 
-			while (mov > dist || mov <= 0) {
-				mov = scanner.nextInt();
-				if (mov > dist) // imprime e tenta denovo se a entrada for invalida 
-					System.out.println("Voce inseriu uma distancia invalida. Tente denovo");
-			}
-			
-			// reposiciona o jogador para a posicao escolhida
-			temp = Jogadores.get(contP);
-			Jogadores.remove(contP);
-			Jogadores.add(contP-mov, temp);
-			
-			for (int cont = 0; cont < Jogadores.size(); cont++){
-				Jogadores.get(cont).pos = cont;
-			}
-		}
-			
-		System.out.println("");
-		for(int contPrint = 0; contPrint < Jogadores.size(); contPrint++) {
-			System.out.print(Jogadores.get(contPrint).nome + " ");
-			System.out.println(Jogadores.get(contPrint).iniciativa);
-		}
-		System.out.println("");
 	}
 	
 	public static boolean attack (AbsPersonagem Heroi, ArrayList <AbsPersonagem> Viloes, int posHeroi) {
