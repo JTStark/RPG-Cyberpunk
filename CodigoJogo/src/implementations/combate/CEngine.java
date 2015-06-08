@@ -25,11 +25,15 @@ public class CEngine {
 		
 		try {
 			for (AbsPersonagem H: Herois) { // percorre o AL de herois
-				H.iniciativa = (H.agilidade + H.sorte) / 20 * (random.nextInt(9)+1); // calcula a iniciativa de cada um
+				H.iniciativa = ((H.agilidade + H.sorte) / 20) * (random.nextInt(10)+1); // calcula a iniciativa de cada um
 				flag = true;
 				contL = 0;
 				
-				listaH.add(H.tipo - 1, H);
+				if (listaH.get(H.tipo-1) != null) H.pos = H.tipo;
+				else H.pos = H.tipo - 1;
+
+				listaH.add(H.pos, H);
+				
 				
 				// se a lista esta vazia, adiciona na primeira posicao
 				if(listaI.isEmpty()) {
@@ -61,11 +65,14 @@ public class CEngine {
 		// faz o mesmo para os viloes
 		try {
 			for (AbsPersonagem V: Viloes) {
-				V.iniciativa = (V.agilidade + V.sorte) / 20 * (random.nextInt(9)+1);
+				V.iniciativa = ((V.agilidade + V.sorte) / 20) * (random.nextInt(10)+1);
 				flag = true;
 				contL = 0;
 				
-				listaV.add(V.tipo - 1, V);
+				if (listaV.get(V.tipo-1) != null) V.pos = V.tipo;
+				else V.pos = V.tipo - 1;
+
+				listaH.add(V.pos, V);
 				
 				if(listaI.isEmpty()) {
 					
@@ -105,9 +112,9 @@ public class CEngine {
 			System.out.print(listaV.get(contPrint).nome + " ");
 			System.out.println(listaV.get(contPrint).iniciativa);
 		}
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
+		System.out.println();
+		System.out.println();
+		System.out.println();
 		
 		// roda Jogada de CRodada
 		CRodada.Jogada(listaH, listaV, listaI);

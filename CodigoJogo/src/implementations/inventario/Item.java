@@ -7,9 +7,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
-public class Item {
+public class Item implements InterfaceItem {
 	private String name;
 	private String type;
+	public boolean nomeEncontrado; //tive que adicionar esse bool para verificar quando um item foi encontrado
 	private int bonus;
 	public String diretorio = "bin/bd/BD.txt";
 	
@@ -18,6 +19,7 @@ public class Item {
 		/*metodo construtor para procurar no BD a partir do nome dado pelo usuario*/
 		FileReader arquivo;
 		BufferedReader tratado = null;
+		this.nomeEncontrado = false;
 		
 		/*esses try catch ficam feios, mas as coisas funcionam*/
 		try {
@@ -38,6 +40,7 @@ public class Item {
 			
 				/*caso encontre o item que está procurando*/
 				if (nome.equalsIgnoreCase(identificador)) {
+					this.nomeEncontrado = true;
 					this.name = nome;
 					this.type = tipo;
 					/*como a quantidade de bonus é obtida como texto, é
