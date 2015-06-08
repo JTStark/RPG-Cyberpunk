@@ -49,6 +49,7 @@ public class MyLevel extends VisualGameWorld {
 	private OrthographicCamera camera;
 	private float dx,dy,v,tempx,tempy;
 	private int i, lim;
+	private boolean flagv = false;
 	public MyLevel (String LevelData/* Add other parameters of choice*/) {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
@@ -108,7 +109,14 @@ public class MyLevel extends VisualGameWorld {
 				}
 			}
 		}
-		
+		if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
+			flagv = !flagv;
+			if(flagv){
+				v=v*5;
+			}else{
+				v=v/5;
+			}
+		}
 		if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
 			WorldSettings.setAmbientColor(new Color (0.1f, 0.1f, 0.1f, 1f));
 		}
@@ -174,10 +182,10 @@ public class MyLevel extends VisualGameWorld {
 		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("blocked") != null)){
 			dy=1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!(colision.getCell(Math.round(camera.position.x), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!(colision.getCell(Math.round(camera.position.x-1), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
 			dx=-1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("blocked") != null)){
 			dy=-1;
 		}
 		tempx = ani.getX();
