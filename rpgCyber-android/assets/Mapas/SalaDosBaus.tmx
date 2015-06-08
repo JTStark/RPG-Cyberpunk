@@ -58,14 +58,19 @@
    eJxjZmBIYGJgYMCHmSF0AguQxoeBahaMqsOuDhiGB5igmBGIWYHijBD9cHGgmgUALXgQLg==
   </data>
  </layer>
- <layer name="Colisoes" width="10" height="10" opacity="0">
+ <layer name="Colisoes" width="10" height="10" opacity="0.01">
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgYCcSsxDAo+rwq0PGHDjEAZKPAf4=
+   eJxjZ2BgYCcSs5Agx4IDY9M3ktTBMAcOcQDIdwI6
   </data>
  </layer>
  <layer name="Baus" width="10" height="10">
   <data encoding="base64" compression="zlib">
    eJxjYCANsOHAaGoS8OhfMFLVEQMAOisHeQ==
+  </data>
+ </layer>
+ <layer name="Baus2" width="10" height="10" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF9AAsRKoDAAIwAAU=
   </data>
  </layer>
 </map>
