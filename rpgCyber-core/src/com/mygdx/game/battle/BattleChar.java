@@ -1,13 +1,20 @@
 package com.mygdx.game.battle;
 
+import implementations.combate.CEngine;
+import implementations.personagens.AbsPersonagem;
+
 import com.badlogic.gdx.Gdx;
 import com.mygdx.game.animate.Animator;
 import com.mygdx.game.animate.Animax;
+
 public class BattleChar extends Animator {
 	
 	private Animax wait, attack;	
 	private boolean atacando = false;
 	private int x = -200;
+	private String name;
+	
+	private AbsPersonagem person; 
 
 	public BattleChar(String personagem) {
 		super("characters/" + personagem + "Battle.png");
@@ -34,6 +41,15 @@ public class BattleChar extends Animator {
         attack.setAnimation(1/3f);      
         attack.setSpriteBatch();                
         attack.setStateTime(0f);
+        
+        name = personagem;
+        
+        for(int i = 0; i < CEngine.listaH.size(); i++ )
+        	if(name.equalsIgnoreCase(CEngine.listaH.get(i).nome) {
+        		person = CEngine.listaH.get(i);
+        	}
+        
+        
 		
 	}
 	
@@ -60,8 +76,47 @@ public class BattleChar extends Animator {
 		this.x = x;
 	}
 	
+	public int getPositionX() {
+		return this.x;
+	}
+	
+	public int getPositionTurno() {
+		int retorno = 0;
+		
+		switch (this.x) {
+		case -20:
+			retorno = 175;
+			break;
+		case -70:
+			retorno = 80;
+			break;
+		case -130:
+			retorno = -40;
+			break;
+		case -200:
+			retorno = -180;
+			break;
+		case -270:
+			retorno = -300;
+			break;
+		case -320:
+			retorno = -400;
+			break;
+		}
+		
+		return retorno;
+	}
+	
 	public void setAtacando(boolean atacando) {
 		this.atacando = atacando;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public AbsPersonagem getPersonagem() {
+		return this.person;
 	}
 
 }

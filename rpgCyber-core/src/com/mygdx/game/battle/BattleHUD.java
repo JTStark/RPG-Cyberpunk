@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+import snake.engine.creators.ScreenCreator;
 import snake.engine.models.HUD;
 import snake.hud.SnakeDialogHUD;
 import snake.hud.SnakeInfosHUD;
@@ -19,11 +20,11 @@ public class BattleHUD extends HUD {
 	private int acao = 0;
 	private boolean opcoes = false;
 	private int acaoOpcao = 0;
-	private int turno = 0;
-	private int vez = 0;
 	
-	private static int POS_PALHACO, POS_BARBUDO, POS_3, POS_4, POS_5, POS_6;
-	private static int POS1, POS2, POS3, POS4, POS5, POS6;
+	
+	private static final int POS1 = -20, POS2 = -70, POS3 = -130, POS4 = -200, POS5 = -270, POS6 = -320;
+	
+	private BattleChar atual;
 	
 	public BattleHUD (String levelData) {
 		super();
@@ -33,47 +34,42 @@ public class BattleHUD extends HUD {
 		
 		font = new BitmapFont(Gdx.files.internal("ak_sc_o.fnt"), false);
 		
-		BattleWorld.palhaco.setPositionX(-200);
-		BattleWorld.barbudo.setPositionX(-270);
+		BattleWorld.palhaco.setPositionX(POS3);
+		BattleWorld.barbudo.setPositionX(POS4);
+		BattleWorld.cientista.setPositionX(POS5);
 		
-		POS_PALHACO = -180; 
-		POS_BARBUDO = -300; 
-		POS3 = -400; 
-		POS4 = -40; 
-		POS5 = 80;
-		POS6 = 150;
+		/* MUDDAAAAARRRRRR*/
+		atual = BattleWorld.palhaco;
+		
+		
 	}
 	
 	@Override
 	public void draw(Batch batch, float parentAlpha){
 		font.setColor(Color.RED);
 		
-		font.getData().setScale(1f);
+		font.getData().setScale(1f);	    
 		
-	    /* Seleciona o personagem */
-		if(vez == 0)
-			font.draw(batch, "Turno", 400 + POS_PALHACO, 500); 
-		if(vez == 1)
-			font.draw(batch, "Turno", 400 + POS_BARBUDO, 500);
+		font.draw(batch, atual.getName(), 400 + atual.getPositionTurno(), 500); 
 		
 		/* Atributos*/
 		font.getData().setScale(0.5f);	
 		
 		/* Parte1 - Substituir pelos valores numericos do  personagem */
-		font.draw(batch, "forca", 190, 169);
-		font.draw(batch, "persepcao", 190, 146);
-		font.draw(batch, "resistencia", 190, 123);
-		font.draw(batch, "carisma", 190, 100);
-		font.draw(batch, "inteligencia", 190, 77);
-		font.draw(batch, "agilidade", 190, 54);
-		font.draw(batch, "sorte", 190, 31);
+		font.draw(batch, "" + atual.getPersonagem().forca, 190, 169);
+		font.draw(batch, "" + atual.getPersonagem().persepcao, 190, 146);
+		font.draw(batch, "" + atual.getPersonagem().resistencia, 190, 123);
+		font.draw(batch, "" + atual.getPersonagem().carisma, 190, 100);
+		font.draw(batch, "" + atual.getPersonagem().inteligencia, 190, 77);
+		font.draw(batch, "" + atual.getPersonagem().agilidade, 190, 54);
+		font.draw(batch, "" + atual.getPersonagem().sorte, 190, 31);
 		
 		/* Parte2 */
-		font.draw(batch, "arma", 440, 169);
-		font.draw(batch, "armadura", 440, 146);
-		font.draw(batch, "critico", 440, 123);
-		font.draw(batch, "esquiva", 440, 100);
-		font.draw(batch, "xp", 440, 31);
+		font.draw(batch, "" + atual.getPersonagem().arma, 440, 169);
+		font.draw(batch, "" + atual.getPersonagem().armadura, 440, 146);
+		font.draw(batch, "" + atual.getPersonagem().critico, 440, 123);
+		font.draw(batch, "" + atual.getPersonagem().esquiva, 440, 100);
+		font.draw(batch, "" + atual.getPersonagem().xp, 440, 31);
 		
 		/* Acao */
 		font.getData().setScale(0.7f);
@@ -111,12 +107,12 @@ public class BattleHUD extends HUD {
 			
 			font.setColor(Color.WHITE);
 			
-			if(acao == 0) {
+			if(acao == 0) { //ataque
 				font.draw(batch, "Ataque1", 800, 174);
 				font.draw(batch, "Opcao2 da acao1", 800, 139);
 				font.draw(batch, "Opcao3 da acao1", 800, 104);
 				font.draw(batch, "Opcao4 da acao1", 800, 69);
-				font.draw(batch, "Opcao5 da acao1", 800, 34);
+				
 				
 				font.setColor(Color.RED);
 				
@@ -134,13 +130,11 @@ public class BattleHUD extends HUD {
 				case 3:
 					font.draw(batch, "Opcao4 da acao1", 800, 69);
 					break;
-				case 4:
-					font.draw(batch, "Opcao5 da acao1", 800, 34);
-					break;			
+							
 				}		
 			}
 			
-			if(acao == 1) {
+			if(acao == 1) { //deslocar
 				font.draw(batch, "Para posi��o 1", 800, 174);
 				font.draw(batch, "Para posi��o 2", 800, 139);
 				font.draw(batch, "Para posi��o 3", 800, 104);
@@ -172,7 +166,7 @@ public class BattleHUD extends HUD {
 				}		
 			}
 			
-			if(acao == 2) {
+			if(acao == 2) { //inventario
 				font.draw(batch, "Opcao 1 da acao3", 800, 174);
 				font.draw(batch, "Opcao2 da acao3", 800, 139);
 				font.draw(batch, "Opcao3 da acao3", 800, 104);
@@ -201,63 +195,41 @@ public class BattleHUD extends HUD {
 				}		
 			}
 			
-			if(acao == 3) {
+			if(acao == 3) {//nada
 				
-				font.draw(batch, "Opcao 1 da acao4", 800, 174);
-				font.draw(batch, "Opcao2 da acao4", 800, 139);
-				font.draw(batch, "Opcao3 da acao4", 800, 104);
-				font.draw(batch, "Opcao4 da acao4", 800, 69);
-				font.draw(batch, "Opcao5 da acao4", 800, 34);
+				font.draw(batch, "Certeza?", 800, 174);
+				font.draw(batch, "Sim", 800, 139);
+				
+				
 				
 				font.setColor(Color.RED);
 				
 				switch (acaoOpcao)
 				{
-				case 0:
-					font.draw(batch, "Opcao 1 da acao4", 800, 174);
-					break;
+				
 				case 1:
-					font.draw(batch, "Opcao2 da acao4", 800, 139);
+					font.draw(batch, "Sim", 800, 139);
 					break;
-				case 2:
-					font.draw(batch, "Opcao3 da acao4", 800, 104);
-					break;
-				case 3:
-					font.draw(batch, "Opcao4 da acao4", 800, 69);
-					break;
-				case 4:
-					font.draw(batch, "Opcao5 da acao4", 800, 34);
-					break;			
-				}		
+				
+				}
 			}
 			
-			if(acao == 4) {
+			if(acao == 4) { // fugir
 								
-				font.draw(batch, "Opcao 1 da acao5", 800, 174);
-				font.draw(batch, "Opcao2 da acao5", 800, 139);
-				font.draw(batch, "Opcao3 da acao5", 800, 104);
-				font.draw(batch, "Opcao4 da acao5", 800, 69);
-				font.draw(batch, "Opcao5 da acao5", 800, 34);
+				font.draw(batch, "Certeza?", 800, 174);
+				font.draw(batch, "Sim", 800, 139);
+				
+				
 				
 				font.setColor(Color.RED);
 				
 				switch (acaoOpcao)
-				{
-				case 0:
-					font.draw(batch, "Opcao 1 da acao5", 800, 174);
-					break;
+				{				
 				case 1:
-					font.draw(batch, "Opcao2 da acao5", 800, 139);
+					font.draw(batch, "Sim", 800, 139);
 					break;
-				case 2:
-					font.draw(batch, "Opcao3 da acao5", 800, 104);
-					break;
-				case 3:
-					font.draw(batch, "Opcao4 da acao5", 800, 69);
-					break;
-				case 4:
-					font.draw(batch, "Opcao5 da acao5", 800, 34);
-					break;			
+				
+					
 				}		
 			}
 			
@@ -268,13 +240,10 @@ public class BattleHUD extends HUD {
 	@Override
 	public void act(float delta) {
 		
-		if(opcoes == false) {
+		if(opcoes == false) {			
 			
-			if(vez == 0) 
-				BattleWorld.palhaco.setAtacando(false);
-			if(vez == 1)
-				BattleWorld.barbudo.setAtacando(false);			
-		
+			
+			atual.setAtacando(false);		
 			
 			if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
 				if(acao == 0)
@@ -294,112 +263,156 @@ public class BattleHUD extends HUD {
 				opcoes = true;
 			}
 		}
-		else {
+		else {			
 			
-			if(acao == 0) { //animacao de ataque
-				if(vez == 0)
-					BattleWorld.palhaco.setAtacando(true);
-				if(vez == 1)
-					BattleWorld.barbudo.setAtacando(true);
+			if(acao == 0) {
+				atual.setAtacando(true); // animacao de ataque
+				
+				if(acaoOpcao == 4)
+					acaoOpcao = 0;
 			}
 			
-			if(acao == 1) {
-				
-				if(vez == 0) {
-					if(acaoOpcao == 0) {
-						POS_PALHACO = 175;
-						BattleWorld.palhaco.setPositionX(-20);					
-					}
-					else if(acaoOpcao == 1) {
-						POS_PALHACO = 80;
-						BattleWorld.palhaco.setPositionX(-70);					
-					}
-					else if(acaoOpcao == 2) {
-						POS_PALHACO = -40;
-						BattleWorld.palhaco.setPositionX(-130);				
-					}
-					else if(acaoOpcao == 3) {
-						POS_PALHACO = -180;
-						BattleWorld.palhaco.setPositionX(-200);					
-					}
-					else if(acaoOpcao == 4) {
-						POS_PALHACO = -300;
-						BattleWorld.palhaco.setPositionX(-270);				
-					}
-					else if(acaoOpcao == 5) {
-						POS_PALHACO = -400;
-						BattleWorld.palhaco.setPositionX(-320);	
-					}
-				}
-				if(vez == 1) {
-					if(acaoOpcao == 0) {
-						POS_BARBUDO = 175;
-						BattleWorld.barbudo.setPositionX(-20);					
-					}
-					else if(acaoOpcao == 1) {
-						POS_BARBUDO = 80;
-						BattleWorld.barbudo.setPositionX(-70);				
-					}
-					else if(acaoOpcao == 2) {
-						POS_BARBUDO = -40;
-						BattleWorld.barbudo.setPositionX(-130);				
-					}
-					else if(acaoOpcao == 3) {
-						POS_BARBUDO = -180;
-						BattleWorld.barbudo.setPositionX(-200);				
-					}
-					else if(acaoOpcao == 4) {
-						POS_BARBUDO = -300;
-						BattleWorld.barbudo.setPositionX(-270);			
-					}
-					else if(acaoOpcao == 5) {
-						POS_BARBUDO = -400;
-						BattleWorld.barbudo.setPositionX(-320);	
-					}
-				}
-				
-				
-			}
 			
-			if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
-				opcoes = false;
+			
+			if(acao == 4 || acao == 3) {
+				acaoOpcao = 1;
+					
+			}
+				
+			if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) { // Aqui devem estar as opcoes de verdade
+					
+				if(acao == 0) { // ataque
+						
+					switch (acaoOpcao) {
+					case 0:
+						break;
+					case 1:
+						break;
+					case 2:
+						break;
+					case 3:
+						break;					
+						
+					}
+						
+						
+				}
+					
+				if(acao == 1) { //Deslocar
+						
+					switch (acaoOpcao) {
+					case 0:
+						atual.setPositionX(POS1);
+						break;
+					case 1:
+						atual.setPositionX(POS2);
+						break;
+					case 2:
+						atual.setPositionX(POS3);
+						break;
+					case 3:
+						atual.setPositionX(POS4);
+						break;						
+					case 4:
+						atual.setPositionX(POS5);
+						break;		
+					case 5:
+						atual.setPositionX(POS6);
+						break;
+					
+					}
+				}
+					
+				if(acao == 2) { //Inventario
+						
+					switch (acaoOpcao) {
+					case 0:
+						break;
+					case 1:
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					case 4:
+						break;		
+						
+					}
+				}
+					
+				if(acao == 3) { // nada
+						
+					
+				}
+					
+				if(acao == 4) { // nada
+						
+					switch (acaoOpcao) {
+					case 1:
+						try {
+							ScreenCreator.backToPrevious();
+						} catch (Exception e) {
+							String[] param = {"SnakeLevel", "MainMenu", "LevelDataID"};
+							try {
+								ScreenCreator.switchAndGo(param);
+							} catch (Exception excp) {
+								System.out.println("Couldn't switch screens.");
+							}
+						}
+						break;
+					case 2:
+						break;
+					
+						
+					}
+				}
+					
 				acaoOpcao = 0;
-			}
-			
-			if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
+				acao = 0;
+				opcoes = false;
 				
-				if(acaoOpcao == 0) {
-					if(acao == 1)
-						acaoOpcao = 5;
-					else
-						acaoOpcao = 4;
-				}
-				else
-					acaoOpcao--;
+				atual.setAtacando(false);
+				
+				/* Trocar de personagem*/
+				if(atual == BattleWorld.palhaco)
+					atual = BattleWorld.barbudo; //Mudar de acordo com a lista
+				else if(atual == BattleWorld.barbudo)
+					atual = BattleWorld.cientista;
+				else if(atual == BattleWorld.cientista)
+					atual = BattleWorld.palhaco;
+				
 			}
-			if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-				if((acaoOpcao > 3 && acao != 1) || acaoOpcao == 5)
+		}
+			
+		if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+			opcoes = false;
+			acaoOpcao = 0;
+		}
+			
+		if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
+				
+			if(acaoOpcao == 0) {
+				if(acao == 1)
+					acaoOpcao = 5;
+				else
+					acaoOpcao = 4;
+			}
+			else if(acao != 4)
+				acaoOpcao--;
+			else if(acaoOpcao == 1)
+					acaoOpcao = 2;
+			else
+				acaoOpcao = 1;
+		}
+		if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
+			if((acaoOpcao > 3 && acao != 1) || acaoOpcao == 5)
+				if(acao != 4)
 					acaoOpcao = 0;
 				else
+					acaoOpcao = 1;
+				else
 					acaoOpcao++;
-			}
-		}
-		
-
-		if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-			acaoOpcao = 0;
-			acao = 0;
-			opcoes = false;
-			
-			if(vez == 0) {
-				vez = 1;
-				BattleWorld.palhaco.setAtacando(false);
-			}
-			else {
-				vez = 0;
-				BattleWorld.barbudo.setAtacando(false);
-			}
-		}
+		}	
 		
 	}
 
