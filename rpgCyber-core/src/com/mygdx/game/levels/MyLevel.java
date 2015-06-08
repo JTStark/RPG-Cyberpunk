@@ -50,22 +50,22 @@ public class MyLevel extends VisualGameWorld {
 	private float dx,dy,v,tempx,tempy;
 	private int i, lim;
 	private boolean flagv = false;
-	public MyLevel (String LevelData/* Add other parameters of choice*/) {
+	public MyLevel (String LevelData) {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
 		v = 8;
-		lim =100;
+		
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, (w/h)*10, 10); 
+		camera.setToOrtho(false, (w/h)*10, 10);
 		camera.update();
 		WorldSettings.setAmbientColor(Color.WHITE);
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
 		ani = new Animator("link.png");
-		map = new TmxMapLoader().load("Mapas/MapaExterno.tmx");
+		map = new TmxMapLoader().load(LevelData);
 		renderer = new OrthogonalTiledMapRenderer(map, 1f/32f);
 		magician = new Magician_Test(this);
-
-        colision =  (TiledMapTileLayer)map.getLayers().get(2);
+        colision =  (TiledMapTileLayer)map.getLayers().get("Colisoes");
+        lim = colision.getHeight();
 	}
 	
 	
@@ -181,12 +181,35 @@ public class MyLevel extends VisualGameWorld {
 		}else
 		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("blocked") != null)){
 			dy=1;
+			if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null){
+				try {
+					ScreenCreator.addAndGo(new MyLevel("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}else
 		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!(colision.getCell(Math.round(camera.position.x-1), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
 			dx=-1;
 		}else
 		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("blocked") != null)){
 			dy=-1;
+			if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door") != null){
+				if("MapaExterno.tmx" == colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()){
+					try {
+						ScreenCreator.addAndGo(new MyLevel("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}else{
+					try {
+						ScreenCreator.backToPrevious();
+					} catch (Exception e) {
+						e.printStackTrace();
+						
+					}
+				}
+			}
 		}
 		tempx = ani.getX();
 		tempy = ani.getY();

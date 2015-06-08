@@ -59,6 +59,54 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="34" name="Portal1" tilewidth="32" tileheight="32">
+  <image source="Portal1.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="door" value="CasaNorman.tmx"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="35" name="Portal2" tilewidth="32" tileheight="32">
+  <image source="Portal2.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="door" value="1.oAndarBabi.tmx"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="36" name="Portal3" tilewidth="32" tileheight="32">
+  <image source="Portal3.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="door" value="Shop.tmx"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="37" name="Portal4" tilewidth="32" tileheight="32">
+  <image source="Portal4.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="door" value="Inn.tmx"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="38" name="Portal5" tilewidth="32" tileheight="32">
+  <image source="Portal5.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="door" value="SalaDosBaus.tmx"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="39" name="Portal6" tilewidth="32" tileheight="32">
+  <image source="Portal6.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="door" value="1.oAndarFalcao.tmx"/>
+   </properties>
+  </tile>
+ </tileset>
  <imagelayer name="Fundo" x="-4" y="-6" visible="0">
   <image source="Imagens fundo/Editados/fundo3.png"/>
  </imagelayer>
@@ -72,18 +120,20 @@
    <property name="door" value="door"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJztmAtuwjAQRF2iln6B0lat6A9uxtE4CkdjkELlRF7bGy+2SXelJ1Bg1h45dkYxRktL6z/VikGNertPY8x+YsyWAr9vU/U+Hyl6uw/+u7/CJ8VEQO/zkaJ39bkGN2AKbsFdrw9F7DxC+tD4sT7uwQN4BE9g1p0Lue4+Dxw9NT7XxxwswDNYgpfuPHYU/Tlv3D6Cemp8ro9X8AY+wTv4MHnvq9D4sT5K7FPJfd4Q98jpWhOYR0m93ce1xq57oUY91bPfhxrPvj5ET/Wi9JwKzYPS5NBzasw+Su8PKR+Xoi993kidV+35/ZebXZmIk7tz6+0+Y3meS+X2c+f+WB/H3PwDfsHa8HP7KXd/ge8Beikfqbl93uqkc3/u3H7u3B/r49L3ea7cTaG5ne6ZO1eset9rzVep6zGkSqyHpL6WeaiP8ueN1HnVnt+a2wvrXX30fbs/d8fq9X1714e+b69jnzeeNefm9tx6u08sNeq1tLTGXQdO1d7+
+   eJztmGkKwjAUhGOL+1JXFFyP1qN5lB7NEcyPlKYmNfQ9YQY+BHWSN13oUGMoiqL+U7kxVWZM6QO/l5r9VvhvNcCnj0y5v77OEIzAGEzAtOccXfevrzMDc7AAS7ByZ/Ge97YMMX7f/rE5CrAGG7AFO3eOp4/AHF/9vv1jc+zBAZzBEZwC10l1XXXdP/Uc0vd57rlG7He5cn+T7LEJPQba/FrmYA5dczCHrjmYw+3NTZ0opndL+K2kn8faertU76+v8+7NN3AHDxPf223vvoBrB3+qHL/29uLjS937++7tUr0/1TrSfivp3s3erncO5tA1B3PomoM55Hs3e3vzOnzf3t5XQ/183+7m4Pt2Hfd53nLOY3u3hJ+iKEq7Xi76sYY=
   </data>
  </layer>
- <layer name="Camada de Tiles 3" width="50" height="50">
-  <properties>
-   <property name="door" value="door"/>
-  </properties>
+ <layer name="Colisoes" width="50" height="50" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJzt2DEOgCAMBVDO4f0P6qqNcZBiBd9LSGCA0oThh9YAIM92MWasH/dV9JFRf6U+vvCu4hwAYFa9+ao6nx3vcbcevT/LSn305Ga5GwDgrDp3+28fc85T2f/tcf6W6voA/MMOKbEIBw==
+   eJztlksOwzAIRNNrdNnv/W/YbRRBgJjAxB0kVvaQeY6NvSwMBuOf4h5IRP26zs2Rez469Sg+zuCQ/uXe2HaO5cPSW2MZHBVJDpnjo9Sp2lffQY5ZzvnVObQ9cuQeq9ZrNSNrgKZH8UEOLB/k6O83Wf2qu//zHtTreN4+0TkRfQWH91sjenLIHC/BR2RfvQ/qec77fWRyzHAPbmtG1gBNj+KDHFg+yNHfb7L6VXf/5z2o1/G8nUbeR5beGsvgqEhyyBxPpU7VvnoMcsxyzq/O4U1EPYPBmDt+bg44Jg==
   </data>
  </layer>
- <imagelayer name="YT1300" x="-56" y="-89">
+ <layer name="Baus" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1jERAAAIA7Fawb9JHLD1WBIFP34CAHCb7wAAAKDO9wMAQJ/vBoC+BYexAGQ=
+  </data>
+ </layer>
+ <imagelayer name="YT1300" x="-12" y="-37">
   <image source="Imagens fundo/Editados/YT1300.png"/>
  </imagelayer>
 </map>
