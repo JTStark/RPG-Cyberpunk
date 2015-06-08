@@ -7,7 +7,7 @@ import java.util.Random;
 public class ShrapnelShell implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		Random random = new Random();
 		
 		dam -= dam * 0.75;

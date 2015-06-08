@@ -7,18 +7,19 @@ import java.util.ArrayList;
 public class Charge1 implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		AbsPersonagem temp = new PersonGenerico();
 		if (heroiAtacante.pos > 1) {
-			// reposiciona o jogador para a posicao escolhida
+			// reposiciona o jogador para a primeira posicao
 			temp = heroiAtacante;
-			Jogadores.remove(contP);
-			Jogadores.add(contP-mov, temp);
+			Herois.remove(heroiAtacante);
+			Herois.add(0, temp);
 			
-			for (int cont = 0; cont < Jogadores.size(); cont++){
-				Jogadores.get(cont).pos = cont;
+			for (int cont = 0; cont < Herois.size(); cont++){
+				Herois.get(cont).pos = cont;
 			}
-			Viloes.get(trgt).hp -= dam * 1.25;
+			
+			dam = dam * 1.25;
 			return false;
 		}
 		else {

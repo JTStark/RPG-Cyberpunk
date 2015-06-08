@@ -6,13 +6,13 @@ import java.util.Vector;
 
 public class Inventario implements InterfaceInventario{
 	
-	public static Inventario instancia = null;
+	public static Inventario instancia = new Inventario();
 	private Vector<String> mochila = new Vector<String>(40);
 	
-	protected Inventario(){
+	private Inventario(){
 	}
 	
-	public static Inventario getIntancia(){
+	public static Inventario getInstancia(){
 		if(instancia == null)
 			instancia = new Inventario();
 		return instancia;

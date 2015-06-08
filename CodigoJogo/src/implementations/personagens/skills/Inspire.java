@@ -7,30 +7,23 @@ import java.util.ArrayList;
 public class Inspire implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		int constante = heroiAtacante.carisma;
-		for(AbsPersonagem a : Viloes){
-			a.buffAgilidadeValor = 1 + ((5 + constante/20)/100);
-			a.buffAgilidadeRounds = 1;
-			a.buffArmaduraValor = 1 + ((5 + constante/20)/100);
-			a.buffArmaduraRounds = 1;
-			a.buffCarismaValor = 1 + ((5 + constante/20)/100);
-			a.buffCarismaRounds = 1;
-			a.buffCriticoValor = 1 + ((5 + constante/20)/100);
-			a.buffCriticoRounds = 1;
-			a.buffEsquivaValor = 1 + ((5 + constante/20)/100);
-			a.buffEsquivaRounds = 1;
-			a.buffForcaValor = 1 + ((5 + constante/20)/100);
-			a.buffForcaRounds = 1;
-			a.buffInteligenciaValor = 1 + ((5 + constante/20)/100);
-			a.buffInteligenciaRounds = 1;
-			a.buffPercepcaoValor = 1 + ((5 + constante/20)/100);
-			a.buffPercepcaoRounds = 1;
-			a.buffResistenciaValor = 1 + ((5 + constante/20)/100);
-			a.buffResistenciaRounds = 1;
-			a.buffSorteValor = 1 + ((5 + constante/20)/100);
-			a.buffSorteRounds = 1;
-		}
+			Viloes.get(trgt).buffAgilidadeValor = 1 + ((5 + constante/20)/100);
+			Viloes.get(trgt).buffAgilidadeRounds = 1;
+			Viloes.get(trgt).buffCarismaValor = 1 + ((5 + constante/20)/100);
+			Viloes.get(trgt).buffCarismaRounds = 1;
+			Viloes.get(trgt).buffForcaValor = 1 + ((5 + constante/20)/100);
+			Viloes.get(trgt).buffForcaRounds = 1;
+			Viloes.get(trgt).buffInteligenciaValor = 1 + ((5 + constante/20)/100);
+			Viloes.get(trgt).buffInteligenciaRounds = 1;
+			Viloes.get(trgt).buffPercepcaoValor = 1 + ((5 + constante/20)/100);
+			Viloes.get(trgt).buffPercepcaoRounds = 1;
+			Viloes.get(trgt).buffResistenciaValor = 1 + ((5 + constante/20)/100);
+			Viloes.get(trgt).buffResistenciaRounds = 1;
+			Viloes.get(trgt).buffSorteValor = 1 + ((5 + constante/20)/100);
+			Viloes.get(trgt).buffSorteRounds = 1;
+		
 		return true;
 	}
 
