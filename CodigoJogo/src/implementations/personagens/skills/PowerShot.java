@@ -8,6 +8,8 @@ import java.util.Random;
 
 public class PowerShot implements Skill {
 
+	public static int tipoAlvo = 1;	
+	
 	@Override
 	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		AbsPersonagem temp = new PersonGenerico();

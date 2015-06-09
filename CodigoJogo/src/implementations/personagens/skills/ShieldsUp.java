@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class ShieldsUp implements Skill {
 
+	public static int tipoAlvo = 3;	
+	
 	@Override
 	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class Inspire implements Skill {
 
+	public static int tipoAlvo = 2;	
+	
 	@Override
 	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		int constante = heroiAtacante.carisma;
