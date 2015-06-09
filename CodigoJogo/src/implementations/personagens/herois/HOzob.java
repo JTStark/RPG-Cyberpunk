@@ -15,7 +15,7 @@ public class HOzob extends AbsPersonagem {
 	
 	public static HOzob instancia = new HOzob();   
 	
-	public HOzob (){
+	private HOzob (){
 		
 	}
 	

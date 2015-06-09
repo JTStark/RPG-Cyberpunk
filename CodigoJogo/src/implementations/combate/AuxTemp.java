@@ -10,19 +10,21 @@ package implementations.combate;
  */
 
 import java.util.ArrayList;
+
 import implementations.personagens.AbsPersonagem;
+import implementations.personagens.herois.*;
 
 public class AuxTemp {
 	
 	public int auxiliarIniciativa=0;
 	
 	public static void main(String[] args){
-		PersonGenerico hFirst = new PersonGenerico();
-		PersonGenerico hSecond = new PersonGenerico();
-		PersonGenerico hThird = new PersonGenerico();
-		PersonGenerico hFourth = new PersonGenerico();
-		PersonGenerico hFifth = new PersonGenerico();
-		PersonGenerico hSixth = new PersonGenerico();
+		AbsPersonagem Durden = HDurden.getInstancia();
+		AbsPersonagem MDR = HMDR.getInstancia();
+		AbsPersonagem Oleg = HOleg.getInstancia();
+		AbsPersonagem Ozob = HOzob.getInstancia();
+		AbsPersonagem Rexus = HRexus.getInstancia();
+		AbsPersonagem Silvana = HSilvana.getInstancia();
 		
 		PersonGenerico vFirst = new PersonGenerico();
 		PersonGenerico vSecond = new PersonGenerico();
@@ -32,42 +34,42 @@ public class AuxTemp {
 		PersonGenerico vSixth = new PersonGenerico();
 		
 		ArrayList<AbsPersonagem> vetorHer = new ArrayList<AbsPersonagem> ();
-		hFirst.agilidade = 100;
-		hFirst.sorte = 100;
-		hFirst.nome = "hFirst";
-		hFirst.tipo = 1;
+		Durden.agilidade = 100;
+		Durden.sorte = 100;
+		Durden.nome = "hFirst";
+		Durden.tipo = 1;
 		
-		hSecond.agilidade = 90;
-		hSecond.sorte = 90;
-		hSecond.nome = "hSecond";
-		hSecond.tipo = 1;
+		MDR.agilidade = 90;
+		MDR.sorte = 90;
+		MDR.nome = "hSecond";
+		MDR.tipo = 1;
 		
-		hThird.agilidade = 80;
-		hThird.sorte = 80;
-		hThird.nome = "hThird";
-		hThird.tipo = 3;
+		Oleg.agilidade = 80;
+		Oleg.sorte = 80;
+		Oleg.nome = "hThird";
+		Oleg.tipo = 3;
 		
-		hFourth.agilidade = 70;
-		hFourth.sorte = 70;
-		hFourth.nome = "hFourth";
-		hFourth.tipo = 3;
+		Ozob.agilidade = 70;
+		Ozob.sorte = 70;
+		Ozob.nome = "hFourth";
+		Ozob.tipo = 3;
 		
-		hFifth.agilidade = 5;
-		hFifth.sorte = 5;
-		hFifth.nome = "hFifth";
-		hFifth.tipo = 5;
+		Rexus.agilidade = 5;
+		Rexus.sorte = 5;
+		Rexus.nome = "hFifth";
+		Rexus.tipo = 5;
 		
-		hSixth.agilidade = 0;
-		hSixth.sorte = 0;
-		hSixth.nome = "hSixth";
-		hSixth.tipo = 5;
+		Silvana.agilidade = 0;
+		Silvana.sorte = 0;
+		Silvana.nome = "hSixth";
+		Silvana.tipo = 5;
 		
-		vetorHer.add(0, hFirst);
-		vetorHer.add(1, hSecond);
-		vetorHer.add(2, hThird);
-		vetorHer.add(3, hFourth);
-		vetorHer.add(4, hFifth);
-		vetorHer.add(5, hSixth);
+		vetorHer.add(0, Durden);
+		vetorHer.add(1, MDR);
+		vetorHer.add(2, Oleg);
+		vetorHer.add(3, Ozob);
+		vetorHer.add(4, Rexus);
+		vetorHer.add(5, Silvana);
 		
 		ArrayList<AbsPersonagem> vetorVil = new ArrayList<AbsPersonagem> ();
 		vFirst.agilidade = 60;

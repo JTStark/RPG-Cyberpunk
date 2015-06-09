@@ -15,7 +15,7 @@ public class HDurden extends AbsPersonagem {
 	
 	public static HDurden instancia = new HDurden();   
 	
-	public HDurden (){
+	private HDurden (){
 		
 	}
 	

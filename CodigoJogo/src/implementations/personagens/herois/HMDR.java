@@ -15,7 +15,7 @@ public class HMDR extends AbsPersonagem {
 	
 	public static HMDR instancia = new HMDR();   
 	
-	public HMDR (){
+	private HMDR (){
 		
 	}
 	

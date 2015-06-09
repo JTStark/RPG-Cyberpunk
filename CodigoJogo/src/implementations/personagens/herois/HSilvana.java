@@ -15,7 +15,7 @@ public class HSilvana extends AbsPersonagem {
 	
 	public static HSilvana instancia = new HSilvana();   
 	
-	public HSilvana (){
+	private HSilvana (){
 		
 	}
 	

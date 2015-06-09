@@ -15,7 +15,7 @@ public class HOleg extends AbsPersonagem {
 	
 	public static HOleg instancia = new HOleg();   
 	
-	public HOleg (){
+	private HOleg (){
 		
 	}
 	

@@ -15,7 +15,7 @@ public class HRexus extends AbsPersonagem {
 	
 	public static HRexus instancia = new HRexus();   
 	
-	public HRexus (){
+	private HRexus (){
 		
 	}
 	
