@@ -9,13 +9,13 @@ import java.util.Random;
 public class PowerShot implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		AbsPersonagem temp = new PersonGenerico();
 		int danoFinal, resistencia;
 		double armadura, fator;
 		Random random = new Random();
 		
-		if (heroiAtacante.pos == 0) {
+		
 			
 			armadura = (1 - ((Viloes.get(trgt-1).armadura*Viloes.get(trgt-1).buffArmaduraValor)/100));
 			if (armadura < 0.1) armadura = 0.1; // evita armadura acima de 90% por buffs
@@ -29,7 +29,7 @@ public class PowerShot implements Skill {
 			
 			//SKILL
 			
-			danoFinal = (int) (danoFinal * 1.50);
+			danoFinal = (int) (danoFinal * 0.8);
 			
 			if (danoFinal <= 0) danoFinal = 1; // danoFinal minimo é 1
 			
@@ -61,12 +61,7 @@ public class PowerShot implements Skill {
 			else
 				System.out.println(Viloes.get(trgt-1).nome + " desviou!");
 			
-			return false;
-		}		
-		else {
-			System.out.println("Voce está muito longe de seu alvo para Power Shot");
-			return true;
-		}
+		
 	}
 
 }

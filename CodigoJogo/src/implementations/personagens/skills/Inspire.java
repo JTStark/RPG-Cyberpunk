@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Inspire implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		int constante = heroiAtacante.carisma;
 			Herois.get(trgt).buffAgilidadeValor = 1 + ((5 + constante/20)/100);
 			Herois.get(trgt).buffAgilidadeRounds = 1;
@@ -24,7 +24,6 @@ public class Inspire implements Skill {
 			Herois.get(trgt).buffSorteValor = 1 + ((5 + constante/20)/100);
 			Herois.get(trgt).buffSorteRounds = 1;
 		
-		return false;
 	}
 
 }

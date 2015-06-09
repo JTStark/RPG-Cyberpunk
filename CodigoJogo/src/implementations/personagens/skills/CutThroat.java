@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class CutThroat implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		int danoFinal, resistencia;
 		double armadura, fator;
 		Random random = new Random();
@@ -46,7 +46,6 @@ public class CutThroat implements Skill {
 		else
 			System.out.println(Viloes.get(trgt-1).nome + " desviou!");
 		
-		return false;
 	}
 
 }

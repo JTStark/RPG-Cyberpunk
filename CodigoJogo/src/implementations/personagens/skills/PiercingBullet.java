@@ -8,7 +8,7 @@ import java.util.Random;
 public class PiercingBullet implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		int danoFinal, resistencia, n;
 		double armadura, fator;
 		Random random = new Random();
@@ -48,7 +48,6 @@ public class PiercingBullet implements Skill {
 			else
 				System.out.println(Viloes.get(i).nome + " desviou!");
 		}
-		return false;
 	}
 
 }

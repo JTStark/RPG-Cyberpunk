@@ -8,12 +8,11 @@ import java.util.Random;
 public class Headshot implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		int danoFinal, resistencia;
 		double armadura, fator;
 		Random random = new Random();
 		
-		if(trgt != 0 && trgt != 1 && heroiAtacante.pos != 0 && heroiAtacante.pos != 1) {			
 			
 			armadura = (1 - ((Viloes.get(trgt-1).armadura*Viloes.get(trgt-1).buffArmaduraValor)/100));
 			if (armadura < 0.1) armadura = 0.1; // evita armadura acima de 90% por buffs
@@ -44,13 +43,7 @@ public class Headshot implements Skill {
 			}
 			else
 				System.out.println(Viloes.get(trgt-1).nome + " desviou!");
-			
-			return false;
-		}
-		else {
-			System.out.println("Voce ou seu alvo estao muito proximos para usar Headshot");
-			return true;
-		}
+		
 	}
 
 }
