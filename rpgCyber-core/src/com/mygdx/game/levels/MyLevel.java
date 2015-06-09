@@ -32,6 +32,7 @@ import com.mygdx.game.animate.Player;
 import com.mygdx.game.battle.BattleHUD;
 import com.mygdx.game.battle.BattleWorld;
 import com.mygdx.game.colision.CBau;
+import com.mygdx.game.colision.CDoors;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
 import com.mygdx.game.savestate.SaveState;
@@ -156,15 +157,7 @@ public class MyLevel extends VisualGameWorld {
 		//bau dissapering
 		CBau.changeBau(camera, bau, bau2, colision);
 		//Checa porta
-				if(Gdx.input.isKeyPressed(Input.Keys.UP)&&(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null)){
-					if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null){
-						try {
-							ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				}
+		CDoors.doorUP(camera, colision);
 		// move player
 		
 	

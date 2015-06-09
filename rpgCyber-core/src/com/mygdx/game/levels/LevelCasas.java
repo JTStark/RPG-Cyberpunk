@@ -25,6 +25,7 @@ import com.mygdx.game.animate.Animator;
 import com.mygdx.game.animate.Player;
 import com.mygdx.game.battle.BattleHUD;
 import com.mygdx.game.battle.BattleWorld;
+import com.mygdx.game.colision.CBau;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
 import com.mygdx.game.savestate.SaveState;
@@ -150,29 +151,7 @@ public class LevelCasas extends VisualGameWorld {
 		dx=0;
 		dy=0;
 		//bau dissapering
-		if(bau != null){
-			if(bau.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)) !=null){
-				if(bau.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("chest")!=null){
-				bau.setCell(Math.round(camera.position.x), Math.round(camera.position.y+1), bau2.getCell(0, 0));
-				if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("blocked")!=null)
-					colision.setCell(Math.round(camera.position.x), Math.round(camera.position.y+1), bau2.getCell(0, 0));
-				}
-			}
-			if(bau.getCell(Math.round(camera.position.x+1), Math.round(camera.position.y)) !=null){
-				if(bau.getCell(Math.round(camera.position.x+1), Math.round(camera.position.y)).getTile().getProperties().get("chest")!=null){
-				bau.setCell(Math.round(camera.position.x+1), Math.round(camera.position.y), bau2.getCell(0, 0));
-				if(colision.getCell(Math.round(camera.position.x+1), Math.round(camera.position.y)).getTile().getProperties().get("blocked")!=null)
-					colision.setCell(Math.round(camera.position.x+1), Math.round(camera.position.y), bau2.getCell(0, 0));
-				}
-			}
-			if(bau.getCell(Math.round(camera.position.x-1), Math.round(camera.position.y)) !=null){
-				if(bau.getCell(Math.round(camera.position.x-1), Math.round(camera.position.y)).getTile().getProperties().get("chest")!=null){
-				bau.setCell(Math.round(camera.position.x-1), Math.round(camera.position.y), bau2.getCell(0, 0));
-				if(colision.getCell(Math.round(camera.position.x-1), Math.round(camera.position.y)).getTile().getProperties().get("blocked")!=null)
-					colision.setCell(Math.round(camera.position.x-1), Math.round(camera.position.y), bau2.getCell(0, 0));
-				}
-			}
-		}
+		CBau.changeBau(camera, bau, bau2, colision);
 		// move player
 		if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)) != null
 			&&colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)) != null
