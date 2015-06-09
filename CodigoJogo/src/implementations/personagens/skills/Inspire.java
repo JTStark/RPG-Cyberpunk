@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Inspire implements Skill {
 
 	public static int tipoAlvo = 2;	
+	public static int tipoSkill = 5;
 	
 	@Override
 	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
@@ -25,7 +26,7 @@ public class Inspire implements Skill {
 			Herois.get(trgt).buffResistenciaRounds = 1;
 			Herois.get(trgt).buffSorteValor = 1 + ((5 + constante/20)/100);
 			Herois.get(trgt).buffSorteRounds = 1;
-		return ("Seu discurso inspirou seus aliados a lutarem com bravura !");
+		return ("Seu discurso inspirou seu aliado a lutarem com bravura !");
 	}
 
 }

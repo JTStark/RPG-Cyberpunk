@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class StunBomb implements Skill {
 
 	public static int tipoAlvo = 1;	
+	public static int tipoSkill = 5;
 	
 	@Override
 	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
