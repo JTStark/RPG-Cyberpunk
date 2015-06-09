@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Charm implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		AbsPersonagem temp = new PersonGenerico();
 		
 		temp = Viloes.get(trgt);
@@ -19,7 +19,6 @@ public class Charm implements Skill {
 			Viloes.get(cont).pos = cont;
 		}
 		
-		return false;
 	}
 
 }

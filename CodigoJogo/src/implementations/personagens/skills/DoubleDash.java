@@ -8,7 +8,7 @@ import java.util.Random;
 public class DoubleDash implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		int i;
 		int danoFinal, resistencia;
 		double armadura, fator;
@@ -45,7 +45,6 @@ public class DoubleDash implements Skill {
 			else
 				System.out.println(Viloes.get(i).nome + " desviou!");
 		}
-		return false;
 	}
 
 }

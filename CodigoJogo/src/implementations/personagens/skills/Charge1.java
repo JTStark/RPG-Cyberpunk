@@ -9,10 +9,10 @@ import java.util.Random;
 public class Charge1 implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		AbsPersonagem temp = new PersonGenerico();
 		
-		if (heroiAtacante.pos > 1) {
+		
 			int danoFinal, resistencia;
 			double armadura, fator;
 			Random random = new Random();
@@ -28,7 +28,7 @@ public class Charge1 implements Skill {
 			danoFinal = ((int)((dam * (fator/3)) * armadura)) - resistencia; // danoFinal final
 			
 			//SKILL
-			danoFinal = (int)( danoFinal * 1.25);
+			danoFinal = (int)( danoFinal * 0.8);
 			
 			// reposiciona o jogador para a primeira posicao
 			temp = heroiAtacante;
@@ -54,13 +54,7 @@ public class Charge1 implements Skill {
 			else
 				System.out.println(Viloes.get(trgt-1).nome + " desviou!");
 			
-			return false;
 			
-		}
-		else {
-			System.out.println("Voce está muito perto de seu alvo para Charge!");
-			return true;
-		}
 	}
 
 }

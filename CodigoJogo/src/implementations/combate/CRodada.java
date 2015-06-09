@@ -21,129 +21,61 @@ import java.lang.reflect.Field;
 public class CRodada {
 
 	static int numRodada=0; //variavel global para que o antigo, deprecated BUFFS possa acompanhar a passagem de rodadas
+	
 	static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 	Inventario inventario = Inventario.getInstancia();
+	static int contI;
 
-	public static void Jogada (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista) { //recebe ArrayList de herois e viloes ordenados
-		int contP, contI; // contador para vetor de Personagens e Iniciativa
-		boolean flag, endFlag = true; // flag para parar o loop de escolha e o combate
-		String chc; // string de que guarda a escolha
+	public static AbsPersonagem GetVez (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista) { //recebe ArrayList de herois e viloes ordenados
+		AbsPersonagem actual = new PersonGenerico();
 		
-		
-		// roda enquanto houverem herois ou viloes e ninguem quiser fugir
-		while (endFlag && Herois.isEmpty() == false && Viloes.isEmpty() == false) {
-			// uma rodada para cada personagem, enquanto houverem herois ou viloes e ninguem quiser fugir
-			for (contI = 0; contI < Lista.size() && endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false; contI++) {
-				
-				System.out.println();
-				System.out.println(Lista.get(contI).nome + " " + Lista.get(contI).iniciativa);
-	
-				if ((Lista.get(contI).buffStunRounds == 0) && Lista.get(contI).hp > 0) { //pula a jogada de um jogador se desorientado
-					
-					// If para os Viloes (AI)
-					if (Lista.get(contI).vilao) {
-						for (contP = 0; !(Viloes.get(contP).equals(Lista.get(contI))) && (contP < Viloes.size()); contP++); // Acha a posicao contP do vilao da jogada atual na sua lista de posicao 	
-						AI(Herois, Viloes, Lista, contP, contI);
-					} else {
-						
-						// Tudo nesse else eh para Herois (players) only
-						for (contP = 0; Herois.get(contP) != Lista.get(contI); contP++); // Acha a posicao contP do heroi da jogada atual na sua lista de posicao 
-						
-						// imprime as escolhas
-						flag = true;			
-						while (flag) {
-							System.out.println("SELECIONE SUA ACAO:");
-							System.out.println("Reposicionar");
-							System.out.println("Atacar");
-							System.out.println("usar Item");
-							System.out.println("fazer Nada");
-							System.out.println("Fugir");
-							
-							// recebe a escolha do jogador
-							if(scanner.hasNextInt()) scanner.nextInt();
-							chc = scanner.nextLine();
-							
-							// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
-							if ((chc.equalsIgnoreCase("reposicionar")) || (chc.equalsIgnoreCase("r"))) {
-								
-								Reposition(Herois, contP);
-								flag = false;
-							}
-							
-							else if ((chc.equalsIgnoreCase("atacar")) || (chc.equalsIgnoreCase("a"))) {
-								
-								flag = attack(Herois.get(contP), Viloes, contP);
-								
-							}
-				
-							else if ((chc.equalsIgnoreCase("usar item")) || (chc.equalsIgnoreCase("i")) || (chc.equalsIgnoreCase("item"))) {
-								useItem(contI, Lista);
-							}
-							
-							else if ((chc.equalsIgnoreCase("fazer nada")) || (chc.equalsIgnoreCase("n")) || chc.equalsIgnoreCase("nothing")) {
-								flag = false; // soh sai
-							}
-				
-							else if ((chc.equalsIgnoreCase("fugir")) || (chc.equalsIgnoreCase("f"))) {
-								endFlag = false;
-								flag = false;
-							}
-						
-							// se o texto inserido for invalido, deixa tentar denovo
-							else System.out.println("Texto errado: tente denovo");
-						}
-					}
-					
-
-				}
-				
-				// subtrai danos por sangramento ou veneno
-				if (Lista.get(contI).buffBleedRounds > 0) {
-					Lista.get(contI).hp -= Lista.get(contI).hp * 0.1;
-					Lista.get(contI).buffBleedRounds--;
-				}
-				if (Lista.get(contI).buffPoisonRounds > 0) {
-					Lista.get(contI).hp -= Lista.get(contI).maxHP * 0.1;
-					Lista.get(contI).buffPoisonRounds--;
-				}
-				
-				// Remove duracao de 1 round dos buffs
-				if (Lista.get(contI).buffForcaRounds > 0) Lista.get(contI).buffForcaRounds--;
-				if (Lista.get(contI).buffPercepcaoRounds > 0) Lista.get(contI).buffPercepcaoRounds--;
-				if (Lista.get(contI).buffResistenciaRounds > 0) Lista.get(contI).buffResistenciaRounds--;
-				if (Lista.get(contI).buffCarismaRounds > 0) Lista.get(contI).buffCarismaRounds--;
-				if (Lista.get(contI).buffInteligenciaRounds > 0) Lista.get(contI).buffInteligenciaRounds--;
-				if (Lista.get(contI).buffAgilidadeRounds > 0) Lista.get(contI).buffAgilidadeRounds--;
-				if (Lista.get(contI).buffSorteRounds > 0) Lista.get(contI).buffSorteRounds--;
-				if (Lista.get(contI).buffArmaduraRounds > 0) Lista.get(contI).buffArmaduraRounds--;
-				if (Lista.get(contI).buffEsquivaRounds > 0) Lista.get(contI).buffEsquivaRounds--;
-				if (Lista.get(contI).buffCriticoRounds > 0) Lista.get(contI).buffCriticoRounds--;
-				if (Lista.get(contI).buffStunRounds > 0) Lista.get(contI).buffStunRounds--;
-				
-				// Remove os buff cujos rounds acabaram
-				if (Lista.get(contI).buffForcaRounds == 0) Lista.get(contI).buffForcaValor=1;
-				if (Lista.get(contI).buffPercepcaoRounds == 0) Lista.get(contI).buffPercepcaoValor=1;
-				if (Lista.get(contI).buffResistenciaRounds == 0) Lista.get(contI).buffResistenciaValor=1;
-				if (Lista.get(contI).buffCarismaRounds == 0) Lista.get(contI).buffCarismaValor=1;
-				if (Lista.get(contI).buffInteligenciaRounds == 0) Lista.get(contI).buffInteligenciaValor=1;
-				if (Lista.get(contI).buffAgilidadeRounds == 0) Lista.get(contI).buffAgilidadeValor=1;
-				if (Lista.get(contI).buffSorteRounds == 0) Lista.get(contI).buffSorteValor=1;
-				if (Lista.get(contI).buffArmaduraRounds == 0) Lista.get(contI).buffArmaduraValor=1;
-				if (Lista.get(contI).buffEsquivaRounds == 0) Lista.get(contI).buffArmaduraValor=1;
-				if (Lista.get(contI).buffCriticoRounds == 0) Lista.get(contI).buffCriticoValor=1;
-				
-			/* Se os buffs vao ser porcentagens, precisamos soh multiplicar um atributo por seu buff toda vez q ele for usado, e deixar NAO BUFF = 1
-			 * Mas entao precisaremos dar tipecast (int) em alguns lugares.... 
-			 */
-			}
-			numRodada++;
+		if (contI < Lista.size() && Herois.isEmpty() == false && Viloes.isEmpty() == false) {
 			
+			actual = Lista.get(contI);
+			
+			// subtrai danos por sangramento ou veneno
+			if (actual.buffBleedRounds > 0) {
+				actual.hp -= actual.hp * 0.1;
+				actual.buffBleedRounds--;
+			}
+			if (actual.buffPoisonRounds > 0) {
+				actual.hp -= actual.maxHP * 0.1;
+				actual.buffPoisonRounds--;
+			}
+			
+			// Remove duracao de 1 round dos buffs
+			if (actual.buffForcaRounds > 0) actual.buffForcaRounds--;
+			if (actual.buffPercepcaoRounds > 0) actual.buffPercepcaoRounds--;
+			if (actual.buffResistenciaRounds > 0) actual.buffResistenciaRounds--;
+			if (actual.buffCarismaRounds > 0) actual.buffCarismaRounds--;
+			if (actual.buffInteligenciaRounds > 0) actual.buffInteligenciaRounds--;
+			if (actual.buffAgilidadeRounds > 0) actual.buffAgilidadeRounds--;
+			if (actual.buffSorteRounds > 0) actual.buffSorteRounds--;
+			if (actual.buffArmaduraRounds > 0) actual.buffArmaduraRounds--;
+			if (actual.buffEsquivaRounds > 0) actual.buffEsquivaRounds--;
+			if (actual.buffCriticoRounds > 0) actual.buffCriticoRounds--;
+			
+			// Remove os buff cujos rounds acabaram
+			if (actual.buffForcaRounds == 0) actual.buffForcaValor=1;
+			if (actual.buffPercepcaoRounds == 0) actual.buffPercepcaoValor=1;
+			if (actual.buffResistenciaRounds == 0) actual.buffResistenciaValor=1;
+			if (actual.buffCarismaRounds == 0) actual.buffCarismaValor=1;
+			if (actual.buffInteligenciaRounds == 0) actual.buffInteligenciaValor=1;
+			if (actual.buffAgilidadeRounds == 0) actual.buffAgilidadeValor=1;
+			if (actual.buffSorteRounds == 0) actual.buffSorteValor=1;
+			if (actual.buffArmaduraRounds == 0) actual.buffArmaduraValor=1;
+			if (actual.buffEsquivaRounds == 0) actual.buffArmaduraValor=1;
+			if (actual.buffCriticoRounds == 0) actual.buffCriticoValor=1;		
+		
+			contI++;
+			if (contI >= Lista.size()) contI = 0;
+			
+			return actual;
+		
+		} else {
+			System.out.println("Fim de Combate");
+			return null;			
 		}
-		endBattle(Herois, Viloes);
-		
-		System.out.println("Fim de Combate");
-		
-		scanner.close();
 	}
 	
 	public static int GetRepDist (AbsPersonagem Jogador) {
@@ -245,12 +177,12 @@ public class CRodada {
 			}
 			
 			// Usa as skills
-			else if ((chc.equalsIgnoreCase("1")))
+			/*else if ((chc.equalsIgnoreCase("1")))
 				noAtk = Heroi.Skill1(Viloes, weaponDam, trgt);
 			else if ((chc.equalsIgnoreCase("2")))
 				noAtk = Heroi.Skill2(Viloes, weaponDam, trgt);
 			else if ((chc.equalsIgnoreCase("3")))
-				noAtk = Heroi.Skill3(Viloes, weaponDam, trgt);
+				noAtk = Heroi.Skill3(Viloes, weaponDam, trgt);*/
 			else if ((chc.equalsIgnoreCase("c")))
 				noAtk = true;
 			else

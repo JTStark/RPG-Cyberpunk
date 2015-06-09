@@ -8,7 +8,7 @@ import java.util.Random;
 public class GranadeThrow implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		int danoFinal, resistencia, i;
 		double armadura, fator;
 		Random random = new Random();
@@ -42,7 +42,6 @@ public class GranadeThrow implements Skill {
 			else
 				System.out.println(Viloes.get(i).nome + " desviou!");
 		}
-		return false;
 	}
 
 }

@@ -7,8 +7,11 @@ import javax.xml.bind.JAXBException;
 import snake.engine.creators.ScreenCreator;
 import snake.engine.creators.WorldSettings;
 import snake.player.Magician_Test;
+import snake.visuals.Lights;
 import snake.visuals.enhanced.LightMapEntity;
 import snake.visuals.enhanced.VisualGameWorld;
+import box2dLight.Light;
+import box2dLight.PointLight;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -20,10 +23,16 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.mygdx.game.androidkeys.AndroidInput;
 import com.mygdx.game.animate.Animator;
+import com.mygdx.game.animate.Player;
 import com.mygdx.game.battle.BattleHUD;
 import com.mygdx.game.battle.BattleWorld;
+import com.mygdx.game.colision.CBau;
+import com.mygdx.game.colision.CDoors;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
 import com.mygdx.game.savestate.SaveState;
@@ -41,14 +50,13 @@ public class MyLevel extends VisualGameWorld {
 	
 	// The code below is simply a prototype for testing purposes 
 
-	private Magician_Test magician; //Da pra colocar uma array com todas as entities? 
 	private TiledMap map;
-	private Animator ani;
 	private TiledMapRenderer renderer;
-	private TiledMapTileLayer colision;
+	private TiledMapTileLayer colision, bau, bau2;
 	private OrthographicCamera camera;
-	private float dx,dy,v,tempx,tempy;
-	private int i, lim;
+	private float dx,dy,v;
+	private int lim;
+	Light light;
 	private boolean flagv = false, flagmo =true;
 	public MyLevel (String LevelData) {
 		float w = WorldSettings.getWorldWidth();
@@ -60,30 +68,28 @@ public class MyLevel extends VisualGameWorld {
 		camera.update();
 		WorldSettings.setAmbientColor(Color.WHITE);
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
-		ani = new Animator("link.png");
 		map = new TmxMapLoader().load(LevelData);
 		renderer = new OrthogonalTiledMapRenderer(map, 1f/32f);
-		magician = new Magician_Test(this);
         colision =  (TiledMapTileLayer)map.getLayers().get("Colisoes");
+        bau =  (TiledMapTileLayer)map.getLayers().get("Baus");
+        bau2 = (TiledMapTileLayer)map.getLayers().get("Baus2");
         lim = colision.getHeight();
         
 	}
 	
 	
 	public void show () {
-		WorldSettings.setAmbientColor(Color.WHITE);
+		WorldSettings.setAmbientColor(Color.BLACK);
 	}
 	
 	
 	
 	@Override
 	public void act(float delta) {
-		super.act(delta);
-		;
 		if(flagmo){
-			ani.setXY((float)(getX()+ 4.172*v),(float)(getY() + 0.3*v));
-			camera.position.x+=ani.getX();
-			camera.position.y+=ani.getY();
+			Player.ani.setXY((float)(getX()+ 4.172*v),(float)(getY() + 0.3*v));
+			camera.position.x+=Player.ani.getX();
+			camera.position.y+=Player.ani.getY();
 			camera.update();
 			flagmo = false;
 		}
@@ -104,6 +110,9 @@ public class MyLevel extends VisualGameWorld {
 					e.printStackTrace();
 				}
 			
+		}
+		if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
+			Player.change();	
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE)) {
 			try {
@@ -145,10 +154,17 @@ public class MyLevel extends VisualGameWorld {
 		
 		dx=0;
 		dy=0;
+		//bau dissapering
+		CBau.changeBau(camera, bau, bau2, colision);
+		//Checa porta
+		CDoors.doorUP(camera, colision);
+		
+		CDoors.doorDown(camera, colision);
 		// move player
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!(colision.getCell(Math.round(camera.position.x + 1), Math.round(camera.position.y)).getTile().getProperties().get("blocked") != null)){
+		if((Gdx.input.isKeyPressed(Input.Keys.RIGHT))&&!(colision.getCell(Math.round(camera.position.x + 1), Math.round(camera.position.y)).getTile().getProperties().get("blocked") != null)){
 			dx=1;
 		}else
+			
 		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("blocked") != null)){
 			dy=1;
 			if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null){
@@ -159,7 +175,7 @@ public class MyLevel extends VisualGameWorld {
 				}
 			}
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!(colision.getCell(Math.round(camera.position.x-1), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
+		if((Gdx.input.isKeyPressed(Input.Keys.LEFT))&&!(colision.getCell(Math.round(camera.position.x-1), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
 			dx=-1;
 		}else
 		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("blocked") != null)){
@@ -182,9 +198,9 @@ public class MyLevel extends VisualGameWorld {
 			}
 		}
 
-		ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
-		camera.position.x+=ani.getX();
-		camera.position.y+=ani.getY();
+		Player.ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
+		camera.position.x+=Player.ani.getX();
+		camera.position.y+=Player.ani.getY();
 		camera.update();
 		if(camera.position.x<1){ 	camera.position.x=1; } else if(camera.position.x>lim -1){
 			camera.position.x=(float) (lim-1);
@@ -208,22 +224,22 @@ public class MyLevel extends VisualGameWorld {
 		//magician.draw(batch, parentAlpha);
 		batch.end();
 		batch.begin();
-		ani.act();
+		Player.ani.act();
 		super.draw(batch, parentAlpha);
 	}
 
 	public void createLights() {
-		for (Actor x : this.getChildren()) {
-			LightMapEntity ent = (LightMapEntity) x;
-			ent.createLights();
-		}
+
+		light = new PointLight (Lights.getRayhandler(), 5000, new Color(1f, 1f, 1f, 1f), 45,50, WorldSettings.heightFix(50));
+		light.setSoft(false);
 	}
 	
 	@Override
 	public void dispose() {
 
 		map.dispose();
-		magician.disposeLights();
+		light.remove();
+		light.dispose();
 	}
 
 

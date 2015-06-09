@@ -63,6 +63,7 @@
   <image source="Portal1.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="door" value="CasaNorman.tmx"/>
    </properties>
   </tile>
@@ -71,7 +72,8 @@
   <image source="Portal2.png" width="32" height="32"/>
   <tile id="0">
    <properties>
-    <property name="door" value="1.oAndarBabi.tmx"/>
+    <property name="blocked" value="blocked"/>
+    <property name="door" value="1oAndarBabi.tmx"/>
    </properties>
   </tile>
  </tileset>
@@ -79,6 +81,7 @@
   <image source="Portal3.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="door" value="Shop.tmx"/>
    </properties>
   </tile>
@@ -87,6 +90,7 @@
   <image source="Portal4.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="door" value="Inn.tmx"/>
    </properties>
   </tile>
@@ -95,6 +99,7 @@
   <image source="Portal5.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="door" value="SalaDosBaus.tmx"/>
    </properties>
   </tile>
@@ -103,7 +108,8 @@
   <image source="Portal6.png" width="32" height="32"/>
   <tile id="0">
    <properties>
-    <property name="door" value="1.oAndarFalcao.tmx"/>
+    <property name="blocked" value="blocked"/>
+    <property name="door" value="1oAndarFalcao.tmx"/>
    </properties>
   </tile>
  </tileset>

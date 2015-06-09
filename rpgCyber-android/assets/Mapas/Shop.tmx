@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Parede" tilewidth="32" tileheight="32">
+  <image source="Parede.png" width="96" height="32"/>
+ </tileset>
+ <tileset firstgid="4" name="Tile_Madeira" tilewidth="32" tileheight="32">
+  <image source="Tile_Madeira.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="5" name="TapeteEntrada" tilewidth="32" tileheight="32">
+  <image source="TapeteEntrada.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="6" name="BalcaoLoja" tilewidth="32" tileheight="32">
+  <image source="BalcaoLoja.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="7" name="ParedeInvisivel" tilewidth="32" tileheight="32">
+  <image source="ParedeInvisivel.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="8" name="Portal1" tilewidth="32" tileheight="32">
+  <image source="Portal1.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="blocked"/>
+    <property name="doorHome" value="MapaExterno.tmx"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="9" name="FundoLoja" tilewidth="32" tileheight="32">
+  <image source="FundoLoja.png" width="416" height="127"/>
+ </tileset>
+ <layer name="Camada de Tiles 1" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjZmBIYGJgYCAVM0PoBBYgTSoG6lswEvWyAdmk4oF286he4vQC88MBJihmBGJWoDgjxMwD+DBQ3wIAlPIa1A==
+  </data>
+ </layer>
+ <layer name="Colisoes" width="15" height="15" opacity="0">
+  <properties>
+   <property name="blocked" value="blocked"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjZ2BgYB/Fgx6zkIFH9dJXLzLmICFuAb8DBRg=
+  </data>
+ </layer>
+ <layer name="Camada de Tiles 3" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJztzzkSggAABEFSUVFUQC5PwFv//zs7JKfImKoON9ggGNaMkDkLlkSsWBOzYcuOpLdNydiTU1BSUXPgyIkzl972SkNLx407D568ePPhy2/gz6mpsfoDNDgERQ==
+  </data>
+ </layer>
+</map>

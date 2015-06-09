@@ -22,8 +22,12 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.animate.Animator;
+import com.mygdx.game.animate.Player;
 import com.mygdx.game.battle.BattleHUD;
 import com.mygdx.game.battle.BattleWorld;
+import com.mygdx.game.colision.CBau;
+import com.mygdx.game.colision.CCClide;
+import com.mygdx.game.colision.CDoors;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
 import com.mygdx.game.savestate.SaveState;
@@ -43,9 +47,8 @@ public class LevelCasas extends VisualGameWorld {
 
 	private Magician_Test magician; //Da pra colocar uma array com todas as entities? 
 	private TiledMap map;
-	private Animator ani;
 	private TiledMapRenderer renderer;
-	private TiledMapTileLayer colision;
+	private TiledMapTileLayer colision, bau, bau2;
 	private OrthographicCamera camera;
 	private float dx,dy,v;
 	private int i, lim;
@@ -54,17 +57,17 @@ public class LevelCasas extends VisualGameWorld {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
 		v = 8;
-		
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, (w/h)*10, 10);
 		camera.update();
 		WorldSettings.setAmbientColor(Color.WHITE);
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
-		ani = new Animator("link.png");
 		map = new TmxMapLoader().load(LevelData);
 		renderer = new OrthogonalTiledMapRenderer(map, 1f/32f);
 		magician = new Magician_Test(this);
         colision =  (TiledMapTileLayer)map.getLayers().get("Colisoes");
+        bau =  (TiledMapTileLayer)map.getLayers().get("Baus");
+        bau2 = (TiledMapTileLayer)map.getLayers().get("Baus2");
         lim = colision.getHeight();
 	}
 	
@@ -80,9 +83,9 @@ public class LevelCasas extends VisualGameWorld {
 		super.act(delta);
 		;
 		if(flagmo){
-			ani.setXY((float)(getX()-0.325*v),(float)(getY() -1.1*v));
-			camera.position.x+=ani.getX();
-			camera.position.y+=ani.getY();
+			Player.ani.setXY((float)(getX()-0.325*v),(float)(getY() -1.1*v));
+			camera.position.x+=Player.ani.getX();
+			camera.position.y+=Player.ani.getY();
 			camera.update();
 			flagmo = false;
 		}
@@ -103,6 +106,12 @@ public class LevelCasas extends VisualGameWorld {
 					e.printStackTrace();
 				}
 			
+		}
+		if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
+			
+			Player.change();
+				
+		
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE)) {
 			try {
@@ -143,50 +152,26 @@ public class LevelCasas extends VisualGameWorld {
 		
 		dx=0;
 		dy=0;
+		//bau dissapering
+		CBau.changeBau(camera, bau, bau2, colision);
+		CDoors.doorUP(camera, colision);
+		CDoors.doorDown(camera, colision);
 		// move player
-		if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)) != null
-			&&colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)) != null
-			&&colision.getCell(Math.round(camera.position.x+1), Math.round(camera.position.y)) != null
-			&&colision.getCell(Math.round(camera.position.x-1), Math.round(camera.position.y)) != null){
-			if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!(colision.getCell(Math.round(camera.position.x + 1), Math.round(camera.position.y)).getTile().getProperties().get("blocked") != null)){
-				dx=1;
-			}else
-			if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("blocked") != null)){
-				dy=1;
-				if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null){
-					try {
-						ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			}else
-			if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!(colision.getCell(Math.round(camera.position.x-1), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
-				dx=-1;
-			}else
-			if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("blocked") != null)){
-				dy=-1;
-				if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door") != null){
-					if(!"MapaExterno.tmx".equalsIgnoreCase(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString())){
-						try {
-							ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}else{
-						try {
-							ScreenCreator.backToPrevious();
-						} catch (Exception e) {
-							e.printStackTrace();
-							
-						}
-					}
-				}
-			}
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCClide.rightP(colision, camera, "blocked")){
+			dx=1;
+		}else
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!CCClide.upP(colision, camera, "blocked")){
+			dy=1;
+		}else
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!CCClide.leftP(colision, camera, "blocked")){
+			dx=-1;
+		}else
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCClide.downP(colision, camera, "blocked")){
+			dy=-1;
 		}
-		ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
-		camera.position.x+=ani.getX();
-		camera.position.y+=ani.getY();
+		Player.ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
+		camera.position.x+=Player.ani.getX();
+		camera.position.y+=Player.ani.getY();
 		camera.update();
 		if(camera.position.x<1){ 	camera.position.x=1; } else if(camera.position.x>lim -1){
 			camera.position.x=(float) (lim-1);
@@ -212,7 +197,7 @@ public class LevelCasas extends VisualGameWorld {
 		//magician.draw(batch, parentAlpha);
 		batch.end();
 		batch.begin();
-		ani.act();
+		Player.ani.act();
 		super.draw(batch, parentAlpha);
 	}
 

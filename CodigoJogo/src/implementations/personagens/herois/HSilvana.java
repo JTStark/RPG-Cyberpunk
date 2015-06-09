@@ -1,6 +1,7 @@
 package implementations.personagens.herois;
 
 import implementations.personagens.AbsPersonagem;
+import implementations.personagens.skills.*;
 
 /**
  * Classe do Dr. Angus Silvana que herda a abstrata para os personagens
@@ -10,15 +11,29 @@ import implementations.personagens.AbsPersonagem;
  */
 
 public class HSilvana extends AbsPersonagem {
-	public int forca = 15, percepcao = 25, resistencia = 15, carisma = 15, inteligencia = 65, agilidade = 25, sorte = 15;
-	public String nome = "Silvana";
-	
 	public static HSilvana instancia = new HSilvana();   
 	
-	public HSilvana (){
+	private HSilvana (){
+		this.forca = 15;
+		this.percepcao = 25; 
+		this.resistencia = 15; 
+		this.carisma = 15; 
+		this.inteligencia = 65; 
+		this.agilidade = 25; 
+		this.sorte = 15;
+		
+		this.esquiva = (this.agilidade)/2.5 + (this.sorte)/5;
+		this.critico = (this.agilidade)/5 + (this.sorte)/2.5;
+		
+		this.nome = "Silvana";
+				
 		this.nSkill1 = "Acid bomb";
 		this.nSkill2 = "Poison Dart";
 		this.nSkill3 = "Invisibility-Cloak";
+		
+		this.skill1 = new AcidBomb();
+		this.skill2 = new PoisonDart();
+		this.skill3 = new InvisibilityCloak();
 	}
 	
 	public static HSilvana getInstancia(){

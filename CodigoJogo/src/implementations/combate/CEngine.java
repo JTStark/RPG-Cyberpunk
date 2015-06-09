@@ -11,12 +11,33 @@ package implementations.combate;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import implementations.personagens.AbsPersonagem;
+import implementations.personagens.herois.HDurden;
+import implementations.personagens.herois.HMDR;
+import implementations.personagens.herois.HOleg;
+import implementations.personagens.herois.HOzob;
+import implementations.personagens.herois.HRexus;
+import implementations.personagens.herois.HSilvana;
 
 public class CEngine {
+	
+	public static ArrayList<AbsPersonagem> listaH;
 
 	public static void CombatEngine (ArrayList<AbsPersonagem> Herois, ArrayList<AbsPersonagem> Viloes) { // recebe um ArrayList com herois e outro com viloes
-		ArrayList<AbsPersonagem> listaH = new ArrayList<AbsPersonagem> (); // lista que vai conter os herois ordenados
+		listaH = new ArrayList<AbsPersonagem> ();// lista que vai conter os herois ordenados
+		AbsPersonagem Durden = HDurden.getInstancia();
+		AbsPersonagem MDR = HMDR.getInstancia();
+		AbsPersonagem Oleg = HOleg.getInstancia();
+		AbsPersonagem Ozob = HOzob.getInstancia();
+		AbsPersonagem Rexus = HRexus.getInstancia();
+		AbsPersonagem Silvana = HSilvana.getInstancia();
+		listaH.add(Durden);
+		listaH.add(MDR);
+		listaH.add(Oleg);
+		listaH.add(Ozob);
+		listaH.add(Rexus);
+		listaH.add(Silvana);
 		ArrayList<AbsPersonagem> listaV = new ArrayList<AbsPersonagem> (); // lista que vai conter os viloes ordenados
 		ArrayList<AbsPersonagem> listaI = new ArrayList<AbsPersonagem> (); // lista que vai conter a ordem de jogada
 		Random random = new Random(); // gerador de numeros randomicos
@@ -115,9 +136,6 @@ public class CEngine {
 		System.out.println();
 		System.out.println();
 		System.out.println();
-		
-		// roda Jogada de CRodada
-		CRodada.Jogada(listaH, listaV, listaI);
 	}
 }
 
