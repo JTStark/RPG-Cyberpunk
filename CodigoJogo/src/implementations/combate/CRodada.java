@@ -66,7 +66,7 @@ public class CRodada {
 							// compara se a escolha eh compativel com alguma opcao vailda e roda a funcao apropriada
 							if ((chc.equalsIgnoreCase("reposicionar")) || (chc.equalsIgnoreCase("r"))) {
 								
-								Reposition(Herois, contP);
+								Reposition(Herois, contP,0);
 								flag = false;
 							}
 							
