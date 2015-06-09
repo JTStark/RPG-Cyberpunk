@@ -22,7 +22,7 @@ public class CRodada {
 
 	static int numRodada=0; //variavel global para que o antigo, deprecated BUFFS possa acompanhar a passagem de rodadas
 	static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
-	//Inventario inventario = new Inventario();
+	Inventario inventario = Inventario.getInstancia();
 
 	public static void Jogada (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista) { //recebe ArrayList de herois e viloes ordenados
 		int contP, contI; // contador para vetor de Personagens e Iniciativa
