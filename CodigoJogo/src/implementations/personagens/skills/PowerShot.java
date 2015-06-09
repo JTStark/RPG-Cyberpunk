@@ -28,13 +28,6 @@ public class PowerShot implements Skill {
 			danoFinal = ((int)((dam * (fator/3)) * armadura)) - resistencia; // danoFinal final
 			
 			//SKILL
-			// reposiciona o alvo para a ultima posicao
-			temp = Viloes.get(trgt);
-			Viloes.remove(trgt);
-			Viloes.add(5, temp);
-			
-			for (int cont = 0; cont < Viloes.size(); cont++)
-				Viloes.get(cont).pos = cont;
 			
 			danoFinal = (int) (danoFinal * 1.50);
 			
@@ -42,22 +35,37 @@ public class PowerShot implements Skill {
 			
 			if ((int)(heroiAtacante.critico * heroiAtacante.buffCriticoValor)+random.nextInt(100)+1 >= 100) { // Soma a chance de critico com random 1-100. Se passar de 100 crita
 				danoFinal *= 2;
+				//SKILL
+				temp = Viloes.get(trgt);
+				Viloes.remove(trgt);
+				Viloes.add(5, temp);
+				
+				for (int cont = 0; cont < Viloes.size(); cont++)
+					Viloes.get(cont).pos = cont;
+				//ENDSKILL
 				Viloes.get(trgt-1).hp -= danoFinal;
 				System.out.println("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
 			}
 			else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) { // Igual ao critico
 				Viloes.get(trgt-1).hp -= danoFinal;
+				//SKILL
+				temp = Viloes.get(trgt);
+				Viloes.remove(trgt);
+				Viloes.add(5, temp);
+				
+				for (int cont = 0; cont < Viloes.size(); cont++)
+					Viloes.get(cont).pos = cont;
+				//ENDSKILL
 				System.out.println(Viloes.get(trgt-1).nome + " atingido! " + danoFinal + " de danoFinal!");
 			}
 			else
 				System.out.println(Viloes.get(trgt-1).nome + " desviou!");
 			
-			//ENDSKILL
-			return true;
+			return false;
 		}		
 		else {
 			System.out.println("Voce está muito longe de seu alvo para Power Shot");
-			return false;
+			return true;
 		}
 	}
 

@@ -7,24 +7,24 @@ import java.util.ArrayList;
 public class Inspire implements Skill {
 
 	@Override
-	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		int constante = heroiAtacante.carisma;
-			Viloes.get(trgt).buffAgilidadeValor = 1 + ((5 + constante/20)/100);
-			Viloes.get(trgt).buffAgilidadeRounds = 1;
-			Viloes.get(trgt).buffCarismaValor = 1 + ((5 + constante/20)/100);
-			Viloes.get(trgt).buffCarismaRounds = 1;
-			Viloes.get(trgt).buffForcaValor = 1 + ((5 + constante/20)/100);
-			Viloes.get(trgt).buffForcaRounds = 1;
-			Viloes.get(trgt).buffInteligenciaValor = 1 + ((5 + constante/20)/100);
-			Viloes.get(trgt).buffInteligenciaRounds = 1;
-			Viloes.get(trgt).buffPercepcaoValor = 1 + ((5 + constante/20)/100);
-			Viloes.get(trgt).buffPercepcaoRounds = 1;
-			Viloes.get(trgt).buffResistenciaValor = 1 + ((5 + constante/20)/100);
-			Viloes.get(trgt).buffResistenciaRounds = 1;
-			Viloes.get(trgt).buffSorteValor = 1 + ((5 + constante/20)/100);
-			Viloes.get(trgt).buffSorteRounds = 1;
+			Herois.get(trgt).buffAgilidadeValor = 1 + ((5 + constante/20)/100);
+			Herois.get(trgt).buffAgilidadeRounds = 1;
+			Herois.get(trgt).buffCarismaValor = 1 + ((5 + constante/20)/100);
+			Herois.get(trgt).buffCarismaRounds = 1;
+			Herois.get(trgt).buffForcaValor = 1 + ((5 + constante/20)/100);
+			Herois.get(trgt).buffForcaRounds = 1;
+			Herois.get(trgt).buffInteligenciaValor = 1 + ((5 + constante/20)/100);
+			Herois.get(trgt).buffInteligenciaRounds = 1;
+			Herois.get(trgt).buffPercepcaoValor = 1 + ((5 + constante/20)/100);
+			Herois.get(trgt).buffPercepcaoRounds = 1;
+			Herois.get(trgt).buffResistenciaValor = 1 + ((5 + constante/20)/100);
+			Herois.get(trgt).buffResistenciaRounds = 1;
+			Herois.get(trgt).buffSorteValor = 1 + ((5 + constante/20)/100);
+			Herois.get(trgt).buffSorteRounds = 1;
 		
-		return true;
+		return false;
 	}
 
 }
