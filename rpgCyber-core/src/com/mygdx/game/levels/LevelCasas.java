@@ -155,7 +155,7 @@ public class LevelCasas extends VisualGameWorld {
 				dy=1;
 				if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null){
 					try {
-						ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
+						ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
