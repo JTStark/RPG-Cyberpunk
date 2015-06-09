@@ -158,9 +158,9 @@ public class MyLevel extends VisualGameWorld {
 		CBau.changeBau(camera, bau, bau2, colision);
 		//Checa porta
 		CDoors.doorUP(camera, colision);
-		// move player
 		
-	
+		CDoors.doorDown(camera, colision);
+		// move player
 		if((Gdx.input.isKeyPressed(Input.Keys.RIGHT))&&!(colision.getCell(Math.round(camera.position.x + 1), Math.round(camera.position.y)).getTile().getProperties().get("blocked") != null)){
 			dx=1;
 		}else

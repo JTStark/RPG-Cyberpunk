@@ -26,6 +26,8 @@ import com.mygdx.game.animate.Player;
 import com.mygdx.game.battle.BattleHUD;
 import com.mygdx.game.battle.BattleWorld;
 import com.mygdx.game.colision.CBau;
+import com.mygdx.game.colision.CCClide;
+import com.mygdx.game.colision.CDoors;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
 import com.mygdx.game.savestate.SaveState;
@@ -152,79 +154,20 @@ public class LevelCasas extends VisualGameWorld {
 		dy=0;
 		//bau dissapering
 		CBau.changeBau(camera, bau, bau2, colision);
+		CDoors.doorUP(camera, colision);
+		CDoors.doorDown(camera, colision);
 		// move player
-		if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)) != null
-			&&colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)) != null
-			&&colision.getCell(Math.round(camera.position.x+1), Math.round(camera.position.y)) != null
-			&&colision.getCell(Math.round(camera.position.x-1), Math.round(camera.position.y)) != null){
-			if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!(colision.getCell(Math.round(camera.position.x + 1), Math.round(camera.position.y)).getTile().getProperties().get("blocked") != null)){
-				dx=1;
-			}else
-			if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("blocked") != null)){
-				dy=1;
-				if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null){
-					try {
-						ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("stair") != null){
-					try {
-						ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("stair").toString()), new MyHUD("LevelData"));
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("stairHome") != null){
-					try {
-						ScreenCreator.backToPrevious();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("doorHome") != null){
-					try {
-						ScreenCreator.backToPrevious();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			}else
-			if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!(colision.getCell(Math.round(camera.position.x-1), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
-				dx=-1;
-			}else
-			if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("blocked") != null)){
-				dy=-1;
-				if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door") != null){
-					try {
-						ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("stair") != null){
-					try {
-						ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("stair").toString()), new MyHUD("LevelData"));
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("stairHome") != null){
-					try {
-						ScreenCreator.backToPrevious();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("doorHome") != null){
-					try {
-						ScreenCreator.backToPrevious();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			}
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCClide.rightP(colision, camera, "blocked")){
+			dx=1;
+		}else
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!CCClide.upP(colision, camera, "blocked")){
+			dy=1;
+		}else
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!CCClide.leftP(colision, camera, "blocked")){
+			dx=-1;
+		}else
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCClide.downP(colision, camera, "blocked")){
+			dy=-1;
 		}
 		Player.ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
 		camera.position.x+=Player.ani.getX();
