@@ -19,6 +19,7 @@
   <image source="Portal1.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="doorHome" value="MapaExterno.tmx"/>
    </properties>
   </tile>
@@ -36,7 +37,7 @@
    <property name="blocked" value="blocked"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgYB/Fgx6TA0b10lcvMubAIY4NAwA8NAOs
+   eJxjZ2BgYB/Fgx6zkIFH9dJXLzLmICFuAb8DBRg=
   </data>
  </layer>
  <layer name="Camada de Tiles 3" width="15" height="15">

@@ -50,6 +50,7 @@
   <image source="Portal1.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="doorHome" value="MapaExterno.tmx"/>
    </properties>
   </tile>
@@ -58,6 +59,7 @@
   <image source="Portal2.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="stair" value="2oAndarFalcao.tmx"/>
    </properties>
   </tile>
