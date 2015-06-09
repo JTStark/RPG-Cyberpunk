@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Random;
 public class StunnigBlow implements Skill {
 
-	public static int tipoAlvo = 1;	
+	public static int tipoAlvo = 1;
+	public static int tipoSkill = 1;
 	
 	@Override
 	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {

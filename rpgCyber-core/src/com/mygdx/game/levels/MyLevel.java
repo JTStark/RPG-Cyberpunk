@@ -56,14 +56,13 @@ public class MyLevel extends VisualGameWorld {
 	private TiledMapRenderer renderer;
 	private TiledMapTileLayer colision, bau, bau2;
 	private OrthographicCamera camera;
-	private float dx,dy,v;
+	private float dx,dy;
 	private int lim;
 	Light light;
 	private boolean flagv = false, flagmo =true;
 	public MyLevel (String LevelData) {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
-		v = 8;
 		
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, (w/h)*10, 10);
@@ -89,7 +88,7 @@ public class MyLevel extends VisualGameWorld {
 	@Override
 	public void act(float delta) {
 		if(flagmo){
-			Player.ani.setXY((float)(getX()+ 4.172*v),(float)(getY() + 0.3*v));
+			Player.ani.setXY((float)(getX()+ 4.172*Player.v),(float)(getY() + 0.3*Player.v));
 			camera.position.x+=Player.ani.getX();
 			camera.position.y+=Player.ani.getY();
 			camera.update();
@@ -129,12 +128,7 @@ public class MyLevel extends VisualGameWorld {
 			}
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
-			flagv = !flagv;
-			if(flagv){
-				v=v*5;
-			}else{
-				v=v/5;
-			}
+			Player.speed();
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
 			try {
@@ -175,7 +169,7 @@ public class MyLevel extends VisualGameWorld {
 		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCColide.downP(colision, camera, "blocked")){
 			dy=-1;
 		}
-		Player.ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
+		Player.ani.setXY(getX()+ dx*delta*Player.v,getY() + dy*delta*Player.v);
 		camera.position.x+=Player.ani.getX();
 		camera.position.y+=Player.ani.getY();
 		camera.update();

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class FirstAid implements Skill {
 
 	public static int tipoAlvo = 2;	
+	public static int tipoSkill = 5;
 	
 	@Override
 	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {

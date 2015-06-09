@@ -14,6 +14,11 @@
  </tileset>
  <tileset firstgid="7" name="ParedeInvisivel" tilewidth="32" tileheight="32">
   <image source="ParedeInvisivel.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="blocked"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="8" name="Portal1" tilewidth="32" tileheight="32">
   <image source="Portal1.png" width="32" height="32"/>
@@ -29,7 +34,7 @@
    eJxjZmBIYGJgYEDHjEBxNgaGA0CagRkilsACpPFhoJoFo+qwqwOG4QEmKAaG6QFWSBgvYEISB6pZAADRDxFQ
   </data>
  </layer>
- <layer name="Colisoes" width="10" height="10" opacity="0">
+ <layer name="Colisoes" width="10" height="10">
   <data encoding="base64" compression="zlib">
    eJxjZ2BgYCcSsxDAo+rwq0PGHDjEAZKPAf4=
   </data>

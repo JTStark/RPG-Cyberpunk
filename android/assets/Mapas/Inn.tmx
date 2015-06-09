@@ -28,6 +28,7 @@
   <image source="Portal6.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="heal" value="heal"/>
    </properties>
   </tile>
@@ -42,12 +43,7 @@
    <property name="blocked" value="blocked"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgYB/Fgx6zkIHJ1UuJvSPZzciYg4S4BQDKowUk
-  </data>
- </layer>
- <layer name="Heal" width="15" height="15" opacity="0">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgF1ACcA6R3OAFOhpEZFgA67AAl
+   eJxjZ2BgYB/FA4o5iVDDQgYmVy8l9lLqZs4BsJda4YyMOUiIfwDQiwUo
   </data>
  </layer>
 </map>

@@ -27,6 +27,7 @@ import com.mygdx.game.battle.BattleHUD;
 import com.mygdx.game.battle.BattleWorld;
 import com.mygdx.game.colision.CBau;
 import com.mygdx.game.colision.CCClide;
+import com.mygdx.game.colision.CCColide;
 import com.mygdx.game.colision.CDoors;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
@@ -157,16 +158,16 @@ public class LevelCasas extends VisualGameWorld {
 		CDoors.doorUP(camera, colision);
 		CDoors.doorDown(camera, colision);
 		// move player
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCClide.rightP(colision, camera, "blocked")){
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCColide.rightP(colision, camera, "blocked")){
 			dx=1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!CCClide.upP(colision, camera, "blocked")){
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!CCColide.upP(colision, camera, "blocked")){
 			dy=1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!CCClide.leftP(colision, camera, "blocked")){
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!CCColide.leftP(colision, camera, "blocked")){
 			dx=-1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCClide.downP(colision, camera, "blocked")){
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCColide.downP(colision, camera, "blocked")){
 			dy=-1;
 		}
 		Player.ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
