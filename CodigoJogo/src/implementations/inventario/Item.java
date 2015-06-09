@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 public class Item implements InterfaceItem {
 	private String name;
 	private String type;
@@ -68,6 +67,39 @@ public class Item implements InterfaceItem {
 	/*metodo para retornar o quanto o item aumentará*/
 	public int getBonus() {
 		return this.bonus;
+	}
+	
+	/*metodo para gerar um item aleatorio, para ser colocado nos baus encontrados no meio do jogo*/
+	public static Item geraAleatorio() { 
+		int procurado = 2 + (int)(Math.random() * 80);
+		String diretorio = "bin/bd/BD.txt";
+		FileReader arquivo;
+		BufferedReader tratado = null;
+		String nome = null;
+		
+		/*tenta abrir o arquivo, e caso não consiga entra na exception*/
+		try {
+			arquivo = new FileReader(diretorio);
+			tratado = new BufferedReader(arquivo);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		/*roda o loop até encontrar o aleatorio*/
+		for (int i = 1; i < procurado; i++) {
+			try {
+				String linha = tratado.readLine();
+				/*não é o jeito mais bonito a ser feito, mas funciona bem*/
+				if (linha != null)
+					nome = linha.substring(0,linha.indexOf(','));
+				linha = tratado.readLine();
+					
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return new Item(nome);
 	}
 	
 }
