@@ -20,7 +20,7 @@ public abstract class AbsPersonagem {
 	public int hp = 100, maxHP = 100, xp = 0, level = 1, danoArma, armadura = 0, iniciativa, pos, tipo; /*1 = melee, 3 = ranged, 5 = support*/
 	public boolean vilao = false;
 	public String nome, nSkill1, nSkill2, nSkill3;
-	public transient Skill skill1, skill2, skill3;
+	public transient Skill skill0, skill1, skill2, skill3;
 	
 	/*
 	public boolean Skill1 (ArrayList <AbsPersonagem> Viloes, double dam, int trgt) {
