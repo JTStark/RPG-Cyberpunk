@@ -13,33 +13,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import implementations.personagens.AbsPersonagem;
-import implementations.personagens.herois.HDurden;
-import implementations.personagens.herois.HMDR;
-import implementations.personagens.herois.HOleg;
-import implementations.personagens.herois.HOzob;
-import implementations.personagens.herois.HRexus;
-import implementations.personagens.herois.HSilvana;
 
 public class CEngine {
 	
-	public static ArrayList<AbsPersonagem> listaH;
+	public static ArrayList<AbsPersonagem> listaH = new ArrayList<AbsPersonagem> ();// lista que vai conter os herois ordenados
+	public static ArrayList<AbsPersonagem> listaV = new ArrayList<AbsPersonagem> (); // lista que vai conter os viloes ordenados
+	public static ArrayList<AbsPersonagem> listaI = new ArrayList<AbsPersonagem> (); // lista que vai conter a ordem de jogada
 
 	public static void CombatEngine (ArrayList<AbsPersonagem> Herois, ArrayList<AbsPersonagem> Viloes) { // recebe um ArrayList com herois e outro com viloes
-		listaH = new ArrayList<AbsPersonagem> ();// lista que vai conter os herois ordenados
-		AbsPersonagem Durden = HDurden.getInstancia();
-		AbsPersonagem MDR = HMDR.getInstancia();
-		AbsPersonagem Oleg = HOleg.getInstancia();
-		AbsPersonagem Ozob = HOzob.getInstancia();
-		AbsPersonagem Rexus = HRexus.getInstancia();
-		AbsPersonagem Silvana = HSilvana.getInstancia();
-		listaH.add(Durden);
-		listaH.add(MDR);
-		listaH.add(Oleg);
-		listaH.add(Ozob);
-		listaH.add(Rexus);
-		listaH.add(Silvana);
-		ArrayList<AbsPersonagem> listaV = new ArrayList<AbsPersonagem> (); // lista que vai conter os viloes ordenados
-		ArrayList<AbsPersonagem> listaI = new ArrayList<AbsPersonagem> (); // lista que vai conter a ordem de jogada
 		Random random = new Random(); // gerador de numeros randomicos
 		int contL; // Contador do vetor da Lista
 		boolean flag; // Flag para parar o While abaixo
@@ -50,10 +31,10 @@ public class CEngine {
 				flag = true;
 				contL = 0;
 				
-				if (listaH.get(H.tipo-1) != null) H.pos = H.tipo;
-				else H.pos = H.tipo - 1;
+				//if (listaH.get(H.tipo-1) != null) H.pos = H.tipo;
+				//else H.pos = H.tipo - 1;
 
-				listaH.add(H.pos, H);
+				listaH.add(H.tipo, H);
 				
 				
 				// se a lista esta vazia, adiciona na primeira posicao
@@ -90,10 +71,10 @@ public class CEngine {
 				flag = true;
 				contL = 0;
 				
-				if (listaV.get(V.tipo-1) != null) V.pos = V.tipo;
-				else V.pos = V.tipo - 1;
+				//if (listaV.get(V.tipo-1) != null) V.pos = V.tipo;
+				//else V.pos = V.tipo - 1;
 
-				listaH.add(V.pos, V);
+				listaV.add(V.tipo-1, V);
 				
 				if(listaI.isEmpty()) {
 					
