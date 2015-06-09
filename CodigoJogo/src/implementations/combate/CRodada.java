@@ -23,6 +23,7 @@ public class CRodada {
 	static int numRodada=0; //variavel global para que o antigo, deprecated BUFFS possa acompanhar a passagem de rodadas
 	static Scanner scanner = new Scanner(System.in); //scanner para pegar a escolha
 	Inventario inventario = Inventario.getInstancia();
+	static AbsPersonagem actual = new PersonGenerico();
 
 	public static void Jogada (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista) { //recebe ArrayList de herois e viloes ordenados
 		int contP, contI; // contador para vetor de Personagens e Iniciativa
@@ -35,10 +36,13 @@ public class CRodada {
 			// uma rodada para cada personagem, enquanto houverem herois ou viloes e ninguem quiser fugir
 			for (contI = 0; contI < Lista.size() && endFlag == true && Herois.isEmpty() == false && Viloes.isEmpty() == false; contI++) {
 				
+				actual = Lista.get(contI);
+				
 				System.out.println();
 				System.out.println(Lista.get(contI).nome + " " + Lista.get(contI).iniciativa);
 	
 				if ((Lista.get(contI).buffStunRounds == 0) && Lista.get(contI).hp > 0) { //pula a jogada de um jogador se desorientado
+					
 					
 					// If para os Viloes (AI)
 					if (Lista.get(contI).vilao) {
@@ -144,6 +148,10 @@ public class CRodada {
 		System.out.println("Fim de Combate");
 		
 		scanner.close();
+	}
+	
+	public static String getVezDeQuem () {
+		return actual.nome;
 	}
 	
 	public static int GetRepDist (AbsPersonagem Jogador) {
