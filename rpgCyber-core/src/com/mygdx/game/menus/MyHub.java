@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.mygdx.game.androidkeys.AndroidInput;
 import com.mygdx.game.levels.MyHUD;
 import com.mygdx.game.levels.MyLevel;
+import com.mygdx.game.text.TextHUB;
+import com.mygdx.game.text.TextLevel;
 
 import snake.engine.creators.ScreenCreator;
 import snake.engine.models.HUD;
@@ -58,6 +60,17 @@ import snake.hud.SnakeHUD;
 				if(i ==0){	
 					try {
 						ScreenCreator.addAndGo(new MyLevel("Mapas/MapaExterno.tmx"), new MyHUD("LevelData"));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				if(i ==2){
+					Gdx.app.exit();
+				}
+			}if (Gdx.input.isKeyPressed(Input.Keys.R) || Gdx.input.justTouched()) {
+				if(i ==0){	
+					try {
+						ScreenCreator.addAndGo(new TextLevel("lala"), new TextHUB());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
