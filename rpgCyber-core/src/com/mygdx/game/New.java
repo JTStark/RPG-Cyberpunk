@@ -23,38 +23,7 @@ public class New extends GameStart {
 		ScreenCreator.setGameInstance(this);
 		
 		try {
-			ScreenCreator.addAndGo(new TextLevel("ndjsnvjdn vijdsnvi sndivjn dsijnvi jsdnvinds ijvnsdi vsin"
-					+ "vnisdnv isdnvijnds ijvn ijsdnvijsdnvi dsnv dnsvds v"
-					+ "vidsnvidnsvi nsdiv dsinvi udsviundsiuvn dnvi udnvdnu "
-					+ "vnisdn vdsnvi jsdnvijdsnivjnsdijnvijdsnvijsdnvijnsdivjndsv"
-					+ "v disnvij dsnvijndsiu nvsvnu idnsvin sduivniuds niuvnsd iuviudsn "+ "vnisdnv isdnvijnds ijvn ijsdnvijsdnvi dsnv dnsvds v"
-					+ "vidsnvidnsvi nsdiv dsinvi udsviundsiuvn dnvi udnvdnu "
-					+ "vnisdn vdsnvi jsdnvijdsnivjnsdijnvijdsnvijsdnvijnsdivjndsv"
-					+ "v disnvij dsnvijndsiu nvsvnu idnsvin sduivniuds niuvnsd iuviudsn "+ "vnisdnv isdnvijnds ijvn ijsdnvijsdnvi dsnv dnsvds v"
-					+ "vidsnvidnsvi nsdiv dsinvi udsviundsiuvn dnvi udnvdnu "
-					+ "vnisdn vdsnvi jsdnvijdsnivjnsdijnvijdsnvijsdnvijnsdivjndsv"
-					+ "v disnvij dsnvijndsiu nvsvnu idnsvin sduivniuds niuvnsd iuviudsn "+ "vnisdnv isdnvijnds ijvn ijsdnvijsdnvi dsnv dnsvds v"
-					+ "vidsnvidnsvi nsdiv dsinvi udsviundsiuvn dnvi udnvdnu "
-					+ "vnisdn vdsnvi jsdnvijdsnivjnsdijnvijdsnvijsdnvijnsdivjndsv"
-					+ "v disnvij dsnvijndsiu nvsvnu idnsvin sduivniuds niuvnsd iuviudsn "+ "vnisdnv isdnvijnds ijvn ijsdnvijsdnvi dsnv dnsvds v"
-					+ "vidsnvidnsvi nsdiv dsinvi udsviundsiuvn dnvi udnvdnu "
-					+ "vnisdn vdsnvi jsdnvijdsnivjnsdijnvijdsnvijsdnvijnsdivjndsv"
-					+ "v disnvij dsnvijndsiu nvsvnu idnsvin sduivniuds niuvnsd iuviudsn "+ "vnisdnv isdnvijnds ijvn ijsdnvijsdnvi dsnv dnsvds v"
-					+ "vidsnvidnsvi nsdiv dsinvi udsviundsiuvn dnvi udnvdnu "
-					+ "vnisdn vdsnvi jsdnvijdsnivjnsdijnvijdsnvijsdnvijnsdivjndsv"
-					+ "v disnvij dsnvijndsiu nvsvnu idnsvin sduivniuds niuvnsd iuviudsn "+ "vnisdnv isdnvijnds ijvn ijsdnvijsdnvi dsnv dnsvds v"
-					+ "vidsnvidnsvi nsdiv dsinvi udsviundsiuvn dnvi udnvdnu "
-					+ "vnisdn vdsnvi jsdnvijdsnivjnsdijnvijdsnvijsdnvijnsdivjndsv"
-					+ "v disnvij dsnvijndsiu nvsvnu idnsvin sduivniuds niuvnsd iuviudsn "+ "vnisdnv isdnvijnds ijvn ijsdnvijsdnvi dsnv dnsvds v"
-					+ "vidsnvidnsvi nsdiv dsinvi udsviundsiuvn dnvi udnvdnu "
-					+ "vnisdn vdsnvi jsdnvijdsnivjnsdijnvijdsnvijsdnvijnsdivjndsv"
-					+ "v disnvij dsnvijndsiu nvsvnu idnsvin sduivniuds niuvnsd iuviudsn "+ "vnisdnv isdnvijnds ijvn ijsdnvijsdnvi dsnv dnsvds v"
-					+ "vidsnvidnsvi nsdiv dsinvi udsviundsiuvn dnvi udnvdnu "
-					+ "vnisdn vdsnvi jsdnvijdsnivjnsdijnvijdsnvijsdnvijnsdivjndsv"
-					+ "v disnvij dsnvijndsiu nvsvnu idnsvin sduivniuds niuvnsd iuviudsn "+ "vnisdnv isdnvijnds ijvn ijsdnvijsdnvi dsnv dnsvds v"
-					+ "vidsnvidnsvi nsdiv dsinvi udsviundsiuvn dnvi udnvdnu "
-					+ "vnisdn vdsnvi jsdnvijdsnivjnsdijnvijdsnvijsdnvijnsdivjndsv"
-					+ "v disnvij dsnvijndsiu nvsvnu idnsvin sduivniuds niuvnsd iuviudsn "), new TextHUB());
+			ScreenCreator.addAndGo(new TextLevel("0la"), new TextHUB());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

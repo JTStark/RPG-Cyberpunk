@@ -32,6 +32,8 @@ import com.mygdx.game.animate.Player;
 import com.mygdx.game.battle.BattleHUD;
 import com.mygdx.game.battle.BattleWorld;
 import com.mygdx.game.colision.CBau;
+import com.mygdx.game.colision.CCClide;
+import com.mygdx.game.colision.CCColide;
 import com.mygdx.game.colision.CDoors;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
@@ -161,43 +163,18 @@ public class MyLevel extends VisualGameWorld {
 		
 		CDoors.doorDown(camera, colision);
 		// move player
-		if((Gdx.input.isKeyPressed(Input.Keys.RIGHT))&&!(colision.getCell(Math.round(camera.position.x + 1), Math.round(camera.position.y)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCColide.rightP(colision, camera, "blocked")){
 			dx=1;
 		}else
-			
-		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!CCColide.upP(colision, camera, "blocked")){
 			dy=1;
-			if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null){
-				try {
-					ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
 		}else
-		if((Gdx.input.isKeyPressed(Input.Keys.LEFT))&&!(colision.getCell(Math.round(camera.position.x-1), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!CCColide.leftP(colision, camera, "blocked")){
 			dx=-1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCColide.downP(colision, camera, "blocked")){
 			dy=-1;
-			if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door") != null){
-				if("MapaExterno.tmx" == colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()){
-					try {
-						ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}else{
-					try {
-						ScreenCreator.backToPrevious();
-					} catch (Exception e) {
-						e.printStackTrace();
-						
-					}
-				}
-			}
 		}
-
 		Player.ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
 		camera.position.x+=Player.ani.getX();
 		camera.position.y+=Player.ani.getY();

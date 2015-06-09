@@ -15,13 +15,13 @@ public class CDoors {
 		if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
 			if(CCClide.upP(colision, camera, "door")){
 				try {
-					ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
+					ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round((float)(camera.position.y+1.2))).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}if(CCClide.upP(colision, camera, "stair")){
 					try {
-						ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("stair").toString()), new MyHUD("LevelData"));
+						ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round((float)(camera.position.y+1.2))).getTile().getProperties().get("stair").toString()), new MyHUD("LevelData"));
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -45,14 +45,14 @@ public class CDoors {
 		if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
 			if(CCClide.downP(colision, camera, "door")){
 				try {
-					ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
+					ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round((float)(camera.position.y-0.8))).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 			else if(CCClide.downP(colision, camera, "stair")){
 				try {
-					ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("stair").toString()), new MyHUD("LevelData"));
+					ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round((float)(camera.position.y-0.8))).getTile().getProperties().get("stair").toString()), new MyHUD("LevelData"));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
