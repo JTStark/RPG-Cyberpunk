@@ -12,4 +12,16 @@ import implementations.personagens.AbsPersonagem;
 public class HSilvana extends AbsPersonagem {
 	public int forca = 15, percepcao = 25, resistencia = 15, carisma = 15, inteligencia = 65, agilidade = 25, sorte = 15;
 	public String nome = "Silvana";
+	
+	public static HSilvana instancia = new HSilvana();   
+	
+	public HSilvana (){
+		
+	}
+	
+	public static HSilvana getInstancia(){
+		if(instancia == null)
+			instancia = new HSilvana();
+		return instancia;
+	}
 }

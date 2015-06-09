@@ -12,4 +12,16 @@ import implementations.personagens.AbsPersonagem;
 public class HOleg extends AbsPersonagem {
 	public int forca = 25, percepcao = 45, resistencia = 15, carisma = 15, inteligencia = 15, agilidade = 35, sorte = 25;
 	public String nome = "Oleg";
+	
+	public static HOleg instancia = new HOleg();   
+	
+	public HOleg (){
+		
+	}
+	
+	public static HOleg getInstancia(){
+		if(instancia == null)
+			instancia = new HOleg();
+		return instancia;
+	}
 }
