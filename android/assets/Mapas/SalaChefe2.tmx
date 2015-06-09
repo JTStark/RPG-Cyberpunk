@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Parede" tilewidth="32" tileheight="32">
+  <image source="Parede.png" width="96" height="32"/>
+ </tileset>
+ <tileset firstgid="4" name="Tile_Madeira" tilewidth="32" tileheight="32">
+  <image source="Tile_Madeira.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="5" name="EscadaSubindo" tilewidth="32" tileheight="32">
+  <image source="EscadaSubindo.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="6" name="TapeteFalcao" tilewidth="32" tileheight="32">
+  <image source="TapeteFalcao.png" width="96" height="64"/>
+ </tileset>
+ <tileset firstgid="12" name="ParedeInvisivel" tilewidth="32" tileheight="32">
+  <image source="ParedeInvisivel.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="blocked"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="13" name="Portal1" tilewidth="32" tileheight="32">
+  <image source="Portal1.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="stairHome" value="2oAndarFalcao.tmx"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Camada de Tiles 1" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1MEJwCAMheG0WnXMjOYoGa1P0oJIKMSWnjz85BDy4clAxDsRfVHQyRGzL6H8EPZ1vIlqVcvDDRdkWUWn27PM23rhSe4qlzXjjdZoeryk7zO9Fvbi8WZb3vKW96+HP1o2dOhsvswGq55x/j30
+  </data>
+ </layer>
+ <layer name="Colisoes" width="20" height="20" opacity="0.01">
+  <data encoding="base64" compression="zlib">
+   eJzjYWBg4KEyphYYNW/UvFHzRs0bNY+65oEwLxqfXAwAME0Dkg==
+  </data>
+ </layer>
+</map>

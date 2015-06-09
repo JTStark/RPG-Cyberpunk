@@ -71,7 +71,7 @@
   <image source="Portal2.png" width="32" height="32"/>
   <tile id="0">
    <properties>
-    <property name="door" value="1.oAndarBabi.tmx"/>
+    <property name="door" value="1oAndarBabi.tmx"/>
    </properties>
   </tile>
  </tileset>
@@ -103,7 +103,7 @@
   <image source="Portal6.png" width="32" height="32"/>
   <tile id="0">
    <properties>
-    <property name="door" value="1.oAndarFalcao.tmx"/>
+    <property name="door" value="1oAndarFalcao.tmx"/>
    </properties>
   </tile>
  </tileset>
@@ -123,7 +123,7 @@
    eJztmGkKwjAUhGOL+1JXFFyP1qN5lB7NEcyPlKYmNfQ9YQY+BHWSN13oUGMoiqL+U7kxVWZM6QO/l5r9VvhvNcCnj0y5v77OEIzAGEzAtOccXfevrzMDc7AAS7ByZ/Ge97YMMX7f/rE5CrAGG7AFO3eOp4/AHF/9vv1jc+zBAZzBEZwC10l1XXXdP/Uc0vd57rlG7He5cn+T7LEJPQba/FrmYA5dczCHrjmYw+3NTZ0opndL+K2kn8faertU76+v8+7NN3AHDxPf223vvoBrB3+qHL/29uLjS937++7tUr0/1TrSfivp3s3erncO5tA1B3PomoM55Hs3e3vzOnzf3t5XQ/183+7m4Pt2Hfd53nLOY3u3hJ+iKEq7Xi76sYY=
   </data>
  </layer>
- <layer name="Colisoes" width="50" height="50" opacity="0.01">
+ <layer name="Colisoes" width="50" height="50" opacity="0">
   <data encoding="base64" compression="zlib">
    eJztls0SwyAIhNPX6LG/7/+GvXYyEkAobOwyw0mX7GcU3TYGg/FPcXUkov67zsWQRz469Sg+fsEx+pdHY/s5mg9Nr41lcFQkGkdEl8nxEupU7at3kGOVc352DmmPzNxj1XqppmcN0PQoPsiB5YMc/f0mq19193/eg3Idy9vHO8ejr+CwfiuiX41jpJvheAx8ePbVc1LPc97vI5NjhXtwX9OzBmh6FB/kwPJBjv5+k9Wvuvs/70G5juXtFHkfaXptLIOjItE4IrpMjrtQp2pf3YIcq5zzs3NYE1HPYDDWjg8E4Dhx
   </data>

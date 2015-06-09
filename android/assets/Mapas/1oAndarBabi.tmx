@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="25" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="Parede" tilewidth="32" tileheight="32">
+  <image source="Parede.png" width="96" height="32"/>
+ </tileset>
+ <tileset firstgid="4" name="Tile_Madeira" tilewidth="32" tileheight="32">
+  <image source="Tile_Madeira.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="5" name="TapeteEntrada" tilewidth="32" tileheight="32">
+  <image source="TapeteEntrada.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="door" value="door"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="6" name="EscadaDescendo" tilewidth="32" tileheight="32">
+  <image source="EscadaDescendo.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="door" value="door"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="7" name="EscadaSubindo" tilewidth="32" tileheight="32">
+  <image source="EscadaSubindo.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="door" value="door"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="8" name="Bau" tilewidth="32" tileheight="32">
+  <image source="Bau.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="chest" value="chest"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="9" name="ParedeInvisivel" tilewidth="32" tileheight="32">
+  <image source="ParedeInvisivel.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="blocked"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="10" name="Portal1" tilewidth="32" tileheight="32">
+  <image source="Portal1.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="doorHome" value="MapaExterno.tmx"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="11" name="Portal2" tilewidth="32" tileheight="32">
+  <image source="Portal2.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="stair" value="2oAndarBabi.tmx"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Camada de Tiles 1" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztk1EKgDAMQzOnnsuj7CgexaP0aGZM/JAxGMSf0o8Q6EcDTV8GygJAqcSdO2B05DYrK/0vcf/lNSO12aFS7mdI+4/O5zJ4L1N2zD6tk1Hop0rpcxdPfTjg3Aacy34gOJ/LeDiXacA5VArOdZ3Xvja8rEt+oHJ+A7n9ZQw=
+  </data>
+ </layer>
+ <layer name="Colisoes" width="25" height="25" opacity="0.01">
+  <data encoding="base64" compression="zlib">
+   eJzjZGBg4KQB5sYixkIjTGvzB9IOWsTNQNgxXOKDVnYM9fgdbvFBj/gejulgqMUHve0Y6vE73OKD3nHORYP4AQCcKA7S
+  </data>
+ </layer>
+ <layer name="Baus" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAP4KCTPaNgFIyCUTBYAbAcXDDQbhgFo2AUDB8AACoRALE=
+  </data>
+ </layer>
+ <layer name="Baus2" width="25" height="25" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYBdQELHSwAwALVAAF
+  </data>
+ </layer>
+</map>

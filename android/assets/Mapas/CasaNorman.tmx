@@ -2,48 +2,18 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="32" tileheight="32" nextobjectid="1">
  <tileset firstgid="1" name="Parede" tilewidth="32" tileheight="32">
   <image source="Parede.png" width="96" height="32"/>
-  <tile id="0">
-   <properties>
-    <property name="blocked" value="blocked"/>
-   </properties>
-  </tile>
-  <tile id="1">
-   <properties>
-    <property name="blocked" value="blocked"/>
-   </properties>
-  </tile>
-  <tile id="2">
-   <properties>
-    <property name="blocked" value="blocked"/>
-   </properties>
-  </tile>
  </tileset>
  <tileset firstgid="4" name="Tile_Madeira" tilewidth="32" tileheight="32">
   <image source="Tile_Madeira.png" width="32" height="32"/>
  </tileset>
  <tileset firstgid="5" name="TapeteEntrada" tilewidth="32" tileheight="32">
   <image source="TapeteEntrada.png" width="32" height="32"/>
-  <tile id="0">
-   <properties>
-    <property name="door" value="door"/>
-   </properties>
-  </tile>
  </tileset>
- <tileset firstgid="6" name="Bau" tilewidth="32" tileheight="32">
-  <image source="Bau.png" width="32" height="32"/>
-  <tile id="0">
-   <properties>
-    <property name="chest" value="chest"/>
-   </properties>
-  </tile>
+ <tileset firstgid="6" name="EscadaDescendo" tilewidth="32" tileheight="32">
+  <image source="EscadaDescendo.png" width="32" height="32"/>
  </tileset>
  <tileset firstgid="7" name="ParedeInvisivel" tilewidth="32" tileheight="32">
   <image source="ParedeInvisivel.png" width="32" height="32"/>
-  <tile id="0">
-   <properties>
-    <property name="blocked" value="blocked"/>
-   </properties>
-  </tile>
  </tileset>
  <tileset firstgid="8" name="Portal1" tilewidth="32" tileheight="32">
   <image source="Portal1.png" width="32" height="32"/>
@@ -55,22 +25,12 @@
  </tileset>
  <layer name="Camada de Tiles 1" width="10" height="10">
   <data encoding="base64" compression="zlib">
-   eJxjZmBIYGJgYMCHmSF0AguQxoeBahaMqsOuDhiGB5igmBGIWYHijBD9cHGgmgUALXgQLg==
+   eJxjZmBIYGJgYEDHjEBxNgaGA0CagRkilsACpPFhoJoFo+qwqwOG4QEmKAaG6QFWSBgvYEISB6pZAADRDxFQ
   </data>
  </layer>
  <layer name="Colisoes" width="10" height="10" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgYCcSs5Agx4IDY9M3ktTBMAcOcQDIdwI6
-  </data>
- </layer>
- <layer name="Baus" width="10" height="10">
-  <data encoding="base64" compression="zlib">
-   eJxjYCANsOHAaGoS8OhfMFLVEQMAOisHeQ==
-  </data>
- </layer>
- <layer name="Baus2" width="10" height="10" visible="0">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgF9AAsRKoDAAIwAAU=
+   eJxjZ2BgYCcSEwKj6vCrQ8YcOMQByIAA/g==
   </data>
  </layer>
 </map>
