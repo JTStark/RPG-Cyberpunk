@@ -1,5 +1,6 @@
 package com.mygdx.game.text;
 
+import snake.engine.creators.ScreenCreator;
 import snake.engine.creators.WorldSettings;
 import snake.visuals.enhanced.VisualGameWorld;
 import umbra.TextComunicator;
@@ -11,6 +12,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.mygdx.game.menus.MyHub;
+import com.mygdx.game.menus.MyLevelMenu;
 
 
 /**                               Developed By:
@@ -28,10 +31,7 @@ public class TextLevel extends VisualGameWorld {
 	public TextLevel (String LevelData/* Add other parameters of choice*/) {
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
 		text = new TextComunicator();
-		text.newText("Bananas nao sao sjdnasjkdnjsakndjksandjnsajkdnajskndnakjdn"
-				+ "dsjahjdsadsadjhsjkahdjshakjdhsajkdjkasd"
-				+ "sjdhajkhdkjahsdjshakdhjsakhdkjshdkjahdsjhd"
-				+ "adjhksahdjkashdjkhasjkdhjksadjkhasjdhsjakhdjksh", WorldSettings.getWorldWidth() - 50, WorldSettings.getWorldHeight() , 200, true);
+		text.newText(LevelData, WorldSettings.getWorldWidth() - 50, WorldSettings.getWorldHeight() , 200, true);
 	}
 	
 	
@@ -44,7 +44,20 @@ public class TextLevel extends VisualGameWorld {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		text.update(delta);
+		if(text.update(delta)){
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				ScreenCreator.switchAndGo(new MyLevelMenu("MyLevel"), new MyHub());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		
 	}
