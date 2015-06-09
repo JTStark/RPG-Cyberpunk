@@ -5,7 +5,7 @@ import implementations.inventario.Item;
 import java.util.Random;
 
 public class VilaoRanged extends AbsPersonagem{
-Item item_arma, item_armadura;
+	Item item_arma, item_armadura;
 	
 	public VilaoRanged(String nome_arma, String nome_armadura, int level){
 		Random random = new Random(); 
