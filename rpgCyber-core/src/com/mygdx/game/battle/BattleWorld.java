@@ -16,8 +16,9 @@ public class BattleWorld  extends VisualGameWorld {
 	
 	private Sprite batalha;
 	
-	public static BattleChar palhaco;
-	public static BattleChar barbudo;
+	public static BattleChar palhaco, barbudo, durden, mdr, rexus, cientista;
+	public static BattleChar inimigo1, inimigo2, inimigo3, inimigo4;
+	
 	
 	
 	public BattleWorld (String LevelData/* Add other parameters of choice*/) {
@@ -27,8 +28,10 @@ public class BattleWorld  extends VisualGameWorld {
 		batalha = new Sprite(texture);
 		batalha.setSize(WorldSettings.getWorldWidth(), WorldSettings.getWorldHeight());
 		
-		palhaco = new BattleChar("palhaco");
-		barbudo = new BattleChar("barbudo");
+		palhaco = new BattleChar("ozob");
+		barbudo = new BattleChar("oleg");
+		cientista = new BattleChar("silvana");
+
 		
 	}
 	
@@ -54,6 +57,7 @@ public class BattleWorld  extends VisualGameWorld {
 		super.draw(batch, parentAlpha);
 		palhaco.act();
 		barbudo.act();
+		cientista.act();
 	}
 
 	@Override

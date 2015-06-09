@@ -1,7 +1,7 @@
 package implementations.combate;
 
 /**
- * @author - Otávio Vansetti Miranda e Lucca Maia Bollani
+ * @author - Otï¿½vio Vansetti Miranda e Lucca Maia Bollani
  * 
  * Sistema de Combate para RPG Cyberpunk, DeltaNexus
  * 
@@ -159,7 +159,7 @@ public class CRodada {
 		Jogadores.remove(contP);
 		Jogadores.add(mov, temp);
 		
-		//Reatribui as variaveis de posição aos objetos afetados pela troca
+		//Reatribui as variaveis de posiï¿½ï¿½o aos objetos afetados pela troca
 		for (int cont = 0; cont < Jogadores.size(); cont++){
 			Jogadores.get(cont).pos = cont;
 		}
@@ -170,11 +170,11 @@ public class CRodada {
 		String chc; // String guarda escolha do jogador
 		int trgt = 1, dano, resistencia; // Guardam respectivamente: alvo do jogador, dano final, resistencia final
 		double weaponDam, armadura, fator; // Guardam respectivamente: dano da arma ponderado, armadura ponderada, fator randomico ponderado
-		boolean choiceFlag1, choiceFlag2, noAtk = false; // Flags para parar os loops de escolha de ação. noAtk permite voltar ao menu de "Jogada" sem perder a vez
+		boolean choiceFlag1, choiceFlag2, noAtk = false; // Flags para parar os loops de escolha de aï¿½ï¿½o. noAtk permite voltar ao menu de "Jogada" sem perder a vez
 		
-		//Melee usa força, ranged usa percepção. dano = (dano arma * (1+(força/50)+(fator de nivel)) /2 ). Fator nivel é 1 no nivel 1 e sobe pra 2 no nivel 50
-		if (Heroi.tipo == 1) weaponDam = Heroi.danoArma*(1 + (Heroi.forca*Heroi.buffForcaValor)/50)+(0.96+(Heroi.level/25))*0.5; //com melhor arma 100 dano, 100 força/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
-		else weaponDam = Heroi.danoArma*(1 + (Heroi.percepcao*Heroi.buffPercepcaoValor)/50)+(0.96+(Heroi.level/25))*0.5; //com pior arma 4 dano, 15 força/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
+		//Melee usa forï¿½a, ranged usa percepï¿½ï¿½o. dano = (dano arma * (1+(forï¿½a/50)+(fator de nivel)) /2 ). Fator nivel ï¿½ 1 no nivel 1 e sobe pra 2 no nivel 50
+		if (Heroi.tipo == 1) weaponDam = Heroi.danoArma*(1 + (Heroi.forca*Heroi.buffForcaValor)/50)+(0.96+(Heroi.level/25))*0.5; //com melhor arma 100 dano, 100 forï¿½a/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
+		else weaponDam = Heroi.danoArma*(1 + (Heroi.percepcao*Heroi.buffPercepcaoValor)/50)+(0.96+(Heroi.level/25))*0.5; //com pior arma 4 dano, 15 forï¿½a/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
 		
 		choiceFlag1 = true;
 		while (choiceFlag1) {
@@ -189,7 +189,7 @@ public class CRodada {
 			
 			if ((chc.equalsIgnoreCase("B"))) {
 
-				if((Heroi.tipo==1 && posHeroi < 2) || Heroi.tipo!=1) { // Se heroi for melee, fora da frente (1ª e 2ª posições), nao pode usar ataque basico
+				if((Heroi.tipo==1 && posHeroi < 2) || Heroi.tipo!=1) { // Se heroi for melee, fora da frente (1ï¿½ e 2ï¿½ posiï¿½ï¿½es), nao pode usar ataque basico
 					
 					choiceFlag2 = true;
 					
@@ -198,20 +198,20 @@ public class CRodada {
 						System.out.println("Selecione seu alvo (1-6)");
 						trgt = scanner.nextInt();
 						
-						if((Heroi.tipo == 1 && trgt <=2) || Heroi.tipo != 1) { // Se heroi for melee, nao pode acertar alvos fora da frente (1ª e 2ª posições)
+						if((Heroi.tipo == 1 && trgt <=2) || Heroi.tipo != 1) { // Se heroi for melee, nao pode acertar alvos fora da frente (1ï¿½ e 2ï¿½ posiï¿½ï¿½es)
 							if (trgt >= 1 && trgt <= 6) {
 								
-								// dano vai de 1/3*esperado a 2*esperado. Maximo de redução eh (dano/2,5 - 80), com 60 armadura, lvl 50 e 100 de resistencia
+								// dano vai de 1/3*esperado a 2*esperado. Maximo de reduï¿½ï¿½o eh (dano/2,5 - 80), com 60 armadura, lvl 50 e 100 de resistencia
 								armadura = (1 - ((Viloes.get(trgt-1).armadura*Viloes.get(trgt-1).buffArmaduraValor)/100));
 								if (armadura < 0.1) armadura = 0.1; // evita armadura acima de 90% por buffs
 								
 								// Resistencia(com buffs)/5 * fator de nivel
 								resistencia = (int)(((Viloes.get(trgt-1).resistencia*Viloes.get(trgt-1).buffResistenciaValor)/5)*(0.96 + (Viloes.get(trgt-1).level/15)));
 								
-								fator = random.nextInt(6)+1; //o fator é dividido por 3, assim 1 = 1/3 dano, 2 = 2/3 dano, 3 = dano, 4 = 4/3 dano, 5 = 5/3 dano e 6 = 2 dano. A media é o dano esperado da arma
+								fator = random.nextInt(6)+1; //o fator ï¿½ dividido por 3, assim 1 = 1/3 dano, 2 = 2/3 dano, 3 = dano, 4 = 4/3 dano, 5 = 5/3 dano e 6 = 2 dano. A media ï¿½ o dano esperado da arma
 
 								dano = ((int)((weaponDam * (fator/3)) * armadura)) - resistencia; // Dano final
-								if (dano <= 0) dano = 1; // Dano minimo é 1
+								if (dano <= 0) dano = 1; // Dano minimo ï¿½ 1
 								
 								if ((int)(Heroi.critico * Heroi.buffCriticoValor)+random.nextInt(100)+1 >= 100) { // Soma a chance de critico com random 1-100. Se passar de 100 crita
 									dano *= 2;
@@ -257,13 +257,13 @@ public class CRodada {
 				System.out.println("Ataque invalido: Tente denovo");
 		}
 		
-		// Se morrer, tira do vetor de posição (e por tabela do view/GUI
+		// Se morrer, tira do vetor de posiï¿½ï¿½o (e por tabela do view/GUI
 		if (Viloes.get(trgt-1).hp <= 0) {
 			System.out.println(Viloes.get(trgt-1).nome + " foi morto!");
 			Viloes.remove(trgt-1);
 		}
 		
-		// Retorna essa flag positiva caso o ataque tenha sido cancelado, permitindo outra ação no turno
+		// Retorna essa flag positiva caso o ataque tenha sido cancelado, permitindo outra aï¿½ï¿½o no turno
 		return noAtk;
 	}
 	
@@ -275,7 +275,7 @@ public class CRodada {
 		}
 		
 		else {
-			// Roda o vetor de jogada. Adiciona XP equivalente ao nivel de cada vilao morto à pilha de XP
+			// Roda o vetor de jogada. Adiciona XP equivalente ao nivel de cada vilao morto ï¿½ pilha de XP
 			for (AbsPersonagem P: Lista) {
 				if ((P.vilao) && (P.hp <= 0))
 					EXP += P.level;
@@ -395,7 +395,7 @@ public class CRodada {
 			}
 		}
 		
-		while(numRodada < numRodada+time); // Passa o numero de turnos necessário
+		while(numRodada < numRodada+time); // Passa o numero de turnos necessï¿½rio
 		
 		if (!atributo.equalsIgnoreCase("bleed") && !atributo.equalsIgnoreCase("poison") && !atributo.equalsIgnoreCase("stun")) {
 			try {
@@ -459,17 +459,17 @@ public class CRodada {
 				trgt -= 6;
 				if (trgt - 6 < 0) trgt = 1;
 				
-				// dano vai de 1/3*esperado a 2*esperado. Maximo de redução eh (dano/2,5 - 80), com 60 armadura, lvl 50 e 100 de resistencia
+				// dano vai de 1/3*esperado a 2*esperado. Maximo de reduï¿½ï¿½o eh (dano/2,5 - 80), com 60 armadura, lvl 50 e 100 de resistencia
 				armadura = (1 - (Herois.get(trgt-1).armadura*Herois.get(trgt-1).buffArmaduraValor));
 				if (armadura < 0.1) armadura = 0.1; // evita armadura acima de 90% por buffs
 				
 				// Resistencia(com buffs)/5 * fator de nivel
 				resistencia = (int)(((Herois.get(trgt-1).resistencia*Herois.get(trgt-1).buffResistenciaValor)/5)*(0.96 + (Herois.get(trgt-1).level/15)));
 				
-				fator = random.nextInt(6)+1; //o fator é dividido por 3, assim 1 = 1/3 dano, 2 = 2/3 dano, 3 = dano, 4 = 4/3 dano, 5 = 5/3 dano e 6 = 2 dano. A media é o dano esperado da arma
+				fator = random.nextInt(6)+1; //o fator ï¿½ dividido por 3, assim 1 = 1/3 dano, 2 = 2/3 dano, 3 = dano, 4 = 4/3 dano, 5 = 5/3 dano e 6 = 2 dano. A media ï¿½ o dano esperado da arma
 
 				dano = ((int)((weaponDam * (fator/3)) * armadura)) - resistencia; // Dano final
-				if (dano <= 0) dano = 1; // Dano minimo é 1
+				if (dano <= 0) dano = 1; // Dano minimo ï¿½ 1
 				
 				if ((int)(Viloes.get(contP).critico*Viloes.get(contP).buffCriticoValor)+random.nextInt(100)+1 >= 100) {
 						dano *= 2;
