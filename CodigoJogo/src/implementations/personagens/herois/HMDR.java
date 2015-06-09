@@ -16,7 +16,9 @@ public class HMDR extends AbsPersonagem {
 	public static HMDR instancia = new HMDR();   
 	
 	public HMDR (){
-		
+		this.nSkill1 = "Crtical Slash";
+		this.nSkill2 = "Cutthroat";
+		this.nSkill3 = "Double-Dash";
 	}
 	
 	public static HMDR getInstancia(){

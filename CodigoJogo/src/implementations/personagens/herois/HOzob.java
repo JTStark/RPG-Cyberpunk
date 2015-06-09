@@ -16,7 +16,9 @@ public class HOzob extends AbsPersonagem {
 	public static HOzob instancia = new HOzob();   
 	
 	public HOzob (){
-		
+		this.nSkill1 = "Grenade Throw";
+		this.nSkill2 = "Shrapnel-Shell";
+		this.nSkill3 = "Stun-Bomb";
 	}
 	
 	public static HOzob getInstancia(){

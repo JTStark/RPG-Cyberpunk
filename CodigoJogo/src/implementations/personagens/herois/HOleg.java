@@ -16,7 +16,9 @@ public class HOleg extends AbsPersonagem {
 	public static HOleg instancia = new HOleg();   
 	
 	public HOleg (){
-		
+		this.nSkill1 = "Headshot";
+		this.nSkill2 = "Piercing Bullet";
+		this.nSkill3 = "Power-Shot";
 	}
 	
 	public static HOleg getInstancia(){
