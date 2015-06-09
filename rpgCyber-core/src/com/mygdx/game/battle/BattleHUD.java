@@ -57,7 +57,6 @@ public class BattleHUD extends HUD {
 		
 		/* Parte1 - Substituir pelos valores numericos do  personagem */
 		font.draw(batch, "" + atual.getPersonagem().forca, 190, 169);
-		font.draw(batch, "" + atual.getPersonagem().persepcao, 190, 146);
 		font.draw(batch, "" + atual.getPersonagem().resistencia, 190, 123);
 		font.draw(batch, "" + atual.getPersonagem().carisma, 190, 100);
 		font.draw(batch, "" + atual.getPersonagem().inteligencia, 190, 77);
@@ -65,7 +64,6 @@ public class BattleHUD extends HUD {
 		font.draw(batch, "" + atual.getPersonagem().sorte, 190, 31);
 		
 		/* Parte2 */
-		font.draw(batch, "" + atual.getPersonagem().arma, 440, 169);
 		font.draw(batch, "" + atual.getPersonagem().armadura, 440, 146);
 		font.draw(batch, "" + atual.getPersonagem().critico, 440, 123);
 		font.draw(batch, "" + atual.getPersonagem().esquiva, 440, 100);

@@ -44,10 +44,7 @@ public class BattleChar extends Animator {
         
         name = personagem;
         
-        for(int i = 0; i < CEngine.listaH.size(); i++ )
-        	if(name.equalsIgnoreCase(CEngine.listaH.get(i).nome) {
-        		person = CEngine.listaH.get(i);
-        	}
+   
         
         
 		
