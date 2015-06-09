@@ -7,11 +7,8 @@ import javax.xml.bind.JAXBException;
 import snake.engine.creators.ScreenCreator;
 import snake.engine.creators.WorldSettings;
 import snake.player.Magician_Test;
-import snake.visuals.Lights;
 import snake.visuals.enhanced.LightMapEntity;
 import snake.visuals.enhanced.VisualGameWorld;
-import box2dLight.Light;
-import box2dLight.PointLight;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -23,15 +20,13 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.game.androidkeys.AndroidInput;
 import com.mygdx.game.animate.Animator;
 import com.mygdx.game.animate.Player;
 import com.mygdx.game.battle.BattleHUD;
 import com.mygdx.game.battle.BattleWorld;
 import com.mygdx.game.colision.CBau;
+import com.mygdx.game.colision.CCClide;
 import com.mygdx.game.colision.CDoors;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
@@ -46,23 +41,22 @@ import com.mygdx.game.savestate.SaveState;
  * @author Mr.Strings
  */
 
-public class MyLevel extends VisualGameWorld {
+public class LevelCasas2 extends VisualGameWorld {
 	
 	// The code below is simply a prototype for testing purposes 
 
+	private Magician_Test magician; //Da pra colocar uma array com todas as entities? 
 	private TiledMap map;
 	private TiledMapRenderer renderer;
-	private TiledMapTileLayer colision, bau, bau2;
+	private TiledMapTileLayer colision,bau,bau2;
 	private OrthographicCamera camera;
 	private float dx,dy,v;
 	private int lim;
-	Light light;
-	private boolean flagv = false, flagmo =true;
-	public MyLevel (String LevelData) {
+	private boolean flagv = false, flagmo =true;;
+	public LevelCasas2 (String LevelData) {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
 		v = 8;
-		
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, (w/h)*10, 10);
 		camera.update();
@@ -70,24 +64,26 @@ public class MyLevel extends VisualGameWorld {
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
 		map = new TmxMapLoader().load(LevelData);
 		renderer = new OrthogonalTiledMapRenderer(map, 1f/32f);
+		magician = new Magician_Test(this);
         colision =  (TiledMapTileLayer)map.getLayers().get("Colisoes");
         bau =  (TiledMapTileLayer)map.getLayers().get("Baus");
         bau2 = (TiledMapTileLayer)map.getLayers().get("Baus2");
         lim = colision.getHeight();
-        
 	}
 	
 	
 	public void show () {
-		WorldSettings.setAmbientColor(Color.BLACK);
+		WorldSettings.setAmbientColor(Color.WHITE);
 	}
 	
 	
 	
 	@Override
 	public void act(float delta) {
+		super.act(delta);
+		;
 		if(flagmo){
-			Player.ani.setXY((float)(getX()+ 4.172*v),(float)(getY() + 0.3*v));
+			Player.ani.setXY((float)(getX()+1.9*v),(float)(getY() +2*v));
 			camera.position.x+=Player.ani.getX();
 			camera.position.y+=Player.ani.getY();
 			camera.update();
@@ -111,9 +107,6 @@ public class MyLevel extends VisualGameWorld {
 				}
 			
 		}
-		if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
-			Player.change();	
-		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE)) {
 			try {
 				ScreenCreator.backToPrevious();
@@ -125,6 +118,12 @@ public class MyLevel extends VisualGameWorld {
 					System.out.println("Couldn't switch screens.");
 				}
 			}
+		}
+		if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
+			
+			Player.change();
+				
+		
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
 			flagv = !flagv;
@@ -151,53 +150,26 @@ public class MyLevel extends VisualGameWorld {
 			}
 		}
 		
-		
 		dx=0;
 		dy=0;
-		//bau dissapering
 		CBau.changeBau(camera, bau, bau2, colision);
-		//Checa porta
 		CDoors.doorUP(camera, colision);
-		
 		CDoors.doorDown(camera, colision);
 		// move player
-		if((Gdx.input.isKeyPressed(Input.Keys.RIGHT))&&!(colision.getCell(Math.round(camera.position.x + 1), Math.round(camera.position.y)).getTile().getProperties().get("blocked") != null)){
+		
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCClide.rightP(colision, camera, "blocked")){
 			dx=1;
 		}else
-			
-		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!CCClide.upP(colision, camera, "blocked")){
 			dy=1;
-			if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null){
-				try {
-					ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
 		}else
-		if((Gdx.input.isKeyPressed(Input.Keys.LEFT))&&!(colision.getCell(Math.round(camera.position.x-1), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!CCClide.leftP(colision, camera, "blocked")){
 			dx=-1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCClide.downP(colision, camera, "blocked")){
 			dy=-1;
-			if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door") != null){
-				if("MapaExterno.tmx" == colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()){
-					try {
-						ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}else{
-					try {
-						ScreenCreator.backToPrevious();
-					} catch (Exception e) {
-						e.printStackTrace();
-						
-					}
-				}
-			}
 		}
-
+		
 		Player.ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
 		camera.position.x+=Player.ani.getX();
 		camera.position.y+=Player.ani.getY();
@@ -211,6 +183,8 @@ public class MyLevel extends VisualGameWorld {
 		}
 
 		camera.update();
+		
+		
 	}
 	@Override
 	public void draw (Batch batch, float parentAlpha) {
@@ -229,17 +203,17 @@ public class MyLevel extends VisualGameWorld {
 	}
 
 	public void createLights() {
-
-		light = new PointLight (Lights.getRayhandler(), 5000, new Color(1f, 1f, 1f, 1f), 45,50, WorldSettings.heightFix(50));
-		light.setSoft(false);
+		for (Actor x : this.getChildren()) {
+			LightMapEntity ent = (LightMapEntity) x;
+			ent.createLights();
+		}
 	}
 	
 	@Override
 	public void dispose() {
 
 		map.dispose();
-		light.remove();
-		light.dispose();
+		magician.disposeLights();
 	}
 
 
