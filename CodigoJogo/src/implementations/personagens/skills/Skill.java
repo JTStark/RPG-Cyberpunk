@@ -5,6 +5,6 @@ import java.util.ArrayList;
 
 public interface Skill {
 	
-	public void execute(ArrayList <AbsPersonagem> Viloes, ArrayList <AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante);
+	public String execute(ArrayList <AbsPersonagem> Viloes, ArrayList <AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante);
 	
 }

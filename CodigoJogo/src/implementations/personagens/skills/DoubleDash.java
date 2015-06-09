@@ -10,8 +10,8 @@ public class DoubleDash implements Skill {
 	public static int tipoAlvo = 3;	
 	
 	@Override
-	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
-		int i;
+	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
+		int i, countHits=0;
 		int danoFinal, resistencia;
 		double armadura, fator;
 		Random random = new Random();
@@ -38,15 +38,15 @@ public class DoubleDash implements Skill {
 			if ((int)(heroiAtacante.critico * heroiAtacante.buffCriticoValor)+random.nextInt(100)+1 >= 100) { // Soma a chance de critico com random 1-100. Se passar de 100 crita
 				danoFinal *= 2;
 				Viloes.get(i).hp -= danoFinal;
-				System.out.println("Voce atingiu " + Viloes.get(i).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
+				countHits++;
 			}
 			else if ((int)(Viloes.get(i).esquiva*Viloes.get(i).buffEsquivaValor)+random.nextInt(100)+1 < 100) { // Igual ao critico
 				Viloes.get(i).hp -= danoFinal;
-				System.out.println(Viloes.get(i).nome + " atingido! " + danoFinal + " de danoFinal!");
+				countHits++;
 			}
-			else
-				System.out.println(Viloes.get(i).nome + " desviou!");
+			
 		}
+		return ("Voce acertou "+ countHits+" inimigos");
 	}
 
 }

@@ -10,17 +10,15 @@ public class Charm implements Skill {
 	public static int tipoAlvo = 1;	
 	
 	@Override
-	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		AbsPersonagem temp = new PersonGenerico();
 		
-		temp = Viloes.get(trgt);
-		Viloes.remove(trgt);
+		temp = Viloes.get(trgt-1);
+		Viloes.remove(trgt-1);
 		Viloes.add(0, temp);
 		
-		for (int cont = 0; cont < Viloes.size(); cont++){
-			Viloes.get(cont).pos = cont;
-		}
 		
+		return (Viloes.get(trgt-1).nome + "foi Seduzido! s2");
 	}
 
 }

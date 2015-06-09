@@ -9,9 +9,10 @@ public class InvisibilityCloak implements Skill {
 	public static int tipoAlvo = 2;	
 	
 	@Override
-	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		Herois.get(trgt).buffEsquivaValor += 0.50;
 		Herois.get(trgt).buffEsquivaRounds = 1;
+		return ("Voce ativou a capa de invisibilidade");
 	}
 
 }

@@ -9,7 +9,7 @@ public class Inspire implements Skill {
 	public static int tipoAlvo = 2;	
 	
 	@Override
-	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		int constante = heroiAtacante.carisma;
 			Herois.get(trgt).buffAgilidadeValor = 1 + ((5 + constante/20)/100);
 			Herois.get(trgt).buffAgilidadeRounds = 1;
@@ -25,7 +25,7 @@ public class Inspire implements Skill {
 			Herois.get(trgt).buffResistenciaRounds = 1;
 			Herois.get(trgt).buffSorteValor = 1 + ((5 + constante/20)/100);
 			Herois.get(trgt).buffSorteRounds = 1;
-		
+		return ("Seu discurso inspirou seus aliados a lutarem com bravura !");
 	}
 
 }

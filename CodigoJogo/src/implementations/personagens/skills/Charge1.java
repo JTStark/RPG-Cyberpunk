@@ -11,7 +11,7 @@ public class Charge1 implements Skill {
 	public static int tipoAlvo = 1;	
 	
 	@Override
-	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		AbsPersonagem temp = new PersonGenerico();
 		
 		
@@ -37,9 +37,7 @@ public class Charge1 implements Skill {
 			Herois.remove(heroiAtacante);
 			Herois.add(0, temp);
 			
-			for (int cont = 0; cont < Herois.size(); cont++){
-				Herois.get(cont).pos = cont;
-			}
+			
 			//ENDSKILL
 			
 			if (danoFinal <= 0) danoFinal = 1; // danoFinal minimo é 1
@@ -47,14 +45,14 @@ public class Charge1 implements Skill {
 			if ((int)(heroiAtacante.critico * heroiAtacante.buffCriticoValor)+random.nextInt(100)+1 >= 100) { // Soma a chance de critico com random 1-100. Se passar de 100 crita
 				danoFinal *= 2;
 				Viloes.get(trgt-1).hp -= danoFinal;
-				System.out.println("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
+				return ("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
 			}
 			else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) { // Igual ao critico
 				Viloes.get(trgt-1).hp -= danoFinal;
-				System.out.println(Viloes.get(trgt-1).nome + " atingido! " + danoFinal + " de danoFinal!");
+				return (Viloes.get(trgt-1).nome + " atingido! " + danoFinal + " de danoFinal!");
 			}
 			else
-				System.out.println(Viloes.get(trgt-1).nome + " desviou!");
+				return (Viloes.get(trgt-1).nome + " desviou!");
 			
 			
 	}

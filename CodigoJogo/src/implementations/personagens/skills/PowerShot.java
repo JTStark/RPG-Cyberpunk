@@ -11,7 +11,7 @@ public class PowerShot implements Skill {
 	public static int tipoAlvo = 1;	
 	
 	@Override
-	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
+	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		AbsPersonagem temp = new PersonGenerico();
 		int danoFinal, resistencia;
 		double armadura, fator;
@@ -42,11 +42,9 @@ public class PowerShot implements Skill {
 				Viloes.remove(trgt);
 				Viloes.add(5, temp);
 				
-				for (int cont = 0; cont < Viloes.size(); cont++)
-					Viloes.get(cont).pos = cont;
 				//ENDSKILL
 				Viloes.get(trgt-1).hp -= danoFinal;
-				System.out.println("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
+				return ("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
 			}
 			else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) { // Igual ao critico
 				Viloes.get(trgt-1).hp -= danoFinal;
@@ -55,13 +53,11 @@ public class PowerShot implements Skill {
 				Viloes.remove(trgt);
 				Viloes.add(5, temp);
 				
-				for (int cont = 0; cont < Viloes.size(); cont++)
-					Viloes.get(cont).pos = cont;
 				//ENDSKILL
-				System.out.println(Viloes.get(trgt-1).nome + " atingido! " + danoFinal + " de danoFinal!");
+				return (Viloes.get(trgt-1).nome + " atingido! " + danoFinal + " de danoFinal!");
 			}
 			else
-				System.out.println(Viloes.get(trgt-1).nome + " desviou!");
+				return (Viloes.get(trgt-1).nome + " desviou!");
 			
 		
 	}

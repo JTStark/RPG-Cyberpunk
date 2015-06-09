@@ -10,8 +10,8 @@ public class ShrapnelShell implements Skill {
 	public static int tipoAlvo = 1;	
 	
 	@Override
-	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
-		int danoFinal, resistencia;
+	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
+		int danoFinal, resistencia, countHits=0;
 		double armadura, fator;
 		Random random = new Random();
 		
@@ -40,18 +40,17 @@ public class ShrapnelShell implements Skill {
 				if ((15 + random.nextInt(100)+1 + (heroiAtacante.percepcao/4)) > 100)	Viloes.get(trgt).buffBleedRounds = 3;
 				//ENDSKILL
 				Viloes.get(trgt-1).hp -= danoFinal;
-				System.out.println("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
+				countHits++;
 			}
 			else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) { // Igual ao critico
 				Viloes.get(trgt-1).hp -= danoFinal;
 				//SKILL
 				if ((15 + random.nextInt(100)+1 + (heroiAtacante.percepcao/4)) > 100)	Viloes.get(trgt).buffBleedRounds = 3;
 				//ENDSKILL
-				System.out.println(Viloes.get(trgt-1).nome + " atingido! " + danoFinal + " de danoFinal!");
+				countHits++;
 			}
-			else
-				System.out.println(Viloes.get(trgt-1).nome + " desviou!");
 		}
+		return ("Voce acertou "+ countHits+" inimigos");
 	}
 
 }
