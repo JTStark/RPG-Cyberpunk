@@ -24,6 +24,7 @@
   <image source="Portal1.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="stairHome" value="2oAndarFalcao.tmx"/>
    </properties>
   </tile>
@@ -33,9 +34,9 @@
    eJzt1MEJwCAMheG0WnXMjOYoGa1P0oJIKMSWnjz85BDy4clAxDsRfVHQyRGzL6H8EPZ1vIlqVcvDDRdkWUWn27PM23rhSe4qlzXjjdZoeryk7zO9Fvbi8WZb3vKW96+HP1o2dOhsvswGq55x/j30
   </data>
  </layer>
- <layer name="Colisoes" width="20" height="20" opacity="0.01">
+ <layer name="Colisoes" width="20" height="20" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJzjYWBg4KEyphYYNW/UvFHzRs0bNY+65oEwLxqfXAwAME0Dkg==
+   eJzjYWBg4KEyZqESHjVv1LxR80bNGzWPuuaBMC8an1wMAA1dCKI=
   </data>
  </layer>
 </map>

@@ -24,6 +24,7 @@
   <image source="Portal1.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="stairHome" value="2oAndarBabi.tmx"/>
    </properties>
   </tile>
@@ -33,9 +34,9 @@
    eJzt1E0KgCAQhuEp+3Hskh5tjuLR+mIQRLTQopWLlwFxHlxpiPxMRF9kdPoFM21D+002ux+DJSXP4ZxRzXKFnScPuz5/p9UpvR7rfogdL7zcSs1Wj3WnGjd6vQ1veMP718MfHSa06rz80BssOQFCWzSw
   </data>
  </layer>
- <layer name="Colisoes" width="20" height="20" opacity="0.01">
+ <layer name="Colisoes" width="20" height="20" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJzjYWBg4KEyphYYNW/UvFHzRs0bNY+65oEwLxqfXAwAME0Dkg==
+   eJzjYWBg4KEyZqESHjVv1LxR80bNGzWPuuaBMC8an1wMAA1dCKI=
   </data>
  </layer>
 </map>

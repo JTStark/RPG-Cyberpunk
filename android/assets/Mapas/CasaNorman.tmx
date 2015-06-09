@@ -19,6 +19,7 @@
   <image source="Portal1.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="doorHome" value="MapaExterno.tmx"/>
    </properties>
   </tile>
@@ -30,7 +31,7 @@
  </layer>
  <layer name="Colisoes" width="10" height="10" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgYCcSEwKj6vCrQ8YcOMQByIAA/g==
+   eJxjZ2BgYCcSsxDAo+rwq0PGHDjEAZKPAf4=
   </data>
  </layer>
 </map>
