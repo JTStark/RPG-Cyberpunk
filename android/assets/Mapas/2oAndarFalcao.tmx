@@ -71,6 +71,35 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="11" name="VilaoMelee" tilewidth="32" tileheight="32">
+  <image source="VilaoMelee.png" width="32" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="battle" value="battle"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="battle" value="battle"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="13" name="Exclamacao" tilewidth="32" tileheight="32">
+  <image source="Exclamacao.png" width="32" height="64"/>
+ </tileset>
+ <tileset firstgid="15" name="VilaoMeleeLado" tilewidth="32" tileheight="32">
+  <image source="VilaoMeleeLado.png" width="32" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="battle" value="battle"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="battle" value="battle"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Camada de Tiles 1" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJxjZmBIYGJgYMCHmSGYaHWMQMwKZDNCxYByCSxAGh8GqllArjpK9A52O4BhuACID1BL3ajYqNio2KjYqNjIFWOEYKqpwyaGDVOibqjaAWz/HADVy2yQsATxwWJMBDAp6gBMZ4FM
@@ -78,7 +107,7 @@
  </layer>
  <layer name="Colisoes" width="25" height="25" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJzjYGBg4KAB5sQixoIHE6MGlzpK9A52O0bFRsVGxUbFRsVGxYaSGDZMibqhZgcHGubCIkYtDACRhQ3Q
+   eJzjYGBg4KAB5sQixgLF6HxcYixEqsOlF5tZ5KobKDuGmhi2+B6KdgwGMXLyDK3sGExuGRUbFRsMYvQoh+hhBy3EsGFi1HEwYPfzULeDC4sYtTAAuBQODA==
   </data>
  </layer>
  <layer name="Baus" width="25" height="25">
@@ -89,6 +118,16 @@
  <layer name="Baus2" width="25" height="25" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGwSgYBdQELHSwAwALVAAF
+  </data>
+ </layer>
+ <layer name="Enemies" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJzt1KEKADAIRdHXFfST/fRZXTJMceBJBuHKwoCIACPkZPdu7A3O766PSENDGxoT+FtadUOTjUm3rDXB/nXvSZytoqFxLml0OihhBQA=
+  </data>
+ </layer>
+ <layer name="Exclamacao" width="25" height="25" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYBdQEvHSwAwAO2AAO
   </data>
  </layer>
 </map>
