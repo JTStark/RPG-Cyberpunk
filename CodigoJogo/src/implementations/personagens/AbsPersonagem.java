@@ -1,5 +1,7 @@
 package implementations.personagens;
 
+import implementations.personagens.skills.Skill;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -18,8 +20,9 @@ public abstract class AbsPersonagem {
 	public int hp = 100, maxHP = 100, xp = 0, level = 1, danoArma, armadura = 0, iniciativa, pos, tipo; /*1 = melee, 3 = ranged, 5 = support*/
 	public boolean vilao = false;
 	public String nome, nSkill1, nSkill2, nSkill3;
+	public Skill skill1, skill2, skill3;
 	
-	
+	/*
 	public boolean Skill1 (ArrayList <AbsPersonagem> Viloes, double dam, int trgt) {
 		boolean noAtk = false;
 		return noAtk;
@@ -33,12 +36,12 @@ public abstract class AbsPersonagem {
 	public boolean Skill3 (ArrayList <AbsPersonagem> Viloes, double dam, int trgt) {
 		boolean noAtk = false;
 		return noAtk;
-	}
-
+	}*/
+	 
 	/*método que renderiza o personagem*/
-	public void Render (){
+	/*public void Render (){
 		
-	}
+	}*/
 	
 	/*método que altera a vida do personagem*/
 	public void Damage_Heal (int modHP){
@@ -132,18 +135,24 @@ public abstract class AbsPersonagem {
 			}
 			
 			else if (atributo.equalsIgnoreCase("agilidade") || atributo.equalsIgnoreCase("a")) {
-				if (this.agilidade <= 100)
+				if (this.agilidade <= 100){
 					this.agilidade++;
-				else {
+					
+					this.esquiva = (this.agilidade)/2.5 + (this.sorte)/5;
+					this.critico = (this.agilidade)/5 + (this.sorte)/2.5;
+				} else {
 					System.out.println("Agilidade ja esta no nivel 100!");
 					i++;
 				}
 			}
 			
 			else if (atributo.equalsIgnoreCase("sorte") || atributo.equalsIgnoreCase("s")) {
-				if (this.sorte <= 100)
+				if (this.sorte <= 100){
 					this.sorte++;
-				else {
+					
+					this.esquiva = (this.agilidade)/2.5 + (this.sorte)/5;
+					this.critico = (this.agilidade)/5 + (this.sorte)/2.5;
+				} else {
 					System.out.println("Sorte ja esta no nivel 100!");
 					i++;
 				}
