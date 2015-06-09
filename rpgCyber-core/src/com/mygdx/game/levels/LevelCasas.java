@@ -155,7 +155,28 @@ public class LevelCasas extends VisualGameWorld {
 				dy=1;
 				if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null){
 					try {
-						ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
+						ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("stair") != null){
+					try {
+						ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("stair").toString()), new MyHUD("LevelData"));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("stairHome") != null){
+					try {
+						ScreenCreator.backToPrevious();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("doorHome") != null){
+					try {
+						ScreenCreator.backToPrevious();
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -167,19 +188,31 @@ public class LevelCasas extends VisualGameWorld {
 			if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("blocked") != null)){
 				dy=-1;
 				if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door") != null){
-					if(!"MapaExterno.tmx".equalsIgnoreCase(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString())){
-						try {
-							ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}else{
-						try {
-							ScreenCreator.backToPrevious();
-						} catch (Exception e) {
-							e.printStackTrace();
-							
-						}
+					try {
+						ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("stair") != null){
+					try {
+						ScreenCreator.addAndGo(new LevelCasas2("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("stair").toString()), new MyHUD("LevelData"));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("stairHome") != null){
+					try {
+						ScreenCreator.backToPrevious();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				else if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("doorHome") != null){
+					try {
+						ScreenCreator.backToPrevious();
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}

@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.mygdx.game.androidkeys.AndroidInput;
 import com.mygdx.game.levels.MyHUD;
 import com.mygdx.game.levels.MyLevel;
 
@@ -65,6 +66,7 @@ import snake.hud.SnakeHUD;
 					Gdx.app.exit();
 				}
 			}
+			
 			if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
 				if(i <= 0)
 					i = 2;

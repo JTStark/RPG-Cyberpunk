@@ -20,7 +20,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.mygdx.game.androidkeys.AndroidInput;
 import com.mygdx.game.animate.Animator;
 import com.mygdx.game.battle.BattleHUD;
 import com.mygdx.game.battle.BattleWorld;
@@ -146,9 +149,11 @@ public class MyLevel extends VisualGameWorld {
 		dx=0;
 		dy=0;
 		// move player
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!(colision.getCell(Math.round(camera.position.x + 1), Math.round(camera.position.y)).getTile().getProperties().get("blocked") != null)){
+	
+		if((Gdx.input.isKeyPressed(Input.Keys.RIGHT))&&!(colision.getCell(Math.round(camera.position.x + 1), Math.round(camera.position.y)).getTile().getProperties().get("blocked") != null)){
 			dx=1;
 		}else
+			
 		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("blocked") != null)){
 			dy=1;
 			if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null){
@@ -159,7 +164,7 @@ public class MyLevel extends VisualGameWorld {
 				}
 			}
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!(colision.getCell(Math.round(camera.position.x-1), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
+		if((Gdx.input.isKeyPressed(Input.Keys.LEFT))&&!(colision.getCell(Math.round(camera.position.x-1), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
 			dx=-1;
 		}else
 		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("blocked") != null)){
