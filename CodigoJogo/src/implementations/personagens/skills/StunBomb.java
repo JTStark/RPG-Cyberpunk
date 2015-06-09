@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class StunBomb implements Skill {
 
+	public static int tipoAlvo = 1;	
+	
 	@Override
 	public void execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		Random random = new Random();
