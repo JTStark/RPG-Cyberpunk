@@ -15,8 +15,10 @@ public class HSilvana extends AbsPersonagem {
 	
 	public static HSilvana instancia = new HSilvana();   
 	
-	private HSilvana (){
-		
+	public HSilvana (){
+		this.nSkill1 = "Acid bomb";
+		this.nSkill2 = "Poison Dart";
+		this.nSkill3 = "Invisibility-Cloak";
 	}
 	
 	public static HSilvana getInstancia(){

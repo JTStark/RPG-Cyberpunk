@@ -14,9 +14,11 @@ public class HDurden extends AbsPersonagem {
 	public String nome = "Durden";
 	
 	public static HDurden instancia = new HDurden();   
-	
-	private HDurden (){
-		
+
+	public HDurden (){
+		this.nSkill1 = "Stuning Blow";
+		this.nSkill2 = "Shields Up";
+		this.nSkill3 = "Charge!";
 	}
 	
 	public static HDurden getInstancia(){

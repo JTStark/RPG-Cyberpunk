@@ -15,8 +15,10 @@ public class HRexus extends AbsPersonagem {
 	
 	public static HRexus instancia = new HRexus();   
 	
-	private HRexus (){
-		
+	public HRexus (){
+		this.nSkill1 = "Charm";
+		this.nSkill2 = "First-Aid";
+		this.nSkill3 = "Inspire";
 	}
 	
 	public static HRexus getInstancia(){

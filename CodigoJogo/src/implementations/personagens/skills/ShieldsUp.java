@@ -14,7 +14,7 @@ public class ShieldsUp implements Skill {
 		heroiAtacante.buffArmaduraValor += (25 + heroiAtacante.resistencia/2)/100;
 		//ENDSKILL
 		
-		return true;
+		return false;
 	}
 
 }
