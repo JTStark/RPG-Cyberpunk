@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.battle;
 
 import implementations.combate.CEngine;
 import implementations.combate.CRodada;
@@ -162,7 +162,7 @@ public class BattleHUD extends HUD {
 			font.setColor(Color.WHITE);
 			font.draw(batch, "Atacar", 650, 174);
 			font.draw(batch, "Deslocar", 650, 139);
-			font.draw(batch, "Inventário", 650, 104);
+			font.draw(batch, "Inventï¿½rio", 650, 104);
 			font.draw(batch, "Nada", 650, 69);
 			font.draw(batch, "Fugir", 650, 34);
 			
@@ -178,7 +178,7 @@ public class BattleHUD extends HUD {
 				font.draw(batch, "Deslocar", 650, 139);
 				break;
 			case 2:
-				font.draw(batch, "Inventário", 650, 104);
+				font.draw(batch, "Inventï¿½rio", 650, 104);
 				break;
 			case 3:
 				font.draw(batch, "Nada", 650, 69);

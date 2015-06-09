@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.batle;
 
 import implementations.combate.AuxTemp;
 import implementations.combate.CEngine;

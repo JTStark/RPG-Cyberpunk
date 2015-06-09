@@ -88,7 +88,7 @@ public class MyLevel extends VisualGameWorld {
 	@Override
 	public void act(float delta) {
 		if(flagmo){
-			Player.ani.setXY((float)(getX()+ 4.172*Player.v),(float)(getY() + 0.3*Player.v));
+			Player.ani.setXY((float)(getX()+ 4.172*8),(float)(getY() + 0.3*8));
 			camera.position.x+=Player.ani.getX();
 			camera.position.y+=Player.ani.getY();
 			camera.update();

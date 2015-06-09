@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.battle;
 
 import implementations.combate.CEngine;
 import implementations.personagens.AbsPersonagem;
@@ -53,7 +53,7 @@ public class BattleChar extends Animator {
         	
         	System.out.println("na lista: " + CEngine.listaH.get(i).nome);
         	
-        	System.out.println("O meu i é: " + i);
+        	System.out.println("O meu i ï¿½: " + i);
         }
         
         if(CEngine.listaH == null)
