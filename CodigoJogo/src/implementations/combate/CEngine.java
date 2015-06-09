@@ -134,9 +134,6 @@ public class CEngine {
 		System.out.println();
 		System.out.println();
 		System.out.println();
-		
-		// roda Jogada de CRodada
-		CRodada.Jogada(listaH, listaV, listaI);
 	}
 }
 
