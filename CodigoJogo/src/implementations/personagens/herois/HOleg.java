@@ -30,7 +30,8 @@ public class HOleg extends AbsPersonagem {
 		this.nSkill1 = "Headshot";
 		this.nSkill2 = "Piercing Bullet";
 		this.nSkill3 = "Power-Shot";
-		
+
+		this.skill0 = new AtaqueBasico();
 		this.skill1 = new Headshot();
 		this.skill2 = new PiercingBullet();
 		this.skill3 = new PowerShot();

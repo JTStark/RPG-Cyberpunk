@@ -30,7 +30,8 @@ public class HMDR extends AbsPersonagem {
 		this.nSkill1 = "Crtical Slash";
 		this.nSkill2 = "Cutthroat";
 		this.nSkill3 = "Double-Dash";
-		
+
+		this.skill0 = new AtaqueBasico();
 		this.skill1 = new CriticalSlash();
 		this.skill2 = new CutThroat();
 		this.skill3 = new DoubleDash();

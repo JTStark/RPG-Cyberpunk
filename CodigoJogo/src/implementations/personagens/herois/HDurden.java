@@ -31,6 +31,7 @@ public class HDurden extends AbsPersonagem {
 		this.nSkill2 = "Shields Up";
 		this.nSkill3 = "Charge!";
 		
+		this.skill0 = new AtaqueBasico();
 		this.skill1 = new StunnigBlow();
 		this.skill2 = new ShieldsUp();
 		this.skill3 = new Charge1();

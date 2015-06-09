@@ -20,7 +20,7 @@ public abstract class AbsPersonagem {
 	public int hp = 100, maxHP = 100, xp = 0, level = 1, danoArma, armadura = 0, iniciativa, tipo; /*1 = melee, 3 = ranged, 5 = support*/
 	public boolean vilao = false;
 	public String nome, nSkill1, nSkill2, nSkill3;
-	public Skill skill1, skill2, skill3;
+	public transient Skill skill0, skill1, skill2, skill3;
 	
 	/*
 	public boolean Skill1 (ArrayList <AbsPersonagem> Viloes, double dam, int trgt) {
@@ -38,12 +38,12 @@ public abstract class AbsPersonagem {
 		return noAtk;
 	}*/
 	 
-	/*método que renderiza o personagem*/
+	/*mï¿½todo que renderiza o personagem*/
 	/*public void Render (){
 		
 	}*/
 	
-	/*método que altera a vida do personagem*/
+	/*mï¿½todo que altera a vida do personagem*/
 	public void Damage_Heal (int modHP){
 		this.hp += modHP;
 		
@@ -51,10 +51,10 @@ public abstract class AbsPersonagem {
 			this.hp = this.maxHP;
 		
 		else if (this.hp <= 0)
-			System.out.println("Game Over"); /*chamar função de game over; isso provisório*/
+			System.out.println("Game Over"); /*chamar funï¿½ï¿½o de game over; isso provisï¿½rio*/
 	}
 	
-	/*método que altera o xp do personagem*/
+	/*mï¿½todo que altera o xp do personagem*/
 	public void CountXP (int modXP){
 		this.xp += modXP;
 		
@@ -63,7 +63,7 @@ public abstract class AbsPersonagem {
 		}
 	}
 	
-	/*método que upa o personagem*/
+	/*mï¿½todo que upa o personagem*/
 	public void LevelUp (){
 		String atributo;
 		

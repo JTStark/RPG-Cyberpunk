@@ -30,7 +30,8 @@ public class HSilvana extends AbsPersonagem {
 		this.nSkill1 = "Acid bomb";
 		this.nSkill2 = "Poison Dart";
 		this.nSkill3 = "Invisibility-Cloak";
-		
+
+		this.skill0 = new AtaqueBasico();
 		this.skill1 = new AcidBomb();
 		this.skill2 = new PoisonDart();
 		this.skill3 = new InvisibilityCloak();

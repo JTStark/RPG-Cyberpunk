@@ -30,7 +30,8 @@ public class HOzob extends AbsPersonagem {
 		this.nSkill1 = "Grenade Throw";
 		this.nSkill2 = "Shrapnel-Shell";
 		this.nSkill3 = "Stun-Bomb";
-		
+
+		this.skill0 = new AtaqueBasico();
 		this.skill1 = new GranadeThrow();
 		this.skill2 = new ShrapnelShell();
 		this.skill3 = new StunBomb();
