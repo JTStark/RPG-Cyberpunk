@@ -23,7 +23,6 @@ public class CutThroat implements Skill {
 		danoFinal = ((int)((dam * (fator/3)) * armadura)) - resistencia; // danoFinal final
 		
 		//SKILL
-		Viloes.get(trgt).buffBleedRounds = 3;
 		danoFinal = (int) (danoFinal * 0.20);
 		//endSKILL
 		
@@ -31,17 +30,23 @@ public class CutThroat implements Skill {
 		
 		if ((int)(heroiAtacante.critico * heroiAtacante.buffCriticoValor)+random.nextInt(100)+1 >= 100) { // Soma a chance de critico com random 1-100. Se passar de 100 crita
 			danoFinal *= 2;
+			//SKILL
+			Viloes.get(trgt).buffBleedRounds = 3;
+			//ENDSKILL
 			Viloes.get(trgt-1).hp -= danoFinal;
 			System.out.println("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
 		}
 		else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) { // Igual ao critico
 			Viloes.get(trgt-1).hp -= danoFinal;
+			//SKILL
+			Viloes.get(trgt).buffBleedRounds = 3;
+			//ENDSKILL
 			System.out.println(Viloes.get(trgt-1).nome + " atingido! " + danoFinal + " de danoFinal!");
 		}
 		else
 			System.out.println(Viloes.get(trgt-1).nome + " desviou!");
 		
-		return true;
+		return false;
 	}
 
 }

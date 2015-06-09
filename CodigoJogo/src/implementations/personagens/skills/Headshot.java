@@ -9,11 +9,11 @@ public class Headshot implements Skill {
 
 	@Override
 	public boolean execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
+		int danoFinal, resistencia;
+		double armadura, fator;
+		Random random = new Random();
 		
-		if(trgt != 0 && trgt != 1 && heroiAtacante.pos != 0 && heroiAtacante.pos != 1){
-			int danoFinal, resistencia;
-			double armadura, fator;
-			Random random = new Random();
+		if(trgt != 0 && trgt != 1 && heroiAtacante.pos != 0 && heroiAtacante.pos != 1) {			
 			
 			armadura = (1 - ((Viloes.get(trgt-1).armadura*Viloes.get(trgt-1).buffArmaduraValor)/100));
 			if (armadura < 0.1) armadura = 0.1; // evita armadura acima de 90% por buffs
@@ -26,8 +26,9 @@ public class Headshot implements Skill {
 			danoFinal = ((int)((dam * (fator/3)) * armadura)) - resistencia; // danoFinal final
 			
 			//SKILL
-			heroiAtacante.critico += (35 + heroiAtacante.percepcao/3);
-			danoFinal -= (int) danoFinal * 0.20;
+			heroiAtacante.buffCriticoValor += ((35 + heroiAtacante.percepcao/3)/100);
+			heroiAtacante.buffCriticoRounds += 1;
+			danoFinal = (int) (danoFinal * 0.80);
 			//ENDSKILL
 			
 			if (danoFinal <= 0) danoFinal = 1; // danoFinal minimo é 1
@@ -44,9 +45,12 @@ public class Headshot implements Skill {
 			else
 				System.out.println(Viloes.get(trgt-1).nome + " desviou!");
 			
+			return false;
+		}
+		else {
+			System.out.println("Voce ou seu alvo estao muito proximos para usar Headshot");
 			return true;
 		}
-		return false;
 	}
 
 }

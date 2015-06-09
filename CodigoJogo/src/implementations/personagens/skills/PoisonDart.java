@@ -24,25 +24,29 @@ public class PoisonDart implements Skill {
 		danoFinal = ((int)((dam * (fator/3)) * armadura)) - resistencia; // danoFinal final
 		
 		//SKILL
-		danoFinal -= danoFinal * 0.90;
-		Viloes.get(trgt).hp -= Viloes.get(trgt).hp * 0.10;
-		Viloes.get(trgt).buffPoisonRounds = 1 + heroiAtacante.inteligencia/20;
+		danoFinal = (int)(danoFinal * 0.10);
 		//ENDSKILL
 		
 		if (danoFinal <= 0) danoFinal = 1; // danoFinal minimo é 1
 		
 		if ((int)(heroiAtacante.critico * heroiAtacante.buffCriticoValor)+random.nextInt(100)+1 >= 100) { // Soma a chance de critico com random 1-100. Se passar de 100 crita
 			danoFinal *= 2;
+			//SKILL
+			Viloes.get(trgt).buffPoisonRounds = 1 + heroiAtacante.inteligencia/20;
+			//ENDSKILL
 			Viloes.get(trgt-1).hp -= danoFinal;
 			System.out.println("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
 		}
 		else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) { // Igual ao critico
 			Viloes.get(trgt-1).hp -= danoFinal;
+			//SKILL
+			Viloes.get(trgt).buffPoisonRounds = 1 + heroiAtacante.inteligencia/20;
+			//ENDSKILL
 			System.out.println(Viloes.get(trgt-1).nome + " atingido! " + danoFinal + " de danoFinal!");
 		}
 		else
 			System.out.println(Viloes.get(trgt-1).nome + " desviou!");
-		return true;
+		return false;
 	}
 
 }

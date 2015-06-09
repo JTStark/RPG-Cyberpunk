@@ -27,7 +27,7 @@ public class CriticalSlash implements Skill {
 		//SKILL
 		heroiAtacante.buffCriticoValor += ((35 + heroiAtacante.agilidade/3)/100);
 		heroiAtacante.buffCriticoRounds += 1;
-		danoFinal -= (int) danoFinal * 0.20;
+		danoFinal = (int)( danoFinal * 0.80);
 		//ENDSKILL
 		
 		if (danoFinal <= 0) danoFinal = 1; // danoFinal minimo é 1
@@ -44,7 +44,7 @@ public class CriticalSlash implements Skill {
 		else
 			System.out.println(Viloes.get(trgt-1).nome + " desviou!");
 		
-		return true;
+		return false;
 	}
 
 }
