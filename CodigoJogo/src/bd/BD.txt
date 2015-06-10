@@ -88,7 +88,7 @@ Veste de Microfibra de Titânio,Armor,16
 Veste de liga Titânio-Kevlar,Armor,17
 Veste de liga Titânio-Carbono,Armor,18
 Armadura Leve de Microfibra de Carbono,Armor,20
-Vestes Militares de Kevlar,20
+Vestes Militares de Kevlar,Armor,20
 Vestes de Kevlar com Aço,Armor,22
 Traje de Microfibra de Aço,Armor,24
 Traje de liga Aço-Kevlar,Armor,26
@@ -108,3 +108,11 @@ Armadura Ativa de Aço,Armor,48
 Armadura Ativa de Liga Leve,Armor,51
 Armadura Ativa de Titânio,Armor,54
 Armadura Ativa de Fibra de Carbono,Armor,60
+Kit de Primeiros Socorros,HP,20
+Anabolizante,STR,10
+Diazepam,PER,10
+Analgesico,END,10
+Vodka,CHA,
+Estimulante,INT,10
+Adrenalina,AGI,10
+Uisque,LCK,10
