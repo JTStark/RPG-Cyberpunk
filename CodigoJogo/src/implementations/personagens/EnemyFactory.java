@@ -10,6 +10,7 @@ public class EnemyFactory {
 		else if(type == 2)
 			return new VilaoRanged(Arma, Armadura, level, nGerador);
 		
+		
 		System.out.println("Tipo de vilao invalido");
 		return null;
 	}
