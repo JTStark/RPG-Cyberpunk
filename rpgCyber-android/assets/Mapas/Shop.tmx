@@ -14,6 +14,11 @@
  </tileset>
  <tileset firstgid="7" name="ParedeInvisivel" tilewidth="32" tileheight="32">
   <image source="ParedeInvisivel.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="blocked"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="8" name="Portal1" tilewidth="32" tileheight="32">
   <image source="Portal1.png" width="32" height="32"/>
@@ -27,6 +32,18 @@
  <tileset firstgid="9" name="FundoLoja" tilewidth="32" tileheight="32">
   <image source="FundoLoja.png" width="416" height="127"/>
  </tileset>
+ <tileset firstgid="48" name="Portal2" tilewidth="32" tileheight="32">
+  <image source="Portal2.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="blocked"/>
+    <property name="shop" value="shop"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="49" name="Lojista" tilewidth="32" tileheight="32">
+  <image source="Lojista.png" width="32" height="64"/>
+ </tileset>
  <layer name="Camada de Tiles 1" width="15" height="15">
   <data encoding="base64" compression="zlib">
    eJxjZmBIYGJgYCAVM0PoBBYgTSoG6lswEvWyAdmk4oF286he4vQC88MBJihmBGJWoDgjxMwD+DBQ3wIAlPIa1A==
@@ -37,12 +54,17 @@
    <property name="blocked" value="blocked"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgYB/Fgx6zkIFH9dJXLzLmICFuAb8DBRg=
+   eJxjZ2BgYB/FA4oNiFDDQgYe1UtfvciYg4T4BwAREgVB
   </data>
  </layer>
  <layer name="Camada de Tiles 3" width="15" height="15">
   <data encoding="base64" compression="zlib">
-   eJztzzkSggAABEFSUVFUQC5PwFv//zs7JKfImKoON9ggGNaMkDkLlkSsWBOzYcuOpLdNydiTU1BSUXPgyIkzl972SkNLx407D568ePPhy2/gz6mpsfoDNDgERQ==
+   eJztz8cOglAURVGmNhQVkGbF3v7/71xD5o8RcSdreHJzoyisUeA+5O6YCVNmxMxZkLBkxZq0s83I2VBQUlHTsGXHngPHzvZEy5kLV27cefDkxZsP3x5//jfMflGeBE4=
+  </data>
+ </layer>
+ <layer name="Lojista" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFMGBIgV4jqrliFIw0AADsNABk
   </data>
  </layer>
 </map>

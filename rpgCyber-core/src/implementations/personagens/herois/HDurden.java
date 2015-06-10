@@ -35,6 +35,8 @@ public class HDurden extends AbsPersonagem {
 		this.skill1 = new StunnigBlow();
 		this.skill2 = new ShieldsUp();
 		this.skill3 = new Charge1();
+		
+		this.tipo = 1;
 	}
 	
 	public static HDurden getInstancia(){

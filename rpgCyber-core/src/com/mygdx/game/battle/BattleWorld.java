@@ -2,6 +2,7 @@ package com.mygdx.game.battle;
 
 import implementations.combate.AuxTemp;
 import implementations.combate.CEngine;
+import implementations.combate.RetornaArrayInimigos;
 import implementations.personagens.AbsPersonagem;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.mygdx.game.animate.Player;
 
 import snake.engine.creators.ScreenCreator;
 import snake.engine.creators.WorldSettings;
@@ -30,8 +32,8 @@ public class BattleWorld  extends VisualGameWorld {
 	
 	
 	public BattleWorld (String LevelData/* Add other parameters of choice*/) {
-		AuxTemp.comeca();
-		
+		//AuxTemp.comeca();
+		CEngine.CombatEngine(Player.listaP, RetornaArrayInimigos.GetArray());
 		
 		WorldSettings.setAmbientColor(Color.WHITE);
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager

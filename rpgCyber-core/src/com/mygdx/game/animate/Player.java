@@ -11,7 +11,7 @@ public class Player {
 	public static Animator ani2 = new Animator("link.png");
 	public static Animator ani = ani1;
 	public static int v = 5;
-	public static ArrayList<AbsPersonagem> lista = new ArrayList<AbsPersonagem>();
+	public static ArrayList<AbsPersonagem> listaP = new ArrayList<AbsPersonagem>();
 	public static AbsPersonagem Durden = HDurden.getInstancia();
 	public static AbsPersonagem MDR = HMDR.getInstancia();
 	public static AbsPersonagem Oleg = HOleg.getInstancia();
@@ -19,14 +19,15 @@ public class Player {
 	public static AbsPersonagem Rexus = HRexus.getInstancia();
 	public static AbsPersonagem Silvana = HSilvana.getInstancia();
 	public static Inventario inv = Inventario.getInstancia();
+	public static boolean battle = false;
 	public static ArrayList<AbsPersonagem> getP(){
-		lista.add(Durden);
-		lista.add(MDR);
-		lista.add(Oleg);
-		lista.add(Ozob);
-		lista.add(Rexus);
-		lista.add(Silvana);
-		return lista;
+		listaP.add(MDR);
+		listaP.add(Durden);
+		listaP.add(Oleg);
+		listaP.add(Ozob);
+		listaP.add(Rexus);
+		listaP.add(Silvana);
+		return listaP;
 	}
 	public static void change(){
 		if(ani == ani1){

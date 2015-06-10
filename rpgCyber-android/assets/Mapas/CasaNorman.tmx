@@ -14,6 +14,11 @@
  </tileset>
  <tileset firstgid="7" name="ParedeInvisivel" tilewidth="32" tileheight="32">
   <image source="ParedeInvisivel.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="blocked"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="8" name="Portal1" tilewidth="32" tileheight="32">
   <image source="Portal1.png" width="32" height="32"/>

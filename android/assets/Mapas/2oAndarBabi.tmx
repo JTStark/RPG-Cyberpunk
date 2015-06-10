@@ -111,7 +111,7 @@
  </layer>
  <layer name="Colisoes" width="25" height="25" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJzjYGBg4KAB5kTjs6BhDjQ2MepYcKjDpRebWeSqGyg7qCmGK5zxiTEMQjvIERsudoyKjYoNhXRKqh0Mg9QOUsXoYQexYhwDaAc2TIm6wWgHIbXI6rjQ+NTEAGoVDcA=
+   eJzdk0sOABAMRGdhUe5/YFtpWt+iLCbRl+ElAgGgDYlsDizE1j29oPS0vdJZs71bDkum3XONwaFjhv3i+IVJb+ZFx4sMDh1w6hhlJxy9TPoHpxxSVnoeHa1u2UtstkwGkuUNyA==
   </data>
  </layer>
  <layer name="Baus" width="25" height="25">

@@ -66,7 +66,6 @@ public class MyLevel extends VisualGameWorld {
 	public MyLevel (String LevelData) {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
-		Player.getP();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, (w/h)*10, 10);
 		camera.update();
@@ -98,6 +97,15 @@ public class MyLevel extends VisualGameWorld {
 			camera.position.y+=Player.ani.getY();
 			camera.update();
 			flagmo = false;
+		}
+		if(Player.battle){
+			try {
+				ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Player.battle = false;
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
 			

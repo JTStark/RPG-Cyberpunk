@@ -14,6 +14,11 @@
  </tileset>
  <tileset firstgid="7" name="ParedeInvisivel" tilewidth="32" tileheight="32">
   <image source="ParedeInvisivel.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="blocked"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="8" name="Portal1" tilewidth="32" tileheight="32">
   <image source="Portal1.png" width="32" height="32"/>
@@ -28,9 +33,13 @@
   <image source="Portal6.png" width="32" height="32"/>
   <tile id="0">
    <properties>
+    <property name="blocked" value="blocked"/>
     <property name="heal" value="heal"/>
    </properties>
   </tile>
+ </tileset>
+ <tileset firstgid="10" name="InnKeeper" tilewidth="32" tileheight="32">
+  <image source="InnKeeper.png" width="32" height="64"/>
  </tileset>
  <layer name="Camada de Tiles 1" width="15" height="15">
   <data encoding="base64" compression="zlib">
@@ -42,12 +51,12 @@
    <property name="blocked" value="blocked"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgYB/Fgx6zkIHJ1UuJvSPZzciYg4S4BQDKowUk
+   eJxjZ2BgYB/FA4o5iVDDQgYmVy8l9lLqZs4BsJda4YyMOUiIfwDQiwUo
   </data>
  </layer>
- <layer name="Heal" width="15" height="15" opacity="0">
+ <layer name="InnKeeper" width="15" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgF1ACcA6R3OAFOhpEZFgA67AAl
+   eJxjYBgFMMBFgV5uqrliFIw0AAA0yAAW
   </data>
  </layer>
 </map>

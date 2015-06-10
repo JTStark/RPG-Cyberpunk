@@ -25,18 +25,18 @@
   <tile id="0">
    <properties>
     <property name="blocked" value="blocked"/>
-    <property name="stairHome" value="2oAndarFalcao.tmx"/>
+    <property name="doorHome" value="2oAndarFalcao.tmx"/>
    </properties>
   </tile>
  </tileset>
  <layer name="Camada de Tiles 1" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1MEJwCAMheG0WnXMjOYoGa1P0oJIKMSWnjz85BDy4clAxDsRfVHQyRGzL6H8EPZ1vIlqVcvDDRdkWUWn27PM23rhSe4qlzXjjdZoeryk7zO9Fvbi8WZb3vKW96+HP1o2dOhsvswGq55x/j30
+   eJzt1EsKwCAMRdH4qbpMl+ZSsrS+EgsioRBbOnJwCSgeHRmIqieiLwoya8QcSyg/hP02n4liNc3DmVqQZhWZZk8zb+uFx3modGvFm63ZtHhJ3qd6V9hni7fa9ra3vX89/NHsew4dWHdyD1uD1U5FNj00
   </data>
  </layer>
  <layer name="Colisoes" width="20" height="20" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJzjYWBg4KEyZqESHjVv1LxR80bNGzWPuuaBMC8an1wMAA1dCKI=
+   eJzjYWBg4KEyZqESHjVv1LxR80bNGzWPuuYhY14c4sRiAA1VCKI=
   </data>
  </layer>
 </map>

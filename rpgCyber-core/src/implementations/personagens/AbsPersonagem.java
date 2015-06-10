@@ -18,7 +18,7 @@ public abstract class AbsPersonagem {
 	public transient double buffForcaValor=1, buffPercepcaoValor=1, buffCarismaValor=1, buffResistenciaValor=1, buffInteligenciaValor=1, buffAgilidadeValor=1, buffSorteValor=1, buffArmaduraValor=1, buffEsquivaValor=1, buffCriticoValor;
 	public double esquiva = 0, critico = 0;
 	public double hp = 100, maxHP = 100, xp = 0, level = 1, danoArma, armadura = 0, iniciativa, pos, tipo; /*1 = melee, 3 = ranged, 5 = support*/
-	public boolean vilao = false;
+	public boolean vilao = false, boss = false;
 	public String nome, nSkill1, nSkill2, nSkill3;
 	public transient Skill skill0, skill1, skill2, skill3;
 	

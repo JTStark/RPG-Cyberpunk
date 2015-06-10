@@ -35,6 +35,8 @@ public class HOleg extends AbsPersonagem {
 		this.skill1 = new Headshot();
 		this.skill2 = new PiercingBullet();
 		this.skill3 = new PowerShot();
+		
+		this.tipo = 3;
 	}
 	
 	public static HOleg getInstancia(){

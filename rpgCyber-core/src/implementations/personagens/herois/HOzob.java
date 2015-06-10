@@ -35,6 +35,8 @@ public class HOzob extends AbsPersonagem {
 		this.skill1 = new GranadeThrow();
 		this.skill2 = new ShrapnelShell();
 		this.skill3 = new StunBomb();
+		
+		this.tipo = 3;
 	}
 	
 	public static HOzob getInstancia(){
