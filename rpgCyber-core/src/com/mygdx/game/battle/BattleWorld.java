@@ -33,8 +33,8 @@ public class BattleWorld  extends VisualGameWorld {
 	
 	
 	public BattleWorld (String LevelData/* Add other parameters of choice*/) {
-		//AuxTemp.comeca();
-		CEngine.CombatEngine(Player.lista, RetornaArrayInimigos.GetArray());
+		AuxTemp.comeca();
+		//CEngine.CombatEngine(Player.getP(), RetornaArrayInimigos.GetArray());
 		
 		WorldSettings.setAmbientColor(Color.WHITE);
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
