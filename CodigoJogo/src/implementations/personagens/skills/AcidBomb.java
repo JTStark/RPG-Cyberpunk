@@ -8,7 +8,7 @@ import java.util.Random;
 public class AcidBomb implements Skill {
 
 	public static int tipoAlvo = 1;	
-	public static int tipoSkill = 5;
+	public static int tipoSkill = 3;
 	
 	@Override
 	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante) {
@@ -39,7 +39,7 @@ public class AcidBomb implements Skill {
 			Viloes.get(trgt).buffArmaduraRounds += 2;
 			//ENDSKILL
 			Viloes.get(trgt-1).hp -= danoFinal;
-			return("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
+			return("Atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
 		}
 		else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) { // Igual ao critico
 			Viloes.get(trgt-1).hp -= danoFinal;

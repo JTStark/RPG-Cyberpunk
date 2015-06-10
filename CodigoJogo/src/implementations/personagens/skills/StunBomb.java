@@ -20,7 +20,7 @@ public class StunBomb implements Skill {
 				countStuns++;
 			}			
 		}
-		return ("Voce Atordoou " + countStuns + "inimigos");
+		return ("Atordoou " + countStuns + "inimigos");
 	}
 
 }
