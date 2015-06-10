@@ -53,14 +53,5 @@ public class Loja implements ILoja  {
 		}
 		
 	}
-	
-	public static void main(String args[]) {
-		Inventario invent = Inventario.getInstancia();
-		
-		invent.adicionar_item("Faca de Manteiga");
-		invent.adicionar_item("Adaga de Aço");
-		
-		invent.getMochila();
-	}
 
 }

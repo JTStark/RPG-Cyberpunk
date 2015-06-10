@@ -101,5 +101,5 @@ public class Item implements InterfaceItem {
 		}
 		return new Item(nome);
 	}
-	
+		
 }
