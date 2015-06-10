@@ -98,6 +98,15 @@ public class MyLevel extends VisualGameWorld {
 			camera.update();
 			flagmo = false;
 		}
+		if(Player.battle){
+			try {
+				ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Player.battle = false;
+		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
 			
 		}

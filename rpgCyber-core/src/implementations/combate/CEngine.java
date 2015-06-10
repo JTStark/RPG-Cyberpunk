@@ -112,7 +112,7 @@ public class CEngine {
 		System.out.println("");
 		for(int contPrint = 0; contPrint < listaV.size(); contPrint++) {
 			System.out.print(listaV.get(contPrint).nome + " ");
-			System.out.println(listaV.get(contPrint).iniciativa);
+			System.out.println(listaV.get(contPrint).hp);
 		}
 		System.out.println();
 		System.out.println();

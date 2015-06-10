@@ -19,6 +19,7 @@ public class Player {
 	public static AbsPersonagem Rexus = HRexus.getInstancia();
 	public static AbsPersonagem Silvana = HSilvana.getInstancia();
 	public static Inventario inv = Inventario.getInstancia();
+	public static boolean battle = false;
 	public static ArrayList<AbsPersonagem> getP(){
 		listaP.add(MDR);
 		listaP.add(Durden);
