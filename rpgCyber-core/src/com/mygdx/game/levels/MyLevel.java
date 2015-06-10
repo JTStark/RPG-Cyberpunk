@@ -66,7 +66,6 @@ public class MyLevel extends VisualGameWorld {
 	public MyLevel (String LevelData) {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
-		Player.getP();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, (w/h)*10, 10);
 		camera.update();

@@ -35,6 +35,7 @@ public class HMDR extends AbsPersonagem {
 		this.skill1 = new CriticalSlash();
 		this.skill2 = new CutThroat();
 		this.skill3 = new DoubleDash();
+		this.tipo = 1;
 	}
 	
 	public static HMDR getInstancia(){

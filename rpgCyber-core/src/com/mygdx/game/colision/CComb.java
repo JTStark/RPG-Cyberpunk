@@ -20,6 +20,7 @@ public class CComb {
 						if(enemies.getCell(Math.round(camera.position.x+i), 
 								Math.round(camera.position.y)).getTile().getProperties().get("battle").toString().equalsIgnoreCase("right")){
 							enemies.setCell(Math.round(camera.position.x+i), Math.round(camera.position.y), enemies2.getCell(3, 0));
+							bau.setCell(Math.round(camera.position.x+i), Math.round(camera.position.y+1), enemies2.getCell(0, 0));
 							try {
 								ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
 							} catch (Exception e) {
@@ -36,6 +37,7 @@ public class CComb {
 						if(enemies.getCell(Math.round(camera.position.x), 
 								Math.round(camera.position.y)).getTile().getProperties().get("battle").toString().equalsIgnoreCase("up")){
 							enemies.setCell(Math.round(camera.position.x), Math.round(camera.position.y+i), enemies2.getCell(2, 0));
+							bau.setCell(Math.round(camera.position.x+i), Math.round(camera.position.y+1+i), enemies2.getCell(0, 0));
 							try {
 								ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
 							} catch (Exception e) {
@@ -52,6 +54,7 @@ public class CComb {
 						if(enemies.getCell(Math.round(camera.position.x-i), 
 								Math.round(camera.position.y)).getTile().getProperties().get("battle").toString().equalsIgnoreCase("left")){
 							enemies.setCell(Math.round(camera.position.x-i), Math.round(camera.position.y), enemies2.getCell(1, 0));
+							bau.setCell(Math.round(camera.position.x+i), Math.round(camera.position.y+1), enemies2.getCell(0, 0));
 							try {
 								ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
 							} catch (Exception e) {
