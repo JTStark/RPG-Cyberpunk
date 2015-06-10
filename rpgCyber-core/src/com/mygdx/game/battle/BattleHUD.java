@@ -34,7 +34,7 @@ public class BattleHUD extends HUD {
 	
 	
 	private static final int POS1 = -20, POS2 = -70, POS3 = -130, POS4 = -200, POS5 = -270, POS6 = -320;
-	private static final int POSM1 = 30, POSM2 = 80, POSM3 = 140, POSM4 = 210, POSM5 = 280, POSM6 = 330;  
+	private static final int POSM1 = 30, POSM2 = 80, POSM3 = 130, POSM4 = 180, POSM5 = 230, POSM6 = 380;  
 	
 	private BattleChar atual;
 	
@@ -82,7 +82,7 @@ public class BattleHUD extends HUD {
 					atual = BattleWorld.mdr;		
 			}
 			else {
-				if(personAtual.nome.equalsIgnoreCase("vFirst"))
+				if(personAtual.nome.equalsIgnoreCase("melee"))
 					atual = BattleWorld.inimigo1;
 				if(personAtual.nome.equalsIgnoreCase("vSecond"))
 					atual = BattleWorld.inimigo2;
@@ -561,7 +561,7 @@ public class BattleHUD extends HUD {
 			font.setColor(Color.WHITE);
 			
 			
-			font.draw(batch, atual.getName() + " " , 650, 174);
+			font.draw(batch, atual.getName() + CRodada.AI(CEngine.listaH, CEngine.listaV, CEngine.listaI, atual.getPersonagem()) , 650, 174);
 			
 			font.setColor(Color.RED);
 			font.draw(batch, "OK" , 650, 139);
@@ -773,7 +773,7 @@ public class BattleHUD extends HUD {
 									atual = BattleWorld.mdr;		
 							}
 							else {
-								if(personAtual.nome.equalsIgnoreCase("vFirst"))
+								if(personAtual.nome.equalsIgnoreCase("melee"))
 									atual = BattleWorld.inimigo1;
 								if(personAtual.nome.equalsIgnoreCase("vSecond"))
 									atual = BattleWorld.inimigo2;
@@ -1123,7 +1123,7 @@ public class BattleHUD extends HUD {
 									atual = BattleWorld.mdr;		
 							}
 							else {
-								if(personAtual.nome.equalsIgnoreCase("vFirst"))
+								if(personAtual.nome.equalsIgnoreCase("melee"))
 									atual = BattleWorld.inimigo1;
 								if(personAtual.nome.equalsIgnoreCase("vSecond"))
 									atual = BattleWorld.inimigo2;
@@ -1212,7 +1212,7 @@ public class BattleHUD extends HUD {
 							atual = BattleWorld.mdr;		
 					}
 					else {
-						if(personAtual.nome.equalsIgnoreCase("vFirst"))
+						if(personAtual.nome.equalsIgnoreCase("melee"))
 							atual = BattleWorld.inimigo1;
 						if(personAtual.nome.equalsIgnoreCase("vSecond"))
 							atual = BattleWorld.inimigo2;

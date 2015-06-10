@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.mygdx.game.animate.Player;
 
 import snake.engine.creators.ScreenCreator;
 import snake.engine.creators.WorldSettings;
@@ -30,7 +31,7 @@ public class BattleWorld  extends VisualGameWorld {
 	
 	
 	public BattleWorld (String LevelData/* Add other parameters of choice*/) {
-		AuxTemp.comeca();
+		CEngine.CombatEngine(Player.lista, Player.lista);
 		
 		
 		WorldSettings.setAmbientColor(Color.WHITE);

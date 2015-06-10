@@ -31,6 +31,13 @@ public class CComb {
 					colision.setCell(Math.round(camera.position.x-1), Math.round(camera.position.y), bau2.getCell(0, 0));
 				}
 			}
+			if(bau.getCell(Math.round(camera.position.x-1), Math.round(camera.position.y)) !=null){
+				if(bau.getCell(Math.round(camera.position.x-1), Math.round(camera.position.y)).getTile().getProperties().get("chest")!=null){
+				bau.setCell(Math.round(camera.position.x-1), Math.round(camera.position.y), bau2.getCell(0, 0));
+				if(colision.getCell(Math.round(camera.position.x-1), Math.round(camera.position.y)).getTile().getProperties().get("blocked")!=null)
+					colision.setCell(Math.round(camera.position.x-1), Math.round(camera.position.y), bau2.getCell(0, 0));
+				}
+			}
 		}
 	}
 }

@@ -97,23 +97,23 @@ public class BattleChar extends Animator {
 		int retorno = 0;
 		
 		switch (this.x) {
-		case 330:
-			retorno = 845;
+		case 380:
+			retorno = 600;
 			break;
-		case 280:
-			retorno = 745;
+		case 230:
+			retorno = 550;
 			break;
-		case 210:
-			retorno = 625;
+		case 180:
+			retorno = 480;
 			break;
-		case 140:
-			retorno = 485;
+		case 130:
+			retorno = 400;
 			break;
 		case 80:
-			retorno = 365;
+			retorno = 320;
 			break;
 		case 30:
-			retorno = 270;
+			retorno = 240;
 			break;
 		case -20:
 			retorno = 175;
