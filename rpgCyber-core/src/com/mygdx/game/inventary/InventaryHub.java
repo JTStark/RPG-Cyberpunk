@@ -1,4 +1,4 @@
-package com.mygdx.game.menus;
+package com.mygdx.game.inventary;
 
 
 	import implementations.inventario.Inventario;
@@ -60,7 +60,7 @@ import snake.hud.SnakeHUD;
 		/** updates Screen logic */
 		@Override
 		public void act(float delta) {
-			if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
+			if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
 				try{inv.remover_item(inv.getMochila(ini+i,ini + i+ 1).get(0).getName());}
 				catch(Exception e){
 					e.printStackTrace();
@@ -78,7 +78,7 @@ import snake.hud.SnakeHUD;
 					i = 0;
 					if(ini<=0){
 						ini = 0;
-						end = 9;
+						end = 7;
 					}else{
 						end--;
 						ini--;
@@ -88,11 +88,11 @@ import snake.hud.SnakeHUD;
 				}
 			}
 			if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-				if(i >= 9){
-					i = 9;
+				if(i >= 7){
+					i = 7;
 					if(end>=39){
 						end = 39;
-						ini = 30;
+						ini = 32;
 					
 					}else{
 						end++;
@@ -103,11 +103,11 @@ import snake.hud.SnakeHUD;
 					i++;
 				}
 			}
-			for(int i = 0;i<10;i++){
+			for(int i = 0;i<8;i++){
 				try{
 				instructions[i] = (ini + i+1  + ".   " + inv.getMochila(ini, end).get(i).getName());
 				}catch(Exception e){
-					instructions[i] = (ini + i+1  + ".   " + "------------");
+					instructions[i] = (ini + i+1  + ".   " + "----------------------------------");
 				}
 			}
 		}
@@ -121,15 +121,15 @@ import snake.hud.SnakeHUD;
 				font.draw(batch, "You're touching it! (maybe pressing space button).", 0, 80);
 
 			//Drawing instructions
-			for(int j = 0 ; j<10;j++){
+			for(int j = 0 ; j<8;j++){
 				if(i==j){
 					font.setColor(Color.RED);
 					layout.setText(font, instructions[j]);
-					font.draw(batch, layout, w / 2 - layout.width / 2 +300, h / 2 - layout.height / 2 +360-j*50);
+					font.draw(batch, layout, w / 2 - layout.width / 2 +345, h / 2 - layout.height / 2 +410-j*75);
 					font.setColor(Color.WHITE);
 				}else{
 					layout.setText(font, instructions[j]);
-					font.draw(batch, layout, w / 2 - layout.width / 2 +300, h / 2 - layout.height / 2 + 360-j*50);
+					font.draw(batch, layout, w / 2 - layout.width / 2 +345, h / 2 - layout.height / 2 + 410-j*75);
 				}
 			
 			}
