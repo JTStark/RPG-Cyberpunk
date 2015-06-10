@@ -1,6 +1,6 @@
 package implementations.inventario;
 
-import java.util.Enumeration;
+import java.util.ArrayList;
 import java.util.Vector;
 
 
@@ -55,14 +55,19 @@ public class Inventario implements InterfaceInventario{
 			return false;
 	}
 	/* Imprime os equipamentos na mochila */
-	public void getMochila(){
-		for (Enumeration<String> e = mochila.elements(); e.hasMoreElements();){
-			String item_mochila = (String) e.nextElement();
-			Item item = new Item(item_mochila);
-			System.out.println("Nome: " + item.getName() + 
-								" | Tipo: " + item.getType() + 
-								" | Bônus:" + item.getBonus());
+	public Vector<String> getMochila(){
+		return mochila;
+	}
+	public ArrayList<String> getMochila(int tamanho_inicial, int tamanho_final){
+		ArrayList<String> itens = new ArrayList<String>();
+		for (int i = tamanho_inicial; i <= tamanho_final; i++){
+			if(mochila.size() > i){
+				String item_mochila = mochila.elementAt(i);	
+				Item item = new Item(item_mochila);
+				itens.add(item.getName());
+			}
 		}
+		return itens;
 	}
 }
 
