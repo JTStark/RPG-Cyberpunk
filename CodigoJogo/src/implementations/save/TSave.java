@@ -17,63 +17,67 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "Save")
 public class TSave {
 
-	
 	private Inventario inventario;
-	private AbsPersonagem HDurden, HMDR, HOleg, HOzob, HRexus, HSilvana;
+	private HDurden HDurden;
+	private HMDR HMDR;
+	private HOleg HOleg;
+	private HOzob HOzob;
+	private HRexus HRexus;
+	private HSilvana HSilvana;
 	
-	@XmlElement(name = "HDurben")
+	@XmlElement(name = "heroi")
 	public AbsPersonagem getHDurden() {
-		return HDurden;
+		return this.HDurden;
 	}
 
-	public void setHDurden(AbsPersonagem hDurden) {
-		HDurden = hDurden;
+	public void setHDurden(HDurden hDurden) {
+		this.HDurden = hDurden;
 	}
 
-	@XmlElement(name = "HMDR")
+	@XmlElement(name = "heroi")
 	public AbsPersonagem getHMDR() {
-		return HMDR;
+		return this.HMDR;
 	}
 
-	public void setHMDR(AbsPersonagem hMDR) {
-		HMDR = hMDR;
+	public void setHMDR(HMDR hMDR) {
+		this.HMDR = hMDR;
 	}
 
-	@XmlElement(name = "HOleg")
+	@XmlElement(name = "heroi")
 	public AbsPersonagem getHOleg() {
-		return HOleg;
+		return this.HOleg;
 	}
 
-	public void setHOleg(AbsPersonagem hOleg) {
-		HOleg = hOleg;
+	public void setHOleg(HOleg hOleg) {
+		this.HOleg = hOleg;
 	}
 
-	@XmlElement(name = "HOzob")
+	@XmlElement(name = "heroi")
 	public AbsPersonagem getHOzob() {
 		return HOzob;
 	}
 
-	public void setHOzob(AbsPersonagem hOzob) {
-		HOzob = hOzob;
+	public void setHOzob(HOzob hOzob) {
+		this.HOzob = hOzob;
 	}
 
-	@XmlElement(name = "HRexus")
+	@XmlElement(name = "heroi")
 	public AbsPersonagem getHRexus() {
 		return HRexus;
 	}
 
 	
-	public void setHRexus(AbsPersonagem hRexus) {
-		HRexus = hRexus;
+	public void setHRexus(HRexus hRexus) {
+		this.HRexus = hRexus;
 	}
 
-	@XmlElement(name = "HSilvana")
+	@XmlElement(name = "heroi")
 	public AbsPersonagem getHSilvana() {
 		return HSilvana;
 	}
 
-	public void setHSilvana(AbsPersonagem hSilvana) {
-		HSilvana = hSilvana;
+	public void setHSilvana(HSilvana hSilvana) {
+		this.HSilvana = hSilvana;
 	}
 	
 	@XmlElement(name = "inventario")
