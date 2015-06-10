@@ -44,7 +44,8 @@ public class Item implements InterfaceItem {
 					this.type = tipo;
 					/*como a quantidade de bonus é obtida como texto, é
 					 * preciso converter para inteiro*/
-					this.bonus = Integer.parseInt(numero);
+					if(numero != null)
+						this.bonus = Integer.parseInt(numero);
 				}
 				linha = tratado.readLine();
 			}
@@ -71,7 +72,7 @@ public class Item implements InterfaceItem {
 	
 	/*metodo para gerar um item aleatorio, para ser colocado nos baus encontrados no meio do jogo*/
 	public static Item geraAleatorio() { 
-		int procurado = 2 + (int)(Math.random() * 80);
+		int procurado = 2 + (int)(Math.random() * 40);
 		String diretorio = "bin/bd/BD.txt";
 		FileReader arquivo;
 		BufferedReader tratado = null;
@@ -100,6 +101,14 @@ public class Item implements InterfaceItem {
 			
 		}
 		return new Item(nome);
+	}
+	public static void main(String args[]) {
+		
+		for (int i = 0; i < 10; i++) {
+			Item generico = Item.geraAleatorio();
+			
+			System.out.println("Nome: " + generico.getName());
+		}
 	}
 		
 }
