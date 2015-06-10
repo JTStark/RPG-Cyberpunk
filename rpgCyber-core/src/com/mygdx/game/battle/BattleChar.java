@@ -46,20 +46,20 @@ public class BattleChar extends Animator {
         name = personagem;
         
         
-        System.out.println("O tamnaho::::" + CEngine.listaH.size());
-        for(int i = 0; i < CEngine.listaH.size(); i++ ) {
-        	if(name.equalsIgnoreCase(CEngine.listaH.get(i).nome)) {
-        		person = CEngine.listaH.get(i);
+        System.out.println("O tamanhho::::" + CEngine.listaI.size());
+        for(int i = 0; i < CEngine.listaI.size(); i++ ) {
+        	if(name.equalsIgnoreCase(CEngine.listaI.get(i).nome)) {
+        		person = CEngine.listaI.get(i);
         		System.out.println("Achei:  " + person.nome);
         	}
         	
-        	System.out.println("na lista: " + CEngine.listaH.get(i).nome);
+        	System.out.println("na lista: " + CEngine.listaI.get(i).nome);
         	
         	System.out.println("O meu i �: " + i);
         }
         
         if(CEngine.listaH == null)
-        	System.out.println("deu merda, listaH vazia");
+        	System.out.println("deu merda, listaI vazia");
         
         
         
