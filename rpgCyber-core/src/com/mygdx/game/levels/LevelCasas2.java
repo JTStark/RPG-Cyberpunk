@@ -151,7 +151,7 @@ public class LevelCasas2 extends VisualGameWorld {
 		CDoors.doorDown(camera, colision);
 		CDoors.doorLeft(camera, colision);
 		CDoors.doorRight(camera, colision);
-		CComb.changeCombat(camera, enemies, enemies2);
+		//CComb.changeCombat(camera, enemies, enemies2);
 		// move player
 		
 		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCColide.rightP(colision, camera, "blocked")){

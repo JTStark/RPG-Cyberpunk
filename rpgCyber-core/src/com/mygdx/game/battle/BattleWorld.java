@@ -2,9 +2,7 @@ package com.mygdx.game.battle;
 
 import implementations.combate.AuxTemp;
 import implementations.combate.CEngine;
-import implementations.combate.RetornaArrayInimigos;
 import implementations.personagens.AbsPersonagem;
-import implementations.personagens.EnemyFactory;
 
 import java.util.ArrayList;
 
@@ -15,7 +13,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.mygdx.game.animate.Player;
 
 import snake.engine.creators.ScreenCreator;
 import snake.engine.creators.WorldSettings;
@@ -34,7 +31,7 @@ public class BattleWorld  extends VisualGameWorld {
 	
 	public BattleWorld (String LevelData/* Add other parameters of choice*/) {
 		AuxTemp.comeca();
-		//CEngine.CombatEngine(Player.getP(), RetornaArrayInimigos.GetArray());
+		
 		
 		WorldSettings.setAmbientColor(Color.WHITE);
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
@@ -54,21 +51,21 @@ public class BattleWorld  extends VisualGameWorld {
 		rexus.setAmigo(true);
 		durden = new BattleChar("durden");
 		durden.setAmigo(true);
-		mdr = new BattleChar("rexus"); // mudar
+		mdr = new BattleChar("mdr"); 
 		mdr.setAmigo(true);
 		
 		/* Inimigos */
-		inimigo1 = new BattleChar("melee");
+		inimigo1 = new BattleChar("melee1");
 		inimigo1.setAmigo(false);
-		inimigo2 = new BattleChar("melee");
+		inimigo2 = new BattleChar("melee2");
 		inimigo2.setAmigo(false);
-		inimigo3 = new BattleChar("melee");
+		inimigo3 = new BattleChar("melee3");
 		inimigo3.setAmigo(false);
-		inimigo4 = new BattleChar("melee");
+		inimigo4 = new BattleChar("melee4");
 		inimigo4.setAmigo(false);
-		inimigo5 = new BattleChar("melee");
+		inimigo5 = new BattleChar("melee5");
 		inimigo5.setAmigo(false);
-		inimigo6 = new BattleChar("melee");
+		inimigo6 = new BattleChar("melee6");
 		inimigo6.setAmigo(false);
 	}
 	

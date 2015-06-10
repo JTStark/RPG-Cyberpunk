@@ -45,16 +45,16 @@ public class BattleChar extends Animator {
         name = personagem;
         
         
-        System.out.println("O tamanhho::::" + CEngine.listaI.size());
+       // System.out.println("O tamanhho::::" + CEngine.listaI.size());
         for(int i = 0; i < CEngine.listaI.size(); i++ ) {
         	if(name.equalsIgnoreCase(CEngine.listaI.get(i).nome)) {
         		person = CEngine.listaI.get(i);
-        		System.out.println("Achei:  " + person.nome);
+        		//System.out.println("Achei:  " + person.nome);
         	}
         	
-        	System.out.println("na lista: " + CEngine.listaI.get(i).nome);
+        	//System.out.println("na lista: " + CEngine.listaI.get(i).nome);
         	
-        	System.out.println("O meu i �: " + i);
+        	//System.out.println("O meu i �: " + i);
         }
         
         if(CEngine.listaH == null)
@@ -96,23 +96,23 @@ public class BattleChar extends Animator {
 		int retorno = 0;
 		
 		switch (this.x) {
-		case 380:
-			retorno = 600;
+		case 280:
+			retorno = 780;
 			break;
 		case 230:
-			retorno = 550;
+			retorno = 680;
 			break;
 		case 180:
-			retorno = 480;
+			retorno = 580;
 			break;
 		case 130:
-			retorno = 400;
+			retorno = 480;
 			break;
 		case 80:
-			retorno = 320;
+			retorno = 380;
 			break;
 		case 30:
-			retorno = 240;
+			retorno = 290;
 			break;
 		case -20:
 			retorno = 175;

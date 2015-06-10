@@ -167,7 +167,7 @@ if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
 		CDoors.doorDown(camera, colision);
 		CDoors.doorLeft(camera, colision);
 		CDoors.doorRight(camera, colision);
-		CComb.changeCombat(camera, enemies, enemies2);
+		CComb.changeCombat(camera, enemies, enemies2,bau);
 		// move player
 		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCColide.rightP(colision, camera, "blocked")){
 			dx=1;

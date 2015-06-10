@@ -137,8 +137,10 @@ public class CRodada {
 	public static void atacar (int trgt, int acao, AbsPersonagem ator) {
 		double weaponDam;
 		
+		
+		
 		if (ator.tipo == 1) weaponDam = /*ator.danoArma*/30*(1 + (ator.forca*ator.buffForcaValor)/50)+(0.96+(ator.level/25))*0.5; //com melhor arma 100 dano, 100 for�a/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
-		else weaponDam = ator.danoArma*(1 + (ator.percepcao*ator.buffPercepcaoValor)/50)+(0.96+(ator.level/25))*0.5; //com pior arma 4 dano, 15 for�a/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
+		else weaponDam = /*ator.danoArma*/10*(1 + (ator.percepcao*ator.buffPercepcaoValor)/50)+(0.96+(ator.level/25))*0.5; //com pior arma 4 dano, 15 for�a/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
 		
 		switch (acao) {
 			
