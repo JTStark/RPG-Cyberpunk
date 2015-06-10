@@ -1,5 +1,4 @@
 Nada,Nada,0
-Faca de Manteiga,Dam,6
 Faca de Cozinha,Dam,12
 Faca Afiada,Dam,18
 Faca de Caça,Dam,24
@@ -112,7 +111,7 @@ Kit de Primeiros Socorros,HP,20
 Anabolizante,STR,10
 Diazepam,PER,10
 Analgesico,END,10
-Vodka,CHA,
+Vodka,CHA,10
 Estimulante,INT,10
 Adrenalina,AGI,10
 Uisque,LCK,10
