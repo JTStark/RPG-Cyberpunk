@@ -7,7 +7,7 @@ import implementations.personagens.skills.AtaqueBasico;
 public class VilaoMelee extends AbsPersonagem{
 	int Arma, Armadura;
 	
-	public VilaoMelee(int Arma, int Armadura, int level){
+	public VilaoMelee(int Arma, int Armadura, int level, int nGerador){
 		Random random = new Random(); 
 		
 		this.danoArma = Arma;
@@ -15,7 +15,7 @@ public class VilaoMelee extends AbsPersonagem{
 		this.vilao = true;
 		this.armadura = Armadura;
 		this.level = level;
-		
+		this.nome = ("Melee"+nGerador);
 		this.forca = (int)(25 + 3 * (this.level / 2));
 		this.percepcao = (int)(15 + 3 * (this.level / 5));
 		this.resistencia = (int)(40 + 3 * (this.level/2));
