@@ -1,17 +1,24 @@
 package implementations.inventario;
 
-import java.util.Enumeration;
+import java.util.ArrayList;
 import java.util.Vector;
 
-
+/* Implementa a interface*/
 public class Inventario implements InterfaceInventario{
+	
+	/* Atributos
+	 * 			instancia é uma instancia nula da classe inventario
+	 * 			mochila é um vector para armazenar itens
+	 */
 	
 	public static Inventario instancia = new Inventario();
 	private Vector<String> mochila = new Vector<String>(40);
 	
+	/* Construtor */
 	private Inventario(){
 	}
 	
+	/* Metodo que pega a instancia da classe e retorna-a; se for nula cria uma nao nula */
 	public static Inventario getInstancia(){
 		if(instancia == null)
 			instancia = new Inventario();
@@ -47,6 +54,7 @@ public class Inventario implements InterfaceInventario{
 			System.out.println("O item " + nome_item + " não existe");
 		}
 	}
+	/* Verifica se o item contém na mochila */
 	public boolean verificar_item (String nome_item){
 		Item item = new Item(nome_item);
 		if(mochila.contains(item.getName()))
@@ -54,15 +62,27 @@ public class Inventario implements InterfaceInventario{
 		else
 			return false;
 	}
-	/* Imprime os equipamentos na mochila */
-	public void getMochila(){
-		for (Enumeration<String> e = mochila.elements(); e.hasMoreElements();){
-			String item_mochila = (String) e.nextElement();
-			Item item = new Item(item_mochila);
-			System.out.println("Nome: " + item.getName() + 
-								" | Tipo: " + item.getType() + 
-								" | Bônus:" + item.getBonus());
+	/* Retorna um vector com todos os equipamentos na mochila */
+	public ArrayList<String> getMochila(){
+		ArrayList<String> itens = new ArrayList<String>();
+		for (int i = 0; i < mochila.size(); i++){
+				String item_mochila = mochila.elementAt(i);	
+				Item item = new Item(item_mochila);
+				itens.add(item.getName());
 		}
+		return itens;
+	}
+	/* Retorna uma Array com os itens desejados de determinado intervalo de posicoes */
+	public ArrayList<String> getMochila(int tamanho_inicial, int tamanho_final){
+		ArrayList<String> itens = new ArrayList<String>();
+		for (int i = tamanho_inicial; i <= tamanho_final; i++){
+			if(mochila.size() > i){
+				String item_mochila = mochila.elementAt(i);	
+				Item item = new Item(item_mochila);
+				itens.add(item.getName());
+			}
+		}
+		return itens;
 	}
 }
 

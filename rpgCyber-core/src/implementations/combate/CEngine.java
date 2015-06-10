@@ -1,7 +1,7 @@
 package implementations.combate;
 
 /**
- * @author - Otávio Vansetti Miranda e Lucca Maia Bollani
+ * @author - Otï¿½vio Vansetti Miranda e Lucca Maia Bollani
  * 
  * Sistema de Combate para RPG Cyberpunk, DeltaNexus
  * 
@@ -34,7 +34,7 @@ public class CEngine {
 				//if (listaH.get(H.tipo-1) != null) H.pos = H.tipo;
 				//else H.pos = H.tipo - 1;
 
-				listaH.add(H.tipo, H);
+				listaH.add(H.tipo-1, H);
 				
 				
 				// se a lista esta vazia, adiciona na primeira posicao

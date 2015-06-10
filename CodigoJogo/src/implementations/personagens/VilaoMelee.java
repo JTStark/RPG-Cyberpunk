@@ -18,12 +18,12 @@ public class VilaoMelee extends AbsPersonagem{
 		this.armadura = item_armadura.getBonus();
 		this.level = level;
 		
-		this.forca = 25 + 3 * (this.level / 2);
-		this.percepcao = 15 + 3 * (this.level / 5);
-		this.resistencia = 40 + 3 * (this.level/2);
+		this.forca = (int)(25 + 3 * (this.level / 2));
+		this.percepcao = (int)(15 + 3 * (this.level / 5));
+		this.resistencia = (int)(40 + 3 * (this.level/2));
 		this.carisma = 0;
-		this.inteligencia = 25 + 3 * (this.level / 5);
-		this.agilidade = 10 + 3 * (this.level / 5);
+		this.inteligencia = (int)(25 + 3 * (this.level / 5));
+		this.agilidade = (int)(10 + 3 * (this.level / 5));
 		this.sorte = random.nextInt(100) + 1;
 		
 		this.esquiva = (this.agilidade)/2.5 + (this.sorte)/5;

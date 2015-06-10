@@ -1,19 +1,12 @@
-package com.mygdx.game.text;
+package com.mygdx.game.menus;
 
-import snake.engine.creators.ScreenCreator;
 import snake.engine.creators.WorldSettings;
 import snake.visuals.enhanced.VisualGameWorld;
-import umbra.TextComunicator;
-
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Input.TextInputListener;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.mygdx.game.menus.MyHub;
-import com.mygdx.game.menus.MyLevelMenu;
 
 
 /**                               Developed By:
@@ -24,14 +17,17 @@ import com.mygdx.game.menus.MyLevelMenu;
  * @author Mr.Strings
  */
 
-public class TextLevel extends VisualGameWorld {
+public class InventaryMenu extends VisualGameWorld {
 	
 	// The code below is simply a prototype for testing purposes 
-	private TextComunicator text;
-	public TextLevel (String LevelData/* Add other parameters of choice*/) {
+	private Sprite temple;
+	
+	public InventaryMenu (String LevelData/* Add other parameters of choice*/) {
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
-		text = new TextComunicator();
-		text.newText(LevelData, WorldSettings.getWorldWidth() - 50, WorldSettings.getWorldHeight() , 200, true);
+		Texture texture = new Texture(Gdx.files.internal("novo.png")); 
+		temple = new Sprite(texture);
+		temple.setSize(WorldSettings.getWorldWidth(), WorldSettings.getWorldHeight());
+		
 	}
 	
 	
@@ -44,27 +40,11 @@ public class TextLevel extends VisualGameWorld {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		if(!text.update(delta)){
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			try {
-				ScreenCreator.switchAndGo(new MyLevelMenu("MyLevel"), new MyHub());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		
 	}
 	
 	@Override
 	public void draw (Batch batch, float parentAlpha) {
-		text.draw();
+		temple.draw(batch);
 		super.draw(batch, parentAlpha);
 	}
 
@@ -73,7 +53,8 @@ public class TextLevel extends VisualGameWorld {
 	
 	@Override
 	public void dispose() {
-		text.dispose();
+		temple.getTexture().dispose();
+	
 	}
 
 
