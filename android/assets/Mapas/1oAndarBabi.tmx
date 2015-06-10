@@ -102,9 +102,9 @@
    eJztk1EKgDAMQzOnnsuj7CgexaP0aGZM/JAxGMSf0o8Q6EcDTV8GygJAqcSdO2B05DYrK/0vcf/lNSO12aFS7mdI+4/O5zJ4L1N2zD6tk1Hop0rpcxdPfTjg3Aacy34gOJ/LeDiXacA5VArOdZ3Xvja8rEt+oHJ+A7n9ZQw=
   </data>
  </layer>
- <layer name="Colisoes" width="25" height="25" opacity="0.01">
+ <layer name="Colisoes" width="25" height="25" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJzjZGBg4KQB5sYixkIljG4Wtc3HZSe97ODEIUZtTGs7KI3XwRIf9IrzoRS3uOygRhzjUjMc4nywxNNA5vPBFB/0tmOoxS25+XyoxAe945yLBvEDAOXTDw4=
+   eJzjZGBg4KQB5sYixkIljG4Wtc3HZSe97ODEIUZtTGs7SPU/wyCND3rF+VCKW1x2UCOOcakZDnGOHFYMOMSpielhx1COD3rbMVLy+VCJD3rHORcN4gcA/JwO4Q==
   </data>
  </layer>
  <layer name="Baus" width="25" height="25">

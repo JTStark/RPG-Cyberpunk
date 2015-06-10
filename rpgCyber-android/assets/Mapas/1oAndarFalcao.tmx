@@ -64,6 +64,39 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="12" name="VilaoMelee" tilewidth="32" tileheight="32">
+  <image source="VilaoMelee.png" width="32" height="64"/>
+  <tile id="1">
+   <properties>
+    <property name="battle" value="up"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="14" name="VilaoMeleeLado" tilewidth="32" tileheight="32">
+  <image source="VilaoMeleeLado.png" width="32" height="64"/>
+  <tile id="1">
+   <properties>
+    <property name="battle" value="right"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="16" name="Exclamacao" tilewidth="32" tileheight="32">
+  <image source="Exclamacao.png" width="32" height="64"/>
+ </tileset>
+ <tileset firstgid="18" name="VilaoMeleeSAtributos" tilewidth="32" tileheight="32">
+  <image source="VilaoMelee.png" width="32" height="64"/>
+ </tileset>
+ <tileset firstgid="20" name="VilaoMeleeLadoSAtributos" tilewidth="32" tileheight="32">
+  <image source="VilaoMeleeLado.png" width="32" height="64"/>
+ </tileset>
+ <tileset firstgid="22" name="VilaoMeleeOLado" tilewidth="32" tileheight="32">
+  <image source="VilaoMeleeOLado.png" width="32" height="64"/>
+  <tile id="1">
+   <properties>
+    <property name="battle" value="left"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Camada de Tiles 1" width="25" height="25">
   <data encoding="base64" compression="zlib">
    eJztk1EKgDAMQzOnnsuj7CgexaP0aGZM/JAxGMSf0o8Q6EcDTV8GygJAqcSdO2B05DYrK/0vcf/lNSO12aFS7mdI+4/O5zJ4L1N2zD6tk1Hop0rpcxdPfTjg3Aacy34gOJ/LeDiXacA5VArOdZ3Xvja8rEt+oHJ+A7n9ZQw=
@@ -71,7 +104,7 @@
  </layer>
  <layer name="Colisoes" width="25" height="25" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJzjZGBg4KQB5sYixkIjTGvzB9IOWsTNQNgxXOKDVnYM9fgdbvFBbzuGSzoYLvFBKzuGevwOt/igd3xz0SB+AIigDtI=
+   eJzdkTEOACAMAhlcqv//r3vTboCxA4MMvcgFgBDkFN0iBenNvl/FyYimY0fNmOLD5Vy1vZPB2uS1DwcDBkcORv4fiu4HHw6GanvV/Y4xxYfb9xb4ubGwDts=
   </data>
  </layer>
  <layer name="Baus" width="25" height="25">
@@ -82,6 +115,16 @@
  <layer name="Baus2" width="25" height="25" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGwSgYBdQELHSwAwALVAAF
+  </data>
+ </layer>
+ <layer name="Enemies" width="25" height="25">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFgw3wMTA00NoOcVpbMAqGJeChgx28dLBjFIyC4QT46GAHPx3sGAWkAwAAogDc
+  </data>
+ </layer>
+ <layer name="Exclamacao" width="25" height="25" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYBdQEAkAsysDQIAyhaQIAVHAAzg==
   </data>
  </layer>
 </map>
