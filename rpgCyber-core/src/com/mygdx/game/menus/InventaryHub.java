@@ -2,6 +2,7 @@ package com.mygdx.game.menus;
 
 
 	import implementations.inventario.Inventario;
+import implementations.inventario.Item;
 import box2dLight.Light;
 
 import com.badlogic.gdx.Gdx;
@@ -41,7 +42,8 @@ import snake.hud.SnakeHUD;
 	
 			this.font = new BitmapFont(Gdx.files.internal("ak_sc_o.fnt"), false);
 			this.layout = new GlyphLayout();
-
+			for(int i = 0; i<10;i++)
+				Inventario.getInstancia().adicionar_item(Item.geraAleatorio().getName());
 
 
 			w = Gdx.graphics.getWidth();
@@ -92,11 +94,11 @@ import snake.hud.SnakeHUD;
 				}
 			}
 			for(int i = 0;i<10;i++){
-				//if( inv.getMochila(0, 9).get(i).getName() != null){
-				//instructions[i] = inv.getMochila(0, 9).get(i).getName();
-				//}else{
+				if( inv.getMochila(0, 9).get(i).getName() != null){
+				instructions[i] = inv.getMochila(0, 9).get(i).getName();
+				}else{
 					instructions[i] = "None";
-				//}
+				}
 			}
 		}
 		
