@@ -1,3 +1,4 @@
+Nada,Nada,0
 Faca de Manteiga,Dam,6
 Faca de Cozinha,Dam,12
 Faca Afiada,Dam,18
