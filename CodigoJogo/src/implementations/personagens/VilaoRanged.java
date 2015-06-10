@@ -6,16 +6,15 @@ import implementations.personagens.skills.AtaqueBasico;
 import java.util.Random;
 
 public class VilaoRanged extends AbsPersonagem{
-	Item item_arma, item_armadura;
+	Item Arma, Armadura;
 	
-	public VilaoRanged(String nome_arma, String nome_armadura, int level){
+	public VilaoRanged(int Arma, int Armadura, int level){
 		Random random = new Random(); 
 		
-		this.item_arma = new Item(nome_arma);
-		this.item_armadura = new Item(nome_armadura);
+		this.danoArma = Arma;
 		this.tipo = 3;
 		this.vilao = true;
-		this.armadura = item_armadura.getBonus();
+		this.armadura = Armadura;
 		this.level = level;
 		
 		this.forca = (int)(10 + 3 * (this.level / 5));
