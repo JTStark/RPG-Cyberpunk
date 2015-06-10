@@ -2,6 +2,7 @@ package com.mygdx.game.battle;
 
 import implementations.combate.AuxTemp;
 import implementations.combate.CEngine;
+import implementations.combate.RetornaArrayInimigos;
 import implementations.personagens.AbsPersonagem;
 import implementations.personagens.EnemyFactory;
 
@@ -33,7 +34,7 @@ public class BattleWorld  extends VisualGameWorld {
 	
 	public BattleWorld (String LevelData/* Add other parameters of choice*/) {
 		//AuxTemp.comeca();
-		CEngine.CombatEngine(Player.lista, EnemyFactory.getV(1,1,1));
+		CEngine.CombatEngine(Player.lista, RetornaArrayInimigos.GetArray());
 		
 		WorldSettings.setAmbientColor(Color.WHITE);
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
