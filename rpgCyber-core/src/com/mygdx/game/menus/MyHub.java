@@ -59,6 +59,9 @@ import snake.hud.SnakeHUD;
 			if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
 				Gdx.graphics.setDisplayMode(640, 480, true);
 			}
+			if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+				Gdx.graphics.setDisplayMode(640, 480, false);
+			}
 			if (Gdx.input.isKeyPressed(Input.Keys.ENTER) || Gdx.input.justTouched()) {
 				if(i ==0){	
 					try {
@@ -73,7 +76,7 @@ import snake.hud.SnakeHUD;
 			}if (Gdx.input.isKeyPressed(Input.Keys.R) || Gdx.input.justTouched()) {
 				if(i ==0){	
 					try {
-						ScreenCreator.addAndGo(new TextLevel("lala"), new TextHUB());
+						ScreenCreator.addAndGo(new TextLevel("E comeca a aventura"), new TextHUB());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -85,7 +88,7 @@ import snake.hud.SnakeHUD;
 			
 			if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
 				if(i <= 0)
-					i = 2;
+					i = 0;
 				else{
 					i--;
 					i--;
@@ -93,7 +96,7 @@ import snake.hud.SnakeHUD;
 			}
 			if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
 				if(i >= 2)
-					i = 0;
+					i = 2;
 				else{
 					i++;
 					i++;
