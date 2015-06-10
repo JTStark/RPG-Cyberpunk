@@ -85,7 +85,15 @@ public class LevelCasas2 extends VisualGameWorld {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		;
+		if(Player.battle){
+			try {
+				ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Player.battle = false;
+		}
 		if(flagmo){
 			Player.ani.setXY((float)(getX()+1.9*8),(float)(getY() +2.3*8));
 			camera.position.x+=Player.ani.getX();
@@ -151,7 +159,7 @@ public class LevelCasas2 extends VisualGameWorld {
 		CDoors.doorDown(camera, colision);
 		CDoors.doorLeft(camera, colision);
 		CDoors.doorRight(camera, colision);
-		//CComb.changeCombat(camera, enemies, enemies2);
+		CComb.changeCombat(camera, enemies, enemies2,bau);
 		// move player
 		
 		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCColide.rightP(colision, camera, "blocked")){

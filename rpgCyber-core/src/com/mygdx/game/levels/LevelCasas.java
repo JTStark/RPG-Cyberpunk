@@ -87,7 +87,16 @@ public class LevelCasas extends VisualGameWorld {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		;
+		
+		if(Player.battle){
+			try {
+				ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Player.battle = false;
+		}
 		if(flagmo){
 			Player.ani.setXY((float)(getX()-0.325*8),(float)(getY() -1.1*8));
 			camera.position.x+=Player.ani.getX();

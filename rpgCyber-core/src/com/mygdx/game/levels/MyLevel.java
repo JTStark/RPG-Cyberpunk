@@ -1,5 +1,7 @@
 package com.mygdx.game.levels;
 
+import implementations.save.Save;
+
 import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
@@ -76,7 +78,7 @@ public class MyLevel extends VisualGameWorld {
         colision =  (TiledMapTileLayer)map.getLayers().get("Colisoes");
         bau =  (TiledMapTileLayer)map.getLayers().get("Baus");
         bau2 = (TiledMapTileLayer)map.getLayers().get("Baus2");
-        enemies = (TiledMapTileLayer)map.getLayers().get("Enemies");
+        enemies = (TiledMapTileLayer)map.getLayers().get("Inimigos");
         enemies2 = (TiledMapTileLayer)map.getLayers().get("Exclamacao");
         lim = colision.getHeight();
         
@@ -97,6 +99,15 @@ public class MyLevel extends VisualGameWorld {
 			camera.position.y+=Player.ani.getY();
 			camera.update();
 			flagmo = false;
+		}
+		if(Player.battle){
+			try {
+				ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Player.battle = false;
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
 			
@@ -146,7 +157,7 @@ public class MyLevel extends VisualGameWorld {
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
 			try {
-				SaveState save = new SaveState(this);
+				Save.saveGame(Player.listaP);
 			} catch (JAXBException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -154,8 +165,8 @@ public class MyLevel extends VisualGameWorld {
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_LEFT)) {
 			try {
-				SaveState save = new SaveState(this);
-			} catch (JAXBException | IOException e) {
+				Player.listaP = Save.loadGame();
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

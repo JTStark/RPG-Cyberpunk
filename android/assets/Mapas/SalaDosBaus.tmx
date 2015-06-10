@@ -59,7 +59,7 @@
    eJxjZmBIYGJgYMCHmSF0AguQxoeBahaMqsOuDhiGB5igmBGIWYHijBD9cHGgmgUALXgQLg==
   </data>
  </layer>
- <layer name="Colisoes" width="10" height="10" opacity="0">
+ <layer name="Colisoes" width="10" height="10">
   <data encoding="base64" compression="zlib">
    eJxjZ2BgYCcSs5Agx4IDY9M3ktTBMAcOcQDIdwI6
   </data>

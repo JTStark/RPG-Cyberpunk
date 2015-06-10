@@ -8,7 +8,7 @@ import java.util.Random;
 public class VilaoRanged extends AbsPersonagem{
 	Item Arma, Armadura;
 	
-	public VilaoRanged(int Arma, int Armadura, int level){
+	public VilaoRanged(int Arma, int Armadura, int level, int nGerador){
 		Random random = new Random(); 
 		
 		this.danoArma = Arma;
@@ -16,7 +16,7 @@ public class VilaoRanged extends AbsPersonagem{
 		this.vilao = true;
 		this.armadura = Armadura;
 		this.level = level;
-		
+		this.nome = ("Ranged"+nGerador);
 		this.forca = (int)(10 + 3 * (this.level / 5));
 		this.percepcao = (int)(20 + 3 * this.level);
 		this.resistencia = (int)(10 + 3 * (this.level/5));

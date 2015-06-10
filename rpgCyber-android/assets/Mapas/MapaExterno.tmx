@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" backgroundcolor="#000000" nextobjectid="1">
  <tileset firstgid="1" name="Chao1" tilewidth="32" tileheight="32">
   <image source="Chao1.png" width="32" height="32"/>
  </tileset>
@@ -113,6 +113,20 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="40" name="VilaoMelee" tilewidth="32" tileheight="32">
+  <image source="VilaoMelee.png" width="32" height="64"/>
+  <tile id="1">
+   <properties>
+    <property name="battle" value="up"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="42" name="Exclamacao" tilewidth="32" tileheight="32">
+  <image source="Exclamacao.png" width="32" height="64"/>
+ </tileset>
+ <tileset firstgid="44" name="VilaoMelee" tilewidth="32" tileheight="32">
+  <image source="VilaoMelee.png" width="32" height="64"/>
+ </tileset>
  <imagelayer name="Fundo" x="-4" y="-6" visible="0">
   <image source="Imagens fundo/Editados/fundo3.png"/>
  </imagelayer>
@@ -129,9 +143,9 @@
    eJztmGkKwjAUhGOL+1JXFFyP1qN5lB7NEcyPlKYmNfQ9YQY+BHWSN13oUGMoiqL+U7kxVWZM6QO/l5r9VvhvNcCnj0y5v77OEIzAGEzAtOccXfevrzMDc7AAS7ByZ/Ge97YMMX7f/rE5CrAGG7AFO3eOp4/AHF/9vv1jc+zBAZzBEZwC10l1XXXdP/Uc0vd57rlG7He5cn+T7LEJPQba/FrmYA5dczCHrjmYw+3NTZ0opndL+K2kn8faertU76+v8+7NN3AHDxPf223vvoBrB3+qHL/29uLjS937++7tUr0/1TrSfivp3s3erncO5tA1B3PomoM55Hs3e3vzOnzf3t5XQ/183+7m4Pt2Hfd53nLOY3u3hJ+iKEq7Xi76sYY=
   </data>
  </layer>
- <layer name="Colisoes" width="50" height="50" opacity="0.01">
+ <layer name="Colisoes" width="50" height="50" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJztls0SwyAIhNPX6LG/7/+GvXYyEkAobOwyw0mX7GcU3TYGg/FPcXUkov67zsWQRz469Sg+fsEx+pdHY/s5mg9Nr41lcFQkGkdEl8nxEupU7at3kGOVc352DmmPzNxj1XqppmcN0PQoPsiB5YMc/f0mq19193/eg3Idy9vHO8ejr+CwfiuiX41jpJvheAx8ePbVc1LPc97vI5NjhXtwX9OzBmh6FB/kwPJBjv5+k9Wvuvs/70G5juXtFHkfaXptLIOjItE4IrpMjrtQp2pf3YIcq5zzs3NYE1HPYDDWjg8E4Dhx
+   eJztlksSxCAIRDPXmOV873/D2VopiSAIXU5TxUbTyDOIHgeNRvsnuxscUd/GuSn8Ko9KPUoeKzh6//Jq7vzNKI+RfjQXwZHhaBweXSTHR4ijrStpTFtXXydH1DmVxlasv5IjU9/GkWpk5h7L1ksxLXuApkfJgxxYeZCjvt9E9avq/s97UI6jeftYv7HoMzi0a3n0u3H0dDMcr04elrp6T+qjOFDO+S4cs+djh3vwHNOyB2h6lDzIgZUHOer7TVS/qu7/kffHbhyat5PmfSTlMdKP5iI4MhyNw6OL5HgKcbR1JY1p6+rh5Ig6p9LYivVXcmTq2zhaR9TTaLS97QeCnjkH
   </data>
  </layer>
  <layer name="Baus" width="50" height="50">
@@ -139,12 +153,25 @@
    eJzt1jERAAAIA7Fawb9JHLD1WBIFP34CAHCb7wAAAKDO9wMAQJ/vBoC+BYexAGQ=
   </data>
  </layer>
- <imagelayer name="YT1300" x="-12" y="-37">
+ <imagelayer name="YT1300" x="235" y="22">
   <image source="Imagens fundo/Editados/YT1300.png"/>
  </imagelayer>
  <layer name="Baus2" width="50" height="50" visible="0">
   <data encoding="base64" compression="zlib">
    eJztzjENAAAIA7Dh3zQmlnDQKmgCAAAAAAAAAADAZ3MdKFkn2AAC
+  </data>
+ </layer>
+ <layer name="Inimigos" width="50" height="50">
+  <properties>
+   <property name="battle" value="battle"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1kENADAIADHkgH+DMzECCa2Ce14EAMANOR3wSU0HAADAYr4fAAD6+W4ANnsk1wD0
+  </data>
+ </layer>
+ <layer name="Exclamacao" width="50" height="50" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJztzqENAAAIwDDuIeH/9zB8gEDQmtlFAAAAAAAAAAAA8FlO6/RirwFpoABY
   </data>
  </layer>
 </map>
