@@ -1,5 +1,7 @@
 package com.mygdx.game.levels;
 
+import implementations.save.Save;
+
 import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
@@ -155,7 +157,7 @@ public class MyLevel extends VisualGameWorld {
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
 			try {
-				SaveState save = new SaveState(this);
+				Save.saveGame(Player.listaP);
 			} catch (JAXBException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -163,8 +165,8 @@ public class MyLevel extends VisualGameWorld {
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_LEFT)) {
 			try {
-				SaveState save = new SaveState(this);
-			} catch (JAXBException | IOException e) {
+				Player.listaP = Save.loadGame();
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
