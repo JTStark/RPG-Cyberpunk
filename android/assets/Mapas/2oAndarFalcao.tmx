@@ -73,14 +73,9 @@
  </tileset>
  <tileset firstgid="11" name="VilaoMelee" tilewidth="32" tileheight="32">
   <image source="VilaoMelee.png" width="32" height="64"/>
-  <tile id="0">
-   <properties>
-    <property name="battle" value="battle"/>
-   </properties>
-  </tile>
   <tile id="1">
    <properties>
-    <property name="battle" value="battle"/>
+    <property name="battle" value="up"/>
    </properties>
   </tile>
  </tileset>
@@ -89,14 +84,23 @@
  </tileset>
  <tileset firstgid="15" name="VilaoMeleeLado" tilewidth="32" tileheight="32">
   <image source="VilaoMeleeLado.png" width="32" height="64"/>
-  <tile id="0">
-   <properties>
-    <property name="battle" value="battle"/>
-   </properties>
-  </tile>
   <tile id="1">
    <properties>
-    <property name="battle" value="battle"/>
+    <property name="battle" value="right"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="17" name="VilaoMeleeSAtributos" tilewidth="32" tileheight="32">
+  <image source="VilaoMelee.png" width="32" height="64"/>
+ </tileset>
+ <tileset firstgid="19" name="VilaoMeleeLadoSAtributos" tilewidth="32" tileheight="32">
+  <image source="VilaoMeleeLado.png" width="32" height="64"/>
+ </tileset>
+ <tileset firstgid="21" name="VilaoMeleeOLado" tilewidth="32" tileheight="32">
+  <image source="VilaoMeleeOLado.png" width="32" height="64"/>
+  <tile id="1">
+   <properties>
+    <property name="battle" value="left"/>
    </properties>
   </tile>
  </tileset>
@@ -107,7 +111,7 @@
  </layer>
  <layer name="Colisoes" width="25" height="25" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJzjYGBg4KAB5sQixgLF6HxcYixEqsOlF5tZ5KobKDuGmhi2+B6KdgwGMXLyDK3sGExuGRUbFRsMYvQoh+hhBy3EsGFi1HEwYPfzULeDC4sYtTAAuBQODA==
+   eJzjYGBg4KAB5sQixgLF6HxcYixEqsOlF5tZ5KobKDuGmhjDMLFjMIgxDCI7yMm/9LRjVGxUbDiWQ/SwgxZi2DAx6jjQ8HCxgwuLGLUwAJ31DdQ=
   </data>
  </layer>
  <layer name="Baus" width="25" height="25">
@@ -122,12 +126,12 @@
  </layer>
  <layer name="Enemies" width="25" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt1KEKADAIRdHXFfST/fRZXTJMceBJBuHKwoCIACPkZPdu7A3O766PSENDGxoT+FtadUOTjUm3rDXB/nXvSZytoqFxLml0OihhBQA=
+   eJxjYEAF3AwMDdwMxAFi1aEDHqAdPMSrHQWjYBQMMOAH5lla2yFGawtGwSgYBYMa8KOyG2hhhwASeziUOQB8CAKv
   </data>
  </layer>
  <layer name="Exclamacao" width="25" height="25" visible="0">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgYBdQEvHSwAwAO2AAO
+   eJxjYBgFo2AUjIJRMApGwSgYBdQEvEAswsDQIAShaQIAUjAAyA==
   </data>
  </layer>
 </map>
