@@ -1,4 +1,4 @@
-package com.mygdx.game.menus;
+package com.mygdx.game.inventary;
 
 import snake.engine.creators.WorldSettings;
 import snake.visuals.enhanced.VisualGameWorld;
@@ -24,7 +24,7 @@ public class InventaryMenu extends VisualGameWorld {
 	
 	public InventaryMenu (String LevelData/* Add other parameters of choice*/) {
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
-		Texture texture = new Texture(Gdx.files.internal("novo.png")); 
+		Texture texture = new Texture(Gdx.files.internal("inventario.jpg")); 
 		temple = new Sprite(texture);
 		temple.setSize(WorldSettings.getWorldWidth(), WorldSettings.getWorldHeight());
 		

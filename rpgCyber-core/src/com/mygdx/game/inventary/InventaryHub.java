@@ -1,4 +1,4 @@
-package com.mygdx.game.menus;
+package com.mygdx.game.inventary;
 
 
 	import implementations.inventario.Inventario;
