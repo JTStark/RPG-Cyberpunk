@@ -16,7 +16,8 @@ public class RetornaArrayInimigos {
 		Random random = new Random();
 		int nMelee = 1, nRanged = 1, geradoRandom;
 		
-		int i, level = (int)HDurden.getInstancia().level; // level do durden
+		int i, level = (int)HDurden.getInstancia().level;// level do durden
+		System.out.println(level+ "!!!!!!!!!!!!!!!");
 		for(i=0; i<6 ; i++){
 			geradoRandom = 1 + random.nextInt(2);
 			if(geradoRandom == 1){

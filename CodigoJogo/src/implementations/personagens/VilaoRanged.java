@@ -30,7 +30,7 @@ public class VilaoRanged extends AbsPersonagem{
 		
 		this.skill0 = new AtaqueBasico();
 		
-		this.maxHP += this.level * (this.resistencia * (2/3));
+		this.maxHP += this.level * ((this.resistencia * 2)/3);
 		this.hp = this.maxHP;
 	}
 
