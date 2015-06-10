@@ -7,8 +7,8 @@ import java.util.Vector;
 public class Inventario implements InterfaceInventario{
 	
 	/* Atributos
-	 * 			instancia é uma instancia nula da classe inventario
-	 * 			mochila é um vector para armazenar itens
+	 * 			instancia ï¿½ uma instancia nula da classe inventario
+	 * 			mochila ï¿½ um vector para armazenar itens
 	 */
 	
 	public static Inventario instancia = new Inventario();
@@ -34,10 +34,10 @@ public class Inventario implements InterfaceInventario{
 			}
 			else{
 				mochila.addElement(item.getName());
-				System.out.println("O item " + item.getName() + " foi adicionado à mochila");
+				System.out.println("O item " + item.getName() + " foi adicionado ï¿½ mochila");
 			}
 		}else{
-			System.out.println("O item " + nome_item + " não existe");
+			System.out.println("O item " + nome_item + " nï¿½o existe");
 		}
 	}
 	/* Remove um item da mochila se o mesmo existir no bd e na mochila */
@@ -48,13 +48,13 @@ public class Inventario implements InterfaceInventario{
 				mochila.removeElement(item.getName());
 				System.out.println("O item " + item.getName() + " foi removido com sucesso");
 			}else{
-				System.out.println("Não foi possível encontrar o item " + item.getName() + " na mochila");
+				System.out.println("Nï¿½o foi possï¿½vel encontrar o item " + item.getName() + " na mochila");
 			}
 		}else{
-			System.out.println("O item " + nome_item + " não existe");
+			System.out.println("O item " + nome_item + " nï¿½o existe");
 		}
 	}
-	/* Verifica se o item contém na mochila */
+	/* Verifica se o item contï¿½m na mochila */
 	public boolean verificar_item (String nome_item){
 		Item item = new Item(nome_item);
 		if(mochila.contains(item.getName()))
@@ -73,13 +73,13 @@ public class Inventario implements InterfaceInventario{
 		return itens;
 	}
 	/* Retorna uma Array com os itens desejados de determinado intervalo de posicoes */
-	public ArrayList<String> getMochila(int tamanho_inicial, int tamanho_final){
-		ArrayList<String> itens = new ArrayList<String>();
+	public ArrayList<Item> getMochila(int tamanho_inicial, int tamanho_final){
+		ArrayList<Item> itens = new ArrayList<Item>();
 		for (int i = tamanho_inicial; i <= tamanho_final; i++){
 			if(mochila.size() > i){
 				String item_mochila = mochila.elementAt(i);	
 				Item item = new Item(item_mochila);
-				itens.add(item.getName());
+				itens.add(item);
 			}
 		}
 		return itens;

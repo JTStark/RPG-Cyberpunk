@@ -1,7 +1,8 @@
 package com.mygdx.game.menus;
 
 
-	import box2dLight.Light;
+	import implementations.inventario.Inventario;
+import box2dLight.Light;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -35,6 +36,7 @@ import snake.hud.SnakeHUD;
 		private float w, h;
 		String instructions[]; //will be changed to buttons
 		private int i = 0;
+		private Inventario inv = Inventario.getInstancia();
 		public InventaryHub() {
 	
 			this.font = new BitmapFont(Gdx.files.internal("ak_sc_o.fnt"), false);
@@ -45,7 +47,7 @@ import snake.hud.SnakeHUD;
 			w = Gdx.graphics.getWidth();
 			h = Gdx.graphics.getHeight();
 			
-			instructions = new String[3];
+			instructions = new String[10];
 		}
 
 		@Override
@@ -67,37 +69,35 @@ import snake.hud.SnakeHUD;
 				if(i ==2){
 					Gdx.app.exit();
 				}
-			}if (Gdx.input.isKeyPressed(Input.Keys.R) || Gdx.input.justTouched()) {
-				if(i ==0){	
+			}if (Gdx.input.isKeyPressed(Input.Keys.BACKSPACE)) {
 					try {
-						ScreenCreator.addAndGo(new TextLevel("lala"), new TextHUB());
+						ScreenCreator.backToPrevious();
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				}
-				if(i ==2){
-					Gdx.app.exit();
-				}
 			}
 			
 			if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
 				if(i <= 0)
-					i = 2;
+					i = 0;
 				else{
-					i--;
 					i--;
 				}
 			}
 			if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-				if(i >= 2)
-					i = 0;
+				if(i >= 9)
+					i = 9;
 				else{
-					i++;
 					i++;
 				}
 			}
-			instructions[0] = "Start";
-			instructions[2] = "Exit";
+			for(int i = 0;i<10;i++){
+				//if( inv.getMochila(0, 9).get(i).getName() != null){
+				//instructions[i] = inv.getMochila(0, 9).get(i).getName();
+				//}else{
+					instructions[i] = "None";
+				//}
+			}
 		}
 		
 		
@@ -109,33 +109,18 @@ import snake.hud.SnakeHUD;
 				font.draw(batch, "You're touching it! (maybe pressing space button).", 0, 80);
 
 			//Drawing instructions
-			if(i==0){
-				font.setColor(Color.RED);
-				layout.setText(font, instructions[0]);
-				font.draw(batch, layout, w / 2 - layout.width / 2 -50, h / 2 - layout.height / 2 + 50);
-				font.setColor(Color.WHITE);
-			}else{
-				layout.setText(font, instructions[0]);
-				font.draw(batch, layout, w / 2 - layout.width / 2 -50, h / 2 - layout.height / 2 + 50);
+			for(int j = 0 ; j<10;j++){
+				if(i==j){
+					font.setColor(Color.RED);
+					layout.setText(font, instructions[j]);
+					font.draw(batch, layout, w / 2 - layout.width / 2 +100, h / 2 - layout.height / 2 + 280-j*40);
+					font.setColor(Color.WHITE);
+				}else{
+					layout.setText(font, instructions[j]);
+					font.draw(batch, layout, w / 2 - layout.width / 2 +100, h / 2 - layout.height / 2 + 280-j*40);
+				}
+			
 			}
-			if(i==2){
-				font.setColor(Color.RED);
-				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
-				font.setColor(Color.WHITE);
-			}else{
-				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
-			}
-			/*if(i==2){
-				font.setColor(Color.RED);
-				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
-				font.setColor(Color.WHITE);
-			}else{
-				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
-			}*/
 		}
 
 		@Override

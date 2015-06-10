@@ -1,7 +1,7 @@
 package implementations.combate;
 
 /**
- * @author - Otávio Vansetti Miranda e Lucca Maia Bollani
+ * @author - Otï¿½vio Vansetti Miranda e Lucca Maia Bollani
  * 
  * Sistema de Combate para RPG Cyberpunk, DeltaNexus
  * 
@@ -13,12 +13,13 @@ import java.util.ArrayList;
 
 import implementations.personagens.AbsPersonagem;
 import implementations.personagens.herois.*;
+import implementations.personagens.skills.AtaqueBasico;
 
 public class AuxTemp {
 	
 	public int auxiliarIniciativa=0;
 	
-	public static void main(String[] args){
+	public static void comeca(){
 		AbsPersonagem Durden = HDurden.getInstancia();
 		AbsPersonagem MDR = HMDR.getInstancia();
 		AbsPersonagem Oleg = HOleg.getInstancia();
@@ -74,9 +75,10 @@ public class AuxTemp {
 		ArrayList<AbsPersonagem> vetorVil = new ArrayList<AbsPersonagem> ();
 		vFirst.agilidade = 60;
 		vFirst.sorte = 60;
-		vFirst.nome = "vFirst";
+		vFirst.nome = "melee";
 		vFirst.tipo = 1;
 		vFirst.vilao = true;
+		vFirst.skill0 = new AtaqueBasico();
 		vSecond.agilidade = 50;
 		vSecond.sorte = 50;
 		vSecond.nome = "vSecond";

@@ -35,6 +35,8 @@ import com.mygdx.game.colision.CBau;
 import com.mygdx.game.colision.CCClide;
 import com.mygdx.game.colision.CCColide;
 import com.mygdx.game.colision.CDoors;
+import com.mygdx.game.menus.InventaryHub;
+import com.mygdx.game.menus.InventaryMenu;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
 import com.mygdx.game.savestate.SaveState;
@@ -95,12 +97,7 @@ public class MyLevel extends VisualGameWorld {
 			flagmo = false;
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-			String[] param = {"SnakeScreen", "ForestMap", "Some random Data"};
-			try {
-				ScreenCreator.addAndGo(param);
-			}  catch (Exception e) {
-				System.out.println ("Could not switch Screens");
-			}
+			
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.TAB)) {
 			
@@ -112,9 +109,20 @@ public class MyLevel extends VisualGameWorld {
 				}
 			
 		}
+		if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
+			
+			try {
+				ScreenCreator.addAndGo(new InventaryMenu("MyLevel"), new InventaryHub());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
 			Player.change();	
 		}
+		
 		if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE)) {
 			try {
 				ScreenCreator.backToPrevious();
@@ -201,7 +209,7 @@ public class MyLevel extends VisualGameWorld {
 
 	public void createLights() {
 
-		light = new PointLight (Lights.getRayhandler(), 5000, new Color(1f, 1f, 1f, 1f), 45,50, WorldSettings.heightFix(50));
+		light = new PointLight (Lights.getRayhandler(), 5000, new Color(1f, 1f, 1f, 1f), 55,50, WorldSettings.heightFix(50));
 		light.setSoft(false);
 	}
 	

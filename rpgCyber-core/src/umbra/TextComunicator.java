@@ -88,7 +88,7 @@ public class TextComunicator implements IComunicator, InputProcessor {
     public boolean update(float dt){
         if(cursorOn) {
         	try {
-				Thread.sleep(20);
+				Thread.sleep(55);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -47,7 +47,7 @@ public class TextLevel extends VisualGameWorld {
 		super.act(delta);
 		if(text.update(delta)){
 			try {
-				Thread.sleep(500);
+				Thread.sleep(1500);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
