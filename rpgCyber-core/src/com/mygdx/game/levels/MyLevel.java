@@ -76,7 +76,7 @@ public class MyLevel extends VisualGameWorld {
         colision =  (TiledMapTileLayer)map.getLayers().get("Colisoes");
         bau =  (TiledMapTileLayer)map.getLayers().get("Baus");
         bau2 = (TiledMapTileLayer)map.getLayers().get("Baus2");
-        enemies = (TiledMapTileLayer)map.getLayers().get("Enemies");
+        enemies = (TiledMapTileLayer)map.getLayers().get("Inimigos");
         enemies2 = (TiledMapTileLayer)map.getLayers().get("Exclamacao");
         lim = colision.getHeight();
         
