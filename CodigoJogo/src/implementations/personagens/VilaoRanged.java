@@ -18,12 +18,12 @@ public class VilaoRanged extends AbsPersonagem{
 		this.armadura = item_armadura.getBonus();
 		this.level = level;
 		
-		this.forca = 10 + 3 * (this.level / 5);
-		this.percepcao = 20 + 3*this.level;
-		this.resistencia = 10 + 3 * (this.level/5);
+		this.forca = (int)(10 + 3 * (this.level / 5));
+		this.percepcao = (int)(20 + 3 * this.level);
+		this.resistencia = (int)(10 + 3 * (this.level/5));
 		this.carisma = 0;
-		this.inteligencia = 30 + 3 * (this.level / 5);
-		this.agilidade = 30 + 3 * (this.level / 3);
+		this.inteligencia = (int)(30 + 3 * (this.level / 5));
+		this.agilidade = (int)(30 + 3 * (this.level / 3));
 		this.sorte = random.nextInt(100) + 1;
 		
 		this.esquiva = (this.agilidade)/2.5 + (this.sorte)/5;

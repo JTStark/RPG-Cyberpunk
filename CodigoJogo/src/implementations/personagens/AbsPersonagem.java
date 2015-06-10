@@ -17,16 +17,9 @@ public abstract class AbsPersonagem {
 	public transient int buffForcaRounds, buffPercepcaoRounds, buffResistenciaRounds, buffCarismaRounds, buffInteligenciaRounds, buffAgilidadeRounds, buffSorteRounds, buffArmaduraRounds, buffEsquivaRounds, buffCriticoRounds, buffBleedRounds, buffPoisonRounds, buffStunRounds;
 	public transient double buffForcaValor=1, buffPercepcaoValor=1, buffCarismaValor=1, buffResistenciaValor=1, buffInteligenciaValor=1, buffAgilidadeValor=1, buffSorteValor=1, buffArmaduraValor=1, buffEsquivaValor=1, buffCriticoValor;
 	public double esquiva = 0, critico = 0;
-<<<<<<< HEAD
 	public double hp = 100, maxHP = 100, xp = 0, level = 1, danoArma, armadura = 0, iniciativa, pos, tipo; /*1 = melee, 3 = ranged, 5 = support*/
-=======
-	public int hp = 100, maxHP = 100, xp = 0, level = 1, danoArma, armadura = 0, iniciativa, tipo; /*1 = melee, 3 = ranged, 5 = support*/
->>>>>>> branch 'master' of https://github.com/JTStark/RPG-Cyberpunk.git
 	public boolean vilao = false;
 	public String nome, nSkill1, nSkill2, nSkill3;
-<<<<<<< HEAD
-	public transient Skill skill1, skill2, skill3;
-=======
 	public transient Skill skill0, skill1, skill2, skill3;
 	
 	/*
@@ -49,7 +42,8 @@ public abstract class AbsPersonagem {
 	/*public void Render (){
 		
 	}*/
->>>>>>> branch 'master' of https://github.com/JTStark/RPG-Cyberpunk.git
+
+
 	
 	/*m�todo que altera a vida do personagem*/
 	public void Damage_Heal (int modHP){
