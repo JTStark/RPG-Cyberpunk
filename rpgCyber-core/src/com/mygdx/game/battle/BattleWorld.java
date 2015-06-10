@@ -1,4 +1,4 @@
-package com.mygdx.game.batle;
+package com.mygdx.game.battle;
 
 import implementations.combate.AuxTemp;
 import implementations.combate.CEngine;
@@ -55,17 +55,17 @@ public class BattleWorld  extends VisualGameWorld {
 		mdr.setAmigo(true);
 		
 		/* Inimigos */
-		inimigo1 = new BattleChar("ozob");
+		inimigo1 = new BattleChar("melee");
 		inimigo1.setAmigo(false);
-		inimigo2 = new BattleChar("ozob");
+		inimigo2 = new BattleChar("melee");
 		inimigo2.setAmigo(false);
-		inimigo3 = new BattleChar("ozob");
+		inimigo3 = new BattleChar("melee");
 		inimigo3.setAmigo(false);
-		inimigo4 = new BattleChar("ozob");
+		inimigo4 = new BattleChar("melee");
 		inimigo4.setAmigo(false);
-		inimigo5 = new BattleChar("ozob");
+		inimigo5 = new BattleChar("melee");
 		inimigo5.setAmigo(false);
-		inimigo6 = new BattleChar("ozob");
+		inimigo6 = new BattleChar("melee");
 		inimigo6.setAmigo(false);
 	}
 	
