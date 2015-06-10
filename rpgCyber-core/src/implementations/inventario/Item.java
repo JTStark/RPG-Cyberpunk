@@ -11,7 +11,7 @@ public class Item implements InterfaceItem {
 	private String type;
 	public boolean nomeEncontrado; //tive que adicionar esse bool para verificar quando um item foi encontrado
 	private int bonus;
-	public String diretorio = "bin/bd/BD.txt";
+	public String diretorio = "BD.txt";
 	
 	public Item(String identificador) {
 		
@@ -70,9 +70,10 @@ public class Item implements InterfaceItem {
 	}
 	
 	/*metodo para gerar um item aleatorio, para ser colocado nos baus encontrados no meio do jogo*/
+	@SuppressWarnings("resource")
 	public static Item geraAleatorio() { 
 		int procurado = 2 + (int)(Math.random() * 80);
-		String diretorio = "bin/bd/BD.txt";
+		String diretorio = "BD.txt";
 		FileReader arquivo;
 		BufferedReader tratado = null;
 		String nome = null;

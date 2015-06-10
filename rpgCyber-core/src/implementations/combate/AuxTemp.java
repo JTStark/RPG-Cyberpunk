@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import implementations.personagens.AbsPersonagem;
 import implementations.personagens.herois.*;
+import implementations.personagens.skills.AtaqueBasico;
 
 public class AuxTemp {
 	
@@ -74,9 +75,10 @@ public class AuxTemp {
 		ArrayList<AbsPersonagem> vetorVil = new ArrayList<AbsPersonagem> ();
 		vFirst.agilidade = 60;
 		vFirst.sorte = 60;
-		vFirst.nome = "vFirst";
+		vFirst.nome = "melee";
 		vFirst.tipo = 1;
 		vFirst.vilao = true;
+		vFirst.skill0 = new AtaqueBasico();
 		vSecond.agilidade = 50;
 		vSecond.sorte = 50;
 		vSecond.nome = "vSecond";

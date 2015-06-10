@@ -6,6 +6,7 @@ import snake.engine.creators.ScreenCreator;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
+import com.mygdx.game.sound.JukeBox;
 import com.mygdx.game.text.TextHUB;
 import com.mygdx.game.text.TextLevel;
 
@@ -21,7 +22,7 @@ public class New extends GameStart {
 	public void create () {
 		super.batch = new SpriteBatch();
 		ScreenCreator.setGameInstance(this);
-		
+		JukeBox.init();
 		try {
 			ScreenCreator.addAndGo(new TextLevel("O ano eh 2119, os personagens encontram-se em Delta City, "
 											   + "uma gigantesca metropole riquissima erguida sobre a decadencia "

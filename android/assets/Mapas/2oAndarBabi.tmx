@@ -67,7 +67,7 @@
   <tile id="0">
    <properties>
     <property name="blocked" value="blocked"/>
-    <property name="stair" value="SalaChefe1.tmx"/>
+    <property name="door" value="SalaChefe1.tmx"/>
    </properties>
   </tile>
  </tileset>

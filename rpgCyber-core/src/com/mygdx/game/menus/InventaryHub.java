@@ -1,7 +1,9 @@
 package com.mygdx.game.menus;
 
 
-	import box2dLight.Light;
+	import implementations.inventario.Inventario;
+import implementations.inventario.Item;
+import box2dLight.Light;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -34,18 +36,20 @@ import snake.hud.SnakeHUD;
 		Light light;
 		private float w, h;
 		String instructions[]; //will be changed to buttons
-		private int i = 0;
+		private int i = 0, ini = 0, end = 9;
+		private Inventario inv = Inventario.getInstancia();
 		public InventaryHub() {
 	
 			this.font = new BitmapFont(Gdx.files.internal("ak_sc_o.fnt"), false);
 			this.layout = new GlyphLayout();
-
+			for(int i = 0; i<12;i++)
+				
 
 
 			w = Gdx.graphics.getWidth();
 			h = Gdx.graphics.getHeight();
 			
-			instructions = new String[3];
+			instructions = new String[10];
 		}
 
 		@Override
@@ -56,48 +60,56 @@ import snake.hud.SnakeHUD;
 		/** updates Screen logic */
 		@Override
 		public void act(float delta) {
-			if (Gdx.input.isKeyPressed(Input.Keys.ENTER) || Gdx.input.justTouched()) {
-				if(i ==0){	
+			if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
+				try{inv.remover_item(inv.getMochila(ini+i,ini + i+ 1).get(0).getName());}
+				catch(Exception e){
+					e.printStackTrace();
+				}
+			}if (Gdx.input.isKeyPressed(Input.Keys.BACKSPACE)) {
 					try {
-						ScreenCreator.addAndGo(new MyLevel("Mapas/MapaExterno.tmx"), new MyHUD("LevelData"));
+						ScreenCreator.backToPrevious();
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				}
-				if(i ==2){
-					Gdx.app.exit();
-				}
-			}if (Gdx.input.isKeyPressed(Input.Keys.R) || Gdx.input.justTouched()) {
-				if(i ==0){	
-					try {
-						ScreenCreator.addAndGo(new TextLevel("lala"), new TextHUB());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-				if(i ==2){
-					Gdx.app.exit();
-				}
 			}
 			
 			if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
-				if(i <= 0)
-					i = 2;
-				else{
-					i--;
+				if(i <= 0){
+					i = 0;
+					if(ini<=0){
+						ini = 0;
+						end = 9;
+					}else{
+						end--;
+						ini--;
+					}	
+				}else{
 					i--;
 				}
 			}
 			if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
-				if(i >= 2)
-					i = 0;
-				else{
-					i++;
+				if(i >= 9){
+					i = 9;
+					if(end>=39){
+						end = 39;
+						ini = 30;
+					
+					}else{
+						end++;
+						ini++;
+					}
+						
+				}else{
 					i++;
 				}
 			}
-			instructions[0] = "Start";
-			instructions[2] = "Exit";
+			for(int i = 0;i<10;i++){
+				try{
+				instructions[i] = (ini + i+1  + ".   " + inv.getMochila(ini, end).get(i).getName());
+				}catch(Exception e){
+					instructions[i] = (ini + i+1  + ".   " + "------------");
+				}
+			}
 		}
 		
 		
@@ -109,33 +121,18 @@ import snake.hud.SnakeHUD;
 				font.draw(batch, "You're touching it! (maybe pressing space button).", 0, 80);
 
 			//Drawing instructions
-			if(i==0){
-				font.setColor(Color.RED);
-				layout.setText(font, instructions[0]);
-				font.draw(batch, layout, w / 2 - layout.width / 2 -50, h / 2 - layout.height / 2 + 50);
-				font.setColor(Color.WHITE);
-			}else{
-				layout.setText(font, instructions[0]);
-				font.draw(batch, layout, w / 2 - layout.width / 2 -50, h / 2 - layout.height / 2 + 50);
+			for(int j = 0 ; j<10;j++){
+				if(i==j){
+					font.setColor(Color.RED);
+					layout.setText(font, instructions[j]);
+					font.draw(batch, layout, w / 2 - layout.width / 2 +300, h / 2 - layout.height / 2 +360-j*50);
+					font.setColor(Color.WHITE);
+				}else{
+					layout.setText(font, instructions[j]);
+					font.draw(batch, layout, w / 2 - layout.width / 2 +300, h / 2 - layout.height / 2 + 360-j*50);
+				}
+			
 			}
-			if(i==2){
-				font.setColor(Color.RED);
-				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
-				font.setColor(Color.WHITE);
-			}else{
-				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
-			}
-			/*if(i==2){
-				font.setColor(Color.RED);
-				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
-				font.setColor(Color.WHITE);
-			}else{
-				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
-			}*/
 		}
 
 		@Override

@@ -1,6 +1,7 @@
 package com.mygdx.game.animate;
 import java.util.ArrayList;
 
+import implementations.inventario.Inventario;
 import implementations.personagens.*;
 import implementations.personagens.herois.*;
 
@@ -17,7 +18,7 @@ public class Player {
 	public static AbsPersonagem Ozob= HOzob.getInstancia();
 	public static AbsPersonagem Rexus = HRexus.getInstancia();
 	public static AbsPersonagem Silvana = HSilvana.getInstancia();
-	
+	public static Inventario inv = Inventario.getInstancia();
 	public static ArrayList<AbsPersonagem> getP(){
 		lista.add(Durden);
 		lista.add(MDR);

@@ -24,10 +24,12 @@ public class BattleHUD extends HUD {
 	private int acao = 0;
 	private boolean opcoes = false;
 	private int acaoOpcao = 0;
+	String posta =  "";
 	
 	private boolean ataque = false;
+	private boolean inimigoAtacando = false;
 	
-	private int alvo;
+	private int alvo = 0;
 	
 	private int escolha = 0;
 	private boolean opcaoEscolha = false;
@@ -560,8 +562,13 @@ public class BattleHUD extends HUD {
 			font.getData().setScale(0.7f);
 			font.setColor(Color.WHITE);
 			
+	
+			if(inimigoAtacando == false) {
+				posta = ":  " + CRodada.AI(CEngine.listaH, CEngine.listaV, CEngine.listaI, atual.getPersonagem());
+				inimigoAtacando = true;	
+			}
 			
-			font.draw(batch, atual.getName() + CRodada.AI(CEngine.listaH, CEngine.listaV, CEngine.listaI, atual.getPersonagem()) , 650, 174);
+			font.draw(batch, atual.getName() + posta , 650, 174);
 			
 			font.setColor(Color.RED);
 			font.draw(batch, "OK" , 650, 139);
@@ -1193,6 +1200,8 @@ public class BattleHUD extends HUD {
 			
 			
 			if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+				inimigoAtacando = false;
+				
 				/* Trocar de personagem*/
 				AbsPersonagem personAtual = CRodada.getVez();
 				

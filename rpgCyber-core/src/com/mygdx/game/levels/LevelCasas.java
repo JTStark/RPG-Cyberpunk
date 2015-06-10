@@ -28,7 +28,10 @@ import com.mygdx.game.battle.BattleWorld;
 import com.mygdx.game.colision.CBau;
 import com.mygdx.game.colision.CCClide;
 import com.mygdx.game.colision.CCColide;
+import com.mygdx.game.colision.CComb;
 import com.mygdx.game.colision.CDoors;
+import com.mygdx.game.menus.InventaryHub;
+import com.mygdx.game.menus.InventaryMenu;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
 import com.mygdx.game.savestate.SaveState;
@@ -49,7 +52,7 @@ public class LevelCasas extends VisualGameWorld {
 	private Magician_Test magician; //Da pra colocar uma array com todas as entities? 
 	private TiledMap map;
 	private TiledMapRenderer renderer;
-	private TiledMapTileLayer colision, bau, bau2;
+	private TiledMapTileLayer colision, bau, bau2,enemies,enemies2;
 	private OrthographicCamera camera;
 	private float dx,dy,v;
 	private int i, lim;
@@ -69,6 +72,8 @@ public class LevelCasas extends VisualGameWorld {
         colision =  (TiledMapTileLayer)map.getLayers().get("Colisoes");
         bau =  (TiledMapTileLayer)map.getLayers().get("Baus");
         bau2 = (TiledMapTileLayer)map.getLayers().get("Baus2");
+        enemies = (TiledMapTileLayer)map.getLayers().get("Enemies");
+        enemies2 = (TiledMapTileLayer)map.getLayers().get("Exclamacao");
         lim = colision.getHeight();
 	}
 	
@@ -91,12 +96,7 @@ public class LevelCasas extends VisualGameWorld {
 			flagmo = false;
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
-			String[] param = {"SnakeScreen", "ForestMap", "Some random Data"};
-			try {
-				ScreenCreator.addAndGo(param);
-			}  catch (Exception e) {
-				System.out.println ("Could not switch Screens");
-			}
+			
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.TAB)) {
 			
@@ -114,6 +114,16 @@ public class LevelCasas extends VisualGameWorld {
 				
 		
 		}
+if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
+			
+			try {
+				ScreenCreator.addAndGo(new InventaryMenu("MyLevel"), new InventaryHub());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE)) {
 			try {
 				ScreenCreator.backToPrevious();
@@ -152,6 +162,9 @@ public class LevelCasas extends VisualGameWorld {
 		CBau.changeBau(camera, bau, bau2, colision);
 		CDoors.doorUP(camera, colision);
 		CDoors.doorDown(camera, colision);
+		CDoors.doorLeft(camera, colision);
+		CDoors.doorRight(camera, colision);
+		CComb.changeCombat(camera, enemies, enemies2);
 		// move player
 		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCColide.rightP(colision, camera, "blocked")){
 			dx=1;
@@ -165,7 +178,7 @@ public class LevelCasas extends VisualGameWorld {
 		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCColide.downP(colision, camera, "blocked")){
 			dy=-1;
 		}
-		Player.ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
+		Player.ani.setXY(getX()+ dx*delta*Player.v,getY() + dy*delta*Player.v);
 		camera.position.x+=Player.ani.getX();
 		camera.position.y+=Player.ani.getY();
 		camera.update();

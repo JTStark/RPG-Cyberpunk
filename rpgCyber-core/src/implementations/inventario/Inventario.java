@@ -1,17 +1,24 @@
 package implementations.inventario;
 
-import java.util.Enumeration;
+import java.util.ArrayList;
 import java.util.Vector;
 
-
+/* Implementa a interface*/
 public class Inventario implements InterfaceInventario{
 	
-	public static Inventario instancia = new Inventario();
-	private Vector<String> mochila = new Vector<String>(40);
+	/* Atributos
+	 * 			instancia ï¿½ uma instancia nula da classe inventario
+	 * 			mochila ï¿½ um vector para armazenar itens
+	 */
 	
+	public static Inventario instancia = new Inventario();
+	private Vector<String> mochila = new Vector<String>(5);
+	
+	/* Construtor */
 	private Inventario(){
 	}
 	
+	/* Metodo que pega a instancia da classe e retorna-a; se for nula cria uma nao nula */
 	public static Inventario getInstancia(){
 		if(instancia == null)
 			instancia = new Inventario();
@@ -19,18 +26,18 @@ public class Inventario implements InterfaceInventario{
 	}
 	
 	/* Adiciona um item na mochila, verificando se o mesmo existe no bd e a capacidade da mochila */
-	public void adicionar_item(String nome_item){
+	public boolean adicionar_item(String nome_item){
 		Item item = new Item(nome_item);
 		if(item.getName() != null){
 			if(mochila.size() >= mochila.capacity()){
-				System.out.println("Capacidade limite atingida, remova um item do inventario para poder adicionar outro");
+				return false;
 			}
 			else{
 				mochila.addElement(item.getName());
-				System.out.println("O item " + item.getName() + " foi adicionado à mochila");
+				return true;
 			}
 		}else{
-			System.out.println("O item " + nome_item + " não existe");
+			return false;
 		}
 	}
 	/* Remove um item da mochila se o mesmo existir no bd e na mochila */
@@ -41,12 +48,13 @@ public class Inventario implements InterfaceInventario{
 				mochila.removeElement(item.getName());
 				System.out.println("O item " + item.getName() + " foi removido com sucesso");
 			}else{
-				System.out.println("Não foi possível encontrar o item " + item.getName() + " na mochila");
+				System.out.println("Nï¿½o foi possï¿½vel encontrar o item " + item.getName() + " na mochila");
 			}
 		}else{
-			System.out.println("O item " + nome_item + " não existe");
+			System.out.println("O item " + nome_item + " nï¿½o existe");
 		}
 	}
+	/* Verifica se o item contï¿½m na mochila */
 	public boolean verificar_item (String nome_item){
 		Item item = new Item(nome_item);
 		if(mochila.contains(item.getName()))
@@ -54,15 +62,31 @@ public class Inventario implements InterfaceInventario{
 		else
 			return false;
 	}
-	/* Imprime os equipamentos na mochila */
-	public void getMochila(){
-		for (Enumeration<String> e = mochila.elements(); e.hasMoreElements();){
-			String item_mochila = (String) e.nextElement();
-			Item item = new Item(item_mochila);
-			System.out.println("Nome: " + item.getName() + 
-								" | Tipo: " + item.getType() + 
-								" | Bônus:" + item.getBonus());
+	/* Retorna um vector com todos os equipamentos na mochila */
+	public ArrayList<String> getMochila(){
+		ArrayList<String> itens = new ArrayList<String>();
+		for (int i = 0; i < mochila.size(); i++){
+				String item_mochila = mochila.elementAt(i);	
+				Item item = new Item(item_mochila);
+				itens.add(item.getName());
 		}
+		return itens;
+	}
+	/* Retorna uma Array com os itens desejados de determinado intervalo de posicoes */
+	public ArrayList<Item> getMochila(int tamanho_inicial, int tamanho_final){
+		ArrayList<Item> itens = new ArrayList<Item>();
+		for (int i = tamanho_inicial; i <= tamanho_final; i++){
+			if(mochila.size() > i){
+				String item_mochila = mochila.elementAt(i);	
+				Item item = new Item(item_mochila);
+				try{itens.add(item);}
+				catch(Exception e){
+					e.printStackTrace();
+					itens.add(null);
+				}
+			}
+		}
+		return itens;
 	}
 }
 
