@@ -12,7 +12,7 @@ public class Inventario implements InterfaceInventario{
 	 */
 	
 	public static Inventario instancia = new Inventario();
-	private Vector<String> mochila = new Vector<String>(5);
+	private Vector<String> mochila = new Vector<String>(40);
 	
 	/* Construtor */
 	private Inventario(){
@@ -79,11 +79,7 @@ public class Inventario implements InterfaceInventario{
 			if(mochila.size() > i){
 				String item_mochila = mochila.elementAt(i);	
 				Item item = new Item(item_mochila);
-				try{itens.add(item);}
-				catch(Exception e){
-					e.printStackTrace();
-					itens.add(null);
-				}
+				itens.add(item);
 			}
 		}
 		return itens;
