@@ -25,7 +25,9 @@ public class BattleHUD extends HUD {
 	private boolean opcoes = false;
 	private int acaoOpcao = 0;
 	
-	private int deslocavel;
+	private boolean ataque = false;
+	
+	private int alvo;
 	
 	private int escolha = 0;
 	private boolean opcaoEscolha = false;
@@ -232,37 +234,76 @@ public class BattleHUD extends HUD {
 						e.printStackTrace();
 					}
 					
-					if(opcaoEscolha == true) {
+					if(ataque == true) {
 						font.setColor(Color.WHITE);
 						
-						font.draw(batch, "Escolha o alvo\ncom a seta V", 900, 174);
+						font.draw(batch, "Escolha o alvo", 1000, 174);
 						
-						if(true) { //melee
-							font.draw(batch, "V", BattleWorld.inimigo1.getPositionTurno(), 600);
-							font.draw(batch, "V", BattleWorld.inimigo2.getPositionTurno(), 600);							
+						String var = CRodada.getAlvos(acaoOpcao, atual.getPersonagem());
+						
+						if(var.equalsIgnoreCase("melee")) { //melee
+							font.draw(batch, "Alvo", BattleWorld.inimigo1.getPositionTurno(), 550);
+							font.draw(batch, "Alvo", BattleWorld.inimigo2.getPositionTurno(), 550);							
 						}
-						if(true) {//Ranged
-							font.draw(batch, "V", BattleWorld.inimigo1.getPositionTurno(), 600);
-							font.draw(batch, "V", BattleWorld.inimigo2.getPositionTurno(), 600);	
-							font.draw(batch, "V", BattleWorld.inimigo3.getPositionTurno(), 600);
-							font.draw(batch, "V", BattleWorld.inimigo4.getPositionTurno(), 600);	
-							font.draw(batch, "V", BattleWorld.inimigo5.getPositionTurno(), 600);
-							font.draw(batch, "V", BattleWorld.inimigo6.getPositionTurno(), 600);							
+						if(var.equalsIgnoreCase("ranged")) {//Ranged
+							font.draw(batch, "Alvo", BattleWorld.inimigo1.getPositionTurno(), 550);
+							font.draw(batch, "Alvo", BattleWorld.inimigo2.getPositionTurno(), 550);	
+							font.draw(batch, "Alvo", BattleWorld.inimigo3.getPositionTurno(), 550);
+							font.draw(batch, "Alvo", BattleWorld.inimigo4.getPositionTurno(), 550);	
+							font.draw(batch, "Alvo", BattleWorld.inimigo5.getPositionTurno(), 550);
+							font.draw(batch, "Alvo", BattleWorld.inimigo6.getPositionTurno(), 550);							
 							
 						}
-						if(true) {//amigo
-							font.draw(batch, "V", BattleWorld.durden.getPositionTurno(), 600);
-							font.draw(batch, "V", BattleWorld.palhaco.getPositionTurno(), 600);	
-							font.draw(batch, "V", BattleWorld.rexus.getPositionTurno(), 600);
-							font.draw(batch, "V", BattleWorld.cientista.getPositionTurno(), 600);	
-							font.draw(batch, "V", BattleWorld.mdr.getPositionTurno(), 600);
-							font.draw(batch, "V", BattleWorld.barbudo.getPositionTurno(), 600);		
+						if(var.equalsIgnoreCase("amigo")) {//amigo
+							font.draw(batch, "Alvo", BattleWorld.durden.getPositionTurno(), 550);
+							font.draw(batch, "Alvo", BattleWorld.palhaco.getPositionTurno(), 550);	
+							font.draw(batch, "Alvo", BattleWorld.rexus.getPositionTurno(), 550);
+							font.draw(batch, "Alvo", BattleWorld.cientista.getPositionTurno(), 550);	
+							font.draw(batch, "Alvo", BattleWorld.mdr.getPositionTurno(), 550);
+							font.draw(batch, "Alvo", BattleWorld.barbudo.getPositionTurno(), 550);		
 							
 						}
+						
+						font.setColor(Color.RED);
 						
 						switch (alvo) {
 						case 0:
+							font.draw(batch, BattleWorld.palhaco.getName(), 1000, 139);
 							break;
+						case 1:
+							font.draw(batch, BattleWorld.barbudo.getName(), 1000, 139);
+							break;
+						case 2:
+							font.draw(batch, BattleWorld.cientista.getName(), 1000, 139);
+							break;
+						case 3:
+							font.draw(batch, BattleWorld.rexus.getName(), 1000, 139);
+							break;
+						case 4:
+							font.draw(batch, BattleWorld.durden.getName(), 1000, 139);
+							break;
+						case 5:
+							font.draw(batch, BattleWorld.mdr.getName(), 1000, 139);
+							break;
+						case 6:
+							font.draw(batch, BattleWorld.inimigo1.getName(), 1000, 139);
+							break;
+						case 7:
+							font.draw(batch, BattleWorld.inimigo2.getName(), 1000, 139);
+							break;
+						case 8:
+							font.draw(batch, BattleWorld.inimigo3.getName(), 1000, 139);
+							break;
+						case 9:
+							font.draw(batch, BattleWorld.inimigo4.getName(), 1000, 139);
+							break;
+						case 10:						
+							font.draw(batch, BattleWorld.inimigo5.getName(), 1000, 139);
+							break;
+						case 11:
+							font.draw(batch, BattleWorld.inimigo6.getName(), 1000, 139);
+							break;
+							
 						}
 						
 						
@@ -556,7 +597,7 @@ public class BattleHUD extends HUD {
 					opcoes = true;
 				}
 			}
-			else {			
+			else {	//opcoes = true		
 				
 				if(acao == 0) {
 					atual.setAtacando(true); // animacao de ataque
@@ -572,203 +613,556 @@ public class BattleHUD extends HUD {
 						
 				}
 					
-				if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) { // Aqui devem estar as opcoes de verdade
+				if(acao != 0) { // Aqui devem estar as opcoes de verdade
+					if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
 						
-					if(acao == 0) { // ataque
 							
-						switch (acaoOpcao) {
-						case 0:
+						if(acao == 1) { //Deslocar
 							
-							break;
-						case 1:
-							break;
-						case 2:
-							break;
-						case 3:
-							break;					
+							
+								
+							switch (acaoOpcao)
+							{
+							case 0:
+								if(atual.getPositionX() != POS6) {
+									
+									
+									//VOLTA 1						
+								}
+								
+								else {
+									
+									//AVANCA 1				
+								}			
+								break;
+							case 1:
+								if((atual.getPositionX() != POS1 && atual.getPositionX() != POS6)) {
+									
+									//AVANCA 1
+								}
+								else {
+									if(atual.getPositionX() == POS1) {
+										
+										//VOLTA 2
+									}
+									if(atual.getPositionX() == POS6) {
+										
+										//AVANCA 2
+									}
+								}					
+										
+								
+								break;
+							case 2:
+								
+								if(atual.getPositionX() > POS5 && atual.getPositionX() < POS1) {
+									//VOLTA 2
+								}
+								else
+									if(atual.getPositionX() == POS5) {
+										//AVANCA 2
+									}
+									else {
+										
+										if(atual.getPositionX() == POS6) {
+											//AVANCA 3
+										}
+										if(atual.getPositionX() == POS1) {
+											//VOLTA 3
+										}
+									}
+										
+								
+								
+								break;
+							case 3:
+								
+								if(atual.getPositionX() == POS6)
+									//AVANCA 4
+								if(atual.getPositionX() == POS5)
+									//AVANCA 3
+								if(atual.getPositionX() == POS4)
+									//AVANCA 2
+								if(atual.getPositionX() == POS3)
+									//AVANCA 2
+								if(atual.getPositionX() == POS2)
+									//VOLTA 3
+								if(atual.getPositionX() == POS1)
+									//VOLTA 4
+									
+									
+									
+								
+								
+								break;
+							case 4:
+								
+								if(atual.getPositionX() == POS6)
+									//AVANCA 5
+								if(atual.getPositionX() == POS5)
+									//AVANCA 4
+								if(atual.getPositionX() == POS4)
+									//AVANCA 3
+								if(atual.getPositionX() == POS3)
+									//VOLTA 3
+								if(atual.getPositionX() == POS2)
+									//VOLTA 4
+								if(atual.getPositionX() == POS1)
+									//VOLTA 5
+								
+								break;	
+							
+							}
+						}
+							
+						if(acao == 2) { //Inventario
+								
+							
+						
+							//ABRIR INVENTARIO
+								
 							
 						}
 							
+						if(acao == 3) { // nada
+								
 							
+						}
+							
+						if(acao == 4) { // fugir
+								
+							
+							try {
+								ScreenCreator.backToPrevious();
+							} catch (Exception e) {
+								String[] param = {"SnakeLevel", "MainMenu", "LevelDataID"};
+								try {
+									ScreenCreator.switchAndGo(param);
+								} catch (Exception excp) {
+									System.out.println("Couldn't switch screens.");
+								}
+							}
+								
+							
+								
+							
+						}
+							
+						acaoOpcao = 0;
+						acao = 0;
+						opcoes = false;
+						
+						atual.setAtacando(false);
+						
+						/* Trocar de personagem*/
+						AbsPersonagem personAtual = CRodada.getVez();
+						
+						if(personAtual != null) {
+							if(personAtual.vilao == false) {
+								if(personAtual.nome.equalsIgnoreCase("oleg"))
+									atual = BattleWorld.barbudo;
+								if(personAtual.nome.equalsIgnoreCase("silvana"))
+									atual = BattleWorld.cientista;
+								if(personAtual.nome.equalsIgnoreCase("ozob"))
+									atual = BattleWorld.palhaco;
+								if(personAtual.nome.equalsIgnoreCase("durden"))
+									atual = BattleWorld.durden;
+								if(personAtual.nome.equalsIgnoreCase("rexus"))
+									atual = BattleWorld.rexus;
+								if(personAtual.nome.equalsIgnoreCase("mdr"))
+									atual = BattleWorld.mdr;		
+							}
+							else {
+								if(personAtual.nome.equalsIgnoreCase("vFirst"))
+									atual = BattleWorld.inimigo1;
+								if(personAtual.nome.equalsIgnoreCase("vSecond"))
+									atual = BattleWorld.inimigo2;
+								if(personAtual.nome.equalsIgnoreCase("vThird"))
+									atual = BattleWorld.inimigo3;
+								if(personAtual.nome.equalsIgnoreCase("vFourth"))
+									atual = BattleWorld.inimigo4;
+								if(personAtual.nome.equalsIgnoreCase("vFifth"))
+									atual = BattleWorld.inimigo5;
+								if(personAtual.nome.equalsIgnoreCase("vSixth"))
+									atual = BattleWorld.inimigo6;	
+							}
+						}
+						else { //O jogo acabou
+							
+						}
+						
 					}
+				}
+				
+				if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER) && acao == 0) {
+					
+					if(ataque == false) {
+						ataque = true;
+					
+					}
+					else {
 						
-					if(acao == 1) { //Deslocar
 						
-						
-							
-						switch (acaoOpcao)
-						{
+						switch(alvo) {
 						case 0:
-							if(atual.getPositionX() != POS6) {
-								
-								
-								//VOLTA 1						
+							
+							switch(BattleWorld.palhaco.getPositionX()) {
+							case POS1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.palhaco.getPersonagem());
+								break;
+							case POS2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.palhaco.getPersonagem());
+								break;
+							case POS3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.palhaco.getPersonagem());
+								break;
+							case POS4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.palhaco.getPersonagem());
+								break;
+							case POS5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.palhaco.getPersonagem());
+								break;
+							case POS6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.palhaco.getPersonagem());
+								break;
+							
 							}
 							
-							else {
-								
-								//AVANCA 1				
-							}			
 							break;
 						case 1:
-							if((atual.getPositionX() != POS1 && atual.getPositionX() != POS6)) {
-								
-								//AVANCA 1
-							}
-							else {
-								if(atual.getPositionX() == POS1) {
-									
-									//VOLTA 2
-								}
-								if(atual.getPositionX() == POS6) {
-									
-									//AVANCA 2
-								}
-							}					
-									
+							//oleg
+							switch(BattleWorld.barbudo.getPositionX()) {
+							case POS1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.barbudo.getPersonagem());
+								break;
+							case POS2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.barbudo.getPersonagem());
+								break;
+							case POS3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.barbudo.getPersonagem());
+								break;
+							case POS4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.barbudo.getPersonagem());
+								break;
+							case POS5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.barbudo.getPersonagem());
+								break;
+							case POS6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.barbudo.getPersonagem());
+								break;
 							
+							}
 							break;
 						case 2:
+							//silvana
+							switch(BattleWorld.cientista.getPositionX()) {
+							case POS1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.cientista.getPersonagem());
+								break;
+							case POS2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.cientista.getPersonagem());
+								break;
+							case POS3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.cientista.getPersonagem());
+								break;
+							case POS4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.cientista.getPersonagem());
+								break;
+							case POS5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.cientista.getPersonagem());
+								break;
+							case POS6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.cientista.getPersonagem());
+								break;
 							
-							if(atual.getPositionX() > POS5 && atual.getPositionX() < POS1) {
-								//VOLTA 2
 							}
-							else
-								if(atual.getPositionX() == POS5) {
-									//AVANCA 2
-								}
-								else {
-									
-									if(atual.getPositionX() == POS6) {
-										//AVANCA 3
-									}
-									if(atual.getPositionX() == POS1) {
-										//VOLTA 3
-									}
-								}
-									
-							
-							
 							break;
 						case 3:
+							//rexus
+							switch(BattleWorld.rexus.getPositionX()) {
+							case POS1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.rexus.getPersonagem());
+								break;
+							case POS2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.rexus.getPersonagem());
+								break;
+							case POS3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.rexus.getPersonagem());
+								break;
+							case POS4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.rexus.getPersonagem());
+								break;
+							case POS5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.rexus.getPersonagem());
+								break;
+							case POS6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.rexus.getPersonagem());
+								break;
 							
-							if(atual.getPositionX() == POS6)
-								//AVANCA 4
-							if(atual.getPositionX() == POS5)
-								//AVANCA 3
-							if(atual.getPositionX() == POS4)
-								//AVANCA 2
-							if(atual.getPositionX() == POS3)
-								//AVANCA 2
-							if(atual.getPositionX() == POS2)
-								//VOLTA 3
-							if(atual.getPositionX() == POS1)
-								//VOLTA 4
-								
-								
-								
-							
+							}
 							
 							break;
 						case 4:
+							//durden
+							switch(BattleWorld.durden.getPositionX()) {
+							case POS1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.durden.getPersonagem());
+								break;
+							case POS2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.durden.getPersonagem());
+								break;
+							case POS3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.durden.getPersonagem());
+								break;
+							case POS4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.durden.getPersonagem());
+								break;
+							case POS5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.durden.getPersonagem());
+								break;
+							case POS6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.durden.getPersonagem());
+								break;
 							
-							if(atual.getPositionX() == POS6)
-								//AVANCA 5
-							if(atual.getPositionX() == POS5)
-								//AVANCA 4
-							if(atual.getPositionX() == POS4)
-								//AVANCA 3
-							if(atual.getPositionX() == POS3)
-								//VOLTA 3
-							if(atual.getPositionX() == POS2)
-								//VOLTA 4
-							if(atual.getPositionX() == POS1)
-								//VOLTA 5
+							}
+							break;
+						case 5:
+							//mdr
+							switch(BattleWorld.mdr.getPositionX()) {
+							case POS1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.mdr.getPersonagem());
+								break;
+							case POS2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.mdr.getPersonagem());
+								break;
+							case POS3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.mdr.getPersonagem());
+								break;
+							case POS4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.mdr.getPersonagem());
+								break;
+							case POS5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.mdr.getPersonagem());
+								break;
+							case POS6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.mdr.getPersonagem());
+								break;
 							
-							break;	
+							}
+							break;
+						case 6:
+							switch(BattleWorld.inimigo1.getPositionX()) {
+							case POSM1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.inimigo1.getPersonagem());
+								break;
+							case POSM2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.inimigo1.getPersonagem());
+								break;
+							case POSM3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.inimigo1.getPersonagem());
+								break;
+							case POSM4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.inimigo1.getPersonagem());
+								break;
+							case POSM5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.inimigo1.getPersonagem());
+								break;
+							case POSM6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.inimigo1.getPersonagem());
+								break;
+							
+							}
+							//1
+							break;
+						case 7:
+							//2
+							switch(BattleWorld.inimigo2.getPositionX()) {
+							case POSM1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.inimigo2.getPersonagem());
+								break;
+							case POSM2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.inimigo2.getPersonagem());
+								break;
+							case POSM3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.inimigo2.getPersonagem());
+								break;
+							case POSM4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.inimigo2.getPersonagem());
+								break;
+							case POSM5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.inimigo2.getPersonagem());
+								break;
+							case POSM6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.inimigo2.getPersonagem());
+								break;
+							
+							}
+							break;
+						case 8:
+							//3
+							switch(BattleWorld.inimigo3.getPositionX()) {
+							case POSM1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.inimigo3.getPersonagem());
+								break;
+							case POSM2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.inimigo3.getPersonagem());
+								break;
+							case POSM3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.inimigo3.getPersonagem());
+								break;
+							case POSM4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.inimigo3.getPersonagem());
+								break;
+							case POSM5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.inimigo3.getPersonagem());
+								break;
+							case POSM6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.inimigo3.getPersonagem());
+								break;
+							
+							}
+							break;
+						case 9:
+							//4
+							switch(BattleWorld.inimigo4.getPositionX()) {
+							case POSM1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.inimigo4.getPersonagem());
+								break;
+							case POSM2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.inimigo4.getPersonagem());
+								break;
+							case POSM3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.inimigo4.getPersonagem());
+								break;
+							case POSM4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.inimigo4.getPersonagem());
+								break;
+							case POSM5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.inimigo4.getPersonagem());
+								break;
+							case POSM6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.inimigo4.getPersonagem());
+								break;
+							
+							}
+							break;
+						case 10:
+							//5
+							switch(BattleWorld.inimigo5.getPositionX()) {
+							case POSM1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.inimigo5.getPersonagem());
+								break;
+							case POSM2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.inimigo5.getPersonagem());
+								break;
+							case POSM3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.inimigo5.getPersonagem());
+								break;
+							case POSM4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.inimigo5.getPersonagem());
+								break;
+							case POSM5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.inimigo5.getPersonagem());
+								break;
+							case POSM6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.inimigo5.getPersonagem());
+								break;
+							
+							}
+							break;
+						case 11:
+							//6
+							switch(BattleWorld.inimigo6.getPositionX()) {
+							case POSM1:
+								CRodada.atacar(0, acaoOpcao, BattleWorld.inimigo6.getPersonagem());
+								break;
+							case POSM2:
+								CRodada.atacar(1, acaoOpcao, BattleWorld.inimigo6.getPersonagem());
+								break;
+							case POSM3:
+								CRodada.atacar(2, acaoOpcao, BattleWorld.inimigo6.getPersonagem());
+								break;
+							case POSM4:
+								CRodada.atacar(3, acaoOpcao, BattleWorld.inimigo6.getPersonagem());
+								break;
+							case POSM5:
+								CRodada.atacar(4, acaoOpcao, BattleWorld.inimigo6.getPersonagem());
+								break;
+							case POSM6:
+								CRodada.atacar(5, acaoOpcao, BattleWorld.inimigo6.getPersonagem());
+								break;
+							
+							}
+							break;
+
+						
 						
 						}
-					}
 						
-					if(acao == 2) { //Inventario
-							
+						acaoOpcao = 0;
+						acao = 0;
+						opcoes = false;
 						
-					
-						//ABRIR INVENTARIO
-							
+						atual.setAtacando(false);
+						/* Trocar de personagem*/
+						AbsPersonagem personAtual = CRodada.getVez();
 						
-					}
-						
-					if(acao == 3) { // nada
-							
-						
-					}
-						
-					if(acao == 4) { // fugir
-							
-						
-						try {
-							ScreenCreator.backToPrevious();
-						} catch (Exception e) {
-							String[] param = {"SnakeLevel", "MainMenu", "LevelDataID"};
-							try {
-								ScreenCreator.switchAndGo(param);
-							} catch (Exception excp) {
-								System.out.println("Couldn't switch screens.");
+						if(personAtual != null) {
+							if(personAtual.vilao == false) {
+								if(personAtual.nome.equalsIgnoreCase("oleg"))
+									atual = BattleWorld.barbudo;
+								if(personAtual.nome.equalsIgnoreCase("silvana"))
+									atual = BattleWorld.cientista;
+								if(personAtual.nome.equalsIgnoreCase("ozob"))
+									atual = BattleWorld.palhaco;
+								if(personAtual.nome.equalsIgnoreCase("durden"))
+									atual = BattleWorld.durden;
+								if(personAtual.nome.equalsIgnoreCase("rexus"))
+									atual = BattleWorld.rexus;
+								if(personAtual.nome.equalsIgnoreCase("mdr"))
+									atual = BattleWorld.mdr;		
+							}
+							else {
+								if(personAtual.nome.equalsIgnoreCase("vFirst"))
+									atual = BattleWorld.inimigo1;
+								if(personAtual.nome.equalsIgnoreCase("vSecond"))
+									atual = BattleWorld.inimigo2;
+								if(personAtual.nome.equalsIgnoreCase("vThird"))
+									atual = BattleWorld.inimigo3;
+								if(personAtual.nome.equalsIgnoreCase("vFourth"))
+									atual = BattleWorld.inimigo4;
+								if(personAtual.nome.equalsIgnoreCase("vFifth"))
+									atual = BattleWorld.inimigo5;
+								if(personAtual.nome.equalsIgnoreCase("vSixth"))
+									atual = BattleWorld.inimigo6;	
 							}
 						}
+						else { //O jogo acabou
 							
-						
-							
-						
-					}
-						
-					acaoOpcao = 0;
-					acao = 0;
-					opcoes = false;
-					
-					atual.setAtacando(false);
-					
-					/* Trocar de personagem*/
-					AbsPersonagem personAtual = CRodada.getVez();
-					
-					if(personAtual != null) {
-						if(personAtual.vilao == false) {
-							if(personAtual.nome.equalsIgnoreCase("oleg"))
-								atual = BattleWorld.barbudo;
-							if(personAtual.nome.equalsIgnoreCase("silvana"))
-								atual = BattleWorld.cientista;
-							if(personAtual.nome.equalsIgnoreCase("ozob"))
-								atual = BattleWorld.palhaco;
-							if(personAtual.nome.equalsIgnoreCase("durden"))
-								atual = BattleWorld.durden;
-							if(personAtual.nome.equalsIgnoreCase("rexus"))
-								atual = BattleWorld.rexus;
-							if(personAtual.nome.equalsIgnoreCase("mdr"))
-								atual = BattleWorld.mdr;		
 						}
-						else {
-							if(personAtual.nome.equalsIgnoreCase("vFirst"))
-								atual = BattleWorld.inimigo1;
-							if(personAtual.nome.equalsIgnoreCase("vSecond"))
-								atual = BattleWorld.inimigo2;
-							if(personAtual.nome.equalsIgnoreCase("vThird"))
-								atual = BattleWorld.inimigo3;
-							if(personAtual.nome.equalsIgnoreCase("vFourth"))
-								atual = BattleWorld.inimigo4;
-							if(personAtual.nome.equalsIgnoreCase("vFifth"))
-								atual = BattleWorld.inimigo5;
-							if(personAtual.nome.equalsIgnoreCase("vSixth"))
-								atual = BattleWorld.inimigo6;	
-						}
-					}
-					else { //O jogo acabou
+						
+					
+				
+						
+						
+						
+						
+						
+						
 						
 					}
-					
 				}
 				
+				
 			}
+			
+			
+				
+				
+				
+				
+				
+			
 				
 			if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
 				opcoes = false;
