@@ -25,18 +25,18 @@
   <tile id="0">
    <properties>
     <property name="blocked" value="blocked"/>
-    <property name="stairHome" value="2oAndarBabi.tmx"/>
+    <property name="doorHome" value="2oAndarBabi.tmx"/>
    </properties>
   </tile>
  </tileset>
  <layer name="Camada de Tiles 1" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1E0KgCAQhuEp+3Hskh5tjuLR+mIQRLTQopWLlwFxHlxpiPxMRF9kdPoFM21D+002ux+DJSXP4ZxRzXKFnScPuz5/p9UpvR7rfogdL7zcSs1Wj3WnGjd6vQ1veMP718MfHSa06rz80BssOQFCWzSw
+   eJzt1E0KgCAQhuFR+3Hskh7No3i0PpgEES20aOXiZUCcx1YZIq+J6IuMTL9g5m1ov8kW91OwQs1zOGfUslxl58nDri+/08oMox7LfkwdL7zSys1ej2WnGXd6o01vetP718M/OuorhVacK3kn9gYrnBWTM/A=
   </data>
  </layer>
  <layer name="Colisoes" width="20" height="20" opacity="0">
   <data encoding="base64" compression="zlib">
-   eJzjYWBg4KEyZqESHjVv1LxR80bNGzWPuuaBMC8an1wMAA1dCKI=
+   eJzjYWBg4KEyZqESHjVv1LxR80bNGzWPuuYhY14c4sRiAA1VCKI=
   </data>
  </layer>
 </map>
