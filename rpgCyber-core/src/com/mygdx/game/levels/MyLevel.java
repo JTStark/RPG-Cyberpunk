@@ -40,6 +40,7 @@ import com.mygdx.game.menus.InventaryMenu;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
 import com.mygdx.game.savestate.SaveState;
+import com.mygdx.game.screenshot.ScreenShotFactory;
 
 
 /**                               Developed By:
@@ -137,6 +138,9 @@ public class MyLevel extends VisualGameWorld {
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
 			Player.speed();
+		}
+		if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
+			ScreenShotFactory.saveScreenshot();
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
 			try {

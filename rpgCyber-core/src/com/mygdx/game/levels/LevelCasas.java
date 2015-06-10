@@ -30,6 +30,8 @@ import com.mygdx.game.colision.CCClide;
 import com.mygdx.game.colision.CCColide;
 import com.mygdx.game.colision.CComb;
 import com.mygdx.game.colision.CDoors;
+import com.mygdx.game.menus.InventaryHub;
+import com.mygdx.game.menus.InventaryMenu;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
 import com.mygdx.game.savestate.SaveState;
@@ -112,6 +114,16 @@ public class LevelCasas extends VisualGameWorld {
 				
 		
 		}
+if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
+			
+			try {
+				ScreenCreator.addAndGo(new InventaryMenu("MyLevel"), new InventaryHub());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE)) {
 			try {
 				ScreenCreator.backToPrevious();

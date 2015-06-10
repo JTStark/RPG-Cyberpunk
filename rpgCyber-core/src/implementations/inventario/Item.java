@@ -11,7 +11,7 @@ public class Item implements InterfaceItem {
 	private String type;
 	public boolean nomeEncontrado; //tive que adicionar esse bool para verificar quando um item foi encontrado
 	private int bonus;
-	public String diretorio = "bin/bd/BD.txt";
+	public String diretorio = "BD.txt";
 	
 	public Item(String identificador) {
 		

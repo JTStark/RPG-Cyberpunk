@@ -12,7 +12,7 @@ public class Inventario implements InterfaceInventario{
 	 */
 	
 	public static Inventario instancia = new Inventario();
-	private Vector<String> mochila = new Vector<String>(40);
+	private Vector<String> mochila = new Vector<String>(5);
 	
 	/* Construtor */
 	private Inventario(){
@@ -26,18 +26,18 @@ public class Inventario implements InterfaceInventario{
 	}
 	
 	/* Adiciona um item na mochila, verificando se o mesmo existe no bd e a capacidade da mochila */
-	public void adicionar_item(String nome_item){
+	public boolean adicionar_item(String nome_item){
 		Item item = new Item(nome_item);
 		if(item.getName() != null){
 			if(mochila.size() >= mochila.capacity()){
-				System.out.println("Capacidade limite atingida, remova um item do inventario para poder adicionar outro");
+				return false;
 			}
 			else{
 				mochila.addElement(item.getName());
-				System.out.println("O item " + item.getName() + " foi adicionado � mochila");
+				return true;
 			}
 		}else{
-			System.out.println("O item " + nome_item + " n�o existe");
+			return false;
 		}
 	}
 	/* Remove um item da mochila se o mesmo existir no bd e na mochila */
@@ -79,7 +79,11 @@ public class Inventario implements InterfaceInventario{
 			if(mochila.size() > i){
 				String item_mochila = mochila.elementAt(i);	
 				Item item = new Item(item_mochila);
-				itens.add(item);
+				try{itens.add(item);}
+				catch(Exception e){
+					e.printStackTrace();
+					itens.add(null);
+				}
 			}
 		}
 		return itens;
