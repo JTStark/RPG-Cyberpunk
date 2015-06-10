@@ -102,13 +102,5 @@ public class Item implements InterfaceItem {
 		}
 		return new Item(nome);
 	}
-	public static void main(String args[]) {
-		
-		for (int i = 0; i < 10; i++) {
-			Item generico = Item.geraAleatorio();
-			
-			System.out.println("Nome: " + generico.getName());
-		}
-	}
 		
 }
