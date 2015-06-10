@@ -4,8 +4,7 @@ import implementations.combate.CEngine;
 import implementations.personagens.AbsPersonagem;
 
 import com.badlogic.gdx.Gdx;
-import com.mygdx.game.animate.Animator;
-import com.mygdx.game.animate.Animax;
+import com.mygdx.game.animate.*;
 
 public class BattleChar extends Animator {
 	

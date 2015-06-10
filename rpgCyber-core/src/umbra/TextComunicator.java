@@ -88,7 +88,7 @@ public class TextComunicator implements IComunicator, InputProcessor {
     public boolean update(float dt){
         if(cursorOn) {
         	try {
-				Thread.sleep(50);
+				Thread.sleep(20);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -97,7 +97,10 @@ public class TextComunicator implements IComunicator, InputProcessor {
             // Control of text speed
             counter += dt;
             if (counter > textSpeed * dt) {
-                if (!end) {
+            	if(Gdx.input.isKeyPressed(Input.Keys.E))
+                	return true;
+                
+            	if (!end) {
                     nextChar(dt);
                 } else {
                     // no more characters to add start blink cursor
@@ -135,10 +138,10 @@ public class TextComunicator implements IComunicator, InputProcessor {
 
     public void draw(){
         batch.begin();
-        if(text != null){
-        	if(hight - 200 - ((font.getCapHeight()*text.length())/(Gdx.graphics.getWidth() - 300))*font.getCapHeight() < 0) hight += font.getCapHeight();
-        	font.draw(batch,text,width,hight,textSize,-5,true);
-        }
+	        if(text != null){
+	        	if(hight - 200 - ((font.getCapHeight()*text.length())/(Gdx.graphics.getWidth() - 300))*font.getCapHeight() < 0) hight += font.getCapHeight();
+	        	font.draw(batch,text,width,hight,textSize,-5,true);
+	        }
         batch.end();
     }
 

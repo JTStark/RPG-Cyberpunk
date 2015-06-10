@@ -165,7 +165,7 @@ public class LevelCasas extends VisualGameWorld {
 		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCColide.downP(colision, camera, "blocked")){
 			dy=-1;
 		}
-		Player.ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
+		Player.ani.setXY(getX()+ dx*delta*Player.v,getY() + dy*delta*Player.v);
 		camera.position.x+=Player.ani.getX();
 		camera.position.y+=Player.ani.getY();
 		camera.update();

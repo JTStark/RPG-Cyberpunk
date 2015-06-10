@@ -7,6 +7,7 @@ import umbra.TextComunicator;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Input.TextInputListener;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -44,9 +45,9 @@ public class TextLevel extends VisualGameWorld {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		if(!text.update(delta)){
+		if(text.update(delta)){
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(500);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -58,7 +59,7 @@ public class TextLevel extends VisualGameWorld {
 				e.printStackTrace();
 			}
 		}
-		
+	
 		
 	}
 	

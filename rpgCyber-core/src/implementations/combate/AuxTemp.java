@@ -1,7 +1,7 @@
 package implementations.combate;
 
 /**
- * @author - Otï¿½vio Vansetti Miranda e Lucca Maia Bollani
+ * @author - Otávio Vansetti Miranda e Lucca Maia Bollani
  * 
  * Sistema de Combate para RPG Cyberpunk, DeltaNexus
  * 
@@ -18,7 +18,7 @@ public class AuxTemp {
 	
 	public int auxiliarIniciativa=0;
 	
-	public static void comeca(){
+	public static void main(String[] args){
 		AbsPersonagem Durden = HDurden.getInstancia();
 		AbsPersonagem MDR = HMDR.getInstancia();
 		AbsPersonagem Oleg = HOleg.getInstancia();

@@ -166,7 +166,7 @@ public class LevelCasas2 extends VisualGameWorld {
 			dy=-1;
 		}
 		
-		Player.ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
+		Player.ani.setXY(getX()+ dx*delta*Player.v,getY() + dy*delta*Player.v);
 		camera.position.x+=Player.ani.getX();
 		camera.position.y+=Player.ani.getY();
 		camera.update();
