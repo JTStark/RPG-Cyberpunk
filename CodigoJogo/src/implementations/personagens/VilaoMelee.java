@@ -2,20 +2,18 @@ package implementations.personagens;
 
 import java.util.Random;
 
-import implementations.inventario.Item;
 import implementations.personagens.skills.AtaqueBasico;
 
 public class VilaoMelee extends AbsPersonagem{
-	Item item_arma, item_armadura;
+	int Arma, Armadura;
 	
-	public VilaoMelee(String nome_arma, String nome_armadura, int level){
+	public VilaoMelee(int Arma, int Armadura, int level){
 		Random random = new Random(); 
 		
-		this.item_arma = new Item(nome_arma);
-		this.item_armadura = new Item(nome_armadura);
+		this.danoArma = Arma;
 		this.tipo = 1;
 		this.vilao = true;
-		this.armadura = item_armadura.getBonus();
+		this.armadura = Armadura;
 		this.level = level;
 		
 		this.forca = (int)(25 + 3 * (this.level / 2));
