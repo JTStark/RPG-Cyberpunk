@@ -1,0 +1,109 @@
+Faca de Manteiga,Dam,6
+Faca de Cozinha,Dam,12
+Faca Afiada,Dam,18
+Faca de Caça,Dam,24
+Faca Militar,Dam,30
+Adaga de Aço,Dam,36
+Adaga de Titânio,Dam,42
+Adaga de FCarbono,Dam,48
+Vibro-Faca,Dam,54
+Vibro-Adaga,Dam,60
+Espada de Ferro,Dam,10
+Espada Curta de Aço,Dam,20
+Espada Curta de Titânio,Dam,30
+Espada Curta de FCarbono,Dam,40
+Espada Longa de Aço,Dam,50
+Espada Longa de Titânio,Dam,60
+Espada Longa de FCarbono,Dam,70
+Vibro-Espada de Aço,Dam,80
+Vibro-Espada de Titânio,Dam,90
+Vibro-Espada de FCarbono,Dam,100
+Porrete	Caseiro,Dam,8
+Porrete de Madeira,Dam,16
+Porrete de Metal,Dam,24
+Pé de Cabra,Dam,32
+Martelo,Dam,40
+Marreta,Dam,48
+Marreta de Titânio,Dam,56
+Martelo de Guerra,Dam,64
+Martelo de Guerra de Titânio,Dam,72
+Super-Marreta,Dam,80
+Revolver .22,Dam,4
+Pistola 9mm,Dam,8
+Pistola 10mm,Dam,12
+Revolver .357,Dam,16
+Pistola .45,Dam,20
+Revolver .44,Dam,24
+Pistola .50,Dam,28
+Revolver .500,Dam,32
+Revolver .700,Dam,36
+Pistola	Épica,Dam,40
+STG-44,Dam,6
+AK-47,Dam,12
+M14,Dam,18
+FAL,Dam,24
+AK-74,Dam,30
+M16,Dam,36
+Scar-L,Dam,48
+Scar-H,Dam,54
+H-BAR,Dam,60
+KAR98K,Dam,7
+SKS,Dam,14
+SVD,Dam,21
+M21,Dam,28
+M24,Dam,35
+M40,Dam,42
+AWM,Dam,49
+AW50,Dam,56
+M107,Dam,63
+M300,Dam,70
+M1889,Dam,8
+M1903,Dam,16
+M1,Dam,24
+Super M4,Dam,32
+M12,Dam,40
+M1014,Dam,48
+USAS-12,Dam,56
+AA-12,Dam,64
+KSG,Dam,72
+M1216,Dam,80
+Pistola Laser,Dam,5
+Pistola de Plasma,Dam,10
+Espingarda Laser,Dam,15
+Espingarda de Plasma,Dam,20
+Rifle Laser,Dam,25
+Rifle de Plasma,Dam,30
+Metralhadora Laser,Dam,35
+Metralhadora de Plasma,Dam,40
+Canhão Laser,Dam,45
+Canhão de Plasma,Dam,50
+Roupa de Pano,Armor,10
+Veste de Couro,Armor,11
+Veste de Couro Reforçado,Armor,12
+Colete de Kevlar,Armor,13
+Veste de MicroKevlar,Armor,14
+Veste de Liga de Titânio,Armor,15
+Veste de Microfibra de Titânio,Armor,16
+Veste de liga Titânio-Kevlar,Armor,17
+Veste de liga Titânio-Carbono,Armor,18
+Armadura Leve de Microfibra de Carbono,Armor,20
+Vestes Militares de Kevlar,20
+Vestes de Kevlar com Aço,Armor,22
+Traje de Microfibra de Aço,Armor,24
+Traje de liga Aço-Kevlar,Armor,26
+Traje de liga Titânio-Kevlar,Armor,28
+Armadura Leve de Titânio,Armor,30
+Armadura de Microfibra de Titânio,Armor,32
+Armadura de Microfibra de Carbono,Armor,34
+Armadura Ativa Leve de Titânio,Armor,36
+Armadura Ativa Leve de Carbono,Armor,40
+Armadura de Kevlar,Armor,30
+Armadura de Ferro,Armor,33
+Armadura de Aço,Armor,36
+Armadura de Liga leve,Armor,39
+Armadura de Titânio,Armor,42
+Armadura de Fibra de Carbono,Armor,45
+Armadura Ativa de Aço,Armor,48
+Armadura Ativa de Liga Leve,Armor,51
+Armadura Ativa de Titânio,Armor,54
+Armadura Ativa de Fibra de Carbono,Armor,60
