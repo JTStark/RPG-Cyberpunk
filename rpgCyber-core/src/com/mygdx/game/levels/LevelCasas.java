@@ -57,7 +57,7 @@ public class LevelCasas extends VisualGameWorld {
 	public LevelCasas (String LevelData) {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
-		v = 8;
+		v = Player.v;
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, (w/h)*10, 10);
 		camera.update();
@@ -84,7 +84,7 @@ public class LevelCasas extends VisualGameWorld {
 		super.act(delta);
 		;
 		if(flagmo){
-			Player.ani.setXY((float)(getX()-0.325*v),(float)(getY() -1.1*v));
+			Player.ani.setXY((float)(getX()-0.325*8),(float)(getY() -1.1*8));
 			camera.position.x+=Player.ani.getX();
 			camera.position.y+=Player.ani.getY();
 			camera.update();
@@ -127,12 +127,7 @@ public class LevelCasas extends VisualGameWorld {
 			}
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
-			flagv = !flagv;
-			if(flagv){
-				v=v*5;
-			}else{
-				v=v/5;
-			}
+			Player.speed();
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
 			try {
