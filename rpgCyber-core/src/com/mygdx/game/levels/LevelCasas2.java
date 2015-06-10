@@ -27,6 +27,7 @@ import com.mygdx.game.battle.BattleHUD;
 import com.mygdx.game.battle.BattleWorld;
 import com.mygdx.game.colision.CBau;
 import com.mygdx.game.colision.CCClide;
+import com.mygdx.game.colision.CCColide;
 import com.mygdx.game.colision.CDoors;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
@@ -56,7 +57,7 @@ public class LevelCasas2 extends VisualGameWorld {
 	public LevelCasas2 (String LevelData) {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
-		v = 8;
+		v = Player.v;
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, (w/h)*10, 10);
 		camera.update();
@@ -83,7 +84,7 @@ public class LevelCasas2 extends VisualGameWorld {
 		super.act(delta);
 		;
 		if(flagmo){
-			Player.ani.setXY((float)(getX()+1.9*v),(float)(getY() +2*v));
+			Player.ani.setXY((float)(getX()+1.9*8),(float)(getY() +2*8));
 			camera.position.x+=Player.ani.getX();
 			camera.position.y+=Player.ani.getY();
 			camera.update();
@@ -126,12 +127,7 @@ public class LevelCasas2 extends VisualGameWorld {
 		
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
-			flagv = !flagv;
-			if(flagv){
-				v=v*5;
-			}else{
-				v=v/5;
-			}
+			Player.speed();
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
 			try {
@@ -157,16 +153,16 @@ public class LevelCasas2 extends VisualGameWorld {
 		CDoors.doorDown(camera, colision);
 		// move player
 		
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCClide.rightP(colision, camera, "blocked")){
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCColide.rightP(colision, camera, "blocked")){
 			dx=1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!CCClide.upP(colision, camera, "blocked")){
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!CCColide.upP(colision, camera, "blocked")){
 			dy=1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!CCClide.leftP(colision, camera, "blocked")){
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!CCColide.leftP(colision, camera, "blocked")){
 			dx=-1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCClide.downP(colision, camera, "blocked")){
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCColide.downP(colision, camera, "blocked")){
 			dy=-1;
 		}
 		

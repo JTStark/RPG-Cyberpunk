@@ -44,7 +44,7 @@ public class TextLevel extends VisualGameWorld {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		if(text.update(delta)){
+		if(!text.update(delta)){
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e1) {

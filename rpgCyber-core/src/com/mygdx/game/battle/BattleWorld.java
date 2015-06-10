@@ -1,5 +1,11 @@
 package com.mygdx.game.battle;
 
+import implementations.combate.AuxTemp;
+import implementations.combate.CEngine;
+import implementations.personagens.AbsPersonagem;
+
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
@@ -17,22 +23,50 @@ public class BattleWorld  extends VisualGameWorld {
 	private Sprite batalha;
 	
 	public static BattleChar palhaco, barbudo, durden, mdr, rexus, cientista;
-	public static BattleChar inimigo1, inimigo2, inimigo3, inimigo4;
+	public static BattleChar inimigo1, inimigo2, inimigo3, inimigo4, inimigo5, inimigo6;
+	
+	
 	
 	
 	
 	public BattleWorld (String LevelData/* Add other parameters of choice*/) {
+		AuxTemp.comeca();
+		
+		
 		WorldSettings.setAmbientColor(Color.WHITE);
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
 		Texture texture = new Texture(Gdx.files.internal("batalha.png")); 
 		batalha = new Sprite(texture);
 		batalha.setSize(WorldSettings.getWorldWidth(), WorldSettings.getWorldHeight());
 		
-		palhaco = new BattleChar("ozob");
-		barbudo = new BattleChar("oleg");
-		cientista = new BattleChar("silvana");
-
 		
+		/* Herois */
+		palhaco = new BattleChar("ozob");	
+		palhaco.setAmigo(true);
+		barbudo = new BattleChar("oleg");
+		barbudo.setAmigo(true);
+		cientista = new BattleChar("silvana");
+		cientista.setAmigo(true);
+		rexus = new BattleChar("rexus");
+		rexus.setAmigo(true);
+		durden = new BattleChar("durden");
+		durden.setAmigo(true);
+		mdr = new BattleChar("rexus"); // mudar
+		mdr.setAmigo(true);
+		
+		/* Inimigos */
+		inimigo1 = new BattleChar("melee");
+		inimigo1.setAmigo(false);
+		inimigo2 = new BattleChar("melee");
+		inimigo2.setAmigo(false);
+		inimigo3 = new BattleChar("melee");
+		inimigo3.setAmigo(false);
+		inimigo4 = new BattleChar("melee");
+		inimigo4.setAmigo(false);
+		inimigo5 = new BattleChar("melee");
+		inimigo5.setAmigo(false);
+		inimigo6 = new BattleChar("melee");
+		inimigo6.setAmigo(false);
 	}
 	
 	@Override
@@ -58,6 +92,16 @@ public class BattleWorld  extends VisualGameWorld {
 		palhaco.act();
 		barbudo.act();
 		cientista.act();
+		rexus.act();
+		durden.act();
+		mdr.act();
+		inimigo1.act();
+		inimigo2.act();
+		inimigo3.act();
+		inimigo4.act();
+		inimigo5.act();
+		inimigo6.act();
+
 	}
 
 	@Override

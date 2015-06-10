@@ -27,17 +27,26 @@
  <tileset firstgid="9" name="FundoLoja" tilewidth="32" tileheight="32">
   <image source="FundoLoja.png" width="416" height="127"/>
  </tileset>
+ <tileset firstgid="48" name="Portal2" tilewidth="32" tileheight="32">
+  <image source="Portal2.png" width="32" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="blocked" value="blocked"/>
+    <property name="shop" value="shop"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Camada de Tiles 1" width="15" height="15">
   <data encoding="base64" compression="zlib">
    eJxjZmBIYGJgYCAVM0PoBBYgTSoG6lswEvWyAdmk4oF286he4vQC88MBJihmBGJWoDgjxMwD+DBQ3wIAlPIa1A==
   </data>
  </layer>
- <layer name="Colisoes" width="15" height="15" opacity="0">
+ <layer name="Colisoes" width="15" height="15" opacity="0.01">
   <properties>
    <property name="blocked" value="blocked"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgYB/Fgx6zkIFH9dJXLzLmICFuAb8DBRg=
+   eJxjZ2BgYB/FA4oNiFDDQgYe1UtfvciYg4T4BwAREgVB
   </data>
  </layer>
  <layer name="Camada de Tiles 3" width="15" height="15">

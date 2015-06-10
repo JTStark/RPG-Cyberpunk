@@ -56,6 +56,7 @@ public class TextComunicator implements IComunicator, InputProcessor {
         this.hight = hight;
         this.textSize = textSize;
         this.cursorOn = cursorOn;
+        
         if(cursorOn) {
             //if(this.fullText == null || !this.fullText.equals(fullText)) {
                 this.fullText = fullText;
@@ -86,6 +87,12 @@ public class TextComunicator implements IComunicator, InputProcessor {
 
     public boolean update(float dt){
         if(cursorOn) {
+        	try {
+				Thread.sleep(50);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
             end = end || (fullText.length() + 1 == text.length());
             // Control of text speed
             counter += dt;

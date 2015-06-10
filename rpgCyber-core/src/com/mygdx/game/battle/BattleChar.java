@@ -13,6 +13,7 @@ public class BattleChar extends Animator {
 	private boolean atacando = false;
 	private int x = -200;
 	private String name;
+	private boolean amigo;
 	
 	private AbsPersonagem person; 
 
@@ -44,7 +45,22 @@ public class BattleChar extends Animator {
         
         name = personagem;
         
-   
+        
+        System.out.println("O tamanhho::::" + CEngine.listaI.size());
+        for(int i = 0; i < CEngine.listaI.size(); i++ ) {
+        	if(name.equalsIgnoreCase(CEngine.listaI.get(i).nome)) {
+        		person = CEngine.listaI.get(i);
+        		System.out.println("Achei:  " + person.nome);
+        	}
+        	
+        	System.out.println("na lista: " + CEngine.listaI.get(i).nome);
+        	
+        	System.out.println("O meu i �: " + i);
+        }
+        
+        if(CEngine.listaH == null)
+        	System.out.println("deu merda, listaI vazia");
+        
         
         
 		
@@ -81,6 +97,24 @@ public class BattleChar extends Animator {
 		int retorno = 0;
 		
 		switch (this.x) {
+		case 330:
+			retorno = 845;
+			break;
+		case 280:
+			retorno = 745;
+			break;
+		case 210:
+			retorno = 625;
+			break;
+		case 140:
+			retorno = 485;
+			break;
+		case 80:
+			retorno = 365;
+			break;
+		case 30:
+			retorno = 270;
+			break;
 		case -20:
 			retorno = 175;
 			break;
@@ -114,6 +148,14 @@ public class BattleChar extends Animator {
 	
 	public AbsPersonagem getPersonagem() {
 		return this.person;
+	}
+	
+	public boolean getAmigo() {
+		return this.amigo;
+	}
+	
+	public void setAmigo(boolean amigo) {
+		this.amigo = amigo;
 	}
 
 }

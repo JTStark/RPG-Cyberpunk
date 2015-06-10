@@ -32,6 +32,8 @@ import com.mygdx.game.animate.Player;
 import com.mygdx.game.battle.BattleHUD;
 import com.mygdx.game.battle.BattleWorld;
 import com.mygdx.game.colision.CBau;
+import com.mygdx.game.colision.CCClide;
+import com.mygdx.game.colision.CCColide;
 import com.mygdx.game.colision.CDoors;
 import com.mygdx.game.menus.MyHub;
 import com.mygdx.game.menus.MyLevelMenu;
@@ -54,14 +56,13 @@ public class MyLevel extends VisualGameWorld {
 	private TiledMapRenderer renderer;
 	private TiledMapTileLayer colision, bau, bau2;
 	private OrthographicCamera camera;
-	private float dx,dy,v;
+	private float dx,dy;
 	private int lim;
 	Light light;
 	private boolean flagv = false, flagmo =true;
 	public MyLevel (String LevelData) {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
-		v = 8;
 		
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, (w/h)*10, 10);
@@ -87,7 +88,7 @@ public class MyLevel extends VisualGameWorld {
 	@Override
 	public void act(float delta) {
 		if(flagmo){
-			Player.ani.setXY((float)(getX()+ 4.172*v),(float)(getY() + 0.3*v));
+			Player.ani.setXY((float)(getX()+ 4.172*8),(float)(getY() + 0.3*8));
 			camera.position.x+=Player.ani.getX();
 			camera.position.y+=Player.ani.getY();
 			camera.update();
@@ -127,12 +128,7 @@ public class MyLevel extends VisualGameWorld {
 			}
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
-			flagv = !flagv;
-			if(flagv){
-				v=v*5;
-			}else{
-				v=v/5;
-			}
+			Player.speed();
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
 			try {
@@ -161,44 +157,19 @@ public class MyLevel extends VisualGameWorld {
 		
 		CDoors.doorDown(camera, colision);
 		// move player
-		if((Gdx.input.isKeyPressed(Input.Keys.RIGHT))&&!(colision.getCell(Math.round(camera.position.x + 1), Math.round(camera.position.y)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCColide.rightP(colision, camera, "blocked")){
 			dx=1;
 		}else
-			
-		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!CCColide.upP(colision, camera, "blocked")){
 			dy=1;
-			if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door") != null){
-				try {
-					ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
 		}else
-		if((Gdx.input.isKeyPressed(Input.Keys.LEFT))&&!(colision.getCell(Math.round(camera.position.x-1), Math.round( camera.position.y)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!CCColide.leftP(colision, camera, "blocked")){
 			dx=-1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("blocked") != null)){
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCColide.downP(colision, camera, "blocked")){
 			dy=-1;
-			if(colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door") != null){
-				if("MapaExterno.tmx" == colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()){
-					try {
-						ScreenCreator.addAndGo(new LevelCasas("Mapas/" + colision.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("door").toString()), new MyHUD("LevelData"));
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}else{
-					try {
-						ScreenCreator.backToPrevious();
-					} catch (Exception e) {
-						e.printStackTrace();
-						
-					}
-				}
-			}
 		}
-
-		Player.ani.setXY(getX()+ dx*delta*v,getY() + dy*delta*v);
+		Player.ani.setXY(getX()+ dx*delta*Player.v,getY() + dy*delta*Player.v);
 		camera.position.x+=Player.ani.getX();
 		camera.position.y+=Player.ani.getY();
 		camera.update();
