@@ -13,12 +13,13 @@ import java.util.ArrayList;
 
 import implementations.personagens.AbsPersonagem;
 import implementations.personagens.herois.*;
+import implementations.personagens.skills.AtaqueBasico;
 
 public class AuxTemp {
 	
 	public int auxiliarIniciativa=0;
 	
-	public static void main(String[] args){
+	public static void comeca(){
 		AbsPersonagem Durden = HDurden.getInstancia();
 		AbsPersonagem MDR = HMDR.getInstancia();
 		AbsPersonagem Oleg = HOleg.getInstancia();
@@ -36,32 +37,32 @@ public class AuxTemp {
 		ArrayList<AbsPersonagem> vetorHer = new ArrayList<AbsPersonagem> ();
 		Durden.agilidade = 100;
 		Durden.sorte = 100;
-		Durden.nome = "hFirst";
+		Durden.nome = "Durden";
 		Durden.tipo = 1;
 		
 		MDR.agilidade = 90;
 		MDR.sorte = 90;
-		MDR.nome = "hSecond";
+		MDR.nome = "MDR";
 		MDR.tipo = 1;
 		
 		Oleg.agilidade = 80;
 		Oleg.sorte = 80;
-		Oleg.nome = "hThird";
+		Oleg.nome = "Oleg";
 		Oleg.tipo = 3;
 		
 		Ozob.agilidade = 70;
 		Ozob.sorte = 70;
-		Ozob.nome = "hFourth";
+		Ozob.nome = "Ozob";
 		Ozob.tipo = 3;
 		
 		Rexus.agilidade = 5;
 		Rexus.sorte = 5;
-		Rexus.nome = "hFifth";
+		Rexus.nome = "Rexus";
 		Rexus.tipo = 5;
 		
 		Silvana.agilidade = 0;
 		Silvana.sorte = 0;
-		Silvana.nome = "hSixth";
+		Silvana.nome = "Silvana";
 		Silvana.tipo = 5;
 		
 		vetorHer.add(0, Durden);
@@ -74,9 +75,14 @@ public class AuxTemp {
 		ArrayList<AbsPersonagem> vetorVil = new ArrayList<AbsPersonagem> ();
 		vFirst.agilidade = 60;
 		vFirst.sorte = 60;
-		vFirst.nome = "vFirst";
+		vFirst.nome = "melee";
 		vFirst.tipo = 1;
 		vFirst.vilao = true;
+		vFirst.skill0 = new AtaqueBasico();
+		vFirst.skill1 = new AtaqueBasico();
+		vFirst.skill2 = new AtaqueBasico();
+		vFirst.skill3 = new AtaqueBasico();
+		
 		vSecond.agilidade = 50;
 		vSecond.sorte = 50;
 		vSecond.nome = "vSecond";

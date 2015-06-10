@@ -137,13 +137,14 @@ public class CRodada {
 	public static void atacar (int trgt, int acao, AbsPersonagem ator) {
 		double weaponDam;
 		
-		if (ator.tipo == 1) weaponDam = ator.danoArma*(1 + (ator.forca*ator.buffForcaValor)/50)+(0.96+(ator.level/25))*0.5; //com melhor arma 100 dano, 100 for�a/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
+		if (ator.tipo == 1) weaponDam = /*ator.danoArma*/30*(1 + (ator.forca*ator.buffForcaValor)/50)+(0.96+(ator.level/25))*0.5; //com melhor arma 100 dano, 100 for�a/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
 		else weaponDam = ator.danoArma*(1 + (ator.percepcao*ator.buffPercepcaoValor)/50)+(0.96+(ator.level/25))*0.5; //com pior arma 4 dano, 15 for�a/percep, lvl 1: 1 (min) - 4 (medio) - 8 max - 16 (crit)
 		
 		switch (acao) {
 			
 			case 0:
 				ator.skill0.execute(CEngine.listaV, CEngine.listaH, weaponDam, trgt, ator);
+				System.out.println("ATAUQE BASICO");
 				break;	
 			
 			case 1:
@@ -404,12 +405,19 @@ public class CRodada {
 		}
 	}
 	
-	public static void AI (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista, int contP, int contI) {
-		int atk, trgt = 1;
+	public static String AI (ArrayList <AbsPersonagem> Herois, ArrayList <AbsPersonagem> Viloes,  ArrayList <AbsPersonagem> Lista, AbsPersonagem vilao) {
+		int atk, trgt = 1, contP, contI;
 		double weaponDam;
 		boolean flag = true;
 		Random random = new Random(); // gerador de numeros randomicos
 		AbsPersonagem temp = new PersonGenerico();
+		String retorno = "nao fez nada";
+		
+		for (contI = 0; Lista.get(contI) != vilao; contI++);
+		
+		for (contP = 0; Viloes.get(contP) != vilao; contP++);
+		
+		System.out.println("IMPRIMINDOOOOOOO: " + "P " + contP +"i " + contI);
 		
 		System.out.println(Lista.get(contI).nome + " " + Lista.get(contI).iniciativa);
 			
@@ -420,6 +428,8 @@ public class CRodada {
 				temp = Viloes.get(contP);
 				Viloes.remove(contP);
 				Viloes.add(contP+1, temp);
+				
+				retorno = (Lista.get(contI).nome + " se reposicionou");
 				
 				flag = false;
 			}				
@@ -436,14 +446,15 @@ public class CRodada {
 		
 		else if (flag) {
 			atk = random.nextInt(100) + 1;
+			trgt = random.nextInt(6)+1;
 			
 			if (Viloes.get(contP).tipo == 1) weaponDam = Viloes.get(contP).danoArma*(1 + (Viloes.get(contP).forca*Viloes.get(contP).buffForcaValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
 			else weaponDam = Viloes.get(contP).danoArma *(1 + (Viloes.get(contP).percepcao*Viloes.get(contP).buffPercepcaoValor)/50)+(0.96+(Viloes.get(contP).level/25))*0.5;
 			
-			if (atk <= 50) Viloes.get(contP).skill0.execute(Herois, Viloes, weaponDam, trgt, Viloes.get(contP));
-			else if ((atk > 50) && (atk <= 75)) Viloes.get(contP).skill1.execute(Herois, Viloes, weaponDam, trgt, Viloes.get(contP));
-			else if ((atk > 75) && (atk <= 90)) Viloes.get(contP).skill2.execute(Herois, Viloes, weaponDam, trgt, Viloes.get(contP));
-			else if ((atk > 90) && (atk <= 100)) Viloes.get(contP).skill3.execute(Herois, Viloes, weaponDam, trgt, Viloes.get(contP));
+			if (atk <= 50) retorno = Viloes.get(contP).skill0.execute(Herois, Viloes, weaponDam, trgt, Viloes.get(contP));
+			else if ((atk > 50) && (atk <= 75)) retorno = Viloes.get(contP).skill1.execute(Herois, Viloes, weaponDam, trgt, Viloes.get(contP));
+			else if ((atk > 75) && (atk <= 90)) retorno = Viloes.get(contP).skill2.execute(Herois, Viloes, weaponDam, trgt, Viloes.get(contP));
+			else if ((atk > 90) && (atk <= 100)) retorno = Viloes.get(contP).skill3.execute(Herois, Viloes, weaponDam, trgt, Viloes.get(contP));
 				
 		}
 		
@@ -451,6 +462,6 @@ public class CRodada {
 			System.out.println(Herois.get(trgt-1).nome + " foi nocauteado!");
 			Herois.remove(trgt-1);
 		}
-		
+		return retorno;	
 	}
 }

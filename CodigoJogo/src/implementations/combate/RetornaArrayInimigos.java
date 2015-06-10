@@ -21,3 +21,10 @@ public class RetornaArrayInimigos {
 		return listaVil;
 	}
 }
+
+
+/*Quando Entrar em contato com o Inimigo, voce deve usar
+
+CEngine.CombatEngine(vetor de herois, vetor de viloes);
+
+*/
