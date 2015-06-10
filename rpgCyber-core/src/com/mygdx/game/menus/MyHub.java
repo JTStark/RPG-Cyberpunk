@@ -56,6 +56,9 @@ import snake.hud.SnakeHUD;
 		/** updates Screen logic */
 		@Override
 		public void act(float delta) {
+			if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
+				Gdx.graphics.setDisplayMode(640, 480, true);
+			}
 			if (Gdx.input.isKeyPressed(Input.Keys.ENTER) || Gdx.input.justTouched()) {
 				if(i ==0){	
 					try {
