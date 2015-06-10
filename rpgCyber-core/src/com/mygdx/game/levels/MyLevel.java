@@ -34,6 +34,7 @@ import com.mygdx.game.battle.BattleWorld;
 import com.mygdx.game.colision.CBau;
 import com.mygdx.game.colision.CCClide;
 import com.mygdx.game.colision.CCColide;
+import com.mygdx.game.colision.CComb;
 import com.mygdx.game.colision.CDoors;
 import com.mygdx.game.inventary.*;
 import com.mygdx.game.menus.MyHub;
@@ -56,7 +57,7 @@ public class MyLevel extends VisualGameWorld {
 
 	private TiledMap map;
 	private TiledMapRenderer renderer;
-	private TiledMapTileLayer colision, bau, bau2;
+	private TiledMapTileLayer colision, bau, bau2,enemies,enemies2;
 	private OrthographicCamera camera;
 	private float dx,dy;
 	private int lim;
@@ -76,6 +77,8 @@ public class MyLevel extends VisualGameWorld {
         colision =  (TiledMapTileLayer)map.getLayers().get("Colisoes");
         bau =  (TiledMapTileLayer)map.getLayers().get("Baus");
         bau2 = (TiledMapTileLayer)map.getLayers().get("Baus2");
+        enemies = (TiledMapTileLayer)map.getLayers().get("Enemies");
+        enemies2 = (TiledMapTileLayer)map.getLayers().get("Exclamacao");
         lim = colision.getHeight();
         
 	}
@@ -168,6 +171,8 @@ public class MyLevel extends VisualGameWorld {
 		CDoors.doorUP(camera, colision);
 		
 		CDoors.doorDown(camera, colision);
+
+		CComb.changeCombat(camera, enemies, enemies2,bau);
 		// move player
 		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCColide.rightP(colision, camera, "blocked")){
 			dx=1;
@@ -204,7 +209,6 @@ public class MyLevel extends VisualGameWorld {
 		renderer.setView(camera);
 		renderer.render();
 		batch.begin();
-		//magician.draw(batch, parentAlpha);
 		batch.end();
 		batch.begin();
 		Player.ani.act();

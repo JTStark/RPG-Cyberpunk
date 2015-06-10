@@ -65,8 +65,9 @@ public class AuxTemp {
 		Silvana.nome = "Silvana";
 		Silvana.tipo = 5;
 		
-		vetorHer.add(0, Durden);
-		vetorHer.add(1, MDR);
+		
+		vetorHer.add(0, MDR);
+		vetorHer.add(1, Durden);
 		vetorHer.add(2, Oleg);
 		vetorHer.add(3, Ozob);
 		vetorHer.add(4, Rexus);
@@ -75,7 +76,7 @@ public class AuxTemp {
 		ArrayList<AbsPersonagem> vetorVil = new ArrayList<AbsPersonagem> ();
 		vFirst.agilidade = 60;
 		vFirst.sorte = 60;
-		vFirst.nome = "melee";
+		vFirst.nome = "melee1";
 		vFirst.tipo = 1;
 		vFirst.vilao = true;
 		vFirst.skill0 = new AtaqueBasico();
@@ -85,35 +86,60 @@ public class AuxTemp {
 		
 		vSecond.agilidade = 50;
 		vSecond.sorte = 50;
-		vSecond.nome = "vSecond";
+		vSecond.nome = "melee2";
 		vSecond.tipo = 1;
 		vSecond.vilao = true;
+		vSecond.skill0 = new AtaqueBasico();
+		vSecond.skill1 = new AtaqueBasico();
+		vSecond.skill2 = new AtaqueBasico();
+		vSecond.skill3 = new AtaqueBasico();
+		
 		vThird.agilidade = 40;
 		vThird.sorte = 40;
-		vThird.nome = "vThird";
+		vThird.nome = "melee3";
 		vThird.tipo = 3;
 		vThird.vilao = true;
+		vThird.skill0 = new AtaqueBasico();
+		vThird.skill1 = new AtaqueBasico();
+		vThird.skill2 = new AtaqueBasico();
+		vThird.skill3 = new AtaqueBasico();
+		
 		vFourth.agilidade = 30;
 		vFourth.sorte = 30;
-		vFourth.nome = "vFourth";
+		vFourth.nome = "melee4";
 		vFourth.tipo = 3;
 		vFourth.vilao = true;
+		vFourth.skill0 = new AtaqueBasico();
+		vFourth.skill1 = new AtaqueBasico();
+		vFourth.skill2 = new AtaqueBasico();
+		vFourth.skill3 = new AtaqueBasico();
+		
 		vFifth.agilidade = 20;
 		vFifth.sorte = 20;
-		vFifth.nome = "vFifth";
+		vFifth.nome = "melee5";
 		vFifth.tipo = 5;
 		vFifth.vilao = true;
+		vFifth.skill0 = new AtaqueBasico();
+		vFifth.skill1 = new AtaqueBasico();
+		vFifth.skill2 = new AtaqueBasico();
+		vFifth.skill3 = new AtaqueBasico();
+		
 		vSixth.agilidade = 10;
 		vSixth.sorte = 10;
-		vSixth.nome = "vSixth";
+		vSixth.nome = "melee6";
 		vSixth.tipo = 5;
 		vSixth.vilao = true;
-		vetorVil.add(0, vFirst);
-		vetorVil.add(1, vSecond);
-		vetorVil.add(2, vThird);
-		vetorVil.add(3, vFourth);
-		vetorVil.add(4, vFifth);
-		vetorVil.add(5, vSixth);
+		vSixth.skill0 = new AtaqueBasico();
+		vSixth.skill1 = new AtaqueBasico();
+		vSixth.skill2 = new AtaqueBasico();
+		vSixth.skill3 = new AtaqueBasico();
+		
+		vetorVil.add(0, vSecond);
+		vetorVil.add(1, vFirst);
+		vetorVil.add(2, vFourth);
+		vetorVil.add(3, vThird);
+		vetorVil.add(4, vSixth);
+		vetorVil.add(5, vFifth);
 		
 		CEngine.CombatEngine(vetorHer, vetorVil);
 	}

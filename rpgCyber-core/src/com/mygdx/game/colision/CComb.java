@@ -1,55 +1,68 @@
 package com.mygdx.game.colision;
 
+import snake.engine.creators.ScreenCreator;
+
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.mygdx.game.battle.BattleHUD;
+import com.mygdx.game.battle.BattleWorld;
 
 public class CComb {
 	public CComb(){
 		
 	}
-	public static void changeCombat(OrthographicCamera camera,TiledMapTileLayer bau,TiledMapTileLayer bau2){
-		if(bau != null){
-			if(bau.getCell(Math.round(camera.position.x+1), Math.round(camera.position.y)) != null){
-				if(bau.getCell(Math.round(camera.position.x+1), Math.round(camera.position.y)).getTile().getProperties().get("battle")!=null){
-				bau.setCell(Math.round(camera.position.x+1), Math.round(camera.position.y), bau2.getCell(0, 0));
+	public static void changeCombat(OrthographicCamera camera,TiledMapTileLayer enemies,TiledMapTileLayer enemies2,TiledMapTileLayer bau){
+		if(enemies != null){
+			for(int i = 1; i < 5;i++){
+				if(enemies.getCell(Math.round(camera.position.x+i), Math.round(camera.position.y)) != null){
+					if(enemies.getCell(Math.round(camera.position.x+i), Math.round(camera.position.y)).getTile().getProperties().get("battle")!=null){
+						try{
+						if(enemies.getCell(Math.round(camera.position.x+i), 
+								Math.round(camera.position.y)).getTile().getProperties().get("battle").toString().equalsIgnoreCase("right")){
+							enemies.setCell(Math.round(camera.position.x+i), Math.round(camera.position.y), enemies2.getCell(3, 0));
+							try {
+								ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						}catch(Exception e){}
+					}
 				}
-			}
-			if(bau.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)) !=null){
-				if(bau.getCell(Math.round(camera.position.x), Math.round(camera.position.y+1)).getTile().getProperties().get("battle")!=null){
-				bau.setCell(Math.round(camera.position.x), Math.round(camera.position.y+1), bau2.getCell(0, 0));
+				if(enemies.getCell(Math.round(camera.position.x), Math.round(camera.position.y+i)) !=null){
+					if(enemies.getCell(Math.round(camera.position.x), Math.round(camera.position.y+i)).getTile().getProperties().get("battle")!=null){
+						try{
+						if(enemies.getCell(Math.round(camera.position.x), 
+								Math.round(camera.position.y)).getTile().getProperties().get("battle").toString().equalsIgnoreCase("up")){
+							enemies.setCell(Math.round(camera.position.x), Math.round(camera.position.y+i), enemies2.getCell(2, 0));
+							try {
+								ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						}catch(Exception e){}
+					}
 				}
-			}
-			if(bau.getCell(Math.round(camera.position.x-1), Math.round(camera.position.y)) !=null){
-				if(bau.getCell(Math.round(camera.position.x-1), Math.round(camera.position.y)).getTile().getProperties().get("battle")!=null){
-				bau.setCell(Math.round(camera.position.x-1), Math.round(camera.position.y), bau2.getCell(0, 0));
+				if(enemies.getCell(Math.round(camera.position.x-i), Math.round(camera.position.y)) !=null){
+					if(enemies.getCell(Math.round(camera.position.x-i), Math.round(camera.position.y)).getTile().getProperties().get("battle")!=null){
+						try{
+						if(enemies.getCell(Math.round(camera.position.x-i), 
+								Math.round(camera.position.y)).getTile().getProperties().get("battle").toString().equalsIgnoreCase("left")){
+							enemies.setCell(Math.round(camera.position.x-i), Math.round(camera.position.y), enemies2.getCell(1, 0));
+							try {
+								ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+						}catch(Exception e){}
+					}
+				}
 			
-				}
-			}
-			if(bau.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)) !=null){
-				if(bau.getCell(Math.round(camera.position.x), Math.round(camera.position.y-1)).getTile().getProperties().get("battle")!=null){
-				bau.setCell(Math.round(camera.position.x), Math.round(camera.position.y-1), bau2.getCell(0, 0));
-				}
-			}
-			if(bau.getCell(Math.round(camera.position.x+2), Math.round(camera.position.y)) != null){
-				if(bau.getCell(Math.round(camera.position.x+2), Math.round(camera.position.y)).getTile().getProperties().get("battle")!=null){
-				bau.setCell(Math.round(camera.position.x+2), Math.round(camera.position.y), bau2.getCell(0, 0));
-				}
-			}
-			if(bau.getCell(Math.round(camera.position.x), Math.round(camera.position.y+2)) !=null){
-				if(bau.getCell(Math.round(camera.position.x), Math.round(camera.position.y+2)).getTile().getProperties().get("battle")!=null){
-				bau.setCell(Math.round(camera.position.x), Math.round(camera.position.y+2), bau2.getCell(0, 0));
-				}
-			}
-			if(bau.getCell(Math.round(camera.position.x-2), Math.round(camera.position.y)) !=null){
-				if(bau.getCell(Math.round(camera.position.x-2), Math.round(camera.position.y)).getTile().getProperties().get("battle")!=null){
-				bau.setCell(Math.round(camera.position.x-2), Math.round(camera.position.y), bau2.getCell(0, 0));
-			
-				}
-			}
-			if(bau.getCell(Math.round(camera.position.x), Math.round(camera.position.y-2)) !=null){
-				if(bau.getCell(Math.round(camera.position.x), Math.round(camera.position.y-2)).getTile().getProperties().get("battle")!=null){
-				bau.setCell(Math.round(camera.position.x), Math.round(camera.position.y-2), bau2.getCell(0, 0));
-				}
 			}
 		}
 	}
