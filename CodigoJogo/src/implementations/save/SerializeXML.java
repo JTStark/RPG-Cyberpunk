@@ -23,13 +23,13 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException; 
  
 // Classe que serializa os personagens e o inventario 
-public class SerializeXML { 
-    
+public class SerializeXML {
+	public static TSave save = new TSave();
 	// Metodo de salvar o jogo
     public static void saveGame () throws JAXBException, IOException{ 
         
     	// Cria nova classe TSave
-        TSave save = new TSave();
+        
         
         // Cria o arquivo XML a partir de um Marshaller usando a classe JAXBContext
         JAXBContext context = JAXBContext.newInstance(TSave.class); 
@@ -74,12 +74,12 @@ public class SerializeXML {
         ArrayList<AbsPersonagem> herois = new ArrayList<AbsPersonagem>(); 
         
         // Pega instancias de cada heroi
-        herois.add(TSave.getHMDR());
-        herois.add(TSave.getHDurden());  
-        herois.add(TSave.getHOleg()); 
-        herois.add(TSave.getHOzob()); 
-        herois.add(TSave.getHRexus()); 
-        herois.add(TSave.getHSilvana()); 
+        herois.add(save.getHMDR());
+        herois.add(save.getHDurden());  
+        herois.add(save.getHOleg()); 
+        herois.add(save.getHOzob()); 
+        herois.add(save.getHRexus()); 
+        herois.add(save.getHSilvana()); 
      
         // Pega o nome de todos os herois com tag de elemento XML heroi
         NodeList listaDePersonagem = doc.getElementsByTagName("heroi"); 
