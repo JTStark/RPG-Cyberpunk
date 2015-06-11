@@ -12,7 +12,7 @@ public class Inventario implements InterfaceInventario{
 	 */
 	
 	public static Inventario instancia = new Inventario();
-	private Vector<String> mochila = new Vector<String>(40);
+	private static Vector<String> mochila = new Vector<String>(40);
 	
 	/* Construtor */
 	private Inventario(){
@@ -63,7 +63,7 @@ public class Inventario implements InterfaceInventario{
 			return false;
 	}
 	/* Retorna um vector com todos os equipamentos na mochila */
-	public ArrayList<String> getMochila(){
+	public static ArrayList<String> getMochila(){
 		ArrayList<String> itens = new ArrayList<String>();
 		for (int i = 0; i < mochila.size(); i++){
 				String item_mochila = mochila.elementAt(i);	
@@ -73,7 +73,7 @@ public class Inventario implements InterfaceInventario{
 		return itens;
 	}
 	/* Retorna uma Array com os itens desejados de determinado intervalo de posicoes */
-	public ArrayList<Item> getMochila(int tamanho_inicial, int tamanho_final){
+	public static ArrayList<Item> getMochila(int tamanho_inicial, int tamanho_final){
 		ArrayList<Item> itens = new ArrayList<Item>();
 		for (int i = tamanho_inicial; i <= tamanho_final; i++){
 			if(mochila.size() > i){
