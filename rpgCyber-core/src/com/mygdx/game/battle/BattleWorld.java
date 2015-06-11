@@ -202,7 +202,9 @@ public class BattleWorld  extends VisualGameWorld {
 
 	@Override
 	public void dispose() {
+		musica.dispose();
 		batalha.getTexture().dispose();
+	
 	}
 
 }

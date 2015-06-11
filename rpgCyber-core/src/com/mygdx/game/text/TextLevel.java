@@ -81,6 +81,7 @@ public class TextLevel extends VisualGameWorld {
 	@Override
 	public void dispose() {
 		text.dispose();
+		musica.dispose();
 	}
 
 

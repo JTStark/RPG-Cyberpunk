@@ -11,6 +11,7 @@ public class CBau {
 		
 	}
 	public static void changeBau(OrthographicCamera camera,TiledMapTileLayer bau,TiledMapTileLayer bau2,TiledMapTileLayer colision){
+		try{
 		if(bau != null){
 			if(CCClide.up(bau, camera)){
 				if(CCClide.upP(bau, camera, "chest")&&Inventario.getInstancia().adicionar_item(Item.geraAleatorio().getName())){
@@ -21,24 +22,27 @@ public class CBau {
 					colision.setCell(Math.round(camera.position.x), Math.round(camera.position.y+1), bau2.getCell(0, 0));
 				}
 			}
-			else if(CCClide.right(bau, camera)){
+			if(CCClide.right(bau, camera)){
 				if(CCClide.rightP(bau, camera, "chest")&&Inventario.getInstancia().adicionar_item(Item.geraAleatorio().getName())){
 					
-				bau.setCell(Math.round(camera.position.x+1), Math.round((float)(camera.position.y+0.2)), bau2.getCell(0, 0));
+				bau.setCell(Math.round(camera.position.x+1), Math.round((float)(camera.position.y)), bau2.getCell(0, 0));
 				
 				if(CCClide.rightP(colision, camera, "blocked"))
-					colision.setCell(Math.round(camera.position.x+1), Math.round((float)(camera.position.y+0.2)), bau2.getCell(0, 0));
+					colision.setCell(Math.round(camera.position.x+1), Math.round((float)(camera.position.y)), bau2.getCell(0, 0));
 				}
 			}
-			else if(CCClide.left(bau, camera)){
+			if(CCClide.left(bau, camera)){
 				if(CCClide.leftP(bau, camera, "chest")&&Inventario.getInstancia().adicionar_item(Item.geraAleatorio().getName())){
 					
-				bau.setCell(Math.round(camera.position.x-1), Math.round((float)(camera.position.y+0.2)), bau2.getCell(0, 0));
+				bau.setCell(Math.round(camera.position.x-1), Math.round((float)(camera.position.y)), bau2.getCell(0, 0));
 				
 				if(CCClide.leftP(colision, camera, "blocked"))
-					colision.setCell(Math.round(camera.position.x-1), Math.round((float)(camera.position.y+0.2)), bau2.getCell(0, 0));
+					colision.setCell(Math.round(camera.position.x-1), Math.round((float)(camera.position.y)), bau2.getCell(0, 0));
 				}
 			}
 		}
-	}
+		
+		}catch(Exception e){}
+		}
+		
 }

@@ -2,7 +2,9 @@ package com.mygdx.game.menus;
 
 import snake.engine.creators.WorldSettings;
 import snake.visuals.enhanced.VisualGameWorld;
+
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -21,13 +23,11 @@ public class MyLevelMenu extends VisualGameWorld {
 	
 	// The code below is simply a prototype for testing purposes 
 	private Sprite temple;
-	
 	public MyLevelMenu (String LevelData/* Add other parameters of choice*/) {
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
 		Texture texture = new Texture(Gdx.files.internal("novo.png")); 
 		temple = new Sprite(texture);
 		temple.setSize(WorldSettings.getWorldWidth(), WorldSettings.getWorldHeight());
-		
 	}
 	
 	
@@ -54,7 +54,6 @@ public class MyLevelMenu extends VisualGameWorld {
 	@Override
 	public void dispose() {
 		temple.getTexture().dispose();
-	
 	}
 
 

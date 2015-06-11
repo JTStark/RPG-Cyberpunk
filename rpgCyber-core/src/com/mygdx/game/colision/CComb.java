@@ -13,6 +13,7 @@ public class CComb {
 		
 	}
 	public static void changeCombat(OrthographicCamera camera,TiledMapTileLayer enemies,TiledMapTileLayer enemies2,TiledMapTileLayer bau){
+		try{
 		if(enemies != null){
 			for(int i = 1; i < 5;i++){
 				if(enemies.getCell(Math.round(camera.position.x+i), Math.round(camera.position.y)) != null){
@@ -56,6 +57,8 @@ public class CComb {
 			
 			}
 		}
+	
+		}catch(Exception e){}
 	}
 }
 	
