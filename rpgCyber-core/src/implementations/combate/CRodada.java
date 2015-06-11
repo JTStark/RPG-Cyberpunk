@@ -83,13 +83,13 @@ public class CRodada {
 		return ((int)(Jogador.agilidade * Jogador.buffAgilidadeValor / 25) + 1);
 	}
 	
-	public static void Reposition (ArrayList <AbsPersonagem> Jogadores, int contP, int mov) { // recebe o vetor de jogadores apropriado e a posicao do jogador atual
+	public static void Reposition (ArrayList <AbsPersonagem> Jogadores, int posAtual, int posDestino) { // recebe o vetor de jogadores apropriado e a posicao do jogador atual
 		AbsPersonagem temp = new PersonGenerico();		
 		
 		// reposiciona o jogador para a posicao escolhida
-		temp = Jogadores.get(contP);
-		Jogadores.remove(contP);
-		Jogadores.add(mov, temp);
+		temp = Jogadores.get(posAtual);
+		Jogadores.remove(posAtual);
+		Jogadores.add(posDestino, temp);
 	}
 	
 	public static String getAlvos (int skill, AbsPersonagem ator) {
@@ -134,9 +134,9 @@ public class CRodada {
 		
 	}
 	
-	public static void atacar (int trgt, int acao, AbsPersonagem ator) {
+	public static String atacar (int trgt, int acao, AbsPersonagem ator) {
 		double weaponDam;
-		
+		String retorno = "";
 		
 		
 		if (ator.tipo == 1) weaponDam = /*ator.danoArma*/30*(1 + (ator.forca*ator.buffForcaValor)/50)+(0.96+(ator.level/25))*0.5; //com melhor arma 100 dano, 100 for�a/percep, lvl 50: 250/3 (min) - 250 (medio) - 500 (max) - 1000 (crit)
@@ -145,22 +145,28 @@ public class CRodada {
 		switch (acao) {
 			
 			case 0:
-				ator.skill0.execute(CEngine.listaV, CEngine.listaH, weaponDam, trgt, ator);
-				System.out.println("ATAUQE BASICO");
+				retorno = ator.skill0.execute(CEngine.listaV, CEngine.listaH, weaponDam, trgt, ator);
 				break;	
 			
 			case 1:
-				ator.skill1.execute(CEngine.listaV, CEngine.listaH, weaponDam, trgt, ator);
+				retorno = ator.skill1.execute(CEngine.listaV, CEngine.listaH, weaponDam, trgt, ator);
 				break;	
 			
 			case 2:
-				ator.skill2.execute(CEngine.listaV, CEngine.listaH, weaponDam, trgt, ator);
+				retorno = ator.skill2.execute(CEngine.listaV, CEngine.listaH, weaponDam, trgt, ator);
 				break;	
 				
 			case 3:
-				ator.skill3.execute(CEngine.listaV, CEngine.listaH, weaponDam, trgt, ator);
+				retorno = ator.skill3.execute(CEngine.listaV, CEngine.listaH, weaponDam, trgt, ator);
 				break;		
 		}
+		
+		if (CEngine.listaV.get(trgt-1).hp <= 0) {
+			CEngine.listaI.remove(CEngine.listaV.get(trgt-1));
+			CEngine.listaV.remove(trgt-1);
+		}
+		
+		return retorno;
 	}
 	
 	@Deprecated

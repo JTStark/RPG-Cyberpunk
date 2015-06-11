@@ -23,7 +23,6 @@ public class New extends GameStart {
 	public void create () {
 		super.batch = new SpriteBatch();
 		ScreenCreator.setGameInstance(this);
-		JukeBox.init();
 		Player.getP();
 		try {
 			ScreenCreator.addAndGo(new TextLevel("O ano eh 2119, os personagens encontram-se em Delta City, "
