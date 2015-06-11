@@ -12,6 +12,8 @@ public class Player {
 	public static Animator ani = ani1;
 	public static int v = 5;
 	public static ArrayList<AbsPersonagem> listaP = new ArrayList<AbsPersonagem>();
+
+	public static ArrayList<AbsPersonagem> listaN = new ArrayList<AbsPersonagem>();
 	public static AbsPersonagem Durden = HDurden.getInstancia();
 	public static AbsPersonagem MDR = HMDR.getInstancia();
 	public static AbsPersonagem Oleg = HOleg.getInstancia();
@@ -27,6 +29,12 @@ public class Player {
 		listaP.add(Ozob);
 		listaP.add(Rexus);
 		listaP.add(Silvana);
+		listaN.add(MDR);
+		listaN.add(Durden);
+		listaN.add(Oleg);
+		listaN.add(Ozob);
+		listaN.add(Rexus);
+		listaN.add(Silvana);
 		return listaP;
 	}
 	public static void change(){

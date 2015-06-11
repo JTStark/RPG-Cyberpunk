@@ -9,6 +9,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Input.TextInputListener;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -29,15 +30,21 @@ public class TextLevel extends VisualGameWorld {
 	
 	// The code below is simply a prototype for testing purposes 
 	private TextComunicator text;
+	private  Music musica;
 	public TextLevel (String LevelData/* Add other parameters of choice*/) {
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
 		text = new TextComunicator();
 		text.newText(LevelData, WorldSettings.getWorldWidth() - 50, WorldSettings.getWorldHeight() , 200, true);
+
+		 musica = Gdx.audio.newMusic(Gdx.files.internal("GameIntro1.mp3"));
 	}
 	
 	
 	public void show () {
 		WorldSettings.setAmbientColor(Color.WHITE);
+
+		musica.play();
+		musica.setLooping(true);
 	}
 	
 	
@@ -60,7 +67,6 @@ public class TextLevel extends VisualGameWorld {
 			}
 		}
 	
-		
 	}
 	
 	@Override

@@ -26,7 +26,7 @@ public class Inspire implements Skill {
 			Herois.get(trgt).buffResistenciaRounds = 1;
 			Herois.get(trgt).buffSorteValor = 1 + ((5 + constante/20)/100);
 			Herois.get(trgt).buffSorteRounds = 1;
-		return ("Seu discurso inspirou seu aliado a lutar com bravura !");
+		return ("Seu discurso inspirou seu aliado a lutarem com bravura !");
 	}
 
 }

@@ -65,7 +65,7 @@ public class Save {
         DocumentBuilder builder = factory.newDocumentBuilder(); 
          
         // Pode ser o nome ou o caminho! 
-        Document doc = builder.parse("save.xml"); 
+        try{Document doc = builder.parse("save.xml"); 
      
         NodeList listaDePersonagem = doc.getElementsByTagName("heroi"); 
          
@@ -111,7 +111,10 @@ public class Save {
                 } 
             } 
              
-        } 
+        }
         return herois; 
+        }catch(Exception e){
+        	return null;
+        }
     } 
 }

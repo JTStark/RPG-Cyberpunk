@@ -13,6 +13,7 @@ public class BattleChar extends Animator {
 	private int x = -200;
 	private String name;
 	private boolean amigo;
+	private boolean vivo = true;
 	
 	private AbsPersonagem person; 
 
@@ -157,4 +158,11 @@ public class BattleChar extends Animator {
 		this.amigo = amigo;
 	}
 
+	public boolean getVivo() {
+		return this.vivo;
+	}
+	
+	public void morreu() {
+		this.vivo = false;
+	}
 }

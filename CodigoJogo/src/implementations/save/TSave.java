@@ -1,5 +1,7 @@
 package implementations.save;
 
+import java.util.ArrayList;
+
 import implementations.inventario.Inventario;
 import implementations.personagens.*;
 import implementations.personagens.herois.HDurden;
@@ -9,83 +11,55 @@ import implementations.personagens.herois.HOzob;
 import implementations.personagens.herois.HRexus;
 import implementations.personagens.herois.HSilvana;
 
-import java.util.ArrayList;
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+// Classe de elementos XML para a serializacao
 @XmlRootElement(name = "Save")
 public class TSave {
 
-	private Inventario inventario;
-	private HDurden HDurden;
-	private HMDR HMDR;
-	private HOleg HOleg;
-	private HOzob HOzob;
-	private HRexus HRexus;
-	private HSilvana HSilvana;
-	
-	@XmlElement(name = "heroi")
-	public AbsPersonagem getHDurden() {
-		return this.HDurden;
-	}
-
-	public void setHDurden(HDurden hDurden) {
-		this.HDurden = hDurden;
-	}
-
-	@XmlElement(name = "heroi")
-	public AbsPersonagem getHMDR() {
-		return this.HMDR;
-	}
-
-	public void setHMDR(HMDR hMDR) {
-		this.HMDR = hMDR;
-	}
-
-	@XmlElement(name = "heroi")
-	public AbsPersonagem getHOleg() {
-		return this.HOleg;
-	}
-
-	public void setHOleg(HOleg hOleg) {
-		this.HOleg = hOleg;
-	}
-
-	@XmlElement(name = "heroi")
-	public AbsPersonagem getHOzob() {
-		return HOzob;
-	}
-
-	public void setHOzob(HOzob hOzob) {
-		this.HOzob = hOzob;
-	}
-
-	@XmlElement(name = "heroi")
-	public AbsPersonagem getHRexus() {
-		return HRexus;
-	}
-
-	
-	public void setHRexus(HRexus hRexus) {
-		this.HRexus = hRexus;
-	}
-
-	@XmlElement(name = "heroi")
-	public AbsPersonagem getHSilvana() {
-		return HSilvana;
-	}
-
-	public void setHSilvana(HSilvana hSilvana) {
-		this.HSilvana = hSilvana;
-	}
-	
+	// Elementos a serem serializados: Inventario e os Herois
 	@XmlElement(name = "inventario")
-	public Inventario getInventario(){
-		return this.inventario;
+	private static ArrayList<String> mochila = Inventario.getMochila();
+	@XmlElement(name = "heroi")
+	private static HDurden hDurden = HDurden.getInstancia();
+	@XmlElement(name = "heroi")
+	private static HMDR hMDR = HMDR.getInstancia();
+	@XmlElement(name = "heroi")
+	private static HOleg hOleg = HOleg.getInstancia();
+	@XmlElement(name = "heroi")
+	private static HOzob hOzob = HOzob.getInstancia();
+	@XmlElement(name = "heroi")
+	private static HRexus hRexus = HRexus.getInstancia();
+	@XmlElement(name = "heroi")
+	private static HSilvana hSilvana = HSilvana.getInstancia();
+	
+	// Metodos getters
+	public static AbsPersonagem getHDurden() {
+		return hDurden;
+	}
+
+	public static AbsPersonagem getHMDR() {
+		return hMDR;
+	}
+
+	public static AbsPersonagem getHOleg() {
+		return hOleg;
+	}
+
+	public static AbsPersonagem getHOzob() {
+		return hOzob;
+	}
+
+	public static AbsPersonagem getHRexus() {
+		return hRexus;
+	}
+
+	public static AbsPersonagem getHSilvana() {
+		return hSilvana;
 	}
 	
-	public void setInventario(){
-		this.inventario = Inventario.getInstancia();
+	public static ArrayList<String> getInventario(){
+		return mochila;
 	}
 }
