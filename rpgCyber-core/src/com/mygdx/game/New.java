@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import implementations.combate.AuxTemp;
 import snake.engine.models.*;
 import snake.engine.creators.ScreenCreator;
 
@@ -23,6 +24,8 @@ public class New extends GameStart {
 	public void create () {
 		super.batch = new SpriteBatch();
 		ScreenCreator.setGameInstance(this);
+
+		AuxTemp.comeca();
 		Player.getP();
 		try {
 			ScreenCreator.addAndGo(new TextLevel("O ano eh 2119, os personagens encontram-se em Delta City, "

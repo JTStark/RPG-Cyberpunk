@@ -31,7 +31,7 @@ public class VilaoBoss extends AbsPersonagem{
 		
 		this.skill0 = new AtaqueBasico();
 		
-		this.maxHP += (this.level * (this.resistencia * (2/3))+100)*5;
+		this.maxHP += (this.level * (this.resistencia * (2/3)))*5;
 		this.hp = this.maxHP;
 	}
 }

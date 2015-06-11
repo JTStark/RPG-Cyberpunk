@@ -24,10 +24,10 @@ public class RetornaArrayInimigos {
 				listaVil.add(fabrica.getVillain(geradoRandom, level*2, level, level, nMelee));
 				nMelee++;
 			}
-			else{
-				listaVil.add(fabrica.getVillain(geradoRandom, level*2, level, level, nRanged));
-				nRanged++;
-			}
+		//	else{
+			//	listaVil.add(fabrica.getVillain(geradoRandom, level*2, level, level));
+				//nRanged++;
+		//	}
 		}
 		return listaVil;
 	}

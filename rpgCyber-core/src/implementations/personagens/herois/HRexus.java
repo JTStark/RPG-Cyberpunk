@@ -35,8 +35,6 @@ public class HRexus extends AbsPersonagem {
 		this.skill1 = new Charm();
 		this.skill2 = new FirstAid();
 		this.skill3 = new Inspire();
-		
-		this.tipo = 5;
 	}
 	
 	public static HRexus getInstancia(){

@@ -1,7 +1,7 @@
 package implementations.combate;
 
 /**
- * @author - Otï¿½vio Vansetti Miranda e Lucca Maia Bollani
+ * @author - Otávio Vansetti Miranda e Lucca Maia Bollani
  * 
  * Sistema de Combate para RPG Cyberpunk, DeltaNexus
  * 
@@ -11,8 +11,6 @@ package implementations.combate;
 
 import java.util.ArrayList;
 
-import com.mygdx.game.animate.Player;
-
 import implementations.personagens.AbsPersonagem;
 import implementations.personagens.herois.*;
 import implementations.personagens.skills.AtaqueBasico;
@@ -20,8 +18,7 @@ import implementations.personagens.skills.AtaqueBasico;
 public class AuxTemp {
 	
 	public int auxiliarIniciativa=0;
-	public static ArrayList<AbsPersonagem> vetorHer2 = new ArrayList<AbsPersonagem> ();
-	public static ArrayList<AbsPersonagem> vetorVil2 = new ArrayList<AbsPersonagem> ();
+	
 	public static void comeca(){
 		AbsPersonagem Durden = HDurden.getInstancia();
 		AbsPersonagem MDR = HMDR.getInstancia();
@@ -143,17 +140,8 @@ public class AuxTemp {
 		vetorVil.add(3, vThird);
 		vetorVil.add(4, vSixth);
 		vetorVil.add(5, vFifth);
-		vetorHer2 = vetorHer;
-		vetorVil2 = vetorVil;
-		//CEngine.CombatEngine(vetorHer, vetorVil);
+		
+		CEngine.CombatEngine(vetorHer, vetorVil);
 	}
-	public static ArrayList<AbsPersonagem> getHer(){
-		return vetorHer2;
-	}
-	public static ArrayList<AbsPersonagem> getVil(){
-		return vetorVil2;
-	}
-	public static void comeca2(){
-	CEngine.CombatEngine(Player.listaP, getVil());
-	}	
+	
 }

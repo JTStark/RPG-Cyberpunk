@@ -26,8 +26,17 @@ public class BattleHUD extends HUD {
 	private int acaoOpcao = 0;
 	String posta =  "";
 	
-	private boolean ganhou = false;
-	private boolean perdeu = false;
+	private String xpPalhaco = "";
+	private String xpDurden = "";
+	private String xpMdr = "";
+	private String xpCientista = "";
+	private String xpBarbudo = "";
+	private String xpRexus = "";
+	
+
+	
+	private static boolean ganhou = false;
+	private static boolean perdeu = false;
 	
 	private boolean ataque = false;
 	private boolean inimigoAtacando = false;
@@ -55,7 +64,8 @@ public class BattleHUD extends HUD {
 	public BattleHUD (String levelData) {
 		super();
 		
-		
+		ganhou = false;
+		perdeu = false;
 		
 		infos = new SnakeInfosHUD();
 		dialog  = new SnakeDialogHUD();
@@ -147,10 +157,21 @@ public class BattleHUD extends HUD {
 			font.getData().setScale(0.8f);	
 			
 			/* Postar os amigos */
-			if(BattleWorld.palhaco.getVivo())
-				font.draw(batch, "" + (int)BattleWorld.palhaco.getPersonagem().hp, 440 + BattleWorld.palhaco.getPositionTurno(), 350);
+			if(BattleWorld.palhaco.getVivo()) {
+				if(BattleWorld.palhaco.getPersonagem().hp > 0) {
+					font.draw(batch, "" + (int)BattleWorld.palhaco.getPersonagem().hp, 440 + BattleWorld.palhaco.getPositionTurno(), 350);
+				}
+				else {
+					font.draw(batch, "Morreu", 440 + BattleWorld.palhaco.getPositionTurno(), 350);
+				}
+			}
 			if(BattleWorld.durden.getVivo())
-				font.draw(batch, "" + (int)BattleWorld.durden.getPersonagem().hp, 440 + BattleWorld.durden.getPositionTurno(), 350); 
+				if(BattleWorld.durden.getPersonagem().hp > 0) {
+					font.draw(batch, "" + (int)BattleWorld.durden.getPersonagem().hp, 440 + BattleWorld.durden.getPositionTurno(), 350);
+				}
+				else {
+					font.draw(batch, "Morreu", 440 + BattleWorld.durden.getPositionTurno(), 350);
+				}
 			if(BattleWorld.cientista.getVivo())
 				font.draw(batch, "" + (int)BattleWorld.cientista.getPersonagem().hp, 440 + BattleWorld.cientista.getPositionTurno(), 350);
 			if(BattleWorld.mdr.getVivo())
@@ -162,17 +183,47 @@ public class BattleHUD extends HUD {
 			
 			/* Postar os inimigos */
 			if(BattleWorld.inimigo1.getVivo())
-				font.draw(batch, "" + (int)BattleWorld.inimigo1.getPersonagem().hp, 440 + BattleWorld.inimigo1.getPositionTurno(), 350);
+				if(BattleWorld.inimigo1.getPersonagem().hp > 0) {
+					font.draw(batch, "" + (int)BattleWorld.inimigo1.getPersonagem().hp, 440 + BattleWorld.inimigo1.getPositionTurno(), 350);
+				}
+				else {
+					font.draw(batch, "Morreu", 440 + BattleWorld.inimigo1.getPositionTurno(), 350);
+				}
 			if(BattleWorld.inimigo2.getVivo())
-				font.draw(batch, "" + (int)BattleWorld.inimigo2.getPersonagem().hp, 440 + BattleWorld.inimigo2.getPositionTurno(), 350);
+				if(BattleWorld.inimigo2.getPersonagem().hp > 0) {
+					font.draw(batch, "" + (int)BattleWorld.inimigo2.getPersonagem().hp, 440 + BattleWorld.inimigo2.getPositionTurno(), 350);
+				}
+				else {
+					font.draw(batch, "Morreu", 440 + BattleWorld.inimigo2.getPositionTurno(), 350);
+				}
 			if(BattleWorld.inimigo3.getVivo())
-				font.draw(batch, "" + (int)BattleWorld.inimigo3.getPersonagem().hp, 440 + BattleWorld.inimigo3.getPositionTurno(), 350);
+				if(BattleWorld.inimigo3.getPersonagem().hp > 0) {
+					font.draw(batch, "" + (int)BattleWorld.inimigo3.getPersonagem().hp, 440 + BattleWorld.inimigo3.getPositionTurno(), 350);
+				}
+				else {
+					font.draw(batch, "Morreu", 440 + BattleWorld.inimigo3.getPositionTurno(), 350);
+				}
 			if(BattleWorld.inimigo4.getVivo())
-				font.draw(batch, "" + (int)BattleWorld.inimigo4.getPersonagem().hp, 440 + BattleWorld.inimigo4.getPositionTurno(), 350);
+				if(BattleWorld.inimigo4.getPersonagem().hp > 0) {
+					font.draw(batch, "" + (int)BattleWorld.inimigo4.getPersonagem().hp, 440 + BattleWorld.inimigo4.getPositionTurno(), 350);
+				}
+				else {
+					font.draw(batch, "Morreu", 440 + BattleWorld.inimigo4.getPositionTurno(), 350);
+				}
 			if(BattleWorld.inimigo5.getVivo())
-				font.draw(batch, "" + (int)BattleWorld.inimigo5.getPersonagem().hp, 440 + BattleWorld.inimigo5.getPositionTurno(), 350);
+				if(BattleWorld.inimigo5.getPersonagem().hp > 0) {
+					font.draw(batch, "" + (int)BattleWorld.inimigo5.getPersonagem().hp, 440 + BattleWorld.inimigo5.getPositionTurno(), 350);
+				}
+				else {
+					font.draw(batch, "Morreu", 440 + BattleWorld.inimigo5.getPositionTurno(), 350);
+				}
 			if(BattleWorld.inimigo6.getVivo())
-				font.draw(batch, "" + (int)BattleWorld.inimigo6.getPersonagem().hp, 440 + BattleWorld.inimigo6.getPositionTurno(), 350);
+				if(BattleWorld.inimigo6.getPersonagem().hp > 0) {
+					font.draw(batch, "" + (int)BattleWorld.inimigo6.getPersonagem().hp, 440 + BattleWorld.inimigo6.getPositionTurno(), 350);
+				}
+				else {
+					font.draw(batch, "Morreu", 440 + BattleWorld.inimigo6.getPositionTurno(), 350);
+				}
 			
 			if(atual.getAmigo() == true) {
 				/* Atributos*/
@@ -206,7 +257,7 @@ public class BattleHUD extends HUD {
 					font.setColor(Color.WHITE);
 					font.draw(batch, "Atacar", 650, 174);
 					font.draw(batch, "Deslocar", 650, 139);
-					font.draw(batch, "Invent�rio", 650, 104);
+					font.draw(batch, "Inventario", 650, 104);
 					font.draw(batch, "Nada", 650, 69);
 					font.draw(batch, "Fugir", 650, 34);
 					
@@ -222,7 +273,7 @@ public class BattleHUD extends HUD {
 						font.draw(batch, "Deslocar", 650, 139);
 						break;
 					case 2:
-						font.draw(batch, "Invent�rio", 650, 104);
+						font.draw(batch, "Inventario", 650, 104);
 						break;
 					case 3:
 						font.draw(batch, "Nada", 650, 69);
@@ -283,28 +334,7 @@ public class BattleHUD extends HUD {
 								
 								var = CRodada.getAlvos(acaoOpcao, atual.getPersonagem());
 								
-								if(var.equalsIgnoreCase("melee")) { //melee
-									font.draw(batch, "Alvo", BattleWorld.inimigo1.getPositionTurno(), 550);
-									font.draw(batch, "Alvo", BattleWorld.inimigo2.getPositionTurno(), 550);							
-								}
-								if(var.equalsIgnoreCase("ranged")) {//Ranged
-									font.draw(batch, "Alvo", BattleWorld.inimigo1.getPositionTurno(), 550);
-									font.draw(batch, "Alvo", BattleWorld.inimigo2.getPositionTurno(), 550);	
-									font.draw(batch, "Alvo", BattleWorld.inimigo3.getPositionTurno(), 550);
-									font.draw(batch, "Alvo", BattleWorld.inimigo4.getPositionTurno(), 550);	
-									font.draw(batch, "Alvo", BattleWorld.inimigo5.getPositionTurno(), 550);
-									font.draw(batch, "Alvo", BattleWorld.inimigo6.getPositionTurno(), 550);							
-									
-								}
-								if(var.equalsIgnoreCase("amigo")) {//amigo
-									font.draw(batch, "Alvo", BattleWorld.durden.getPositionTurno(), 550);
-									font.draw(batch, "Alvo", BattleWorld.palhaco.getPositionTurno(), 550);	
-									font.draw(batch, "Alvo", BattleWorld.rexus.getPositionTurno(), 550);
-									font.draw(batch, "Alvo", BattleWorld.cientista.getPositionTurno(), 550);	
-									font.draw(batch, "Alvo", BattleWorld.mdr.getPositionTurno(), 550);
-									font.draw(batch, "Alvo", BattleWorld.barbudo.getPositionTurno(), 550);		
-									
-								}
+								
 								
 								font.setColor(Color.RED);
 								
@@ -625,20 +655,31 @@ public class BattleHUD extends HUD {
 		}
 		else {
 			if(ganhou) {
-				font.getData().setScale(0.7f);				
+				font.getData().setScale(2f);				
 				font.setColor(Color.WHITE);
 				
-				font.draw(batch, "Voce ganhou!" , 520, 139);
+				font.draw(batch, "Aperte Enter" , 300, 700);
+				
+				font.getData().setScale(0.8f);	
+				font.setColor(Color.WHITE);
+				
+				font.draw(batch, "Durden: " + xpDurden , 300, 600);
+				font.draw(batch, "MDR: " + xpMdr , 300, 550);
+				font.draw(batch, "Ozob: " + xpPalhaco , 300, 500);
+				font.draw(batch, "Rexus: " + xpRexus , 300, 450);
+				font.draw(batch, "Silvana: " + xpCientista , 300, 400);
+				font.draw(batch, "Oleg: " + xpBarbudo ,300, 350);
 				
 				font.setColor(Color.RED);
-				font.draw(batch, "ok" , 520, 69);
+				font.getData().setScale(3f);
+				font.draw(batch, "ok" , 700,150);
 				
 			}
 			if(perdeu) {
-				font.getData().setScale(0.7f);				
+				font.getData().setScale(2f);				
 				font.setColor(Color.WHITE);
 				
-				font.draw(batch, "Voce perdeu!!" , 520, 139);
+				font.draw(batch, "Voce Perdeu!" , 300, 700);
 				font.setColor(Color.RED);
 				font.draw(batch, "ok" , 520, 69);
 			}
@@ -872,23 +913,54 @@ public class BattleHUD extends HUD {
 							}
 								
 							if(acao == 3) { // nada
+								acaoOpcao = 0;
+								acao = 0;
+								opcoes = false;
+								
+								atual.setAtacando(false);
+								
+								/* Trocar de personagem*/
+								AbsPersonagem personAtual = CRodada.getVez();
+								
+								if(personAtual != null) {
+									if(personAtual.vilao == false) {
+										if(personAtual.nome.equalsIgnoreCase("oleg"))
+											atual = BattleWorld.barbudo;
+										if(personAtual.nome.equalsIgnoreCase("silvana"))
+											atual = BattleWorld.cientista;
+										if(personAtual.nome.equalsIgnoreCase("ozob"))
+											atual = BattleWorld.palhaco;
+										if(personAtual.nome.equalsIgnoreCase("durden"))
+											atual = BattleWorld.durden;
+										if(personAtual.nome.equalsIgnoreCase("rexus"))
+											atual = BattleWorld.rexus;
+										if(personAtual.nome.equalsIgnoreCase("mdr"))
+											atual = BattleWorld.mdr;		
+									}
+									else {
+										if(personAtual.nome.equalsIgnoreCase("melee1"))
+											atual = BattleWorld.inimigo1;
+										if(personAtual.nome.equalsIgnoreCase("melee2"))
+											atual = BattleWorld.inimigo2;
+										if(personAtual.nome.equalsIgnoreCase("melee3"))
+											atual = BattleWorld.inimigo3;
+										if(personAtual.nome.equalsIgnoreCase("melee4"))
+											atual = BattleWorld.inimigo4;
+										if(personAtual.nome.equalsIgnoreCase("melee5"))
+											atual = BattleWorld.inimigo5;
+										if(personAtual.nome.equalsIgnoreCase("melee6"))
+											atual = BattleWorld.inimigo6;	
+									}
+								}
+								
 									
 								
 							}
 								
 							if(acao == 4) { // fugir
 									
-								
-								try {
-									ScreenCreator.backToPrevious();
-								} catch (Exception e) {
-									String[] param = {"SnakeLevel", "MainMenu", "LevelDataID"};
-									try {
-										ScreenCreator.switchAndGo(param);
-									} catch (Exception excp) {
-										System.out.println("Couldn't switch screens.");
-									}
-								}
+
+								CEngine.listaV.clear();
 									
 								
 									
@@ -1094,12 +1166,7 @@ public class BattleHUD extends HUD {
 											atual = BattleWorld.inimigo6;	
 									}
 									
-									if(CEngine.listaV.isEmpty()) {
-										BattleWorld.musica.stop();
-										
-										ganhou = true;   
-										System.out.println("ACABOU GANHAMOOOOO"); 
-									}
+									
 								
 								}
 								
@@ -1118,6 +1185,24 @@ public class BattleHUD extends HUD {
 							
 						}
 					}
+					
+					
+				}
+				
+				if(CEngine.listaV.isEmpty()) {
+					BattleWorld.musica.stop();
+					BattleWorld.musica.dispose();
+					
+					ganhou = true;   
+					System.out.println("ACABOU GANHAMOOOOO"); 
+					
+					CRodada.endBattle(CEngine.listaH, CEngine.listaI);
+					xpPalhaco = CRodada.exp(CRodada.EXP, BattleWorld.palhaco.getPersonagem());
+					xpDurden = CRodada.exp(CRodada.EXP, BattleWorld.durden.getPersonagem());
+					xpCientista = CRodada.exp(CRodada.EXP, BattleWorld.cientista.getPersonagem());
+					xpBarbudo = CRodada.exp(CRodada.EXP, BattleWorld.barbudo.getPersonagem());
+					xpMdr = CRodada.exp(CRodada.EXP, BattleWorld.mdr.getPersonagem());
+					xpRexus = CRodada.exp(CRodada.EXP, BattleWorld.rexus.getPersonagem());
 					
 					
 				}
@@ -1255,9 +1340,10 @@ public class BattleHUD extends HUD {
 						atualizaPosition();
 					}
 					else { //O jogo acabou e perdemos
-						System.out.println("ACABOOOOOUUUUUU");
-						perdeu = true;
 						
+						perdeu = true;
+						BattleWorld.musica.stop();
+						BattleWorld.musica.dispose();
 					}
 					
 				}
@@ -1265,6 +1351,24 @@ public class BattleHUD extends HUD {
 		}
 		else { //acabou
 			if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+				BattleWorld.barbudo = null;
+				BattleWorld.palhaco = null;
+				BattleWorld.cientista = null;
+				BattleWorld.rexus = null;
+				BattleWorld.mdr = null;
+				BattleWorld.durden = null;
+				
+				BattleWorld.inimigo1 = null;
+				BattleWorld.inimigo2 = null;
+				BattleWorld.inimigo3 = null;
+				BattleWorld.inimigo4 = null;
+				BattleWorld.inimigo5 = null;
+				BattleWorld.inimigo6 = null;
+				
+				BattleWorld.musica = null; 
+				
+				
+				
 				try {
 					ScreenCreator.backToPrevious();
 				} catch (Exception e) {
@@ -1279,20 +1383,7 @@ public class BattleHUD extends HUD {
 		}
 		
 		
-	}
-
-	
-
-	
-
-	
-
-	private void trocaVilao(BattleChar morto, int dead2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
+	}	
 
 	private void posicao(BattleChar per) {
 		
@@ -1387,6 +1478,10 @@ public class BattleHUD extends HUD {
 	public void dispose() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public static boolean getAcabou() {
+		return (ganhou || perdeu);
 	}
 
 }

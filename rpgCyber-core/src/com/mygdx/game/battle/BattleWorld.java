@@ -40,8 +40,9 @@ public class BattleWorld  extends VisualGameWorld {
 	
 	
 	public BattleWorld (String LevelData/* Add other parameters of choice*/) {
-		//AuxTemp.comeca();
-		CEngine.CombatEngine(Player.listaP, RetornaArrayInimigos.GetArray());
+		AuxTemp.comeca();
+		AuxTemp.comeca2();
+		//CEngine.CombatEngine(Player.listaP, AuxTemp.getVil());
 		 musica = Gdx.audio.newMusic(Gdx.files.internal("musicas/batalha.mp3"));
 		 
 		 
@@ -121,7 +122,9 @@ public class BattleWorld  extends VisualGameWorld {
 	@Override
 	public void act(float delta) {
 		if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE)) {
-			try {
+			/*try {
+				Player.ordenate();
+				musica.pause();
 				ScreenCreator.backToPrevious();
 			} catch (Exception e) {
 				String[] param = {"SnakeLevel", "MainMenu", "LevelDataID"};
@@ -130,7 +133,8 @@ public class BattleWorld  extends VisualGameWorld {
 				} catch (Exception excp) {
 					System.out.println("Couldn't switch screens.");
 				}
-			}
+			}*/
+			CEngine.listaV.clear();
 		}
 	}
 	
@@ -139,31 +143,32 @@ public class BattleWorld  extends VisualGameWorld {
 		batalha.draw(batch);
 		super.draw(batch, parentAlpha);
 		
-		if(palhaco.getVivo())
-			palhaco.act();
-		if(barbudo.getVivo())
-			barbudo.act();
-		if(cientista.getVivo())
-			cientista.act();
-		if(rexus.getVivo())
-			rexus.act();
-		if(durden.getVivo())
-			durden.act();
-		if(mdr.getVivo())
-			mdr.act();
-		if(inimigo1.getVivo())
-			inimigo1.act();
-		if(inimigo2.getVivo())
-			inimigo2.act();
-		if(inimigo3.getVivo())
-			inimigo3.act();
-		if(inimigo4.getVivo())
-			inimigo4.act();
-		if(inimigo5.getVivo())
-			inimigo5.act();
-		if(inimigo6.getVivo())
-			inimigo6.act();
-
+		if(!BattleHUD.getAcabou()){
+			if(palhaco.getVivo())
+				palhaco.act();
+			if(barbudo.getVivo())
+				barbudo.act();
+			if(cientista.getVivo())
+				cientista.act();
+			if(rexus.getVivo())
+				rexus.act();
+			if(durden.getVivo())
+				durden.act();
+			if(mdr.getVivo())
+				mdr.act();
+			if(inimigo1.getVivo())
+				inimigo1.act();
+			if(inimigo2.getVivo())
+				inimigo2.act();
+			if(inimigo3.getVivo())
+				inimigo3.act();
+			if(inimigo4.getVivo())
+				inimigo4.act();
+			if(inimigo5.getVivo())
+				inimigo5.act();
+			if(inimigo6.getVivo())
+				inimigo6.act();
+		}
 	}
 
 	@Override
@@ -202,9 +207,7 @@ public class BattleWorld  extends VisualGameWorld {
 
 	@Override
 	public void dispose() {
-		musica.dispose();
 		batalha.getTexture().dispose();
-	
 	}
 
 }

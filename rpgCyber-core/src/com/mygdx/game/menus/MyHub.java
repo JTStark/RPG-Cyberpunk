@@ -73,7 +73,6 @@ import snake.hud.SnakeHUD;
 			if (Gdx.input.isKeyPressed(Input.Keys.ENTER) || Gdx.input.justTouched()) {
 				if(i ==0){	
 					try {
-						Player.listaP = Player.listaN;
 						ScreenCreator.addAndGo(new MyLevel("Mapas/MapaExterno.tmx"), new MyHUD("LevelData"));
 					} catch (Exception e) {
 						e.printStackTrace();

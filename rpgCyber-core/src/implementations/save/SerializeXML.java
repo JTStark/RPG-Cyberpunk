@@ -1,12 +1,7 @@
 package implementations.save; 
+import implementations.inventario.Inventario;
 import implementations.personagens.AbsPersonagem; 
-import implementations.personagens.herois.HDurden; 
-import implementations.personagens.herois.HMDR; 
-import implementations.personagens.herois.HOleg; 
-import implementations.personagens.herois.HOzob; 
-import implementations.personagens.herois.HRexus; 
-import implementations.personagens.herois.HSilvana; 
- 
+import implementations.save.TSave;
 
 import java.io.FileWriter; 
 import java.io.IOException; 
@@ -27,68 +22,95 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList; 
 import org.xml.sax.SAXException; 
  
- 
-public class Save { 
-         
-    public static void saveGame (ArrayList<AbsPersonagem> herois) throws JAXBException, IOException{ 
-         
-        TSave save = new TSave(); 
-        save.setInventario(); 
-        save.setHMDR((HMDR)herois.get(0)); 
-        save.setHDurden((HDurden)herois.get(1)); 
-        save.setHOleg((HOleg)herois.get(2)); 
-        save.setHOzob((HOzob)herois.get(3)); 
-        save.setHRexus((HRexus)herois.get(4)); 
-        save.setHSilvana((HSilvana)herois.get(5)); 
-         
-        // Cria o arquivo XML 
+// Classe que serializa os personagens e o inventario 
+public class SerializeXML { 
+    
+	// Metodo de salvar o jogo
+    public static void saveGame () throws JAXBException, IOException{ 
+        
+    	// Cria nova classe TSave
+        TSave save = new TSave();
+        
+        // Cria o arquivo XML a partir de um Marshaller usando a classe JAXBContext
         JAXBContext context = JAXBContext.newInstance(TSave.class); 
-        Marshaller marshal = context.createMarshaller(); 
-         
-        //marshal.marshal(save, System.out); 
-         
+        Marshaller marshal = context.createMarshaller();  
         FileWriter writer = new FileWriter("save.xml"); 
-         
+        
         marshal.marshal(save, writer); 
     } 
-     
+    
+    // Metodo de carregar o jogo
     public static ArrayList<AbsPersonagem> loadGame () throws SAXException, IOException, ParserConfigurationException{ 
-        // Le o arquivo XML --------------------------------------------------------- 
-         
-        ArrayList<AbsPersonagem> herois = new ArrayList<AbsPersonagem>(); 
-         
-        herois.add(HMDR.getInstancia()); 
-        herois.add(HDurden.getInstancia()); 
-        herois.add(HOleg.getInstancia()); 
-        herois.add(HOzob.getInstancia()); 
-        herois.add(HRexus.getInstancia()); 
-        herois.add(HSilvana.getInstancia()); 
-         
+
+    	// Le o arquivo XML---------------------------------------------------------------- 
+
+    	
+        // Cria a factory que vai ler o documento XML
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); 
         DocumentBuilder builder = factory.newDocumentBuilder(); 
          
-        // Pode ser o nome ou o caminho! 
-        try{Document doc = builder.parse("save.xml"); 
+        // Le o documento de acordo com seu nome 
+        Document doc = builder.parse("save.xml"); 
+        
+        // Pega o nome de todos os herois com tag de elemento XML heroi
+        NodeList listaDeItems = doc.getElementsByTagName("inventario"); 
+       
+        // Conta a quantidade de items salvos
+        int totalItems = listaDeItems.getLength(); 
+        
+        // Loop para a quantidade de items
+        for (int i = 0; i < totalItems; i ++){ 
+            
+        	// Pega o noh de cada item e o transforma em um elemento
+            Node noItem = listaDeItems.item(i); 
+            Element elementoItem = (Element) noItem; 
+            
+            // Adiciona no inventario todos os items que estavam salvos
+        	Inventario inventario = Inventario.getInstancia();
+    		inventario.adicionar_item(elementoItem.getTextContent());
+        }
+ 
+        // Recupera ArrayList de herois
+        ArrayList<AbsPersonagem> herois = new ArrayList<AbsPersonagem>(); 
+        
+        // Pega instancias de cada heroi
+        herois.add(TSave.getHMDR());
+        herois.add(TSave.getHDurden());  
+        herois.add(TSave.getHOleg()); 
+        herois.add(TSave.getHOzob()); 
+        herois.add(TSave.getHRexus()); 
+        herois.add(TSave.getHSilvana()); 
      
+        // Pega o nome de todos os herois com tag de elemento XML heroi
         NodeList listaDePersonagem = doc.getElementsByTagName("heroi"); 
-         
+        
+        // Conta a quantidade de herois salvos
         int totalPersonagens = listaDePersonagem.getLength(); 
          
+        // Loop para a quantidade de herois
         for (int i = 0; i < totalPersonagens; i ++){ 
-             
+            
+        	// Pega o noh de cada heroi e o transforma em um elemento
             Node noHeroi = listaDePersonagem.item(i); 
             Element elementoHeroi = (Element) noHeroi; 
-             
+            
+            // Pega os filhos do elemento heroi, que sao seus atributos
             NodeList atributosHeroi = elementoHeroi.getChildNodes(); 
-             
+            
+            // Conta a quantidade de atributos salvos
             int tamanhoAtributos = atributosHeroi.getLength(); 
-             
+            
+            // Loop para a quantidade de atributos
             for (int j = 0; j < tamanhoAtributos; j++){ 
+                
+            	// Pega o noh de cada atributo e o transforma em um elemento
                 Node noAtributo = atributosHeroi.item(j); 
                 Element elementoAtributo = (Element) noAtributo; 
-                 
+                
+                // Switch para cada elemento
                 switch(elementoAtributo.getTagName()){ 
-
+                
+                // Adiciona no personagem cada atributo de acordo com qual eh lido 
                 case "forca": herois.get(i).forca = Integer.parseInt(elementoAtributo.getTextContent()); 
                 case "percepcao": herois.get(i).percepcao = (Integer.parseInt(elementoAtributo.getTextContent()));; 
                 case "resistencia": herois.get(i).resistencia = (Integer.parseInt(elementoAtributo.getTextContent())); 
@@ -109,14 +131,17 @@ public class Save {
                 case "tipo": herois.get(i).tipo = (int) (Double.parseDouble(elementoAtributo.getTextContent())); 
                 case "vilao": herois.get(i).vilao = (Boolean.parseBoolean(elementoAtributo.getTextContent())); 
                 case "nome": herois.get(i).nome = (elementoAtributo.getTextContent()); 
-                 
+                
                 } 
             } 
-             
         }
+        
+        // Arruma ordem para outros modulos
+        AbsPersonagem aux = herois.get(1);
+        herois.set(1, herois.get(0));
+        herois.set(0, aux);
+        
+        // Retorna string de herois
         return herois; 
-        }catch(Exception e){
-        	return null;
-        }
     } 
 }

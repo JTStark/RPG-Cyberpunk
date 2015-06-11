@@ -8,7 +8,6 @@ import java.util.Random;
 public class ShrapnelShell implements Skill {
 
 	public static int tipoAlvo = 1;	
-	public static int tipoSkill = 3;
 	
 	@Override
 	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {

@@ -8,12 +8,11 @@ import java.util.Random;
 public class GranadeThrow implements Skill {
 
 	public static int tipoAlvo = 1;	
-	public static int tipoSkill = 3;
 	
 	@Override
 	public String execute(ArrayList<AbsPersonagem> Viloes, ArrayList<AbsPersonagem> heroiAtacantes, double dam, int trgt, AbsPersonagem heroiAtacante) {
 		int danoFinal, resistencia, i, countHits=0;
-		double armadura, fator;
+		double armadura = 1, fator;
 		Random random = new Random();
 		for(i = trgt-2; i <= trgt && i < Viloes.size(); i++){
 			
@@ -23,7 +22,7 @@ public class GranadeThrow implements Skill {
 			// Resistencia(com buffs)/5 * fator de nivel
 			resistencia = (int)(((Viloes.get(i).resistencia*Viloes.get(i).buffResistenciaValor)/5)*(0.96 + (Viloes.get(i).level/15)));
 			
-			fator = random.nextInt(6)+1; //o fator é dividido por 3, assim 1 = 1/3 danoFinal, 2 = 2/3 danoFinal, 3 = danoFinal, 4 = 4/3 danoFinal, 5 = 5/3 danoFinal e 6 = 2 danoFinal. A media é o danoFinal esperado da arma
+			fator = random.nextInt(6)+1; //o fator ï¿½ dividido por 3, assim 1 = 1/3 danoFinal, 2 = 2/3 danoFinal, 3 = danoFinal, 4 = 4/3 danoFinal, 5 = 5/3 danoFinal e 6 = 2 danoFinal. A media ï¿½ o danoFinal esperado da arma
 
 			danoFinal = ((int)((dam * (fator/3)) * armadura)) - resistencia; // danoFinal final
 			
@@ -31,7 +30,7 @@ public class GranadeThrow implements Skill {
 			danoFinal = (int)(danoFinal * 0.35);
 			//ENDSKILL
 			
-			if (danoFinal <= 0) danoFinal = 1; // danoFinal minimo é 1
+			if (danoFinal <= 0) danoFinal = 1; // danoFinal minimo ï¿½ 1
 			
 			if ((int)(heroiAtacante.critico * heroiAtacante.buffCriticoValor)+random.nextInt(100)+1 >= 100) { // Soma a chance de critico com random 1-100. Se passar de 100 crita
 				danoFinal *= 2;

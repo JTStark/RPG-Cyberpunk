@@ -35,8 +35,6 @@ public class HSilvana extends AbsPersonagem {
 		this.skill1 = new AcidBomb();
 		this.skill2 = new PoisonDart();
 		this.skill3 = new InvisibilityCloak();
-		
-		this.tipo = 5;
 	}
 	
 	public static HSilvana getInstancia(){
