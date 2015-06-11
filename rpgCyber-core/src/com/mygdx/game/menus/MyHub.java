@@ -1,7 +1,14 @@
 package com.mygdx.game.menus;
 
 
-	import box2dLight.Light;
+	import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import implementations.save.Save;
+import box2dLight.Light;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -10,6 +17,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.mygdx.game.androidkeys.AndroidInput;
+import com.mygdx.game.animate.Player;
 import com.mygdx.game.levels.MyHUD;
 import com.mygdx.game.levels.MyLevel;
 import com.mygdx.game.text.TextHUB;
@@ -65,10 +73,27 @@ import snake.hud.SnakeHUD;
 			if (Gdx.input.isKeyPressed(Input.Keys.ENTER) || Gdx.input.justTouched()) {
 				if(i ==0){	
 					try {
+						Player.listaP = Player.listaN;
 						ScreenCreator.addAndGo(new MyLevel("Mapas/MapaExterno.tmx"), new MyHUD("LevelData"));
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+				}
+				if(i ==1){
+					try {
+						Player.listaP = Save.loadGame();
+						if(Player.listaP != null){
+							try {
+								ScreenCreator.addAndGo(new MyLevel("Mapas/MapaExterno.tmx"), new MyHUD("LevelData"));
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					} catch (SAXException | IOException
+							| ParserConfigurationException e) {
+						Player.getP();
+					}
+					
 				}
 				if(i ==2){
 					Gdx.app.exit();
@@ -91,7 +116,6 @@ import snake.hud.SnakeHUD;
 					i = 0;
 				else{
 					i--;
-					i--;
 				}
 			}
 			if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
@@ -99,10 +123,10 @@ import snake.hud.SnakeHUD;
 					i = 2;
 				else{
 					i++;
-					i++;
 				}
 			}
-			instructions[0] = "Start";
+			instructions[0] = "New Game";
+			instructions[1] = "Load Game";
 			instructions[2] = "Exit";
 		}
 		
@@ -111,7 +135,7 @@ import snake.hud.SnakeHUD;
 		@Override
 		public void draw(Batch batch, float parentAlpha){
 			//Drawing touch input
-			if (Gdx.input.isKeyPressed(Input.Keys.SPACE) || Gdx.input.isTouched())
+			if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
 				font.draw(batch, "You're touching it! (maybe pressing space button).", 0, 80);
 
 			//Drawing instructions
@@ -124,24 +148,24 @@ import snake.hud.SnakeHUD;
 				layout.setText(font, instructions[0]);
 				font.draw(batch, layout, w / 2 - layout.width / 2 -50, h / 2 - layout.height / 2 + 50);
 			}
+			if(i==1){
+				font.setColor(Color.RED);
+				layout.setText(font, instructions[1]);
+				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
+				font.setColor(Color.WHITE);
+			}else{
+				layout.setText(font, instructions[1]);
+				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
+			}
 			if(i==2){
 				font.setColor(Color.RED);
 				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
+				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
 				font.setColor(Color.WHITE);
 			}else{
 				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
+				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
 			}
-			/*if(i==2){
-				font.setColor(Color.RED);
-				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
-				font.setColor(Color.WHITE);
-			}else{
-				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
-			}*/
 		}
 
 		@Override

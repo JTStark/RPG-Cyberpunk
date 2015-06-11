@@ -51,7 +51,7 @@ public class ShrapnelShell implements Skill {
 				countHits++;
 			}
 		}
-		return ("Acertou "+ countHits+" inimigos");
+		return ("Voce acertou "+ countHits+" inimigos");
 	}
 
 }

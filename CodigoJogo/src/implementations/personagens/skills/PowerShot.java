@@ -45,7 +45,7 @@ public class PowerShot implements Skill {
 				
 				//ENDSKILL
 				Viloes.get(trgt-1).hp -= danoFinal;
-				return ("Atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
+				return ("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
 			}
 			else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) { // Igual ao critico
 				Viloes.get(trgt-1).hp -= danoFinal;

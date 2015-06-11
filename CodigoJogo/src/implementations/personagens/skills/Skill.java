@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public interface Skill {
 
 	public static int tipoAlvo = 1;	
-	public static int tipoSkill = 0;
 	
 	public String execute(ArrayList <AbsPersonagem> Viloes, ArrayList <AbsPersonagem> Herois, double dam, int trgt, AbsPersonagem heroiAtacante);
 	
