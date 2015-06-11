@@ -18,7 +18,7 @@ import java.util.Scanner;
 import java.util.Random;
 import java.lang.reflect.Field;
 
-public class CRodada {
+public abstract class CRodada {
 
 	static int numRodada=0; //variavel global para que o antigo, deprecated BUFFS possa acompanhar a passagem de rodadas
 	
