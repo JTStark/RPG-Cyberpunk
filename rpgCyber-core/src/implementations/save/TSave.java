@@ -17,75 +17,75 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "Save")
 public class TSave {
 
-	private  Inventario inventario;
-	private  HDurden HDurden;
-	private  HMDR HMDR;
-	private  HOleg HOleg;
-	private  HOzob HOzob;
-	private  HRexus HRexus;
-	private  HSilvana HSilvana;
+	private Inventario inventario;
+	private HDurden HDurden;
+	private HMDR HMDR;
+	private HOleg HOleg;
+	private HOzob HOzob;
+	private HRexus HRexus;
+	private HSilvana HSilvana;
 	
 	@XmlElement(name = "heroi")
-	public  AbsPersonagem getHDurden() {
-		return HDurden;
+	public AbsPersonagem getHDurden() {
+		return this.HDurden;
 	}
 
-	public  void setHDurden(HDurden hDurden) {
-		HDurden = hDurden;
-	}
-
-	@XmlElement(name = "heroi")
-	public  AbsPersonagem getHMDR() {
-		return HMDR;
-	}
-
-	public  void setHMDR(HMDR hMDR) {
-		HMDR = hMDR;
+	public void setHDurden(HDurden hDurden) {
+		this.HDurden = hDurden;
 	}
 
 	@XmlElement(name = "heroi")
-	public  AbsPersonagem getHOleg() {
-		return HOleg;
+	public AbsPersonagem getHMDR() {
+		return this.HMDR;
 	}
 
-	public  void setHOleg(HOleg hOleg) {
-		HOleg = hOleg;
+	public void setHMDR(HMDR hMDR) {
+		this.HMDR = hMDR;
 	}
 
 	@XmlElement(name = "heroi")
-	public  AbsPersonagem getHOzob() {
+	public AbsPersonagem getHOleg() {
+		return this.HOleg;
+	}
+
+	public void setHOleg(HOleg hOleg) {
+		this.HOleg = hOleg;
+	}
+
+	@XmlElement(name = "heroi")
+	public AbsPersonagem getHOzob() {
 		return HOzob;
 	}
 
-	public  void setHOzob(HOzob hOzob) {
-		HOzob = hOzob;
+	public void setHOzob(HOzob hOzob) {
+		this.HOzob = hOzob;
 	}
 
 	@XmlElement(name = "heroi")
-	public  AbsPersonagem getHRexus() {
+	public AbsPersonagem getHRexus() {
 		return HRexus;
 	}
 
 	
-	public  void setHRexus(HRexus hRexus) {
-		HRexus = hRexus;
+	public void setHRexus(HRexus hRexus) {
+		this.HRexus = hRexus;
 	}
 
 	@XmlElement(name = "heroi")
-	public  AbsPersonagem getHSilvana() {
+	public AbsPersonagem getHSilvana() {
 		return HSilvana;
 	}
 
-	public  void setHSilvana(HSilvana hSilvana) {
-		HSilvana = hSilvana;
+	public void setHSilvana(HSilvana hSilvana) {
+		this.HSilvana = hSilvana;
 	}
 	
 	@XmlElement(name = "inventario")
-	public  Inventario getInventario(){
-		return inventario;
+	public Inventario getInventario(){
+		return this.inventario;
 	}
 	
-	public  void setInventario(){
-		inventario = Inventario.getInstancia();
+	public void setInventario(){
+		this.inventario = Inventario.getInstancia();
 	}
 }

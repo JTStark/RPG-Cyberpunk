@@ -15,8 +15,6 @@ public class AtaqueBasico implements Skill {
 		double armadura, fator;
 		Random random = new Random();
 		
-		System.out.println("ENTREI NO EXECUTE");
-		
 		armadura = (1 - ((Viloes.get(trgt-1).armadura*Viloes.get(trgt-1).buffArmaduraValor)/100));
 		if (armadura < 0.1) armadura = 0.1; // evita armadura acima de 90% por buffs
 		
@@ -31,18 +29,11 @@ public class AtaqueBasico implements Skill {
 		
 		if ((int)(heroiAtacante.critico * heroiAtacante.buffCriticoValor)+random.nextInt(100)+1 >= 100) { // Soma a chance de critico com random 1-100. Se passar de 100 crita
 			danoFinal *= 2;
-			System.out.println("HP antes:" + Viloes.get(trgt-1).hp);
 			Viloes.get(trgt-1).hp -= danoFinal;
-			System.out.println("HP depois:" + Viloes.get(trgt-1).hp);
-			System.out.println(("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!"));
 			return ("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!");
 		}
 		else if ((int)(Viloes.get(trgt-1).esquiva*Viloes.get(trgt-1).buffEsquivaValor)+random.nextInt(100)+1 < 100) { // Igual ao critico
-			System.out.println("HP antes:" + Viloes.get(trgt-1).hp);
 			Viloes.get(trgt-1).hp -= danoFinal;
-			System.out.println("HP depois:" + Viloes.get(trgt-1).hp);
-			System.out.println(("Voce atingiu " + Viloes.get(trgt-1).nome + " com um golpe critico! " + danoFinal + " de danoFinal!"));
-
 			return (Viloes.get(trgt-1).nome + " atingido! " + danoFinal + " de danoFinal!");
 		}
 		else

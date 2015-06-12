@@ -8,9 +8,12 @@ import box2dLight.Light;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.androidkeys.AndroidInput;
 import com.mygdx.game.levels.MyHUD;
 import com.mygdx.game.levels.MyLevel;
@@ -37,13 +40,21 @@ import snake.hud.SnakeHUD;
 		private float w, h;
 		String instructions[]; //will be changed to buttons
 		private int i = 0, ini = 0, end = 9;
+		static public Rectangle leftButton = new Rectangle(0,0,20,20)
+		,rightButton= new Rectangle(200,0,20,20)
+		,upButton=new Rectangle(100,200,20,20)
+		,downButton =new Rectangle(100,0,20,20);
+		boolean flagu = false,flagd = false;
+		private OrthographicCamera camera;
 		private Inventario inv = Inventario.getInstancia();
 		public InventaryHub() {
 	
 			this.font = new BitmapFont(Gdx.files.internal("ak_sc_o.fnt"), false);
 			this.layout = new GlyphLayout();
 			for(int i = 0; i<12;i++)
-				
+			camera = new OrthographicCamera();
+			camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+			camera.update();
 
 
 			w = Gdx.graphics.getWidth();
@@ -72,8 +83,19 @@ import snake.hud.SnakeHUD;
 						e.printStackTrace();
 					}
 			}
-			
-			if(Gdx.input.isKeyJustPressed(Input.Keys.UP)){
+			for(int i = 0; i <5;i++){
+				if(Gdx.input.isTouched(i)){
+					Vector3 touchPos = new Vector3(Gdx.input.getX(i),Gdx.input.getY(i),0);
+					camera.unproject(touchPos);
+					Rectangle touch = new Rectangle(touchPos.x-16,touchPos.y-16,32,32);
+					if(touch.overlaps(upButton))
+						flagu=true;
+					if(touch.overlaps(downButton))
+						flagd = true;
+					}
+			}
+			if(Gdx.input.isKeyJustPressed(Input.Keys.UP)||flagu){
+				flagu=false;
 				if(i <= 0){
 					i = 0;
 					if(ini<=0){
@@ -87,7 +109,8 @@ import snake.hud.SnakeHUD;
 					i--;
 				}
 			}
-			if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
+			if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)||flagd){
+				flagd=false;
 				if(i >= 7){
 					i = 7;
 					if(end>=39){

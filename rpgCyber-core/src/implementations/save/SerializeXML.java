@@ -23,13 +23,13 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException; 
  
 // Classe que serializa os personagens e o inventario 
-public class SerializeXML { 
-    
+public class SerializeXML {
+	public static TSave save = new TSave();
 	// Metodo de salvar o jogo
     public static void saveGame () throws JAXBException, IOException{ 
         
     	// Cria nova classe TSave
-        TSave save = new TSave();
+        
         
         // Cria o arquivo XML a partir de um Marshaller usando a classe JAXBContext
         JAXBContext context = JAXBContext.newInstance(TSave.class); 
@@ -74,12 +74,12 @@ public class SerializeXML {
         ArrayList<AbsPersonagem> herois = new ArrayList<AbsPersonagem>(); 
         
         // Pega instancias de cada heroi
-        herois.add(TSave.getHMDR());
-        herois.add(TSave.getHDurden());  
-        herois.add(TSave.getHOleg()); 
-        herois.add(TSave.getHOzob()); 
-        herois.add(TSave.getHRexus()); 
-        herois.add(TSave.getHSilvana()); 
+        herois.add(save.getHMDR());
+        herois.add(save.getHDurden());  
+        herois.add(save.getHOleg()); 
+        herois.add(save.getHOzob()); 
+        herois.add(save.getHRexus()); 
+        herois.add(save.getHSilvana()); 
      
         // Pega o nome de todos os herois com tag de elemento XML heroi
         NodeList listaDePersonagem = doc.getElementsByTagName("heroi"); 
@@ -111,26 +111,26 @@ public class SerializeXML {
                 switch(elementoAtributo.getTagName()){ 
                 
                 // Adiciona no personagem cada atributo de acordo com qual eh lido 
-                case "forca": herois.get(i).forca = Integer.parseInt(elementoAtributo.getTextContent()); 
-                case "percepcao": herois.get(i).percepcao = (Integer.parseInt(elementoAtributo.getTextContent()));; 
-                case "resistencia": herois.get(i).resistencia = (Integer.parseInt(elementoAtributo.getTextContent())); 
-                case "carisma": herois.get(i).carisma = (Integer.parseInt(elementoAtributo.getTextContent())); 
-                case "inteligencia": herois.get(i).inteligencia = (Integer.parseInt(elementoAtributo.getTextContent())); 
-                case "agilidade": herois.get(i).agilidade = (Integer.parseInt(elementoAtributo.getTextContent())); 
-                case "sorte": herois.get(i).sorte = (Integer.parseInt(elementoAtributo.getTextContent())); 
-                case "esquiva": herois.get(i).esquiva = (Double.parseDouble((elementoAtributo.getTextContent()))); 
-                case "critico": herois.get(i).critico = (Double.parseDouble(elementoAtributo.getTextContent())); 
-                case "hp": herois.get(i).hp = (int) (Double.parseDouble(elementoAtributo.getTextContent())); 
-                case "maxHP": herois.get(i).maxHP = (int) (Double.parseDouble(elementoAtributo.getTextContent())); 
-                case "xp": herois.get(i).xp = (int) (Double.parseDouble(elementoAtributo.getTextContent())); 
-                case "level": herois.get(i).level = (int) (Double.parseDouble(elementoAtributo.getTextContent())); 
-                case "danoArma": herois.get(i).danoArma = (int) (Double.parseDouble(elementoAtributo.getTextContent())); 
-                case "armadura": herois.get(i).armadura = (int) (Double.parseDouble(elementoAtributo.getTextContent())); 
-                case "iniciativa": herois.get(i).iniciativa = (int) (Double.parseDouble(elementoAtributo.getTextContent())); 
-               // case "pos": herois.get(i).pos = (Double.parseDouble(elementoAtributo.getTextContent())); 
-                case "tipo": herois.get(i).tipo = (int) (Double.parseDouble(elementoAtributo.getTextContent())); 
-                case "vilao": herois.get(i).vilao = (Boolean.parseBoolean(elementoAtributo.getTextContent())); 
-                case "nome": herois.get(i).nome = (elementoAtributo.getTextContent()); 
+                case "forca": herois.get(i).setForca(Integer.parseInt(elementoAtributo.getTextContent())); 
+                case "percepcao": herois.get(i).setPercepcao(Integer.parseInt(elementoAtributo.getTextContent()));; 
+                case "resistencia": herois.get(i).setResistencia(Integer.parseInt(elementoAtributo.getTextContent())); 
+                case "carisma": herois.get(i).setCarisma(Integer.parseInt(elementoAtributo.getTextContent())); 
+                case "inteligencia": herois.get(i).setInteligencia(Integer.parseInt(elementoAtributo.getTextContent())); 
+                case "agilidade": herois.get(i).setAgilidade(Integer.parseInt(elementoAtributo.getTextContent())); 
+                case "sorte": herois.get(i).setSorte(Integer.parseInt(elementoAtributo.getTextContent())); 
+                case "esquiva": herois.get(i).setEsquiva(Double.parseDouble((elementoAtributo.getTextContent()))); 
+                case "critico": herois.get(i).setCritico(Double.parseDouble(elementoAtributo.getTextContent())); 
+                case "hp": herois.get(i).setHp(Double.parseDouble(elementoAtributo.getTextContent())); 
+                case "maxHP": herois.get(i).setMaxHP(Double.parseDouble(elementoAtributo.getTextContent())); 
+                case "xp": herois.get(i).setXp(Double.parseDouble(elementoAtributo.getTextContent())); 
+                case "level": herois.get(i).setLevel(Double.parseDouble(elementoAtributo.getTextContent())); 
+                case "danoArma": herois.get(i).setDanoArma(Double.parseDouble(elementoAtributo.getTextContent())); 
+                case "armadura": herois.get(i).setArmadura(Double.parseDouble(elementoAtributo.getTextContent())); 
+                case "iniciativa": herois.get(i).setIniciativa(Double.parseDouble(elementoAtributo.getTextContent())); 
+                case "pos": herois.get(i).setPos(Double.parseDouble(elementoAtributo.getTextContent())); 
+                case "tipo": herois.get(i).setTipo(Double.parseDouble(elementoAtributo.getTextContent())); 
+                case "vilao": herois.get(i).setVilao(Boolean.parseBoolean(elementoAtributo.getTextContent())); 
+                case "nome": herois.get(i).setNome(elementoAtributo.getTextContent()); 
                 
                 } 
             } 

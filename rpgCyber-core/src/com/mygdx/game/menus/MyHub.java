@@ -44,6 +44,7 @@ import snake.hud.SnakeHUD;
 		String instructions[]; //will be changed to buttons
 		private int i = 0;
 		public MyHub() {
+			
 	
 			this.font = new BitmapFont(Gdx.files.internal("ak_sc_o.fnt"), false);
 			this.layout = new GlyphLayout();
@@ -97,7 +98,7 @@ import snake.hud.SnakeHUD;
 				if(i ==2){
 					Gdx.app.exit();
 				}
-			}if (Gdx.input.isKeyPressed(Input.Keys.R) || Gdx.input.justTouched()) {
+			}if (Gdx.input.isKeyPressed(Input.Keys.R)) {
 				if(i ==0){	
 					try {
 						ScreenCreator.addAndGo(new TextLevel("E comeca a aventura"), new TextHUB());
