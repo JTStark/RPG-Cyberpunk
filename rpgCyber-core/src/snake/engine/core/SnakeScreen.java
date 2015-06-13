@@ -132,7 +132,6 @@ public class SnakeScreen implements GameLevel {
 	/** Controls game logic -- keeps looping, updating and drawing as the game goes. */
 	@Override
 	public void render(float delta) {
-		
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
 		

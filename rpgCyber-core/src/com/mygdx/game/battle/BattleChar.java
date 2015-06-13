@@ -4,6 +4,8 @@ import implementations.combate.CEngine;
 import implementations.personagens.AbsPersonagem;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.androidkeys.AndroidInput;
 import com.mygdx.game.animate.*;
 
 public class BattleChar extends Animator {
@@ -14,7 +16,6 @@ public class BattleChar extends Animator {
 	private String name;
 	private boolean amigo;
 	private boolean vivo = true;
-	
 	private AbsPersonagem person; 
 
 	public BattleChar(String personagem) {
@@ -22,27 +23,23 @@ public class BattleChar extends Animator {
 		
 		String file = "characters/" + personagem + "Battle.png";
 		
-		width = Gdx.app.getGraphics().getWidth()/13;
-    	height = Gdx.app.getGraphics().getHeight()/8;
+		width = Gdx.graphics.getWidth()/13;
+    	height = Gdx.graphics.getHeight()/8;
 		
 		/* Animacao de parado */
 		wait = new Animax();
 		
 		wait.setTexture(file); 
         wait.setTextureRegions(FRAME_ROWS,FRAME_COLS,1,1,1,3);
-        wait.setAnimation(1/3f);      
-        wait.setSpriteBatch();                
+        wait.setAnimation(1/3f);              
         wait.setStateTime(0f);
-        
         /* Animacao de atacando */
         attack = new Animax();
         
         attack.setTexture(file); 
         attack.setTextureRegions(FRAME_ROWS,FRAME_COLS,4,1,4,3);
-        attack.setAnimation(1/3f);      
-        attack.setSpriteBatch();                
+        attack.setAnimation(1/3f);              
         attack.setStateTime(0f);
-        
         name = personagem;
         
         
@@ -79,9 +76,9 @@ public class BattleChar extends Animator {
 	public Animax animate(Animax play){
     	play.addStateTime( Gdx.graphics.getDeltaTime());           // #15
         play.setTextureRegion( play.getAnimation().getKeyFrame(play.getStateTime(), true));  // #16
-        play.getSpriteBatch().begin(); 
-        play.getSpriteBatch().draw(play.getTextureRegion(), x+Gdx.app.getGraphics().getWidth()/2, Gdx.app.getGraphics().getHeight()/2, width, height);// #17
-        play.getSpriteBatch().end();
+        Player.spritebatch.begin(); 
+        Player.spritebatch.draw(play.getTextureRegion(), x*AndroidInput.w+Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, Gdx.graphics.getWidth()/13, Gdx.graphics.getHeight()/8);// #17
+        Player.spritebatch.end();
         return play;
     }
 	

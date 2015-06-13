@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.mygdx.game.androidkeys.AndroidInput;
 import com.mygdx.game.animate.Player;
 
 import snake.engine.creators.ScreenCreator;
@@ -53,8 +54,8 @@ public class BattleWorld  extends VisualGameWorld {
 		//Procedimento padrao para carregar uma imagem -- vai ser melhorado com o assetManager
 		Texture texture = new Texture(Gdx.files.internal("batalha.png")); 
 		batalha = new Sprite(texture);
+		//batalha.setSize(WorldSettings.getWorldWidth(), WorldSettings.getWorldHeight());
 		batalha.setSize(WorldSettings.getWorldWidth(), WorldSettings.getWorldHeight());
-		
 		
 		
 		/* Herois */
@@ -121,7 +122,7 @@ public class BattleWorld  extends VisualGameWorld {
 	
 	@Override
 	public void act(float delta) {
-		if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE)) {
+		if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE)||AndroidInput.getExit()) {
 			/*try {
 				Player.ordenate();
 				musica.pause();

@@ -2,6 +2,7 @@ package com.mygdx.game.animate;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.mygdx.game.androidkeys.AndroidInput;
 
 public class Animator{
 
@@ -15,64 +16,57 @@ public class Animator{
     public  Animator(String file) {
     	x = 1;
     	y = 1;
-    	width = Gdx.app.getGraphics().getWidth()/13;
-    	height = Gdx.app.getGraphics().getHeight()/8;
+    	width = Gdx.graphics.getWidth()/13;
+    	height = Gdx.graphics.getHeight()/8;
     	walkRight = new Animax();
     	/* Anda Para direita */
         walkRight.setTexture(file); 
         walkRight.setTextureRegions(FRAME_ROWS,FRAME_COLS,8,1,8,10);
-        walkRight.setAnimation(0.10f);      
-        walkRight.setSpriteBatch();                
+        walkRight.setAnimation(0.10f);           
         walkRight.setStateTime(0f);
         /*Parado Para direita */
         stopRight = new Animax();
         stopRight.setTexture(file); 
         stopRight.setTextureRegions(FRAME_ROWS,FRAME_COLS,4,1,4,3);
-        stopRight.setAnimation(1/3f);      
-        stopRight.setSpriteBatch();                
+        stopRight.setAnimation(1/3f);              
         stopRight.setStateTime(0f);
-        
         /*Anda Para esquerda */
         walkLeft = new Animax();
         walkLeft.setTexture(file); 
         walkLeft.setTextureRegions(FRAME_ROWS,FRAME_COLS,6,1,6,10);
-        walkLeft.setAnimation(0.10f);      
-        walkLeft.setSpriteBatch();                
+        walkLeft.setAnimation(0.10f);             
         walkLeft.setStateTime(0f);
+
+        walkLeft.setSpriteBatch(walkRight.getSpriteBatch());
         /*Parado Para esquerda */
         stopLeft = new Animax();
         stopLeft.setTexture(file); 
         stopLeft.setTextureRegions(FRAME_ROWS,FRAME_COLS,2,1,2,3);
-        stopLeft.setAnimation(1/3f);      
-        stopLeft.setSpriteBatch();                
+        stopLeft.setAnimation(1/3f);              
         stopLeft.setStateTime(0f);
         /*Anda Para Cima */
         walkUp = new Animax();
         walkUp.setTexture(file); 
         walkUp.setTextureRegions(FRAME_ROWS,FRAME_COLS,7,1,7,10);
-        walkUp.setAnimation(0.10f);      
-        walkUp.setSpriteBatch();                
+        walkUp.setAnimation(0.10f);             
         walkUp.setStateTime(0f);
         /*Parado Para Cima */
         stopUp = new Animax();
         stopUp.setTexture(file); 
         stopUp.setTextureRegions(FRAME_ROWS,FRAME_COLS,3,1,3,1);
-        stopUp.setAnimation(1f);      
-        stopUp.setSpriteBatch();                
+        stopUp.setAnimation(1f);                
         stopUp.setStateTime(0f);
         /*Anda Para Baixo */
         walkDown = new Animax();
         walkDown.setTexture(file); 
         walkDown.setTextureRegions(FRAME_ROWS,FRAME_COLS,5,1,5,10);
-        walkDown.setAnimation(0.10f);      
-        walkDown.setSpriteBatch();                
+        walkDown.setAnimation(0.10f);             
         walkDown.setStateTime(0f);
         /*Anda Para Baixo */
         stopDown = new Animax();
         stopDown.setTexture(file); 
         stopDown.setTextureRegions(FRAME_ROWS,FRAME_COLS,1,1,1,3);
-        stopDown.setAnimation(1/3f);      
-        stopDown.setSpriteBatch();                
+        stopDown.setAnimation(1/3f);               
         stopDown.setStateTime(0f);
         i=0;
     }
@@ -105,28 +99,28 @@ public class Animator{
 	        }else
 	        	i++;
     	}
-    	if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {// #14
+    	if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)||AndroidInput.getRightB()) {// #14
 	        walkRight = animate(walkRight);
 	        flagup = false;
 	        flagdown = false;
 	        flagright = true;
 	        flagleft = false;
     	}
-    	else if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+    	else if(Gdx.input.isKeyPressed(Input.Keys.UP)||AndroidInput.getUpB()){
     		walkUp = animate(walkUp);	
     		flagup = true;
 	        flagdown = false;
 	        flagright = false;
 	        flagleft = false;
     	}
-    	else if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+    	else if((Gdx.input.isKeyPressed(Input.Keys.LEFT)||AndroidInput.getLeftB())){
     		walkLeft = animate(walkLeft);
     		flagup = false;
 	        flagdown = false;
 	        flagright = false;
 	        flagleft = true;
     	}
-    	else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+    	else if((Gdx.input.isKeyPressed(Input.Keys.DOWN)||AndroidInput.getDownB())){
     		walkDown = animate(walkDown);
     		flagup = false;
 	        flagdown = true;
@@ -169,11 +163,12 @@ public class Animator{
     		
     }
     public Animax animate(Animax play){
+
     	play.addStateTime( Gdx.graphics.getDeltaTime());           // #15
         play.setTextureRegion( play.getAnimation().getKeyFrame(play.getStateTime(), true));  // #16
-        play.getSpriteBatch().begin(); 
-        play.getSpriteBatch().draw(play.getTextureRegion(), x+Gdx.app.getGraphics().getWidth()/2, y+Gdx.app.getGraphics().getHeight()/2, width, height);// #17
-        play.getSpriteBatch().end();
+        Player.spritebatch.begin(); 
+        Player.spritebatch.draw(play.getTextureRegion(), Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, Gdx.graphics.getWidth()/13, Gdx.graphics.getHeight()/8);// #17
+        Player.spritebatch.end();
         return play;
     }
 }

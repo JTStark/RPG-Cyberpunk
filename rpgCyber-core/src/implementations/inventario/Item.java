@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+
 public class Item implements InterfaceItem {
 	private String name;
 	private String type;
@@ -16,15 +19,15 @@ public class Item implements InterfaceItem {
 	public Item(String identificador) {
 		
 		/*metodo construtor para procurar no BD a partir do nome dado pelo usuario*/
-		FileReader arquivo;
+		FileHandle arquivo;
 		BufferedReader tratado = null;
 		this.nomeEncontrado = false;
 		
 		/*esses try catch ficam feios, mas as coisas funcionam*/
 		try {
-			arquivo = new FileReader(diretorio);
-			tratado = new BufferedReader(arquivo);
-		} catch (FileNotFoundException e) {
+			arquivo = Gdx.files.internal(diretorio);
+			tratado = new BufferedReader(arquivo.reader());
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -70,18 +73,19 @@ public class Item implements InterfaceItem {
 	}
 	
 	/*metodo para gerar um item aleatorio, para ser colocado nos baus encontrados no meio do jogo*/
+	@SuppressWarnings("resource")
 	public static Item geraAleatorio() { 
 		int procurado = 2 + (int)(Math.random() * 80);
 		String diretorio = "BD.txt";
-		FileReader arquivo;
+		FileHandle arquivo;
 		BufferedReader tratado = null;
 		String nome = null;
 		
 		/*tenta abrir o arquivo, e caso não consiga entra na exception*/
 		try {
-			arquivo = new FileReader(diretorio);
-			tratado = new BufferedReader(arquivo);
-		} catch (FileNotFoundException e) {
+			arquivo = Gdx.files.internal(diretorio);
+			tratado = new BufferedReader(arquivo.reader());
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		

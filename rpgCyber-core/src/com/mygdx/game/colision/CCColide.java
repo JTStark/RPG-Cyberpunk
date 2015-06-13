@@ -2,6 +2,7 @@ package com.mygdx.game.colision;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.mygdx.game.androidkeys.AndroidInput;
 
 public class CCColide {
 	public static boolean up(TiledMapTileLayer generic, OrthographicCamera camera){
@@ -23,20 +24,20 @@ public class CCColide {
 		return false;
 	}
 	public static boolean left(TiledMapTileLayer generic, OrthographicCamera camera){
-		if(generic.getCell(Math.round((float)(camera.position.x - 0.5)), Math.round((float)(camera.position.y+0.4))) != null)
+		if(generic.getCell(Math.round((float)(camera.position.x - 0.5*AndroidInput.w)), Math.round((float)(camera.position.y+0.4))) != null)
 			return true;
-		if(generic.getCell(Math.round((float)(camera.position.x - 0.5)), Math.round((float)(camera.position.y-0.4))) != null)
+		if(generic.getCell(Math.round((float)(camera.position.x - 0.5*AndroidInput.w)), Math.round((float)(camera.position.y-0.4))) != null)
 			return true;
-		if(generic.getCell(Math.round((float)(camera.position.x - 0.5)), Math.round((float)(camera.position.y)))!= null)
+		if(generic.getCell(Math.round((float)(camera.position.x - 0.5*AndroidInput.w)), Math.round((float)(camera.position.y)))!= null)
 			return true;
 		return false;
 	}
 	public static boolean right(TiledMapTileLayer generic, OrthographicCamera camera){
-		if(generic.getCell(Math.round((float)(camera.position.x+0.5)), Math.round((float)(camera.position.y+0.4))).getTile()!= null)
+		if(generic.getCell(Math.round((float)(camera.position.x+0.6*AndroidInput.w)), Math.round((float)(camera.position.y+0.4))).getTile()!= null)
 			return true;
-		if(generic.getCell(Math.round((float)(camera.position.x+0.5)), Math.round((float)(camera.position.y-0.4)))!= null)
+		if(generic.getCell(Math.round((float)(camera.position.x+0.6*AndroidInput.w)), Math.round((float)(camera.position.y-0.4)))!= null)
 			return true;
-		if(generic.getCell(Math.round((float)(camera.position.x+0.5)), Math.round((float)(camera.position.y))) != null)
+		if(generic.getCell(Math.round((float)(camera.position.x+0.6*AndroidInput.w)), Math.round((float)(camera.position.y))) != null)
 			return true;
 		return false;
 	}
@@ -47,7 +48,7 @@ public class CCColide {
 					return true;
 				if(generic.getCell(Math.round((float)(camera.position.x - 0.3)), Math.round((float)(camera.position.y+0.6))).getTile().getProperties().get(prop) != null)
 					return true;
-				if(generic.getCell(Math.round((float)(camera.position.x + 0.3)), Math.round((float)(camera.position.y+0.6))).getTile().getProperties().get(prop) != null)
+				if(generic.getCell(Math.round((float)(camera.position.x + 0.4)), Math.round((float)(camera.position.y+0.6))).getTile().getProperties().get(prop) != null)
 					return true;
 			}
 		}catch(Exception e){}
@@ -58,7 +59,7 @@ public class CCColide {
 		if(down(generic,camera)){
 			if(generic.getCell(Math.round((float)(camera.position.x-0.3)), Math.round((float)(camera.position.y-0.6))).getTile().getProperties().get(prop) != null)
 				return true;
-			if(generic.getCell(Math.round((float)(camera.position.x+0.3)), Math.round((float)(camera.position.y-0.6))).getTile().getProperties().get(prop) != null)
+			if(generic.getCell(Math.round((float)(camera.position.x+0.4)), Math.round((float)(camera.position.y-0.6))).getTile().getProperties().get(prop) != null)
 				return true;
 			if(generic.getCell(Math.round((float)(camera.position.x)), Math.round((float)(camera.position.y-0.6))).getTile().getProperties().get(prop) != null)
 				return true;
@@ -69,11 +70,11 @@ public class CCColide {
 	public static boolean leftP(TiledMapTileLayer generic, OrthographicCamera camera, String prop){
 		try{
 		if(left(generic,camera)){
-		if(generic.getCell(Math.round((float)(camera.position.x - 0.5)), Math.round((float)(camera.position.y+0.4))).getTile().getProperties().get(prop) != null)
+		if(generic.getCell(Math.round((float)(camera.position.x - 0.4*AndroidInput.w)), Math.round((float)(camera.position.y+0.4))).getTile().getProperties().get(prop) != null)
 			return true;
-		if(generic.getCell(Math.round((float)(camera.position.x - 0.5)), Math.round((float)(camera.position.y-0.4))).getTile().getProperties().get(prop) != null)
+		if(generic.getCell(Math.round((float)(camera.position.x - 0.4*AndroidInput.w)), Math.round((float)(camera.position.y-0.4))).getTile().getProperties().get(prop) != null)
 			return true;
-		if(generic.getCell(Math.round((float)(camera.position.x - 0.5)), Math.round((float)(camera.position.y))).getTile().getProperties().get(prop) != null)
+		if(generic.getCell(Math.round((float)(camera.position.x - 0.4*AndroidInput.w)), Math.round((float)(camera.position.y))).getTile().getProperties().get(prop) != null)
 			return true;
 		}
 	}catch(Exception e){}
@@ -82,11 +83,11 @@ public class CCColide {
 	public static boolean rightP(TiledMapTileLayer generic, OrthographicCamera camera, String prop){
 		try{
 			if(right(generic,camera)){
-			if(generic.getCell(Math.round((float)(camera.position.x+0.5)), Math.round((float)(camera.position.y+0.4))).getTile().getProperties().get(prop) != null)
+			if(generic.getCell(Math.round((float)(camera.position.x+0.5*AndroidInput.w)), Math.round((float)(camera.position.y+0.4))).getTile().getProperties().get(prop) != null)
 				return true;
-			if(generic.getCell(Math.round((float)(camera.position.x+0.5)), Math.round((float)(camera.position.y-0.4))).getTile().getProperties().get(prop) != null)
+			if(generic.getCell(Math.round((float)(camera.position.x+0.5*AndroidInput.w)), Math.round((float)(camera.position.y-0.4))).getTile().getProperties().get(prop) != null)
 				return true;
-			if(generic.getCell(Math.round((float)(camera.position.x+0.5)), Math.round((float)(camera.position.y))).getTile().getProperties().get(prop) != null)
+			if(generic.getCell(Math.round((float)(camera.position.x+0.5*AndroidInput.w)), Math.round((float)(camera.position.y))).getTile().getProperties().get(prop) != null)
 				return true;
 			}
 		}catch(Exception e){}

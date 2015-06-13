@@ -10,10 +10,12 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		
 		config.title = "Your game";
-	    config.width = 640;
-	    config.height = 480;
 	    config.resizable = false;
-		//config.vSyncEnabled = true;
+		config.height = 720;
+		config.width = 1200;
+		//config.height = 480;
+		//config.width =640;
+		config.vSyncEnabled = true;
 		new LwjglApplication((ApplicationListener) new New(), config);
 	}
 }

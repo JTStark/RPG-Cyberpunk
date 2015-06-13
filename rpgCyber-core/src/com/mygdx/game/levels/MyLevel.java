@@ -64,23 +64,16 @@ public class MyLevel extends VisualGameWorld {
 	private TiledMapRenderer renderer;
 	private TiledMapTileLayer colision, bau, bau2,enemies,enemies2;
 	private OrthographicCamera camera,camera2;
+	private boolean flagmo = true;
 	private float dx,dy;
 	private int lim;
-	static public Rectangle leftButton = new Rectangle(0,0,100,100)
-	,rightButton= new Rectangle(200,0,100,100)
-	,upButton=new Rectangle(100,100,100,100)
-	,downButton =new Rectangle(100,0,100,100);
 	Light light;
-	private Texture button;
 	public static Sprite up,down,left,right;
-	private boolean flagv = false, flagmo =true;
 	public MyLevel (String LevelData) {
 		float w = WorldSettings.getWorldWidth();
 		float h =  WorldSettings.getWorldHeight();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, (w/h)*10, 10);
-		camera2 = new OrthographicCamera();
-		camera2.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.update();
 		
 		WorldSettings.setAmbientColor(Color.WHITE);
@@ -105,13 +98,13 @@ public class MyLevel extends VisualGameWorld {
 	
 	@Override
 	public void act(float delta) {
-		/*if(flagmo){
+		if(flagmo){
 			Player.ani.setXY((float)(getX()+ 4.172*8),(float)(getY() + 0.3*8));
 			camera.position.x+=Player.ani.getX();
 			camera.position.y+=Player.ani.getY();
 			camera.update();
 			flagmo = false;
-		}*/
+		}
 		if(Player.battle){
 			try {
 				ScreenCreator.addAndGo(new BattleWorld("MyLevel"), new BattleHUD("MyLevel"));
@@ -135,7 +128,7 @@ public class MyLevel extends VisualGameWorld {
 				}
 			
 		}
-		if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
+		if (Gdx.input.isKeyJustPressed(Input.Keys.I)||(AndroidInput.getActionB()&&Gdx.input.justTouched())) {
 			
 			try {
 				ScreenCreator.addAndGo(new InventaryMenu("MyLevel"), new InventaryHub());
@@ -148,8 +141,11 @@ public class MyLevel extends VisualGameWorld {
 		if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
 			Player.change();	
 		}
-		
-		if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE)) {
+		if (AndroidInput.getHackB()&&Gdx.input.justTouched()) {
+			
+			Player.changeAll();	
+		}
+		if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE)||(AndroidInput.getExit()&&Gdx.input.justTouched())) {
 			try {
 				ScreenCreator.backToPrevious();
 			} catch (Exception e) {
@@ -161,6 +157,7 @@ public class MyLevel extends VisualGameWorld {
 				}
 			}
 		}
+		
 		if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
 			Player.speed();
 		}
@@ -196,16 +193,16 @@ public class MyLevel extends VisualGameWorld {
 
 		CComb.changeCombat(camera, enemies, enemies2,bau);
 		// move player
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCColide.rightP(colision, camera, "blocked")){
+		if((Gdx.input.isKeyPressed(Input.Keys.RIGHT)||AndroidInput.getRightB())&&!CCColide.rightP(colision, camera, "blocked")){
 			dx=1;
 		}else
-		if((Gdx.input.isKeyPressed(Input.Keys.UP)&&!CCColide.upP(colision, camera, "blocked"))){
+		if(((Gdx.input.isKeyPressed(Input.Keys.UP)||AndroidInput.getUpB())&&!CCColide.upP(colision, camera, "blocked"))){
 			dy=1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!CCColide.leftP(colision, camera, "blocked")){
+		if((Gdx.input.isKeyPressed(Input.Keys.LEFT)||AndroidInput.getLeftB())&&!CCColide.leftP(colision, camera, "blocked")){
 			dx=-1;
 		}else
-		if((Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCColide.downP(colision, camera, "blocked"))||AndroidInput.getDownB()){
+		if((Gdx.input.isKeyPressed(Input.Keys.DOWN)||AndroidInput.getDownB())&&!CCColide.downP(colision, camera, "blocked")){
 			dy=-1;
 		}
 		/*for(int i = 0; i <5;i++){
@@ -225,6 +222,7 @@ public class MyLevel extends VisualGameWorld {
 		}*/
 		
 		Player.ani.setXY(getX()+ dx*delta*Player.v,getY() + dy*delta*Player.v);
+		camera.update();
 		camera.position.x+=Player.ani.getX();
 		camera.position.y+=Player.ani.getY();
 		camera.update();
@@ -261,7 +259,6 @@ public class MyLevel extends VisualGameWorld {
 	
 	@Override
 	public void dispose() {
-
 		map.dispose();
 		light.remove();
 		light.dispose();

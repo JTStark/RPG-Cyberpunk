@@ -4,6 +4,7 @@ import implementations.combate.AuxTemp;
 import snake.engine.models.*;
 import snake.engine.creators.ScreenCreator;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.animate.Player;
 import com.mygdx.game.menus.MyHub;
@@ -43,6 +44,8 @@ public class New extends GameStart {
 											   + "ajuda-lo, e chama seu grupo de mercenarios para resgatar a garota.\n\n"
 											   + "Walker suspeita que sua filha encontra-se no predio a oeste daquele "
 											   + "em que se encontram.\n"), new TextHUB());
+								
+			//ScreenCreator.switchAndGo(new MyLevelMenu("MyLevel"), new MyHub());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

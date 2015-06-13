@@ -9,6 +9,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.mygdx.game.androidkeys.AndroidInput;
 
 import snake.engine.creators.ScreenCreator;
 import snake.engine.models.HUD;
@@ -1350,7 +1351,7 @@ public class BattleHUD extends HUD {
 			}
 		}
 		else { //acabou
-			if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
+			if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)||AndroidInput.getExit()) {
 				BattleWorld.barbudo = null;
 				BattleWorld.palhaco = null;
 				BattleWorld.cientista = null;

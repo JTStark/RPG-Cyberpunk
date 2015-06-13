@@ -1,6 +1,8 @@
 package com.mygdx.game.animate;
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import implementations.combate.AuxTemp;
 import implementations.inventario.Inventario;
 import implementations.personagens.*;
@@ -10,8 +12,8 @@ public class Player {
 	public static boolean state  = true;
 	public static Animator ani1 = new Animator("palhaco.png");
 	public static Animator ani2 = new Animator("link.png");
-	public static Animator ani = ani1;
-	public static int v = 5;
+	public static Animator ani = ani2;
+	public static int v = 10;
 	public static ArrayList<AbsPersonagem> listaP = new ArrayList<AbsPersonagem>();
 	public static ArrayList<AbsPersonagem> listaV = new ArrayList<AbsPersonagem>();
 	public static ArrayList<AbsPersonagem> listaN = new ArrayList<AbsPersonagem>();
@@ -22,6 +24,7 @@ public class Player {
 	public static AbsPersonagem Rexus = HRexus.getInstancia();
 	public static AbsPersonagem Silvana = HSilvana.getInstancia();
 	public static Inventario inv = Inventario.getInstancia();
+	public static SpriteBatch spritebatch=new SpriteBatch();
 	public static boolean battle = false;
 	public static ArrayList<AbsPersonagem> getP(){
 		listaP.add(MDR);
@@ -38,6 +41,18 @@ public class Player {
 			ani = ani2;
 		}else{
 			ani = ani1;
+		}
+	}
+	public static void changeAll(){
+		if(ani == ani1){
+			ani = ani2;
+		}else{
+			ani = ani1;
+		}
+		if(v == 5){
+			v = v*2;
+		}else{
+			v = v/2;
 		}
 	}
 	public static void speed(){

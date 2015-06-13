@@ -21,6 +21,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.mygdx.game.androidkeys.AndroidInput;
 import com.mygdx.game.animate.Animator;
 import com.mygdx.game.animate.Player;
 import com.mygdx.game.battle.BattleHUD;
@@ -178,16 +179,16 @@ if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
 		CDoors.doorRight(camera, colision);
 		CComb.changeCombat(camera, enemies, enemies2,bau);
 		// move player
-		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)&&!CCColide.rightP(colision, camera, "blocked")){
+		if((Gdx.input.isKeyPressed(Input.Keys.RIGHT)||AndroidInput.getRightB())&&!CCColide.rightP(colision, camera, "blocked")){
 			dx=1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.UP)&&!CCColide.upP(colision, camera, "blocked")){
+		if(((Gdx.input.isKeyPressed(Input.Keys.UP)||AndroidInput.getUpB())&&!CCColide.upP(colision, camera, "blocked"))){
 			dy=1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)&&!CCColide.leftP(colision, camera, "blocked")){
+		if((Gdx.input.isKeyPressed(Input.Keys.LEFT)||AndroidInput.getLeftB())&&!CCColide.leftP(colision, camera, "blocked")){
 			dx=-1;
 		}else
-		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)&&!CCColide.downP(colision, camera, "blocked")){
+		if((Gdx.input.isKeyPressed(Input.Keys.DOWN)||AndroidInput.getDownB())&&!CCColide.downP(colision, camera, "blocked")){
 			dy=-1;
 		}
 		Player.ani.setXY(getX()+ dx*delta*Player.v,getY() + dy*delta*Player.v);

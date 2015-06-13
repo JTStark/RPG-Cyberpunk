@@ -71,7 +71,7 @@ import snake.hud.SnakeHUD;
 			if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
 				Gdx.graphics.setDisplayMode(640, 480, false);
 			}
-			if (Gdx.input.isKeyPressed(Input.Keys.ENTER) || Gdx.input.justTouched()) {
+			if (Gdx.input.isKeyPressed(Input.Keys.ENTER) || AndroidInput.getEnterB()) {
 				if(i ==0){	
 					try {
 						ScreenCreator.addAndGo(new MyLevel("Mapas/MapaExterno.tmx"), new MyHUD("LevelData"));
@@ -118,11 +118,30 @@ import snake.hud.SnakeHUD;
 					i--;
 				}
 			}
+			if(AndroidInput.getUpB()){
+
+				if(Gdx.input.justTouched()){
+				if(i <= 0)
+					i = 0;
+				else{
+					i--;
+				}
+				}
+			}
 			if(Gdx.input.isKeyJustPressed(Input.Keys.DOWN)){
 				if(i >= 2)
 					i = 2;
 				else{
 					i++;
+				}
+			}
+			if(AndroidInput.getDownB()){
+				if(Gdx.input.justTouched()){
+				if(i >= 2)
+					i = 2;
+				else{
+					i++;
+				}
 				}
 			}
 			instructions[0] = "New Game";
@@ -142,29 +161,29 @@ import snake.hud.SnakeHUD;
 			if(i==0){
 				font.setColor(Color.RED);
 				layout.setText(font, instructions[0]);
-				font.draw(batch, layout, w / 2 - layout.width / 2 -50, h / 2 - layout.height / 2 + 50);
+				font.draw(batch, layout, 100, 200);
 				font.setColor(Color.WHITE);
 			}else{
 				layout.setText(font, instructions[0]);
-				font.draw(batch, layout, w / 2 - layout.width / 2 -50, h / 2 - layout.height / 2 + 50);
+				font.draw(batch, layout, 100, 200);
 			}
 			if(i==1){
 				font.setColor(Color.RED);
 				layout.setText(font, instructions[1]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
+				font.draw(batch, layout, 100, 150);
 				font.setColor(Color.WHITE);
 			}else{
 				layout.setText(font, instructions[1]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 20);
+				font.draw(batch, layout, 100, 150);
 			}
 			if(i==2){
 				font.setColor(Color.RED);
 				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
+				font.draw(batch, layout, 100,100);
 				font.setColor(Color.WHITE);
 			}else{
 				layout.setText(font, instructions[2]);
-				font.draw(batch, layout, w / 2 - layout.width / 2-50, h / 2 - layout.height / 2 - 90);
+				font.draw(batch, layout, 100,100);
 			}
 		}
 

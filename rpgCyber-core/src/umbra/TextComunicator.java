@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.mygdx.game.androidkeys.AndroidInput;
 
 
 public class TextComunicator implements IComunicator, InputProcessor {
@@ -97,7 +98,7 @@ public class TextComunicator implements IComunicator, InputProcessor {
             // Control of text speed
             counter += dt;
             if (counter > textSpeed * dt) {
-            	if(Gdx.input.isKeyPressed(Input.Keys.E))
+            	if(Gdx.input.isKeyPressed(Input.Keys.E)||AndroidInput.getExit())
                 	return true;
                 
             	if (!end) {
